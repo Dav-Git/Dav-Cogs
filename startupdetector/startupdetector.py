@@ -1,10 +1,19 @@
 from redbot.core import commands
+import datetime
+
 
 class Mycog(commands.Cog):
     """My custom cog"""
-
-    @commands.command()
-    async def mycom(self, ctx):
-        """This does stuff!"""
-        # Your code will go here
-        await ctx.send("I can do stuff!")
+    
+    def __init__(self, bot):
+        self.bot=bot
+        delta = datetime.datetime.utcnow() - self.bot.uptime
+        if delta.seconds < 120:
+            sendmsg()
+            
+    def sendmsg(self, ctx):
+        destinations = await ctx.bot.get_owner_notification_destinations()
+        for destination in destinations:
+            try:
+                await destination.send("The Bot just started."
+        
