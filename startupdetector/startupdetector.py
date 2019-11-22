@@ -11,6 +11,8 @@ class StartupDetector(commands.Cog):
         delta = datetime.datetime.utcnow() - self.bot.uptime
         if delta.seconds < 120:
             self.sendmsg()
+        else:
+            self.sendmsg()
     
     async def sendmsg(self, ctx):
         destinations = await ctx.bot.get_owner_notification_destinations()
