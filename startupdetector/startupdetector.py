@@ -15,5 +15,5 @@ class Mycog(commands.Cog):
         destinations = await ctx.bot.get_owner_notification_destinations()
         for destination in destinations:
             try:
-                await destination.send("The Bot just started."
+                await destination.send("The Bot just started.")
         
