@@ -11,7 +11,7 @@ class Mycog(commands.Cog):
         if delta.seconds < 120:
             sendmsg()
             
-    def sendmsg(self, ctx):
+    async def sendmsg(self, ctx):
         destinations = await ctx.bot.get_owner_notification_destinations()
         for destination in destinations:
             try:
