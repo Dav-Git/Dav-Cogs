@@ -1,0 +1,20 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "bot_version": [
+    3,
+    1,
+    8
+  ],
+  "description": "Notifies the owner when the bot starts.",
+  "hidden": false,
+  "install_msg": "Thank you for installing startupdetector. Load the cog by using '[p]load startupdetector'",
+  "short": "Detect bot startup.",
+  "tags": [
+    "startup",
+    "notify",
+    "warn",
+    "tools"
+  ]
+}
