@@ -14,7 +14,7 @@ class StartupDetector(commands.Cog):
         else:
             self.sendmsg()
     
-    async def sendmsg(self, ctx):
+    async def sendmsg(self, ctx: commands.Context):
         destinations = await ctx.bot.get_owner_notification_destinations()
         for destination in destinations:
             try:
