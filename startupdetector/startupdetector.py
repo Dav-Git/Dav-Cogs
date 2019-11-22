@@ -3,8 +3,8 @@ import datetime
 
 
 
-class Mycog(commands.Cog):
-    """My custom cog"""
+class StartupDetector(commands.Cog):
+    """Startupdetector"""
     
     def __init__(self, bot):
         self.bot=bot
@@ -12,7 +12,6 @@ class Mycog(commands.Cog):
         if delta.seconds < 120:
             self.sendmsg()
     
-    @staticmethod
     async def sendmsg(self, ctx):
         destinations = await ctx.bot.get_owner_notification_destinations()
         for destination in destinations:
