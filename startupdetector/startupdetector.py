@@ -16,4 +16,7 @@ class Mycog(commands.Cog):
         for destination in destinations:
             try:
                 await destination.send("The Bot just started.")
+            except:
+                pass
+        return
         
