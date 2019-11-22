@@ -1,5 +1,6 @@
 from redbot.core import commands
 import datetime
+import discord
 
 
 class Mycog(commands.Cog):
