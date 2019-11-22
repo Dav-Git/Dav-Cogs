@@ -1,6 +1,9 @@
-from redbot.core import commands
+from redbot.core import commands, checks, Config
+from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.predicates import ReactionPredicate
+from redbot.core.utils.menus import menu, DEFAULT_CONTROLS, start_adding_reactions
 import datetime
-import discord
+
 
 
 class Mycog(commands.Cog):
