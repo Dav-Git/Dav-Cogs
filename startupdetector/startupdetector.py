@@ -1,7 +1,13 @@
-from redbot.core import commands
 import datetime
-import asyncio
 
+import discord
+import asyncio
+import os
+import logging
+
+from redbot.core import checks, commands
+from redbot.core.data_manager import cog_data_path
+from redbot.core.i18n import Translator, cog_i18
 
 
 class StartupDetector(commands.Cog):
