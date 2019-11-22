@@ -7,7 +7,6 @@ import logging
 
 from redbot.core import checks, commands
 from redbot.core.data_manager import cog_data_path
-from redbot.core.i18n import Translator, cog_i18
 
 
 class StartupDetector(commands.Cog):
