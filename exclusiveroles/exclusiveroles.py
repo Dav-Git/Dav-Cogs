@@ -27,7 +27,7 @@ class ExclusiveRoles(commands.Cog):
         else:
             await ctx.send("`Retroscan started...`")
             for user in ctx.guild.members:
-                if roles[0] in user.roles:
-                    if roles[1] in user.roles:
-                        await user.remove_roles(roles[1], reason="Exclusive Role(RETROSCAN)")
+                if role1 in user.roles:
+                    if role2 in user.roles:
+                        await user.remove_roles(role2, reason="Exclusive Role(RETROSCAN)")
             await ctx.send("`Retroscan completed.`")
