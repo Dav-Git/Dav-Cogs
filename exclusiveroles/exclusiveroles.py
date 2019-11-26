@@ -23,5 +23,5 @@ class ExclusiveRoles(commands.Cog):
         for user in ctx.guild.members:
             if ctx.guild.get_role(489455280266936321) in user.roles:
                 if ctx.guild.get_role(634692203582717990) in user.roles:
-                    await user.remove_roles(after.guild.get_role(634692203582717990), reason="Active Applied (RETROSCAN)")
+                    await user.remove_roles(ctx.guild.get_role(634692203582717990), reason="Active Applied (RETROSCAN)")
         await ctx.send("Retroscan completed.")
