@@ -10,7 +10,7 @@ class ExclusiveRoles(commands.Cog):
     
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
-        role = after.guild.get_role(489455280266936321)
+        role = after.guild.get_roles(489455280266936321)
         if role not in before.roles:
             if role in after.roles:
-                await after.remove_roles(after.guild.get_roles(634692203582717990),reason = "Active Applied")
+                await after.remove_roles(after.guild.get_roles(634692203582717990), reason="Active Applied")
