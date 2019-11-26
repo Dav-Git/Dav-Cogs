@@ -7,14 +7,14 @@
     1,
     8
   ],
-  "description": "Notifies the owner when the bot starts.",
+  "description": "Removes a role from a user as soon as another role is added.",
   "hidden": false,
-  "install_msg": "Thank you for installing startupdetector. Load the cog by using '[p]load startupdetector'",
-  "short": "Detect bot startup.",
+  "install_msg": "Thank you for installing exclusiveroles. Load the cog by using ``[p]load exclusiveroles``",
+  "short": "Make roles (truly) exclusive",
   "tags": [
-    "startup",
-    "notify",
-    "warn",
+    "roles",
+    "exclusive",
+    "autorole",
     "tools"
   ]
 }
