@@ -1,4 +1,4 @@
-from .startupdetector import StartupDetector
+from .exclusiveroles import ExclusiveRoles
 
 def setup(bot):
-    bot.add_cog(StartupDetector(bot))
+    bot.add_cog(ExclusiveRoles(bot))
