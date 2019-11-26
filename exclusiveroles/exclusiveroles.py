@@ -18,11 +18,10 @@ class ExclusiveRoles(commands.Cog):
                 
     @commands.command()
     @checks.admin()
-    async def retroscan(self, ctx, *roles: discord.Role):
+    async def retroscan(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 Roles. Removes the second role if both roles are present on a user. """
-        roles = set(roles)
-
-        if len(roles) < 2:
+        
+        if not isinstance(role1, discord.Role) or not isinstance(role2, discord.Role) :
             return await ctx.send("You need to provide at least 2 roles")
         
         else:
