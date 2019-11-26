@@ -18,10 +18,17 @@ class ExclusiveRoles(commands.Cog):
                 
     @commands.command()
     @checks.admin()
-    async def retroscan(self, ctx):
-        await ctx.send("Retroscan started...")
-        for user in ctx.guild.members:
-            if ctx.guild.get_role(489455280266936321) in user.roles:
-                if ctx.guild.get_role(634692203582717990) in user.roles:
-                    await user.remove_roles(ctx.guild.get_role(634692203582717990), reason="Active Applied (RETROSCAN)")
-        await ctx.send("Retroscan completed.")
+    async def retroscan(self, ctx, *roles: discord.Role):
+        """Takes 2 Roles. Removes the second role if both roles are present on a user. """
+        roles = set(roles)
+
+        if len(roles) < 2:
+            return await ctx.send("You need to provide at least 2 roles")
+        
+        else:
+            await ctx.send("`Retroscan started...`")
+            for user in ctx.guild.members:
+                if roles[0] in user.roles:
+                    if roles[1] in user.roles:
+                        await user.remove_roles(roles[1], reason="Exclusive Role(RETROSCAN)")
+            await ctx.send("`Retroscan completed.`")
