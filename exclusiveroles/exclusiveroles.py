@@ -19,7 +19,10 @@ class ExclusiveRoles(commands.Cog):
             role = after.guild.get_role(645349225898573854)
             if role not in before.roles:
                 if role in after.roles:
-                    await after.remove_roles(after.guild.get_role(443075487326273536), reason="CincinationMember Applied")
+                    try:
+                        await after.remove_roles(after.guild.get_role(443075487326273536), reason="CincinationMember Applied")
+                    except:
+                        raise Exception("Role not on user")
 
                 
     @commands.command()
