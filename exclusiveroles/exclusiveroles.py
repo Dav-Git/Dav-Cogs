@@ -15,7 +15,6 @@ class ExclusiveRoles(commands.Cog):
             if role not in before.roles:
                 if role in after.roles:
                     await after.remove_roles(after.guild.get_role(634692203582717990), reason="Active Applied")
-        ## Same for Cory`s
         elif after.guild.id == 443031049111601152:
             role = after.guild.get_role(645349225898573854)
             if role not in before.roles:
