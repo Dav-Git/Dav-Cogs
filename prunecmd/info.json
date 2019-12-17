@@ -1,0 +1,20 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "bot_version": [
+    3,
+    1,
+    8
+  ],
+  "description": "Calls the discord built-in prune function with a command.",
+  "hidden": false,
+  "install_msg": "Thank you for installing prunecmd. Load the cog by using ``[p]load prunecmd``. This cog will kick users from your server. Be careful when using it.",
+  "short": "Cleans up the member list.",
+  "tags": [
+    "members",
+    "prune",
+    "purge",
+    "kick"
+  ]
+}
