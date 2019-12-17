@@ -3,7 +3,7 @@ from redbot.core import commands, checks
 class Prunecmd(commands.Cog):
   """Prunecmd"""
   def __init__(self):
-    
+    pass
   
   @commands.command()
   @checks.admin()
