@@ -1,4 +1,4 @@
-from .prunecmd import ExclusiveRoles
+from .prunecmd import Prunecmd
 
 def setup(bot):
-    bot.add_cog(ExclusiveRoles())
+    bot.add_cog(Prunecmd())
