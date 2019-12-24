@@ -1,5 +1,5 @@
 import discord
-from redbot.core import commands, checks, tasks
+from redbot.core import commands, checks
 
 
 
@@ -17,7 +17,7 @@ class Bday(commands.Cog):
     async def birthday(self, ctx, u: discord.Member):
         await u.add_roles(ctx.guild.get_role(657943577065947157))
         
-    @tasks.loop(seconds=86400.0)
+    @discord.ext.tasks.loop(seconds=86400.0)
     async def rem_bday(self):
         role = self.bot.fetch_guild(332834024831582210).get_role(657943577065947157)
         for member in self.bot.fetch_guild(332834024831582210).members:
