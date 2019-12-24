@@ -4,7 +4,7 @@ from time import sleep
 
 
 class Bday(commands.Cog):
-    """Exclusive Roles"""
+    """Bday"""
     
     def __init__(self):
         pass
