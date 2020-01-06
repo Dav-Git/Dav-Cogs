@@ -6,6 +6,7 @@ class Check(commands.Cog):
     pass
   
   @commands.command()
+  @checks.mod()
   async def check(self, ctx, a1):
     ctx.assume_yes = True
     clist = ["userinfo", "names", "warnings"]
