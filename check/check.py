@@ -6,10 +6,10 @@ class Check(commands.Cog):
     pass
   
   @commands.command()
-  async def check(self, ctx, *args, **kwargs):
+  async def check(self, ctx, *args):
     ctx.assume_yes = True
     clist=["userinfo","names"]
 
     for command_name in clist:
         command = ctx.bot.get_command(command_name)
-        await ctx.invoke(command, *args, **kwargs)
+        await ctx.invoke(command, *args)
