@@ -8,7 +8,7 @@ class Check(commands.Cog):
   @commands.command()
   async def check(self, ctx, a1):
     ctx.assume_yes = True
-    clist=["userinfo","names"]
+    clist=["userinfo","names","warnings","listflag"]
     u=ctx.guild.get_member(int(a1))
 
     for command_name in clist:
