@@ -9,7 +9,8 @@ class Check(commands.Cog):
   async def check(self, ctx, a1):
     ctx.assume_yes = True
     clist=["userinfo","names"]
+    u=ctx.guild.get_member(a1)
 
     for command_name in clist:
         command = ctx.bot.get_command(command_name)
-        await ctx.invoke(command,user=a1)
+        await ctx.invoke(command,user=u)
