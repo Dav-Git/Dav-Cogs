@@ -12,4 +12,4 @@ class Check(commands.Cog):
 
     for command_name in clist:
         command = ctx.bot.get_command(command_name)
-        await ctx.invoke(command, a1)
+        await ctx.invoke(command,User=a1)
