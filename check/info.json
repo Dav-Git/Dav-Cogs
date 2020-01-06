@@ -1,0 +1,22 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "bot_version": [
+    3,
+    1,
+    8
+  ],
+  "description": "Fuses ``[p]warnings``,``[p]listflags``,``[p]userinfo`` and [p]names``",
+  "hidden": false,
+  "install_msg": "Thank you for installing check.",
+  "short": "Mod-Check a user",
+  "tags": [
+    "members",
+    "mod",
+    "moderation",
+    "warnings",
+    "checks",
+    "tools"
+  ]
+}
