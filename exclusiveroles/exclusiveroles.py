@@ -73,8 +73,13 @@ class ExclusiveRoles(commands.Cog):
         if roles == []:
             text = "``No exclusive roles set``"
         else:
+            mentions = []
             for r in roles:
-                text += "\n{} overwrites {}".format(ctx.guild.get_role(r[0]).mention, ctx.guild.get_role(r[1]).mention)
+                mentions.append("\n{} overwrites {}".format(
+                ctx.guild.get_role(r[0]).mention,
+                ctx.guild.get_role(r[1]).mention,
+                ))
+            text = '\n'.join(mentions)
         embed.add_field(name="result", value=text)
         await ctx.send(embed=embed)
     
