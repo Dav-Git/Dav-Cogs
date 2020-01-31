@@ -1,1 +1,2 @@
 red-discordbot
+discord.py
