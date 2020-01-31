@@ -13,20 +13,21 @@ class ExclusiveRoles(commands.Cog):
         self.log = logging.getLogger("red.cog.event_check")
         
     
-    @commands.Cog.listener()
+     @commands.Cog.listener()
     async def on_member_update(self, before, after):
-        try:
-            if before.roles != after.roles:
+        if before.roles != after.roles:
+            try:
+                guild = before.guild
                 roles = await self.config.guild(after.guild).exclusives()
                 for r in roles:
-                    r1, r2 = (self.bot.guild.get_role(r[0]), self.bot.guild.get_role(r[1]))
+                    r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
                     if all(role in after.roles for role in [r1,r2]):
                         try:
                             await after.remove_roles(r2, reason="{} overwrites {}".format(r1.name,r2.name))
-                        except:
-                            return
-        except Exception as e:
-                self.log.exception(e, exc_info=True)
+                        except discord.HTTPException as e:
+                            log.exception(e, exc_info=True)
+            except Exception as e:
+                log.exception(e, exc_info=True)
                         
     @commands.command()
     @checks.admin()
