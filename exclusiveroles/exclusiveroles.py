@@ -15,13 +15,12 @@ class ExclusiveRoles(commands.Cog):
         if before.roles != after.roles:
             roles = await self.config.guild(after.guild).exclusives()
             for r in roles:
-                r_new = (self.bot.guild.get_role(r[0]), self.bot.guild.get_role(r[1]))
-                if r_new[1] in after.roles:
-                    if r_new[0] in after.roles:
-                        try:
-                            await after.remove_roles(r_new[1], reason="{} overwrites {}".format(r_new[0].name,r_new[1].name))
-                        except:
-                            raise Exception("Role not on user")
+                r1, r2 = (self.bot.guild.get_role(r[0]), self.bot.guild.get_role(r[1]))
+                if all(role in after.roles for role in [r1,r2]):
+                    try:
+                        await after.remove_roles(r2, reason="{} overwrites {}".format(r1.name,r2.name))
+                    except:
+                        return
                         
     @commands.command()
     @checks.admin()
