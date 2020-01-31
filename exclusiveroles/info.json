@@ -4,8 +4,8 @@
   ],
   "bot_version": [
     3,
-    2,
-    2
+    3,
+    0
   ],
   "description": "Removes a role from a user as soon as another role is added.",
   "hidden": false,
