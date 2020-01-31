@@ -70,8 +70,11 @@ class ExclusiveRoles(commands.Cog):
         roles = await self.config.guild(ctx.guild).exclusives()
         embed = discord.Embed(title="All exclusive role pairs:")
         text = ""
-        for r in roles:
-            text = text + "\n{} overwrites {}".format(ctx.guild.get_role(r[0]).mention, ctx.guild.get_role(r[1]).mention)
+        if roles == []:
+            text = "``No exclusive roles set``"
+        else:
+            for r in roles:
+                text += "\n{} overwrites {}".format(ctx.guild.get_role(r[0]).mention, ctx.guild.get_role(r[1]).mention)
         embed.add_field(name="result", value=text)
         await ctx.send(embed=embed)
     
