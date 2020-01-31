@@ -73,7 +73,7 @@ class ExclusiveRoles(commands.Cog):
         for r in roles:
             text = text + "\n{} overwrites {}".format(ctx.guild.get_role(r[0]).mention, ctx.guild.get_role(r[1]).mention)
         embed.add_field(name="result", value=text)
-        await ctx.send(emved=embed)
+        await ctx.send(embed=embed)
     
     @commands.command()
     @checks.admin()
