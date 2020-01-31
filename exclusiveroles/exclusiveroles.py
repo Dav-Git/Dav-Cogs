@@ -67,7 +67,7 @@ class ExclusiveRoles(commands.Cog):
     async def listexclusives(self, ctx):
         """List all exclusive roles"""
         
-        roles = self.config.guild(ctx.guild).exclusives()
+        roles = await self.config.guild(ctx.guild).exclusives()
         embed = discord.Embed(title="All exclusive role pairs:")
         text = ""
         for r in roles:
