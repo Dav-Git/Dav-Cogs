@@ -1,3 +1,4 @@
+import logging
 import discord
 from redbot.core import commands, checks, Config
 
@@ -9,18 +10,23 @@ class ExclusiveRoles(commands.Cog):
         self.config = Config.get_conf(self, identifier=2005200611566)
         default_guild = {"exclusives": []}
         self.config.register_guild(**default_guild)
+        self.log = logging.getLogger("red.cog.event_check")
+        
     
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
-        if before.roles != after.roles:
-            roles = await self.config.guild(after.guild).exclusives()
-            for r in roles:
-                r1, r2 = (self.bot.guild.get_role(r[0]), self.bot.guild.get_role(r[1]))
-                if all(role in after.roles for role in [r1,r2]):
-                    try:
-                        await after.remove_roles(r2, reason="{} overwrites {}".format(r1.name,r2.name))
-                    except:
-                        return
+        try:
+            if before.roles != after.roles:
+                roles = await self.config.guild(after.guild).exclusives()
+                for r in roles:
+                    r1, r2 = (self.bot.guild.get_role(r[0]), self.bot.guild.get_role(r[1]))
+                    if all(role in after.roles for role in [r1,r2]):
+                        try:
+                            await after.remove_roles(r2, reason="{} overwrites {}".format(r1.name,r2.name))
+                        except:
+                            return
+        except Exception as e:
+                self.log.exception(e, exc_info=True)
                         
     @commands.command()
     @checks.admin()
