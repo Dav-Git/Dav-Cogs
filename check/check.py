@@ -1,4 +1,5 @@
 from redbot.core import commands, checks
+import discord
 
 class Check(commands.Cog):
   """Check"""
@@ -7,13 +8,16 @@ class Check(commands.Cog):
   
   @commands.command()
   @checks.mod()
-  async def check(self, ctx, a1):
+  async def check(self, ctx, user: discord.Member):
     ctx.assume_yes = True
     clist = ["userinfo", "names", "warnings"]
-    u = ctx.guild.get_member(int(a1))
-
-    for command_name in clist:
-        command = ctx.bot.get_command(command_name)
-        await ctx.invoke(command, user=u)
-    
-    await ctx.invoke(ctx.bot.get_command("listflag") ,member=u)
+    try:
+      for command_name in clist:
+          command = ctx.bot.get_command(command_name)
+          await ctx.invoke(command, user=user)
+    except:
+      pass
+    try:  
+      await ctx.invoke(ctx.bot.get_command("listflag") ,member=user)
+    except:
+      pass
