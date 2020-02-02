@@ -14,3 +14,9 @@ Dav's cogs for Red
 This repo is not approved by the Redbot team.
 Cogs not listed above will **NOT** work on your bot.
 You can find approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210)
+
+# Credits
+
+Thanks to Draper for helping with exclusiveroles.
+
+Also a big thank you to everyone in the coding channel on the support discord for your help along the way.
