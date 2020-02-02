@@ -11,9 +11,12 @@ class Check(commands.Cog):
   async def check(self, ctx, user: discord.Member):
     ctx.assume_yes = True
     clist = ["userinfo", "names", "warnings"]
-    for command_name in clist:
-        command = ctx.bot.get_command(command_name)
-        await ctx.invoke(command, user=user)
+    try:
+      for command_name in clist:
+          command = ctx.bot.get_command(command_name)
+          await ctx.invoke(command, user=user)
+    except:
+      pass
     try:  
       await ctx.invoke(ctx.bot.get_command("listflag") ,member=user)
     except:
