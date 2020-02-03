@@ -1,27 +1,51 @@
 import discord
 from discord.ext import tasks
-from redbot.core import commands, checks
-
+from redbot.core import commands, checks, Config
 
 
 class Bday(commands.Cog):
     """Bday"""
-    
-    def __init__(self,bot):
-        self.rem_bday.start()
-        
-    def cog_unload(self):
-        self.rem_bday.cancel()
+
+    def __init__(self):
+        self.config = Config.get_conf(self, identifier=1072001)
+        default_guild = {"bdayRole": 0}
+        self.config.register_guild(**default_guild)
 
     @commands.command()
-    @checks.has_permissions()
-    async def birthday(self, ctx, u: discord.Member):
-        await u.add_roles(ctx.guild.get_role(657943577065947157))
-        
-    @tasks.loop(seconds=86400.0)
-    async def rem_bday(self):
-        role = self.bot.fetch_guild(332834024831582210).get_role(657943577065947157)
-        for member in self.bot.fetch_guild(332834024831582210).members:
-            if role in member.roles:
-                member.remove_roles(role , reason="The birthday is over!")
-        
+    @checks.mod()
+    async def birthday(self, ctx, user: discord.Member):
+
+        """Assigns the birthday role to a member and sends birthday wishes."""
+
+        if not await self.config.guild(ctx.guild).bdayRole() == 0:
+            await user.add_roles(
+                ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
+                reason="It's their birthday!",
+            )
+            await ctx.send("Happy birthday {} !".format(user.mention))
+        else:
+            await ctx.send(
+                "You need to configure a birthday role first by using ``[p]setbirthday``."
+            )
+
+    @commands.command()
+    @checks.admin()
+    async def setbirthday(self, ctx, role: discord.Role):
+
+        """Set the role that will be assigned on a birthday."""
+
+        await self.config.guild(ctx.guild).bdayRole.set(role.id)
+        await ctx.send("The birthday role has been set to {}".format(role.name))
+
+    @commands.command()
+    @checks.mod()
+    async def clearbirthdays(self, ctx):
+
+        """Clears the birthday role off of all members."""
+
+        for user in ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()).members:
+            await user.remove_roles(
+                ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
+                reason="It's a new day. The birthdays are over.",
+            )
+
