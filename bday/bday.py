@@ -43,9 +43,7 @@ class Bday(commands.Cog):
 
         """Clears the birthday role off of all members."""
 
-        for user in ctx.guild.get_role(
-            await self.config.guild(ctx.guild).bdayRole()
-        ).members:
+        for user in ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()).members:
             await user.remove_roles(
                 ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
                 reason="It's a new day. The birthdays are over.",

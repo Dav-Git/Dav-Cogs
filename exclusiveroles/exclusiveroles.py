@@ -54,9 +54,7 @@ class ExclusiveRoles(commands.Cog):
 
         async with self.config.guild(ctx.guild).exclusives() as conf:
             conf.append((role1.id, role2.id))
-        await ctx.send(
-            "{} will now be overwritten by {}".format(role2.name, role1.name)
-        )
+        await ctx.send("{} will now be overwritten by {}".format(role2.name, role1.name))
 
     @commands.command()
     @checks.admin()
@@ -68,9 +66,7 @@ class ExclusiveRoles(commands.Cog):
                 try:
                     conf.remove((role1.id, role2.id))
                     await ctx.send(
-                        "{} will no longer be overwritten by {}".format(
-                            role2.name, role1.name
-                        )
+                        "{} will no longer be overwritten by {}".format(role2.name, role1.name)
                     )
                 except:
                     await ctx.send("```An Error occured```")
@@ -96,8 +92,7 @@ class ExclusiveRoles(commands.Cog):
             for r in roles:
                 mentions.append(
                     "\n{} overwrites {}".format(
-                        ctx.guild.get_role(r[0]).mention,
-                        ctx.guild.get_role(r[1]).mention,
+                        ctx.guild.get_role(r[0]).mention, ctx.guild.get_role(r[1]).mention,
                     )
                 )
             text = "\n".join(mentions)
@@ -114,16 +109,12 @@ class ExclusiveRoles(commands.Cog):
             roles = await self.config.guild(ctx.guild).exclusives()
             for r in roles:
                 r_new = (ctx.guild.get_role(r[0]), ctx.guild.get_role(r[1]))
-                await ctx.send(
-                    "``Starting with {} and {}``".format(r_new[0].name, r_new[1].name)
-                )
+                await ctx.send("``Starting with {} and {}``".format(r_new[0].name, r_new[1].name))
                 for u in ctx.guild.members:
                     if r_new[0] in u.roles:
                         if r_new[1] in u.roles:
                             await u.remove_roles(
                                 r_new[1],
-                                reason="{} overwrites {}".format(
-                                    r_new[0].name, r_new[1].name
-                                ),
+                                reason="{} overwrites {}".format(r_new[0].name, r_new[1].name),
                             )
         await ctx.send("``Retroscan completed.``")
