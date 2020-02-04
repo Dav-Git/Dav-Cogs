@@ -15,7 +15,9 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 # Installation
 
 To add these cogs to your RedBot, first add the repo by running `[p]repo add Dav-cogs https://github.com/Dav-Git/Dav-Cogs`
+
 Then, install the cogs by running `[p]cog install Dav-cogs <name_of_cog>`
+
 And load them with `[p]load <name_of_cog>`
 
 # Warning
