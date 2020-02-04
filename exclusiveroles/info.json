@@ -1,15 +1,8 @@
 {
-  "author": [
-    "Dav"
-  ],
-  "bot_version": [
-    3,
-    3,
-    0
-  ],
+  "author": "Dav",
   "description": "Removes a role from a user as soon as another role is added.",
   "hidden": false,
-  "install_msg": "Thank you for installing exclusiveroles. Load the cog by using ``[p]load exclusiveroles``",
+  "install_msg": "Thank you for installing exclusiveroles.",
   "short": "Make roles (truly) exclusive",
   "tags": [
     "roles",

@@ -1,15 +1,8 @@
 {
-  "author": [
-    "Dav"
-  ],
-  "bot_version": [
-    3,
-    2,
-    2
-  ],
+  "author": "Dav",
   "description": "Fuses ``[p]warnings``,``[p]listflags``,``[p]userinfo`` and [p]names``",
   "hidden": false,
-  "install_msg": "Thank you for installing check.",
+  "install_msg": "Thank you for installing check. Make sure the `Warnings` and `Mod` cogs are loaded.",
   "short": "Mod-Check a user",
   "tags": [
     "members",

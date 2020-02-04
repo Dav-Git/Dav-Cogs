@@ -1,12 +1,5 @@
 {
-  "author": [
-    "Dav"
-  ],
-  "bot_version": [
-    3,
-    2,
-    2
-  ],
+  "author": "Dav",
   "description": "Grants a specified birthday role for 24h",
   "hidden": false,
   "install_msg": "Thank you for installing bday.",
