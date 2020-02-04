@@ -23,8 +23,8 @@ And load them with `[p]load <name_of_cog>`
 
 # Warning
 
-Cogs not listed above will most likely **NOT** work on your bot.
-You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210)
+Cogs not listed above will most likely **NOT** work on your bot.\
+You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
 
 # Credits
 
