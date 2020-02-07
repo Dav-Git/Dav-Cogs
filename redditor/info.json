@@ -1,0 +1,13 @@
+{
+  "author": "Dav",
+  "description": "Some reddit stuff",
+  "hidden": false,
+  "install_msg": "Thank you for installing redditor.",
+  "short": "Interact with reddit",
+  "tags": [
+    "reddit"
+  ],
+  "requirements": [
+    "praw"
+  ]
+}
