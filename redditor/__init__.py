@@ -1,5 +1,10 @@
 from .redditor import Redditor
 
 
-def setup(bot):
-    bot.add_cog(Redditor())
+async def setup(bot):
+    cog = Redditor()
+    bot.add_cog(cog)
+    try:
+        await cog.start(cog)
+    except:
+        pass
