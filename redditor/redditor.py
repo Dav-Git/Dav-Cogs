@@ -7,13 +7,30 @@ class Redditor(commands.Cog):
     """Redditor cog"""
 
     def __init__(self):
+        """Maybe I need a docstring?"""
         self.config = Config.get_conf(self, identifier=13061977, force_registration=True)
         default_global = {
             "client_id": None,
             "client_secret": None,
-            "user_agent": "Red-DiscordBot:redditor_cog:v0.1",
+            "user_agent": "Red-DiscordBot:redditor_cog:v0.2",
         }
         self.config.register_global(**default_global)
+        self.reddit = None
+
+    async def start(self):
+        """I make help not crash"""
+        # getting a reddit instance if credentials are set
+        if await self.config.client_id() != None and await self.config.client_secret() != None:
+            async with self.config.client_id() as c_ID:
+                async with self.config.client_secret() as c_SECRET:
+                    try:
+                        self.reddit = Reddit(
+                            client_id=c_ID,
+                            client_secret=c_SECRET,
+                            user_agent=await self.config.user_agent(),
+                        )
+                    except:
+                        pass
 
     @commands.group()
     @checks.is_owner()
@@ -35,8 +52,8 @@ class Redditor(commands.Cog):
         await self.config.client_secret.set(client_secret)
         await ctx.send("Client secret set.")
 
-    @setreddit.command()
-    async def help(self, ctx):
+    @setreddit.command(name="help")
+    async def reddithelp(self, ctx):
         """See how to set your reddit cog up."""
 
         step_one = "First, go to https://www.reddit.com/prefs/apps."
@@ -53,3 +70,21 @@ class Redditor(commands.Cog):
         e.add_field(name="5", value=step_four)
         e.add_field(name="6", value=step_six)
         await ctx.send(embed=e)
+
+    @commands.command()
+    async def startreddit(self, ctx):
+        """Connect to reddit after you have set the credentials."""
+
+        if await self.config.client_id() != None and await self.config.client_secret() != None:
+            async with self.config.client_id() as c_ID:
+                async with self.config.client_secret() as c_SECRET:
+                    try:
+                        self.reddit = Reddit(
+                            client_id=c_ID,
+                            client_secret=c_SECRET,
+                            user_agent=await self.config.user_agent(),
+                        )
+                    except:
+                        await ctx.send("An error occured. Try again later.")
+        else:
+            await ctx.send("You need to provide a ``client ID`` and a ``client secret`` first.")
