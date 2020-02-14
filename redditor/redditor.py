@@ -88,3 +88,21 @@ class Redditor(commands.Cog):
                         await ctx.send("An error occured. Try again later.")
         else:
             await ctx.send("You need to provide a ``client ID`` and a ``client secret`` first.")
+
+    @commands.group()
+    async def getreddit(self, ctx):
+        """Ger some information from reddit."""
+        pass
+
+    @getreddit.group()
+    async def sub(self, ctx):
+        """Get posts from a subreddit."""
+        pass
+
+    @sub.command()
+    async def hot(self, ctx, query: str, amount: Optional[int] =10):
+        """Get postst ordered by hot."""
+        for post in self.reddit.subreddit(query).hot(limit=amount):
+            e=discord.Embed(title=f"Hot on r/{query}")
+            e.add_field(name="Title", value=post.title)
+            e.add_field(name="Score", value=str(post.score)
