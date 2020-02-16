@@ -1,6 +1,7 @@
 from praw import *
 from discord import Embed
 from redbot.core import commands, checks, Config
+from typing import Optional
 
 
 class Redditor(commands.Cog):
@@ -76,16 +77,16 @@ class Redditor(commands.Cog):
         """Connect to reddit after you have set the credentials."""
 
         if await self.config.client_id() != None and await self.config.client_secret() != None:
-            async with self.config.client_id() as c_ID:
-                async with self.config.client_secret() as c_SECRET:
-                    try:
-                        self.reddit = Reddit(
-                            client_id=c_ID,
-                            client_secret=c_SECRET,
-                            user_agent=await self.config.user_agent(),
-                        )
-                    except:
-                        await ctx.send("An error occured. Try again later.")
+            c_ID = await self.config.client_id()
+            c_SECRET = await self.config.client_secret()
+            try:
+                self.reddit = Reddit(
+                    client_id=c_ID,
+                    client_secret=c_SECRET,
+                    user_agent=await self.config.user_agent(),
+                )
+            except:
+                await ctx.send("An error occured. Try again later.")
         else:
             await ctx.send("You need to provide a ``client ID`` and a ``client secret`` first.")
 
@@ -100,9 +101,11 @@ class Redditor(commands.Cog):
         pass
 
     @sub.command()
-    async def hot(self, ctx, query: str, amount: Optional[int] =10):
+    async def hot(self, ctx, query: str, amount: Optional[int] = 10):
         """Get postst ordered by hot."""
         for post in self.reddit.subreddit(query).hot(limit=amount):
-            e=discord.Embed(title=f"Hot on r/{query}")
+            e = Embed(title=f"Hot on r/{query}")
             e.add_field(name="Title", value=post.title)
-            e.add_field(name="Score", value=str(post.score)
+            e.add_field(name="Score", value=str(post.score))
+            e.add_field(name="ID", value=post.id)
+            await ctx.send(embed=e)
