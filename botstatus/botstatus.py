@@ -1,4 +1,5 @@
 import discord
+import asyncio
 from redbot.core import commands, checks, Config
 
 
@@ -6,10 +7,15 @@ class Botstatus(commands.Cog):
     """Botstatus"""
 
     def __init__(self, bot):
+        self.ready = False
         self.bot = bot
         self.config = Config.get_conf(self, identifier=30052000, force_registration=True)
         standard = {"status": (None, None, None)}
         self.config.register_global(**standard)
+        self.ready = True
+
+    def init(self):
+        self.start_task = asyncio.create_task(self.fromconf())
 
     async def setfunc(self, sType, status, text):
         if sType == "game":
@@ -34,6 +40,12 @@ class Botstatus(commands.Cog):
             return
         activity = discord.Activity(name=text, type=t)
         await self.bot.change_presence(status=s, activity=activity)
+
+    async def fromconf(self):
+        await self.bot.wait_until_ready()
+        value = await self.config.status()
+        if value[0] and value[1] and value[2]:
+            await self.setfunc(value[0], value[1], value[2])
 
     @commands.group()
     @checks.is_owner()

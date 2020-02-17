@@ -1,5 +1,7 @@
 from .botstatus import Botstatus
 
 
-def setup(bot):
-    bot.add_cog(Botstatus(bot))
+async def setup(bot):
+    cog = Botstatus(bot)
+    bot.add_cog(cog)
+    cog.init()
