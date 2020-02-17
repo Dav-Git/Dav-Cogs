@@ -7,7 +7,8 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 
 | Cog | Description |
 | --- | ----------- |
-| bday | <details><summary>Celebrate birthdays with a role and message.</summary>Set a birthday role and assign it to your members using a command. In combination with [Sinbad's scheduler](https://github.com/mikeshardmind/SinbadCogs) you can even automate the removal of the birthday role.</details>
+| bday | <details><summary>Celebrate birthdays with a role and message.</summary>Set a birthday role and assign it to your members using a command. In combination with [Sinbad's scheduler](https://github.com/mikeshardmind/SinbadCogs) you can even automate the removal of the birthday role.</details> |
+| botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> |
 | check | <details><summary>Combines warnings, names, userinfo and flags.</summary>The flags command will only be executed if the [flags cog](https://github.com/bobloy/Fox-V3/) is installed and loaded.</details> |
 | exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> |
 | prunecmd | <details><summary>Introduces a command to prune the member list.</summary>Allows automation of the discord "prune" operation. Designed to be used together with [Sinbad's scheduler](https://github.com/mikeshardmind/SinbadCogs)</details> |
