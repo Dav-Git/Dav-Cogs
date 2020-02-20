@@ -13,9 +13,14 @@ class Botstatus(commands.Cog):
         standard = {"status": (None, None, None)}
         self.config.register_global(**standard)
         self.ready = True
+        self.start_task: Optional[asyncio.Task] = None
 
     def init(self):
         self.start_task = asyncio.create_task(self.fromconf())
+
+    def cog_unload(self):
+        if self.start_task:
+            self.start_task.cancel()
 
     async def setfunc(self, sType, status, text):
         if sType == "game":
