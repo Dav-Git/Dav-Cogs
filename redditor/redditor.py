@@ -1,5 +1,6 @@
 from praw import *
 from discord import Embed
+from discord.ext import tasks
 from redbot.core import commands, checks, Config
 from typing import Optional
 
@@ -7,7 +8,7 @@ from typing import Optional
 class Redditor(commands.Cog):
     """Redditor cog"""
 
-    def __init__(self):
+    def __init__(self, bot):
         """Maybe I need a docstring?"""
         self.config = Config.get_conf(self, identifier=13061977, force_registration=True)
         default_global = {
@@ -15,23 +16,42 @@ class Redditor(commands.Cog):
             "client_secret": None,
             "user_agent": "Red-DiscordBot:redditor_cog:v0.2",
         }
+        default_guild = {"autoreddit": False, "last": [], "update": {"sub": []}}
+        self.config.register_guild(**default_guild)
         self.config.register_global(**default_global)
         self.reddit = None
+        self.bot = bot
 
     async def start(self):
-        """I make help not crash"""
+        """I make help not crash by being a helpful string"""
         # getting a reddit instance if credentials are set
         if await self.config.client_id() != None and await self.config.client_secret() != None:
-            async with self.config.client_id() as c_ID:
-                async with self.config.client_secret() as c_SECRET:
-                    try:
-                        self.reddit = Reddit(
-                            client_id=c_ID,
-                            client_secret=c_SECRET,
-                            user_agent=await self.config.user_agent(),
-                        )
-                    except:
-                        pass
+            try:
+                self.reddit = Reddit(
+                    client_id=await self.config.client_id(),
+                    client_secret=await self.config.client_secret(),
+                    user_agent=await self.config.user_agent(),
+                )
+            except:
+                pass
+            # Also start the background tasks
+            self.update_reddit_info.start()
+
+    @tasks.loop(minutes=5)
+    async def update_reddit_info(self):
+        for guild in self.bot.guilds:
+            async with self.config.guild(guild).all() as guild_settings:
+                for e in guild_settings["update"]["sub"]:
+                    for post in self.reddit.subreddit(e).hot(limit=50):
+                        if post.id in await guild_settings["last"]:
+                            pass
+                        else:
+                            guild_settings["last"].append(post.id)
+                            embed = Embed(title=f"Hot on r/{e}")
+                            embed.add_field(name="Title", value=post.title)
+                            embed.add_field(name="Score", value=str(post.score))
+                            embed.add_field(name="ID", value=post.id)
+                            # Now send embed to channel specified in config
 
     @commands.group()
     @checks.is_owner()
@@ -71,6 +91,23 @@ class Redditor(commands.Cog):
         e.add_field(name="5", value=step_four)
         e.add_field(name="6", value=step_six)
         await ctx.send(embed=e)
+
+    @setreddit.group()
+    async def autoreddit(self, ctx):
+        """Automatically get reddit posts"""
+        pass
+
+    @autoreddit.command()
+    async def enable(self, ctx):
+        """Enable Autoreddit."""
+        await self.config.guild.autoreddit().set(True)
+        self.update_reddit_info.start()
+
+    @autoreddit.command()
+    async def disable(self, ctx):
+        """Disable Autoreddit."""
+        await self.config.autoreddit().guild.set(False)
+        self.update_reddit_info.start()
 
     @commands.command()
     async def startreddit(self, ctx):
