@@ -14,7 +14,7 @@ class McWhitelister(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         p_in_conf = await self.config.guild(member.guild).players()
-        if member.id in await p_in_conf:
+        if str(member.id) in await p_in_conf:
             path = await self.config.guild(member.guild).path_to_server()
             with open("{}whitelist.json".format(path)) as json_file:
                 file = json.load(json_file)
@@ -88,7 +88,7 @@ class McWhitelister(commands.Cog):
         outstr = []
         for e in p_in_config:
             outstr.append(
-                "{} | {} \n".format(ctx.guild.get_member(e).mention, p_in_config[e]["name"])
+                "{} | {} \n".format(ctx.guild.get_member(int(e)).mention, p_in_config[e]["name"])
             )
         emb = Embed(title="Whielisted with whitelister:")
         if len(p_in_config) == 0:
