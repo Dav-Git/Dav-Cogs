@@ -83,7 +83,9 @@ class McWhitelister(commands.Cog):
         p_in_config = await self.config.guild(ctx.guild).players()
         outstr = []
         for e in p_in_config:
-            outstr.append("{} | {} \n".format(ctx.guild.member(e).mention, p_in_config[e]["name"]))
+            outstr.append(
+                "{} | {} \n".format(ctx.guild.get_member(e).mention, p_in_config[e]["name"])
+            )
         emb = Embed(title="Whielisted with whitelister:")
         if len(p_in_config) == 0:
             emb.add_field(
