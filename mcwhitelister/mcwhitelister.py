@@ -31,7 +31,7 @@ class McWhitelister(commands.Cog):
                     await ctx.send("{} is not a valid username.".format(name))
                     return
                 await ctx.send("{} | {} | {}".format(playerinfo["id"], playerinfo["name"], name))
-                with open("/home/discbot/whitelist.json", "w") as json_file:
+                with open("/home/discbot/whitelist.json", "w+") as json_file:
                     file = json.load(json_file)
                     file.append({"uuid": playerinfo["id"], "name": playerinfo["name"]})
                     json.dump(file, json_file)
