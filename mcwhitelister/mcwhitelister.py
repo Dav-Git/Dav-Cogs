@@ -15,6 +15,7 @@ class McWhitelister(commands.Cog):
     async def on_member_remove(self, member):
         p_in_conf = await self.config.guild(member.guild).players()
         if str(member.id) in p_in_conf:
+            print("Bazinga")
             path = await self.config.guild(member.guild).path_to_server()
             with open("{}whitelist.json".format(path)) as json_file:
                 file = json.load(json_file)
