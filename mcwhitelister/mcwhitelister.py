@@ -59,7 +59,11 @@ class McWhitelister(commands.Cog):
                 except:
                     await ctx.send("{} is not a valid username.".format(name))
                     return
-                await ctx.send("{} | {} | {}".format(playerinfo["id"], playerinfo["name"], name))
+                await ctx.send(
+                    "{} successfully whitelisted {}.".format(
+                        ctx.author.mention, playerinfo["name"]
+                    )
+                )
                 file.append({"uuid": playerinfo["id"], "name": playerinfo["name"]})
                 with open("{}whitelist.json".format(path), "w") as json_file:
                     json.dump(file, json_file, indent=4)
