@@ -19,7 +19,7 @@ class McWhitelister(commands.Cog):
             with open("{}whitelist.json".format(path)) as json_file:
                 file = json.load(json_file)
             for e in file:
-                if e["uuid"] == p_in_conf[member.id]["uuid"]:
+                if e["uuid"] == p_in_conf[str(member.id)]["uuid"]:
                     del file[file.index(e)]
                     with open("{}whitelist.json".format(path), "w") as json_file:
                         json.dump(file, json_file, indent=4)
