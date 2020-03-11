@@ -16,17 +16,18 @@ class McWhitelister(commands.Cog):
     @whitelister.command(name="add")
     async def hinzufuegen(self, ctx, name: str):
         p_in_conf = await self.config.guild(ctx.guild).players()
-        if not name in p_in_conf[1]:
-            try:
-                playerinfo = json.loads(
-                    urllib.request.urlopen(
-                        urllib.request.Request(
-                            f"https://api.mojang.com/users/profiles/minecraft/{name}"
-                        )
-                    ).read()
-                )
-            except:
-                await ctx.send("{} is not a valid username.".format(name))
-                return
-            await ctx.send("{} | {} | {}".format(playerinfo["id"], playerinfo["name"], name))
+        for e in p_in_conf:
+            if not name in e[1]:
+                try:
+                    playerinfo = json.loads(
+                        urllib.request.urlopen(
+                            urllib.request.Request(
+                                f"https://api.mojang.com/users/profiles/minecraft/{name}"
+                            )
+                        ).read()
+                    )
+                except:
+                    await ctx.send("{} is not a valid username.".format(name))
+                    return
+                await ctx.send("{} | {} | {}".format(playerinfo["id"], playerinfo["name"], name))
 
