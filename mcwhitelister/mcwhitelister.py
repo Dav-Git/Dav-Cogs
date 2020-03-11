@@ -85,6 +85,11 @@ class McWhitelister(commands.Cog):
         for e in p_in_config:
             outstr.append("{} | {} \n".format(ctx.guild.member(e).mention, p_in_config[e]["name"]))
         emb = Embed(title="Whielisted with whitelister:")
-        emb.add_field(name="", value="".join(outstr))
+        if len(p_in_config) == 0:
+            emb.add_field(
+                name="Whitelisted", value="Nobody was whitelisted using whitelister yet."
+            )
+        else:
+            emb.add_field(name="Whitelisted", value="".join(outstr))
         await ctx.send(embed=emb)
 
