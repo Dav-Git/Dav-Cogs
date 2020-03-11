@@ -15,7 +15,8 @@ class McWhitelister(commands.Cog):
 
     @whitelister.command(name="add")
     async def hinzufuegen(self, ctx, name: str):
-        if not name in await self.config.guild(ctx.guild).players()[1]:
+        p_in_conf = await self.config.guild(ctx.guild).players()
+        if not name in p_in_conf[1]:
             try:
                 playerinfo = json.loads(
                     urllib.request.urlopen(
