@@ -12,7 +12,7 @@ class Check(commands.Cog):
     @checks.mod()
     async def check(self, ctx, user: discord.Member):
         ctx.assume_yes = True
-        clist = ["userinfo", "names", "warnings"]
+        clist = ["userinfo", "warnings"]
         try:
             for command_name in clist:
                 command = ctx.bot.get_command(command_name)
