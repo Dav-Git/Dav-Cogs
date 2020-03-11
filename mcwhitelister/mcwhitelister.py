@@ -36,4 +36,4 @@ class McWhitelister(commands.Cog):
 
                 file.append({"uuid": playerinfo["id"], "name": playerinfo["name"]})
                 with open("/home/discbot/whitelist.json", "w") as json_file:
-                    json.dump(file, json_file)
+                    json.dump(file, json_file, indent=4)
