@@ -6,7 +6,7 @@ from redbot.core import commands, checks, Config
 class McWhitelister(commands.Cog):
     def __init__(self):
         self.config = Config.get_conf(self, identifier=110320200153)
-        default_guild = {"players": []}
+        default_guild = {"players": [(None, None, None)]}
         self.config.register_guild(**default_guild)
 
     @commands.group()
