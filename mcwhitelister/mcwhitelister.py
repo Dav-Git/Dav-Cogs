@@ -8,14 +8,14 @@ from redbot.core import Config, checks, commands
 class McWhitelister(commands.Cog):
     def __init__(self):
         self.config = Config.get_conf(self, identifier=110320200153)
-        default_guild = {"players": {}, "path": None}
+        default_guild = {"players": {}, "path_to_server": ""}
         self.config.register_guild(**default_guild)
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         p_in_conf = await self.config.guild(member.guild).players()
         if member.id in await p_in_conf:
-            path = await self.config.guild(member.guild).path()
+            path = await self.config.guild(member.guild).path_to_server()
             with open("{}whitelist.json".format(path)) as json_file:
                 file = json.load(json_file)
             for e in file:
@@ -32,7 +32,7 @@ class McWhitelister(commands.Cog):
 
     @whitelister.command(name="add")
     async def hinzufuegen(self, ctx, name: str):
-        path = await self.config.guild(ctx.guild).path()
+        path = await self.config.guild(ctx.guild).path_to_server()
         if path:
             with open("{}whitelist.json".format(path)) as json_file:
                 file = json.load(json_file)
@@ -74,7 +74,7 @@ class McWhitelister(commands.Cog):
 
         Example on a linux system:
         ``[p]whitelister setup /home/user/mcserver/``"""
-        await self.config.guild(ctx.guild).path.set(path)
+        await self.config.guild(ctx.guild).path_to_server.set(path)
         await ctx.send("Path set to {}".format(path))
 
     @checks.admin()
