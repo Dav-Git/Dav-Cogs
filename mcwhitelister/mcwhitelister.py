@@ -23,7 +23,7 @@ class McWhitelister(commands.Cog):
                     del file[file.index(e)]
                     with open("{}whitelist.json".format(path), "w") as json_file:
                         json.dump(file, json_file, indent=4)
-            del p_in_conf[member.id]
+            del p_in_conf[str(member.id)]
             await self.config.guild(member.guild).players.set(p_in_conf)
 
     @commands.group()
