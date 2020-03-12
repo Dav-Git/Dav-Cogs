@@ -3,5 +3,10 @@
     "description": "Manage your minecraft server whitelist from within discord.",
     "hidden": false,
     "install_msg": "Thank you for installing mcwhitelister. This instance of Red needs to be installed on the same machine as your minecraft server. With this cog installed you give members of your discord access to your server whitelist.",
-    "short": "Sync Minecraft whitelist with discord."
+    "short": "Sync Minecraft whitelist with discord.",
+    "tags": [
+        "Minecraft",
+        "Whitelist",
+        "Auromation"
+    ]
 }
