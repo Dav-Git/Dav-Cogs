@@ -24,25 +24,11 @@ class Botstatus(commands.Cog):
             self.start_task.cancel()
 
     async def setfunc(self, sType, status, text):
-        if sType == "game":
-            t = discord.ActivityType.playing
-        elif sType == "listening":
-            t = discord.ActivityType.listening
-        elif sType == "watching":
-            t = discord.ActivityType.watching
-        elif sType == "streaming":
-            t = discord.ActivityType.streaming
-        else:
-            return
-        if status == "online":
-            s = discord.Status.online
-        elif status == "idle":
-            s = discord.Status.idle
-        elif status == "dnd":
-            s = discord.Status.dnd
-        elif status == "offline":
-            s = discord.Status.offline
-        else:
+        t = getattr(discord.ActivityType,
+                    {"game": "playing"}.get(sType, sType),
+                    False)
+        s = getattr(discord.Status, status, False)
+        if not (t and s):
             return
         activity = discord.Activity(name=text, type=t)
         await self.bot.change_presence(status=s, activity=activity)
