@@ -1,5 +1,7 @@
 {
-  "author": "Dav",
+  "author": [
+    "Dav"
+  ],
   "description": "Grants a specified birthday role for 24h",
   "hidden": false,
   "install_msg": "Thank you for installing bday.",
