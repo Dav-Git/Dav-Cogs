@@ -1,5 +1,7 @@
 {
-  "author": "Dav",
+  "author": [
+    "Dav"
+  ],
   "description": "Calls the discord built-in prune function with a command.",
   "hidden": false,
   "install_msg": "Thank you for installing prunecmd. This cog will kick users from your server. Be careful when using it.",
