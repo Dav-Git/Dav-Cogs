@@ -1,5 +1,7 @@
 {
-  "author": "Dav",
+  "author": [
+    "Dav"
+  ],
   "description": "Automattically sets a status on bot start/restart.",
   "hidden": false,
   "install_msg": "Thank you for installing botstatus. To set a status that will be saved by the cog, you need to use ``[p]botstatus``.",
