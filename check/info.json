@@ -1,5 +1,7 @@
 {
-  "author": "Dav",
+  "author": [
+    "Dav"
+  ],
   "description": "Fuses ``[p]warnings``,``[p]listflags``,``[p]userinfo`` and [p]names``",
   "hidden": false,
   "install_msg": "Thank you for installing check. Make sure the `Warnings` and `Mod` cogs are loaded.",
