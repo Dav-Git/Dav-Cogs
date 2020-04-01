@@ -24,9 +24,7 @@ class Botstatus(commands.Cog):
             self.start_task.cancel()
 
     async def setfunc(self, sType, status, text):
-        t = getattr(discord.ActivityType,
-                    {"game": "playing"}.get(sType, sType),
-                    False)
+        t = getattr(discord.ActivityType, sType, False)
         s = getattr(discord.Status, status, False)
         if not (t and s):
             return
@@ -48,7 +46,7 @@ class Botstatus(commands.Cog):
 
     @botstatus.group(name="playing", aliases=["game"])
     async def game(self, ctx):
-        """Usage: [p]botstatus game <status> <text>"""
+        """Usage: [p]botstatus playing <status> <text>"""
         pass
 
     @game.command(name="online")
@@ -56,8 +54,8 @@ class Botstatus(commands.Cog):
         if len(text) > 128:
             await ctx.send("The chracter limit for status messages is 128.")
         else:
-            await self.config.status.set(("game", "online", text))
-            await self.setfunc("game", "online", text)
+            await self.config.status.set(("playing", "online", text))
+            await self.setfunc("playing", "online", text)
             await ctx.send(f"Status set to ``Online | Playing {text}``")
 
     @game.command(name="idle")
@@ -65,8 +63,8 @@ class Botstatus(commands.Cog):
         if len(text) > 128:
             await ctx.send("The chracter limit for status messages is 128.")
         else:
-            await self.config.status.set(("game", "idle", text))
-            await self.setfunc("game", "idle", text)
+            await self.config.status.set(("playing", "idle", text))
+            await self.setfunc("playing", "idle", text)
             await ctx.send(f"Status set to ``Idle | Playing {text}``")
 
     @game.command(name="dnd")
@@ -74,8 +72,8 @@ class Botstatus(commands.Cog):
         if len(text) > 128:
             await ctx.send("The chracter limit for status messages is 128.")
         else:
-            await self.config.status.set(("game", "dnd", text))
-            await self.setfunc("game", "dnd", text)
+            await self.config.status.set(("playing", "dnd", text))
+            await self.setfunc("playing", "dnd", text)
             await ctx.send(f"Status set to ``DND | Playing {text}``")
 
     @game.command(name="offline")
@@ -83,8 +81,8 @@ class Botstatus(commands.Cog):
         if len(text) > 128:
             await ctx.send("The chracter limit for status messages is 128.")
         else:
-            await self.config.status.set(("game", "offline", text))
-            await self.setfunc("game", "offline", text)
+            await self.config.status.set(("playing", "offline", text))
+            await self.setfunc("playing", "offline", text)
             await ctx.send(f"Status set to ``Offline | Playing {text}``")
 
     @botstatus.group()
