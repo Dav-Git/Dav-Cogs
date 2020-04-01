@@ -60,7 +60,7 @@ class Botstatus(commands.Cog):
             Usage: [p]botstatus <type> <status> <text>"""
         pass
 
-    @botstatus.group()
+    @botstatus.group(name="playing", aliases=["game"])
     async def game(self, ctx):
         """Usage: [p]botstatus game <status> <text>"""
         pass
