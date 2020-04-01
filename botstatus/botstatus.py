@@ -24,6 +24,10 @@ class Botstatus(commands.Cog):
             self.start_task.cancel()
 
     async def setfunc(self, sType, status, text):
+
+        # This will get removed in future versions and is to ensure config backwards-compatibility
+        if sType == "game":
+            sType = "playing"
         t = getattr(discord.ActivityType, sType, False)
         s = getattr(discord.Status, status, False)
         if not (t and s):
