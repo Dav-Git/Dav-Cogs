@@ -1,6 +1,7 @@
 import json
-import urllib.request
+from pathlib import Path
 
+import aiohttp
 from discord import Embed
 from redbot.core import Config, checks, commands
 
@@ -16,7 +17,7 @@ class McWhitelister(commands.Cog):
         p_in_conf = await self.config.guild(member.guild).players()
         if str(member.id) in p_in_conf:
             path = await self.config.guild(member.guild).path_to_server()
-            with open("{}whitelist.json".format(path)) as json_file:
+            with open(path) as json_file:
                 file = json.load(json_file)
             for e in file:
                 if e["uuid"] == p_in_conf[str(member.id)]["uuid"]:
@@ -34,7 +35,7 @@ class McWhitelister(commands.Cog):
     async def hinzufuegen(self, ctx, name: str):
         path = await self.config.guild(ctx.guild).path_to_server()
         if path:
-            with open("{}whitelist.json".format(path)) as json_file:
+            with open(path) as json_file:
                 file = json.load(json_file)
             whitelisted = False
             for e in file:
@@ -43,13 +44,11 @@ class McWhitelister(commands.Cog):
                     await ctx.send("{} is already on the whitelist.".format(name))
             if not whitelisted:
                 try:
-                    playerinfo = json.loads(
-                        urllib.request.urlopen(
-                            urllib.request.Request(
-                                "https://api.mojang.com/users/profiles/minecraft/{}".format(name)
-                            )
-                        ).read()
-                    )
+                    async with aiohttp.ClientSession() as session:
+                        async with session.get(
+                            "https://api.mojang.com/users/profiles/minecraft/{}".format(name)
+                        ) as resp:
+                            playerinfo = await resp.json()
                     p_in_conf = await self.config.guild(ctx.guild).players()
                     p_in_conf[ctx.author.id] = {
                         "uuid": playerinfo["id"],
@@ -65,21 +64,25 @@ class McWhitelister(commands.Cog):
                     )
                 )
                 file.append({"uuid": playerinfo["id"], "name": playerinfo["name"]})
-                with open("{}whitelist.json".format(path), "w") as json_file:
+                with open(path, "w") as json_file:
                     json.dump(file, json_file, indent=4)
         else:
             await ctx.send("You need to set a path with ``[p]whitelister setup`` first.")
 
-    @checks.admin()
+    @checks.is_owner()
     @whitelister.command()
     async def setup(self, ctx, path: str):
         """Set up the path to your minecraft server jar.
         It needs to lead to the folder that contains both the server jar and whitelist.json .
 
         Example on a linux system:
-        ``[p]whitelister setup /home/user/mcserver/``"""
-        await self.config.guild(ctx.guild).path_to_server.set(path)
-        await ctx.send("Path set to {}".format(path))
+        ``[p]whitelister setup /home/user/mcserver/whitelist.json``"""
+        p = Path(path)
+        if p.exists():
+            await self.config.guild(ctx.guild).path_to_server.set(path)
+            await ctx.send("Path set to {}".format(path))
+        else:
+            await ctx.send("The whitelist.json could not be found at this path.")
 
     @checks.admin()
     @whitelister.command(name="list")
@@ -98,4 +101,3 @@ class McWhitelister(commands.Cog):
         else:
             emb.add_field(name="Whitelisted", value="".join(outstr))
         await ctx.send(embed=emb)
-
