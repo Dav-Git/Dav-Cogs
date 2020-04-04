@@ -11,7 +11,7 @@ class ExclusiveRoles(commands.Cog):
         self.config = Config.get_conf(self, identifier=2005200611566)
         default_guild = {"exclusives": []}
         self.config.register_guild(**default_guild)
-        self.log = logging.getLogger("red.cog.event_check")
+        self.log = logging.getLogger("red.cog.dav-cogs.exclusiveroles")
 
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
@@ -109,6 +109,13 @@ class ExclusiveRoles(commands.Cog):
             roles = await self.config.guild(ctx.guild).exclusives()
             for r in roles:
                 r_new = (ctx.guild.get_role(r[0]), ctx.guild.get_role(r[1]))
+                if None in r_new:
+                    self.log.warning(
+                        f"One of the roles({r[0]},{r[1]}) was deleted from the guild. Removing config entry."
+                    )
+                    roles.remove(r)
+                    await self.config.guild(ctx.guild).exclusives.set(roles)
+                    continue
                 await ctx.send("``Starting with {} and {}``".format(r_new[0].name, r_new[1].name))
                 for u in ctx.guild.members:
                     if r_new[0] in u.roles:
