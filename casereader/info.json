@@ -1,0 +1,19 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "A different approach to ``[p]casesfor``.",
+    "hidden": false,
+    "install_msg": "Thank you for installing casereader.",
+    "short": "Read modlog cases.",
+    "tags": [
+        "members",
+        "mod",
+        "moderation",
+        "warnings",
+        "checks",
+        "tools",
+        "modlog",
+        "cases"
+    ]
+}
