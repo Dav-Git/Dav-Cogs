@@ -37,6 +37,7 @@ class ForceNick(commands.Cog):
             reason = f"Nickname force-changed"
         try:
             await user.edit(nick=await self.config.guild(ctx.guild).nick())
+            await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
             if await self.config.guild(ctx.guild).modlog() == True:
                 await modlog.create_case(
                     self.bot,
@@ -48,7 +49,6 @@ class ForceNick(commands.Cog):
                     reason=reason,
                     channel=ctx.channel,
                 )
-            await ctx.message.add_reaction(":white_check_mark:")
         except discord.errors.Forbidden:
             await ctx.send("Missing permissions.")
 
