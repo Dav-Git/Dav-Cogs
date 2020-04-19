@@ -1,0 +1,9 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Forcibly change a user's nickname",
+    "hidden": false,
+    "install_msg": "Thank you for installing forcenick. Make sure to check out ``[p]forcenickset``",
+    "short": "Forcenick tool"
+}
