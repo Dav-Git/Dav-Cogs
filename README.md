@@ -11,6 +11,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> |
 | check | <details><summary>Combines warnings, names, userinfo and flags.</summary>The flags command will only be executed if the [flags cog](https://github.com/bobloy/Fox-V3/) is installed and loaded.</details> |
 | exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> |
+| forcenick | <details><summary>Forcibly change a user's nickname.</summary>Comes with the option of creating a modlog entry for these changes.</details> |
 | mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. Make sure that you add a ``/`` or ``\`` (depending on your OS) to the end of the path to your minecraft server.</details> |
 | prunecmd | Introduces a command to prune the member list. |
 
@@ -23,8 +24,9 @@ Then, install the cogs by running `[p]cog install Dav-cogs <name_of_cog>`
 
 And load them with `[p]load <name_of_cog>`
 
-# Warning
+# Support
 
+Ping me (@Dav) in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673)channel on the official [Cog support server](https://discord.gg/GET4DVk)
 Cogs not listed above will most likely **NOT** work on your bot.\
 You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
 
@@ -33,3 +35,16 @@ You can find other approved repos at the [Cogboard](https://cogboard.red/t/appro
 Thanks to Draper for helping with exclusiveroles.
 
 Also a big thank you to everyone in the coding channel on the support discord for your help along the way.
+
+# Privacy
+
+Some of my cogs store end user data. In the following list I try to name and explain all these instances of storing end-user data per cog. This list may not necessarily be 100 percent complete. It is designed for transparency reasons, not to give legal advice.
+
+| Cog | Type of data stored | Reason for storing the data |
+| --- | ------------------- | --------------------------- |
+| mcwhitelister | Unique discord user-id, minecraft username, minecraft UUID | <details><summary>This info is stored to provide basic cog functionality.</summary>
+Discord-ID: This info is stored to be able to remove a user's whitelist when they leave the discord server.
+Minecraft username: This info is stored to be able to provide a list of currently whitelisted users.
+Minecraft UUID: This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
+
+For questions, feel free to contact me on discord.
