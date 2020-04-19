@@ -42,9 +42,6 @@ Some of my cogs store end user data. In the following list I try to name and exp
 
 | Cog | Type of data stored | Reason for storing the data |
 | --- | ------------------- | --------------------------- |
-| mcwhitelister | Unique discord user-id, minecraft username, minecraft UUID | <details><summary>This info is stored to provide basic cog functionality.</summary>
-Discord-ID: This info is stored to be able to remove a user's whitelist when they leave the discord server.
-Minecraft username: This info is stored to be able to provide a list of currently whitelisted users.
-Minecraft UUID: This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
+| mcwhitelister | Unique discord user-id, minecraft username, minecraft UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> Discord-ID: This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>Minecraft username: This info is stored to be able to provide a list of currently whitelisted users.<br/>Minecraft UUID: This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
 
 For questions, feel free to contact me on discord.
