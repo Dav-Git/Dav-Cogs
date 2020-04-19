@@ -10,7 +10,7 @@ class CaseReader(commands.Cog):
 
     @checks.mod()
     @commands.command()
-    async def read(self, ctx, user: discord.Member):
+    async def read(self, ctx, user: discord.User):
         membercases = await modlog.get_cases_for_member(ctx.guild, self.bot, member=user)
         embed_requested = await ctx.embed_requested()
         rendered_cases = [
