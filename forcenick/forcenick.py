@@ -48,6 +48,7 @@ class ForceNick(commands.Cog):
                     reason=reason,
                     channel=ctx.channel,
                 )
+            await ctx.message.add_reaction(":white_check_mark:")
         except discord.errors.Forbidden:
             await ctx.send("Missing permissions.")
 
@@ -58,7 +59,7 @@ class ForceNick(commands.Cog):
         pass
 
     @forcenickset.command()
-    async def name(self, ctx, name: str):
+    async def name(self, ctx, *, name: str):
         """Set the default name that will be applied when using ``[p]forcenick``"""
         if len(name) < 33 and len(name) > 1:
             await self.config.guild(ctx.guild).nick.set(name)
@@ -68,3 +69,4 @@ class ForceNick(commands.Cog):
     async def modlog(self, ctx, true_or_false: bool):
         """Set if you would like to create a modlog entry everytime ``[p]forcenick`` is used."""
         await self.config.guild(ctx.guild).modlog.set(true_or_false)
+        await ctx.send(f"Modlog entries set to {true_or_false}.")
