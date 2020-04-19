@@ -27,7 +27,7 @@ And load them with `[p]load <name_of_cog>`
 
 # Support
 
-Ping me (@Dav) in the [#support_othercogs] (https://discordapp.com/channels/240154543684321280/240212783503900673)channel on the official [Cog support server](https://discord.gg/GET4DVk)\
+Ping me (@Dav) in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673) channel on the official [Cog support server](https://discord.gg/GET4DVk)\
 Cogs not listed above will most likely **NOT** work on your bot.\
 You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
 
