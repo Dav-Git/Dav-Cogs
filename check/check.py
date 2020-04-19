@@ -10,7 +10,7 @@ class Check(commands.Cog):
 
     @commands.command()
     @checks.mod()
-    async def check(self, ctx, user: discord.Member):
+    async def check(self, ctx, user: discord.User):
         ctx.assume_yes = True
         try:
             await ctx.invoke(ctx.bot.get_command("userinfo"), user=user)
