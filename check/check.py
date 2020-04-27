@@ -34,3 +34,5 @@ class Check(commands.Cog):
             await ctx.invoke(ctx.bot.get_command("listflag"), member=user)
         except:
             pass
+
+        await ctx.send("Lookup completed.")
