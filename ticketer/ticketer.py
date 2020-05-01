@@ -174,17 +174,21 @@ class Ticketer(commands.Cog):
         settings = await self.config.guild(ctx.guild).all()
         count = 0
         if settings["channel"]:
+            count += 1
+        else:
             await ctx.send("Management channel not set up yet.")
-            count += 1
         if settings["closed_category"]:
+            count += 1
+        else:
             await ctx.send("Category for closed tickets not set up yet.")
-            count += 1
         if settings["open_category"]:
+            count += 1
+        else:
             await ctx.send("Category for open tickets not set up yet.")
-            count += 1
         if settings["role"]:
-            await ctx.send("Ticket manager role not set up yet.")
             count += 1
+        else:
+            await ctx.send("Ticket manager role not set up yet.")
         if count == 4:
             return True
         else:
