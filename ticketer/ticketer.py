@@ -61,6 +61,14 @@ class Ticketer(commands.Cog):
         await self.config.guild(ctx.guild).message.set(message)
         await ctx.send(f"The message has been set to ``{message}``.")
 
+    @ticketer.command()
+    async def counter(self, ctx, true_or_false: bool):
+        """Toggle if the ticket channels should be named using a user's name and ID or counting upwards starting at 0."""
+        await self.config.guild(ctx.guild).use_counter.set(true_or_false)
+        await ctx.send(
+            "The counter has been {}.".format("enabled" if true_or_false else "disabled")
+        )
+
     @commands.group()
     async def ticket(self, ctx):
         """Manage a ticket."""
@@ -73,6 +81,9 @@ class Ticketer(commands.Cog):
             settings = await self.config.guild(ctx.guild).all()
             if settings["use_counter"]:
                 name = f"ticket-{settings['current_ticket']}"
+                await self.config.guild(ctx.guild).current_ticket.set(
+                    settings["current_ticket"] + 1
+                )
             else:
                 name = f"{ctx.author.name}-{ctx.author.id}"
             if not discord.utils.find(lambda m: m.name == name, ctx.guild.channels):
