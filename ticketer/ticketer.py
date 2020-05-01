@@ -69,6 +69,55 @@ class Ticketer(commands.Cog):
             "The counter has been {}.".format("enabled" if true_or_false else "disabled")
         )
 
+    @ticketer.command()
+    async def quicksetup(self, ctx):
+        settings = await self.config.guild(ctx.guild).all()
+        if not settings["role"]:
+            role = await ctx.guild.create_role(
+                name="Ticketmanagers", hoist=True, mentionable=False, reason="Ticketer quicksetup"
+            )
+            await self.config.guild(ctx.guild).role.set(role.id)
+            await ctx.send("Ticket-manager role created.")
+        if not settings["open_category"]:
+            category = await ctx.guild.create_category(
+                name="Open-tickets", reason="Ticketer quicksetup"
+            )
+            await self.config.guild(ctx.guild).open_category.set(category.id)
+            await ctx.send("Category for open tickets created.")
+        if not settings["closed_category"]:
+            category = await ctx.guild.create_category(
+                name="Closed-tickets", reason="Ticketer quicksetup"
+            )
+            await self.config.guild(ctx.guild).closed_category.set(category.id)
+            await ctx.send("Category for closed tickets created.")
+        settings = await self.config.guild(ctx.guild).all()
+        if not settings["channel"]:
+            await ctx.send("Config queried for channel setup.")
+            overwrite = {
+                ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
+                ctx.guild.get_role(settings["role"]): discord.PermissionOverwrite(
+                    read_messages=True,
+                    send_messages=True,
+                    embed_links=True,
+                    attach_files=True,
+                    manage_messages=True,
+                ),
+            }
+            channel = await ctx.guild.create_text_channel(
+                "ticket-management",
+                overwrites=overwrite,
+                category=ctx.guild.get_channel(settings["open_category"]),
+                topic="Ticket management channel.",
+                reason="Ticketer quicksetup",
+            )
+            await self.config.guild(ctx.guild).channel.set(channel.id)
+            await ctx.send("Channel for ticket management created.")
+        await ctx.send("Checking settings...")
+        if await self._check_settings(ctx):
+            await ctx.send("Quicksetup completed.")
+        else:
+            await ctx.send("Something went wrong...")
+
     @commands.group()
     async def ticket(self, ctx):
         """Manage a ticket."""
@@ -88,7 +137,7 @@ class Ticketer(commands.Cog):
                 name = f"{ctx.author.name}-{ctx.author.id}"
             if not discord.utils.find(lambda m: m.name == name, ctx.guild.channels):
                 overwrite = {
-                    ctx.guild.default_role: discord.Permissions(read_messages=False),
+                    ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
                     ctx.author: discord.PermissionOverwrite(
                         read_messages=True,
                         send_messages=True,
