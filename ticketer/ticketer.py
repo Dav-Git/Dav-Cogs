@@ -124,7 +124,7 @@ class Ticketer(commands.Cog):
         pass
 
     @ticket.command()
-    async def create(self, ctx, reason: Optional[str] = f"Ticket created at {datetime.utcnow}"):
+    async def create(self, ctx, *, reason: Optional[str] = f"Ticket created at {datetime.utcnow}"):
         """Create a ticket."""
         if await self._check_settings(ctx):
             settings = await self.config.guild(ctx.guild).all()
@@ -160,7 +160,7 @@ class Ticketer(commands.Cog):
                 )
                 await ticketchannel.send(settings["message"])
                 embed = discord.Embed(
-                    title=name, description=f"reason", timestamp=datetime.utcnow(),
+                    title=name, description=reason, timestamp=datetime.utcnow(),
                 ).set_footer(text="Last updated at:")
                 message = await ctx.guild.get_channel(settings["channel"]).send(embed=embed)
                 async with self.config.guild(ctx.guild).active() as active:
