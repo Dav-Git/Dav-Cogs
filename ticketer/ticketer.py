@@ -124,7 +124,9 @@ class Ticketer(commands.Cog):
         pass
 
     @ticket.command()
-    async def create(self, ctx, *, reason: Optional[str] = f"Ticket created at {datetime.utcnow}"):
+    async def create(
+        self, ctx, *, reason: Optional[str] = f"Ticket created at {datetime.utcnow()}"
+    ):
         """Create a ticket."""
         if await self._check_settings(ctx):
             settings = await self.config.guild(ctx.guild).all()
@@ -135,7 +137,11 @@ class Ticketer(commands.Cog):
                 )
             else:
                 name = f"{ctx.author.name}-{ctx.author.id}"
-            if not discord.utils.find(lambda m: m.name == name, ctx.guild.channels):
+            found = False
+            for channel in ctx.guild.channels:
+                if channel.name == name.lower():
+                    found = True
+            if not found:
                 overwrite = {
                     ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
                     ctx.author: discord.PermissionOverwrite(
