@@ -269,6 +269,21 @@ class Ticketer(commands.Cog):
     @checks.mod()
     async def note(self, ctx, ticket: discord.TextChannel, *, note: str):
         """Add a staff-only note to a ticket."""
+        channel = ticket
+        for ticket in await self.config.guild(ctx.guild).active():
+            if channel.id in ticket:
+                message = await ctx.guild.get_channel(
+                    await self.config.guild(ctx.guild).channel()
+                ).fetch_message(ticket[1])
+                new_embed = message.embeds[0]
+                new_embed.add_field(
+                    name=f"{ctx.author.name}#{ctx.author.discriminator}", value=note
+                )
+                new_embed.timestamp = datetime.utcnow()
+                await message.edit(embed=new_embed)
+                await ctx.send("Note added.", delete_after=10)
+            else:
+                await ctx.send("This is not a ticket channel.")
 
     async def _check_settings(self, ctx: commands.Context) -> bool:
         settings = await self.config.guild(ctx.guild).all()
