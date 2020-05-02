@@ -248,10 +248,12 @@ class Ticketer(commands.Cog):
 
     @ticket.command()
     @checks.mod()
-    async def update(self, ctx, channel: Optional[discord.TextChannel] = None, *, update: str):
+    async def update(self, ctx, ticket: Optional[discord.TextChannel] = None, *, update: str):
         """Update a ticket. This is visible to all participants of the ticket."""
-        if channel is None:
+        if ticket is None:
             channel = ctx.channel
+        else:
+            channel = ticket
         settings = await self.config.guild(ctx.guild).all()
         active = settings["active"]
         for ticket in active:
@@ -262,6 +264,11 @@ class Ticketer(commands.Cog):
                 await ctx.send("Ticket updated.", delete_after=10)
             else:
                 ctx.send(f"{channel.mention} is not a ticket channel.")
+
+    @ticket.command()
+    @checks.mod()
+    async def note(self, ctx, ticket: discord.TextChannel, *, note: str):
+        """Add a staff-only note to a ticket."""
 
     async def _check_settings(self, ctx: commands.Context) -> bool:
         settings = await self.config.guild(ctx.guild).all()
