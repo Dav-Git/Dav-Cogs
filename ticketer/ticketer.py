@@ -1,7 +1,7 @@
 import discord
 from typing import Optional
 from datetime import datetime
-from redbot.core import commands, checks, Config
+from redbot.core import commands, checks, Config, modlog
 
 
 class Ticketer(commands.Cog):
@@ -21,6 +21,18 @@ class Ticketer(commands.Cog):
             "modlog": True,
         }
         self.config.register_guild(**default_guild)
+
+    @staticmethod
+    async def register_casetypes():
+        new_types = [
+            {
+                "name": "ticket_created",
+                "default_setting": True,
+                "image": "\N{BALLOT BOX WITH BALLOT}\N{VARIATION SELECTOR-16}",
+                "case_str": "Ticket created",
+            }
+        ]
+        await modlog.register_casetypes(new_types)
 
     @commands.group()
     @checks.admin()
@@ -134,12 +146,7 @@ class Ticketer(commands.Cog):
 
     @ticket.command()
     async def create(
-        self,
-        ctx,
-        *,
-        reason: Optional[
-            str
-        ] = f"Ticket created on {datetime.utcnow().strftime('%B %d, %Y %H:%m')}",
+        self, ctx, *, reason: Optional[str] = "No reason provided.",
     ):
         """Create a ticket."""
         if await self._check_settings(ctx):
@@ -156,6 +163,16 @@ class Ticketer(commands.Cog):
                 if channel.name == name.lower():
                     found = True
             if not found:
+                if settings["modlog"]:
+                    await modlog.create_case(
+                        ctx.bot,
+                        ctx.guild,
+                        ctx.message.created_at,
+                        action_type="ticket_created",
+                        user=ctx.author,
+                        moderator=ctx.author,
+                        reason=reason,
+                    )
                 overwrite = {
                     ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
                     ctx.author: discord.PermissionOverwrite(

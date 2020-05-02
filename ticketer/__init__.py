@@ -1,5 +1,7 @@
 from .ticketer import Ticketer
 
 
-def setup(bot):
-    bot.add_cog(Ticketer())
+async def setup(bot):
+    cog = Ticketer()
+    await cog.register_casetypes()
+    bot.add_cog(cog)
