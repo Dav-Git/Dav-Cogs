@@ -1,0 +1,9 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "description": "Advanced ticket system with improved management functionality.",
+  "hidden": false,
+  "install_msg": "Thank you for installing ticketer. Take a look at ``[p]help Ticketer``.",
+  "short": "A ticket system."
+}
