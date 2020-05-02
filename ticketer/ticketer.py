@@ -18,6 +18,7 @@ class Ticketer(commands.Cog):
             "role": None,
             "message": "Your ticket has been created. You can add information by typing in this channel. \n\nA member of the ticket-handling-team will be with you as soon as they can.",
             "active": [],
+            "modlog": True,
         }
         self.config.register_guild(**default_guild)
 
@@ -67,6 +68,14 @@ class Ticketer(commands.Cog):
         await self.config.guild(ctx.guild).use_counter.set(true_or_false)
         await ctx.send(
             "The counter has been {}.".format("enabled" if true_or_false else "disabled")
+        )
+
+    @ticketer.command()
+    async def modlog(self, ctx, true_or_false: bool):
+        """Decide if ticketer should log to modlog."""
+        await self.config.guild(ctx.guild).modlog.set(true_or_false)
+        await ctx.send(
+            "Logging to modlog has been {}.".format("enabled" if true_or_false else "disabled")
         )
 
     @ticketer.command()
@@ -125,7 +134,12 @@ class Ticketer(commands.Cog):
 
     @ticket.command()
     async def create(
-        self, ctx, *, reason: Optional[str] = f"Ticket created at {datetime.utcnow()}"
+        self,
+        ctx,
+        *,
+        reason: Optional[
+            str
+        ] = f"Ticket created on {datetime.utcnow().strftime('%B %d, %Y %H:%m')}",
     ):
         """Create a ticket."""
         if await self._check_settings(ctx):
@@ -175,6 +189,44 @@ class Ticketer(commands.Cog):
                 await ctx.send("You already have an open ticket.")
         else:
             await ctx.send("Please finish the setup process before creating a ticket.")
+
+    @ticket.command()
+    async def close(self, ctx):
+        settings = await self.config.guild(ctx.guild).all()
+        active = settings["active"]
+        for ticket in active:
+            if ctx.channel.id in ticket:
+                new_embed = (
+                    await ctx.guild.get_channel(settings["channel"]).fetch_message(ticket[1])
+                ).embeds[0]
+                new_embed.add_field(
+                    name=datetime.utcnow().strftime("%H:%m UTC"), value="Ticket closed."
+                )
+                new_embed.timestamp = datetime.utcnow()
+                await (
+                    await ctx.guild.get_channel(settings["channel"]).fetch_message(ticket[1])
+                ).edit(
+                    embed=new_embed, delete_after=10,
+                )
+                await ctx.channel.edit(
+                    category=ctx.guild.get_channel(settings["closed_category"]),
+                    name=f"{ctx.channel.name}-c-{datetime.utcnow().strftime('%B-%d-%Y-%H-%m')}",
+                    overwrites={
+                        ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
+                        ctx.guild.get_role(settings["role"]): discord.PermissionOverwrite(
+                            read_messages=True,
+                            send_messages=True,
+                            embed_links=True,
+                            attach_files=True,
+                            manage_messages=True,
+                        ),
+                    },
+                )
+                await ctx.send("Ticket closed.")
+                active.remove(ticket)
+            else:
+                await ctx.send("This is not a ticket channel.")
+        await self.config.guild(ctx.guild).active.set(active)
 
     async def _check_settings(self, ctx: commands.Context) -> bool:
         settings = await self.config.guild(ctx.guild).all()
