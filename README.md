@@ -15,6 +15,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | forcenick | <details><summary>Forcibly change a user's nickname.</summary>Comes with the option of creating a modlog entry for these changes.</details> |
 | mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. Make sure that you add a ``/`` or ``\`` (depending on your OS) to the end of the path to your minecraft server.</details> |
 | prunecmd | Introduces a command to prune the member list. |
+| ticketer | A ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 
 # Installation
 
