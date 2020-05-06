@@ -1,0 +1,9 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "description": "Advanced ticket system with improved management functionality and support for different ticket handling departments.",
+  "hidden": false,
+  "install_msg": "Thank you for installing supporter. Take a look at ``[p]help Supporter``.",
+  "short": "An expansion of Ticketer."
+}
