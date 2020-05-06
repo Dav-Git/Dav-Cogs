@@ -107,13 +107,14 @@ class Supporter(commands.Cog):
 
     @department.command(name="add")
     async def dept_add(self, ctx, name: str, role: discord.Role):
-        """Add a support department."""
+        """Add a support department.\n\n Department names get saved in lowercase.\n2 Departments may not have the same name."""
         async with self.config.guild(ctx.guild).departments() as departments:
-            departments.append((name, role.id))
+            departments.append((name.lower(), role.id))
         await ctx.send(f"Department {name} added with role ID: {role.id}")
 
     @department.command(name="remove")
     async def dept_rem(self, ctx, name: str):
+        """Remove a support department."""
         depts = await self.config.guild(ctx.guild).departments()
         for e in depts:
             if name.lower() in e:
@@ -196,9 +197,10 @@ class Supporter(commands.Cog):
                     embed = discord.Embed(
                         title=name, description=reason, timestamp=datetime.utcnow(),
                     ).set_footer(text="Last updated at:")
+                    embed.add_field(name="Department", value=dept_role.mention)
                     message = await ctx.guild.get_channel(settings["channel"]).send(embed=embed)
                     async with self.config.guild(ctx.guild).active() as active:
-                        active.append((ticketchannel.id, message.id))
+                        active.append((ticketchannel.id, message.id, dept_role.id))
                     await dept_msg.delete()
                 else:
                     await dept_msg.delete()
@@ -215,6 +217,7 @@ class Supporter(commands.Cog):
         """Close a ticket."""
         settings = await self.config.guild(ctx.guild).all()
         active = settings["active"]
+        success = False
         for ticket in active:
             if ctx.channel.id in ticket:
                 new_embed = (
@@ -234,12 +237,13 @@ class Supporter(commands.Cog):
                 await ctx.send(
                     "This ticket can no longer be edited using Supporter.", delete_after=30
                 )
+                dept = ctx.guild.get_role(ticket[2])
                 await ctx.channel.edit(
                     category=ctx.guild.get_channel(settings["closed_category"]),
                     name=f"{ctx.channel.name}-c-{datetime.utcnow().strftime('%B-%d-%Y-%H-%m')}",
                     overwrites={
                         ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
-                        ctx.guild.get_role(settings["role"]): discord.PermissionOverwrite(
+                        dept: discord.PermissionOverwrite(
                             read_messages=True,
                             send_messages=True,
                             embed_links=True,
@@ -250,8 +254,9 @@ class Supporter(commands.Cog):
                 )
                 await ctx.send("Ticket closed.")
                 active.remove(ticket)
-            else:
-                await ctx.send("This is not a ticket channel.")
+                success = True
+        if not success:
+            await ctx.send("This is not a ticket channel.")
         await self.config.guild(ctx.guild).active.set(active)
 
     @ticket.command()
@@ -292,6 +297,64 @@ class Supporter(commands.Cog):
                 await ctx.send("Note added.", delete_after=10)
             else:
                 await ctx.send("This is not a ticket channel.")
+
+    @ticket.command()
+    @checks.mod()
+    async def transfer(
+        self, ctx, ticket: Optional[discord.TextChannel] = None, *, department: str
+    ):
+        """Update a ticket. This is visible to all participants of the ticket."""
+        if ticket is None:
+            channel = ctx.channel
+        else:
+            channel = ticket
+        department = department.lower()
+        new_dept = None
+        for ticket in await self.config.guild(ctx.guild).active():
+            if channel.id in ticket:
+                depts = await self.config.guild(ctx.guild).departments()
+                await ctx.send(depts)
+                for e in depts:
+                    if department in e:
+                        await ctx.send("Department found.")
+                        new_dept = ctx.guild.get_role(e[1])
+            else:
+                await ctx.send("This is not a ticket channel.")
+                return
+        new_overwrites = channel.overwrites
+        if new_dept:
+            async with self.config.guild(ctx.guild).active() as active:
+                count = 0
+                for e in active:
+                    if channel.id in e:
+                        dept = ctx.guild.get_role(e[2])
+                        new_overwrites.pop(dept)
+                        new_overwrites[new_dept] = discord.PermissionOverwrite(
+                            read_messages=True,
+                            send_messages=True,
+                            embed_links=True,
+                            attach_files=True,
+                            manage_messages=True,
+                        )
+                        await channel.edit(overwrites=new_overwrites)
+                        msgid = e[1]
+                        active[count] = (channel.id, msgid, new_dept.id)
+                        message = await ctx.guild.get_channel(
+                            await self.config.guild(ctx.guild).channel()
+                        ).fetch_message(e[1])
+                        embed = message.embeds[0]
+                        embed.add_field(
+                            name=f"{ctx.author.name}#{ctx.author.discriminator}",
+                            value=f"Transfered to {new_dept.mention}",
+                        )
+                        embed.timestamp = datetime.utcnow()
+                        await message.edit(embed=embed)
+                    count += 1
+        else:
+            await ctx.send("Invalid department.\nAvailable options:", delete_after=20)
+            for i in depts:
+                await ctx.send(f"{i[0]}", delete_after=10)
+            return
 
     async def _check_settings(self, ctx: commands.Context) -> bool:
         settings = await self.config.guild(ctx.guild).all()
