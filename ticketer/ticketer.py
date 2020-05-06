@@ -212,6 +212,7 @@ class Ticketer(commands.Cog):
         """Close a ticket."""
         settings = await self.config.guild(ctx.guild).all()
         active = settings["active"]
+        success = False
         for ticket in active:
             if ctx.channel.id in ticket:
                 new_embed = (
@@ -247,8 +248,9 @@ class Ticketer(commands.Cog):
                 )
                 await ctx.send("Ticket closed.")
                 active.remove(ticket)
-            else:
-                await ctx.send("This is not a ticket channel.")
+                success = True
+        if not success:
+            await ctx.send("This is not a ticket channel.")
         await self.config.guild(ctx.guild).active.set(active)
 
     @ticket.command()
