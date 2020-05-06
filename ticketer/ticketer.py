@@ -229,7 +229,7 @@ class Ticketer(commands.Cog):
                 )
                 await ctx.send(embed=new_embed)
                 await ctx.send(
-                    "This ticket can no longer be edited using ticketer.", delay_after=30
+                    "This ticket can no longer be edited using ticketer.", delete_after=30
                 )
                 await ctx.channel.edit(
                     category=ctx.guild.get_channel(settings["closed_category"]),
