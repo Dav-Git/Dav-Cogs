@@ -209,9 +209,9 @@ class Supporter(commands.Cog):
                     await dept_msg.delete()
                 else:
                     await dept_msg.delete()
-                    await ctx.send("Invalid department.\n Valid options are:", delete_after=10)
+                    await ctx.send("Invalid department.\nValid options are:", delete_after=20)
                     for e in settings["departments"]:
-                        await ctx.send(f"{e[0]}", delete_after=10)
+                        await ctx.send(f"{e[0]}", delete_after=20)
             else:
                 await ctx.send("You already have an open ticket.")
         else:
