@@ -140,7 +140,7 @@ class Supporter(commands.Cog):
         if await self._check_settings(ctx):
             settings = await self.config.guild(ctx.guild).all()
             if settings["use_counter"]:
-                name = f"ticket-{settings['current_ticket']}"
+                name = f"ticket-{ctx.author.name}-{settings['current_ticket']}"
                 await self.config.guild(ctx.guild).current_ticket.set(
                     settings["current_ticket"] + 1
                 )
@@ -168,7 +168,7 @@ class Supporter(commands.Cog):
                             action_type="ticket_created",
                             user=ctx.author,
                             moderator=ctx.author,
-                            reason=f"Department: {dept_role.name}",
+                            reason=f"Department: {dept_msg.content.lower()}",
                         )
                     overwrite = {
                         ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
@@ -192,8 +192,13 @@ class Supporter(commands.Cog):
                         category=ctx.guild.get_channel(settings["open_category"]),
                         topic=reason,
                     )
-                    await ticketchannel.send(f"This channel is visible to ``{dept_role.name}``.")
+                    await ticketchannel.send(
+                        f"This channel is visible to ``{dept_msg.content.lower()}``."
+                    )
                     await ticketchannel.send(settings["message"])
+                    await ticketchannel.send(
+                        f'{ctx.author.name}#{ctx.author.discriminator}:"{reason}"'
+                    )
                     embed = discord.Embed(
                         title=name, description=reason, timestamp=datetime.utcnow(),
                     ).set_footer(text="Last updated at:")
