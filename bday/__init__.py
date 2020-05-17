@@ -1,4 +1,6 @@
 from .bday import Bday
 
+
 def setup(bot):
-    bot.add_cog(Bday())
+    cog = Bday(bot)
+    bot.add_cog(cog)

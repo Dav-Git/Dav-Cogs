@@ -1,14 +1,23 @@
 import discord
+from datetime import datetime
+from discord.ext import tasks
 from redbot.core import commands, checks, Config
 
 
 class Bday(commands.Cog):
     """Bday"""
 
-    def __init__(self):
+    def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=1072001)
         default_guild = {"bdayRole": 0}
+        default_global = {"bdays": []}
         self.config.register_guild(**default_guild)
+        self.config.register_global(**default_global)
+        self.bot = bot
+        self.bdaytask.start()
+
+    def cog_unload(self):
+        self.bdaytask.cancel()
 
     @commands.command()
     @checks.mod()
@@ -22,6 +31,8 @@ class Bday(commands.Cog):
                 reason="It's their birthday!",
             )
             await ctx.send("Happy birthday {} !".format(user.mention))
+            async with self.config.bdays() as bdays:
+                bdays.append((user.id, ctx.guild.id, datetime.utcnow()))
         else:
             await ctx.send(
                 "You need to configure a birthday role first by using ``[p]setbirthday``."
@@ -45,6 +56,18 @@ class Bday(commands.Cog):
         for user in ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()).members:
             await user.remove_roles(
                 ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
-                reason="It's a new day. The birthdays are over.",
+                reason="Birthdays cleared.",
             )
 
+    @tasks.loop(hours=1)
+    async def bdaytask(self):
+        time = datetime.utcnow()
+        async with self.config.bdays() as bdays:
+            for bday in bdays:
+                delta = bday[2] - time
+                if delta.seconds > 86400:
+                    guild = self.bot.get_guild(bday[1])
+                    await guild.get_member(bday[0]).remove_roles(
+                        guild.get_role(await self.config.guild(guild).bdayRole()),
+                        reason="24h have passed. This birthday must be over.",
+                    )
