@@ -10,7 +10,7 @@ class ForceNick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=190420201535, force_registration=True)
-        standard = {"modlog": True, "nick": "CHANGEME"}
+        standard = {"modlog": True, "nick": "CHANGEME", "dm": False}
         self.config.register_guild(**standard)
 
     async def initialize(self):
@@ -49,6 +49,10 @@ class ForceNick(commands.Cog):
                     reason=reason,
                     channel=ctx.channel,
                 )
+            if await self.config.guild(ctx.guild).dm():
+                await user.send(
+                    f"Your nickname on ``{ctx.guild.name}`` has been force-changed by a moderator."
+                )
         except discord.errors.Forbidden:
             await ctx.send("Missing permissions.")
 
@@ -70,3 +74,9 @@ class ForceNick(commands.Cog):
         """Set if you would like to create a modlog entry everytime ``[p]forcenick`` is used."""
         await self.config.guild(ctx.guild).modlog.set(true_or_false)
         await ctx.send(f"Modlog entries set to {true_or_false}.")
+
+    @forcenickset.command()
+    async def dm(self, ctx, true_or_false: bool):
+        """Set if you would like the bot to DM the user who's nickname was force-changed."""
+        await self.config.guild(ctx.guild).dm.set(true_or_false)
+        await ctx.send(f"Sending a DM set to {true_or_false}.")
