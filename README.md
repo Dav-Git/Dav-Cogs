@@ -1,5 +1,6 @@
-[![Red cogs](https://img.shields.io/badge/Red--DiscordBot-cogs-red.svg)](https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop)
-[![discord.py](https://img.shields.io/badge/discord-py-blue.svg)](https://github.com/Rapptz/discord.py)
+[![discord.py](https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord)](https://github.com/Rapptz/discord.py)
+[![Red cogs](https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge)](https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop)
+[![python3.8](https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python)](https://www.python.org/)
 
 # Dav-Cogs
 
