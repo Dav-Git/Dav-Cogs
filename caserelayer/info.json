@@ -3,7 +3,7 @@
         "Dav"
     ],
     "description": "Relay a modlog case to a user, without sending the ``Moderator`` field.",
-    "hidden": false,
+    "hidden": true,
     "install_msg": "Thank you for installing caserelayer.",
     "short": "Relay modlog cases.",
     "tags": [
