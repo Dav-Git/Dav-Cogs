@@ -2,6 +2,7 @@
 [![discord.py](https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord)](https://github.com/Rapptz/discord.py)
 [![Red cogs](https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge)](https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop)
 [![python3.8](https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python)](https://www.python.org/)
+[![E-mail](https://img.shields.io/static/v1?label=E-Mail&message=dav@mail.stopdavabuse.de&color=critical&logo=gmail)](mailto:dav@mail.stopdavabuse.de)
 
 # Dav-Cogs
 
@@ -31,7 +32,9 @@ And load them with `[p]load <name_of_cog>`
 
 # Support
 
-Ping me (@Dav) in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673) channel on the official [Cog support server](https://discord.gg/GET4DVk) or visit my own server for quicker responses: [Dav-Server](https://discord.gg/z6Nhqc5)\
+Ping me (@Dav) in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673) channel on the official [Cog support server](https://discord.gg/GET4DVk)\
+Visit my own server for quicker responses: [Dav-Server](https://discord.gg/z6Nhqc5)\
+E-Mail me dav@mail.stopdavabuse.de\
 Cogs not listed above will **NOT** work on your bot.\
 You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
 
