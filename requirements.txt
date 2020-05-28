@@ -1,3 +1,2 @@
 red-discordbot
 discord.py
-praw
