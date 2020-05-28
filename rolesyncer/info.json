@@ -1,0 +1,15 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "description": "Removes a role from a user as soon as another role is added.",
+  "hidden": false,
+  "install_msg": "Thank you for installing exclusiveroles.",
+  "short": "Make roles (truly) exclusive",
+  "tags": [
+    "roles",
+    "exclusive",
+    "autorole",
+    "tools"
+  ]
+}
