@@ -1,4 +1,5 @@
-from .exclusiveroles import ExclusiveRoles
+from .rolesyncer import RoleSyncer
+
 
 def setup(bot):
-    bot.add_cog(ExclusiveRoles(bot))
+    bot.add_cog(RoleSyncer(bot))

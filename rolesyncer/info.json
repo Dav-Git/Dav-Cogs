@@ -2,13 +2,13 @@
   "author": [
     "Dav"
   ],
-  "description": "Removes a role from a user as soon as another role is added.",
+  "description": "Adds a role to a user when another specified role is added.",
   "hidden": false,
-  "install_msg": "Thank you for installing exclusiveroles.",
-  "short": "Make roles (truly) exclusive",
+  "install_msg": "Thank you for installing rolesyncer.",
+  "short": "Sync roles to each other.",
   "tags": [
     "roles",
-    "exclusive",
+    "sync",
     "autorole",
     "tools"
   ]
