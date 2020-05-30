@@ -32,7 +32,7 @@ class Bday(commands.Cog):
             )
             await ctx.send("Happy birthday {} !".format(user.mention))
             async with self.config.bdays() as bdays:
-                bdays.append((user.id, ctx.guild.id, datetime.utcnow()))
+                bdays.append((user.id, ctx.guild.id, datetime.utcnow().timestamp()))
         else:
             await ctx.send(
                 "You need to configure a birthday role first by using ``[p]setbirthday``."
@@ -61,7 +61,7 @@ class Bday(commands.Cog):
 
     @tasks.loop(hours=1)
     async def bdaytask(self):
-        time = datetime.utcnow()
+        time = datetime.utcnow().timestamp()
         async with self.config.bdays() as bdays:
             for bday in bdays:
                 delta = bday[2] - time
