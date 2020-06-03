@@ -51,6 +51,8 @@ Some of my cogs store end user data. In the following list I try to name and exp
 
 | Cog | Type of data stored | Reason for storing the data |
 | --- | ------------------- | --------------------------- |
-| mcwhitelister | Unique discord user-id, minecraft username, minecraft UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> Discord-ID: This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>Minecraft username: This info is stored to be able to provide a list of currently whitelisted users.<br/>Minecraft UUID: This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
+| botstatus | Custom status text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Custom status text`` : This info is stored so that the set text can be applied as the bot's status message on startup.</details> |
+| forcenick | Nickname text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Nickname text`` : This info is stored so that the set nickname can be applied to a user on command usage.</details> |
+| mcwhitelister | Discord-UUID<br/>Minecraft-Username<br/>Minecraft-UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> ``Discord-UUID`` : This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>``Minecraft-Username`` : This info is stored to be able to provide a list of currently whitelisted users.<br/>``Minecraft-UUID`` : This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
 
 For questions, feel free to contact me on discord.
