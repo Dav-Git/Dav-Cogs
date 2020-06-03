@@ -1,4 +1,4 @@
-name: Black Code Formatter Check
+name: Black
 
 on:
   pull_request:
@@ -7,11 +7,11 @@ on:
 
 jobs:
   lint:
-    name: lint
+    name: Style
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Black Code Formatter Check
+      - name: Black
         uses: lgeiger/black-action@v1.0.1
         with:
-          args: "--check ."
+          args: "-l 99 --check ."
