@@ -1,8 +1,9 @@
 [![support](https://discordapp.com/api/guilds/552178115175252005/embed.png)](https://discord.gg/z6Nhqc5)
+[![E-mail](https://img.shields.io/static/v1?label=E-Mail&message=dav@mail.stopdavabuse.de&color=critical&logo=gmail)](mailto:dav@mail.stopdavabuse.de)
 [![discord.py](https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord)](https://github.com/Rapptz/discord.py)
 [![Red cogs](https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge)](https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop)
 [![python3.8](https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python)](https://www.python.org/)
-[![E-mail](https://img.shields.io/static/v1?label=E-Mail&message=dav@mail.stopdavabuse.de&color=critical&logo=gmail)](mailto:dav@mail.stopdavabuse.de)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # Dav-Cogs
 
