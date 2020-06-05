@@ -15,4 +15,3 @@ class Prunecmd(commands.Cog):
 
         await ctx.guild.prune_members(days=1, compute_prune_count=False, reason="Member prune")
         await ctx.send("The member list has been pruned successfully")
-
