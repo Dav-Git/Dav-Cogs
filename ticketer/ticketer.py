@@ -19,6 +19,7 @@ class Ticketer(commands.Cog):
             "message": "Your ticket has been created. You can add information by typing in this channel. \n\nA member of the ticket-handling-team will be with you as soon as they can.",
             "active": [],
             "modlog": True,
+            "closed": [],
         }
         self.config.register_guild(**default_guild)
 
@@ -139,6 +140,28 @@ class Ticketer(commands.Cog):
         else:
             await ctx.send("Something went wrong...")
 
+    @ticketer.command()
+    async def purge(self, ctx, are_you_sure: Optional[bool]):
+        if are_you_sure:
+            async with self.config.guild(ctx.guild).closed() as closed:
+                for channel in closed:
+                    try:
+                        await ctx.guild.get_channel(channel).delete(reason="Ticket purge")
+                        closed.remove(channel)
+                    except discord.Forbidden:
+                        await ctx.send(
+                            f"I could not delete channel ID {channel} because I don't have the required permissions."
+                        )
+                    except discord.NotFound:
+                        closed.remove(channel)
+                    except discord.HTTPException:
+                        await ctx.send("Something went wrong. Aborting.")
+                        return
+        else:
+            await ctx.send(
+                f"This action will permanently delete all closed ticket channels.\nThis action is irreversible.\nConfirm with ``{ctx.clean_prefix}ticketer purge true``"
+            )
+
     @commands.group()
     async def ticket(self, ctx):
         """Manage a ticket."""
@@ -248,6 +271,8 @@ class Ticketer(commands.Cog):
                 )
                 await ctx.send("Ticket closed.")
                 active.remove(ticket)
+                async with self.config.guild(ctx.guild).closed() as closed:
+                    closed.append(ticket[0])
                 success = True
         if not success:
             await ctx.send("This is not a ticket channel.")

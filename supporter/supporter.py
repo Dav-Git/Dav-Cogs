@@ -1,4 +1,4 @@
-import discord
+import discord, asyncio
 from typing import Optional
 from datetime import datetime
 from redbot.core import commands, checks, Config, modlog
@@ -23,6 +23,7 @@ class Supporter(commands.Cog):
             "modlog": True,
             "dept_msg": "Choose a support department by typing in this channel please.",
             "departments": [],
+            "closed": [],
         }
         self.config.register_guild(**default_guild)
 
@@ -121,11 +122,39 @@ class Supporter(commands.Cog):
                 depts.remove(e)
         await ctx.send(f"Removed {name}")
 
+    @department.command(name="list")
+    async def dept_list(self, ctx):
+        for e in await self.config.guild(ctx.guild).departments():
+            await ctx.send("List of available departments:")
+            await ctx.send(f"{e[0]}")
+
     @supporter.command()
     async def quicksetup(self, ctx):
         """Quicksetup is not available in supporter.
         If you want a simple ticket handling system,
         use Ticketer instead."""
+
+    @supporter.command()
+    async def purge(self, ctx, are_you_sure: Optional[bool]):
+        if are_you_sure:
+            async with self.config.guild(ctx.guild).closed() as closed:
+                for channel in closed:
+                    try:
+                        await ctx.guild.get_channel(channel).delete(reason="Ticket purge")
+                        closed.remove(channel)
+                    except discord.Forbidden:
+                        await ctx.send(
+                            f"I could not delete channel ID {channel} because I don't have the required permissions."
+                        )
+                    except discord.NotFound:
+                        closed.remove(channel)
+                    except discord.HTTPException:
+                        await ctx.send("Something went wrong. Aborting.")
+                        return
+        else:
+            await ctx.send(
+                f"This action will permanently delete all closed ticket channels.\nThis action is irreversible.\nConfirm with ``{ctx.clean_prefix}supporter purge true``"
+            )
 
     @commands.group()
     async def ticket(self, ctx):
@@ -152,9 +181,13 @@ class Supporter(commands.Cog):
                     found = True
             if not found:
                 await ctx.send(settings["dept_msg"], delete_after=60)
-                dept_msg = await self.bot.wait_for(
-                    "message", check=MessagePredicate.same_context(ctx), timeout=60
-                )
+                try:
+                    dept_msg = await self.bot.wait_for(
+                        "message", check=MessagePredicate.same_context(ctx), timeout=60
+                    )
+                except asyncio.exceptions.TimeoutError:
+                    await ctx.send("Response timed out.")
+                    return
                 dept_role = None
                 for e in settings["departments"]:
                     if e[0] == dept_msg.content.lower():
@@ -259,6 +292,8 @@ class Supporter(commands.Cog):
                 )
                 await ctx.send("Ticket closed.")
                 active.remove(ticket)
+                async with self.config.guild(ctx.guild).closed() as closed:
+                    closed.append(ticket[0])
                 success = True
         if not success:
             await ctx.send("This is not a ticket channel.")
