@@ -40,9 +40,7 @@ class RoleSyncer(commands.Cog):
                     if r1 in before.roles and r2 in before.roles:
                         if not r1 in after.roles:
                             try:
-                                await after.remove_roles(
-                                    r2, reason=f"Two-way rolesync / {r1.name} removed."
-                                )
+                                await after.remove_roles(r2, reason=f"Two-way rolesync / {r1.name} removed.")
                             except discord.HTTPException as e:
                                 self.log.exception(e, exc_info=True)
                         elif not r2 in after.roles:
