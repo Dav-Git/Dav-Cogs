@@ -1,8 +1,9 @@
 [![support](https://discordapp.com/api/guilds/552178115175252005/embed.png)](https://discord.gg/z6Nhqc5)
+[![E-mail](https://img.shields.io/static/v1?label=E-Mail&message=dav@mail.stopdavabuse.de&color=critical&logo=gmail)](mailto:dav@mail.stopdavabuse.de)
 [![discord.py](https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord)](https://github.com/Rapptz/discord.py)
 [![Red cogs](https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge)](https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop)
 [![python3.8](https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python)](https://www.python.org/)
-[![E-mail](https://img.shields.io/static/v1?label=E-Mail&message=dav@mail.stopdavabuse.de&color=critical&logo=gmail)](mailto:dav@mail.stopdavabuse.de)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # Dav-Cogs
 
@@ -50,6 +51,8 @@ Some of my cogs store end user data. In the following list I try to name and exp
 
 | Cog | Type of data stored | Reason for storing the data |
 | --- | ------------------- | --------------------------- |
-| mcwhitelister | Unique discord user-id, minecraft username, minecraft UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> Discord-ID: This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>Minecraft username: This info is stored to be able to provide a list of currently whitelisted users.<br/>Minecraft UUID: This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
+| botstatus | Custom status text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Custom status text`` : This info is stored so that the set text can be applied as the bot's status message on startup.</details> |
+| forcenick | Nickname text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Nickname text`` : This info is stored so that the set nickname can be applied to a user on command usage.</details> |
+| mcwhitelister | Discord-UUID<br/>Minecraft-Username<br/>Minecraft-UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> ``Discord-UUID`` : This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>``Minecraft-Username`` : This info is stored to be able to provide a list of currently whitelisted users.<br/>``Minecraft-UUID`` : This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
 
 For questions, feel free to contact me on discord.
