@@ -1,0 +1,14 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Massmove voice users",
+    "hidden": false,
+    "install_msg": "Thank you for installing mover.",
+    "short": "Massmove voice users",
+    "tags": [
+        "Voice",
+        "Move",
+        "Massmove"
+    ]
+}
