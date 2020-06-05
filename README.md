@@ -1,9 +1,11 @@
-[![support](https://discordapp.com/api/guilds/552178115175252005/embed.png)](https://discord.gg/z6Nhqc5)
-[![E-mail](https://img.shields.io/static/v1?label=E-Mail&message=dav@mail.stopdavabuse.de&color=critical&logo=gmail)](mailto:dav@mail.stopdavabuse.de)
-[![discord.py](https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord)](https://github.com/Rapptz/discord.py)
-[![Red cogs](https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge)](https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop)
-[![python3.8](https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python)](https://www.python.org/)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+<p align="center">
+<a href="https://discord.gg/z6Nhqc5"><img src="https://discordapp.com/api/guilds/552178115175252005/embed.png"></a>
+<a href="https://github.com/Rapptz/discord.py"><img src="https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord"></a>
+<a href="https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop"><img src="https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge"></a>
+<a href="https://www.python.org/"><img src="https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python"></a>
+<img src="https://img.shields.io/badge/code%20style-black-000000.svg"></p>
+<p align="center"><img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Lint%20Python/badge.svg">
+<img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Black/badge.svg"></p>
 
 # Dav-Cogs
 
