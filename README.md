@@ -5,6 +5,7 @@
 <a href="https://www.python.org/"><img src="https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python"></a>
 <img src="https://img.shields.io/badge/code%20style-black-000000.svg"></p>
 <p align="center"><img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Lint%20Python/badge.svg">
+<img src="https://img.shields.io/static/v1?label=PRs&message=Welcome&color=green&style=flat&logo=GitHub">
 <img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Black/badge.svg"></p>
 
 # Dav-Cogs
