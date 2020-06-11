@@ -26,7 +26,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 
-# Installation
+# Installatio
 
 To add these cogs to your RedBot, first add the repo by running\
 `[p]repo add Dav-cogs https://github.com/Dav-Git/Dav-Cogs`
