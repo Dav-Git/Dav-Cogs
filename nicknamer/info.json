@@ -1,0 +1,9 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Multiple Nickname tools",
+    "hidden": true,
+    "install_msg": "Thank you for choosing Nickname. Make sure to check ``[p]nickset``.",
+    "short": "Nickname toolkit"
+}
