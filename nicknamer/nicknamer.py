@@ -192,7 +192,7 @@ class NickNamer(commands.Cog):
     async def tempnick(
         self,
         ctx,
-        user: discord.member,
+        user: discord.Member,
         duration: commands.TimedeltaConverter,
         nickname: str,
         *,
