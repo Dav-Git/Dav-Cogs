@@ -44,6 +44,7 @@ class NickNamer(commands.Cog):
         try:
             await modlog.register_casetype(**forcechange_case)
             await modlog.register_casetype(**freeze_case)
+            await modlog.register_casetype(**temp_case)
         except RuntimeError:
             pass
 
