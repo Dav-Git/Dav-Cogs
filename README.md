@@ -19,11 +19,11 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> |
 | check | <details><summary>Mod-check a user.</summary>The ``[p]check`` command calls the commands ``[p]userinfo``, ``[p]read`` (if [casereader](https://github.com/Dav-Git/Dav-Cogs) is installed), ``[p]warnings`` (if casereader is not installed) and ``[p]listflag`` (if [flag](https://github.com/bobloy/Fox-V3/) is installed).</details> |
 | exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> |
-| forcenick | <details><summary>Forcibly change a user's nickname.</summary>Comes with the option of creating a modlog entry for these changes.</details> |
 | mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. Make sure that you add a ``/`` or ``\`` (depending on your OS) to the end of the path to your minecraft server.</details> |
 | mover | Massmove members from one voicechannel to another. |
+| nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> |
 | prunecmd | Introduces a command to prune the member list. |
-| supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option. |
+| supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 
 # Installation
