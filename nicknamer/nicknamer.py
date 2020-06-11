@@ -204,7 +204,7 @@ class NickNamer(commands.Cog):
             await user.edit(nick=nickname)
             await ctx.tick()
             async with self.config.guild(ctx.guild).active() as active:
-                active.append(user.id, oldnick, datetime.utcnow().timestamp())
+                active.append((user.id, oldnick, datetime.utcnow().timestamp()))
             if self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
