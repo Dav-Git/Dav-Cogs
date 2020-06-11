@@ -218,7 +218,7 @@ class NickNamer(commands.Cog):
                 )
             if await self.config.guild(ctx.guild).dm():
                 try:
-                    user.send(
+                    await user.send(
                         f"Your nickname in ``{ctx.guild.name}`` has been temporarily changed."
                     )
                 except:
