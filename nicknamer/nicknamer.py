@@ -54,7 +54,7 @@ class NickNamer(commands.Cog):
             settings = await self.config.guild(after.guild).frozen()
             for e in settings:
                 if after.id in e:
-                    if nick != e[1]:
+                    if after.nick != e[1]:
                         await after.edit(nick=e[1], reason="Nickname frozen.")
 
     @tasks.loop(minutes=10)
