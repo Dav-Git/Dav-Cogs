@@ -17,10 +17,9 @@ class CaseRelayer(commands.Cog):
             await ctx.send("That case does not exist for that server.")
             return
         embed = await case.message_content(embed=True)
-        embed.remove_field(1)
+        embed.remove_field(0)
         try:
             await user.send(embed=embed)
-            await ctx.send(embed=embed)
             await ctx.send(f"Case has been relayed to {user.name}#{user.discriminator}.")
         except:
             await ctx.send("Something went wrong.")
