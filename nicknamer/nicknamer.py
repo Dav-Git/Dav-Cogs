@@ -150,7 +150,7 @@ class NickNamer(commands.Cog):
             await user.edit(nick=nickname)
             await ctx.tick()
             async with self.config.guild(ctx.guild).frozen() as frozen:
-                frozen.append(user.id, nickname)
+                frozen.append((user.id, nickname))
             if await self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
