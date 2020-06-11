@@ -11,7 +11,7 @@ class NickNamer(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=190420201535, force_registration=True)
-        standard = {"modlog": True, "nick": "CHANGEME", "dm": False, "frozen": []}
+        standard = {"modlog": True, "nick": "CHANGEME", "dm": False, "frozen": [], "active": []}
         self.config.register_guild(**standard)
         self._rename_tempnicknames.start()
 
