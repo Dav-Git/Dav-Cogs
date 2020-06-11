@@ -175,16 +175,17 @@ class NickNamer(commands.Cog):
     async def unfreezenick(self, ctx, user: discord.Member):
         """Unfreeze a user's nickname."""
         async with self.config.guild(ctx.guild).frozen() as frozen:
-            if user.id in frozen:
-                frozen.remove(user.id)
-                await ctx.tick()
-                if await self.config.guild(ctx.guild).dm():
-                    try:
-                        await user.send(
-                            f"Your nickname on ``{ctx.guild.name}`` has been unfrozen."
-                        )
-                    except:
-                        pass
+            for e in frozen:
+                if user.id in e:
+                    frozen.remove(e)
+                    await ctx.tick()
+                    if await self.config.guild(ctx.guild).dm():
+                        try:
+                            await user.send(
+                                f"Your nickname on ``{ctx.guild.name}`` has been unfrozen."
+                            )
+                        except:
+                            pass
 
     @checks.mod()
     @commands.command()
