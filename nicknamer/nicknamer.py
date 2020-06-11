@@ -51,8 +51,11 @@ class NickNamer(commands.Cog):
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
         if before.nick != after.nick:
-            if after.id in await self.config.guild(after.guild).frozen():
-                await after.edit(nick=before.nick, reason="Nickname frozen.")
+            settings = await self.config.guild(after.guild).frozen()
+            for e in settings:
+                if after.id in e:
+                    if nick != e[1]:
+                        await after.edit(nick=e[1], reason="Nickname frozen.")
 
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
@@ -147,7 +150,7 @@ class NickNamer(commands.Cog):
             await user.edit(nick=nickname)
             await ctx.tick()
             async with self.config.guild(ctx.guild).frozen() as frozen:
-                frozen.append(user.id)
+                frozen.append(user.id, nickname)
             if await self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
