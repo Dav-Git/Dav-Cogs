@@ -175,7 +175,7 @@ class NickNamer(commands.Cog):
             if user.id in frozen:
                 frozen.remove(user.id)
                 await ctx.tick()
-                if self.config.guild(ctx.guild).dm():
+                if await self.config.guild(ctx.guild).dm():
                     try:
                         await user.send(
                             f"Your nickname on ``{ctx.guild.name}`` has been unfrozen."
