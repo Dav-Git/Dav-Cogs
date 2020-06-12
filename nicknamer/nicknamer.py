@@ -60,7 +60,7 @@ class NickNamer(commands.Cog):
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
         for guild in self.bot.guilds:
-            settings = await self.config.guild(guild).all()
+            async with await self.config.guild(guild).all() as settings:
             if not settings["active"]:
                 continue
             else:
@@ -70,6 +70,7 @@ class NickNamer(commands.Cog):
                         await guild.get_member(e[0]).edit(
                             nick=e[1], reason="Temporary nickname expired."
                         )
+                        await settings["active"].remove(e)
                         if settings["dm"]:
                             await guild.get_member(e[0]).send(
                                 f"Your nickname in ``{guild.name}`` has been reset to your original nickname."
