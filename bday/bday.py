@@ -33,7 +33,7 @@ class Bday(commands.Cog):
             await ctx.send("Happy birthday {} !".format(user.mention))
             async with self.config.bdays() as bdays:
                 bdays.append(
-                    (user.id, ctx.guild.id, (datetime.utcnow() + timedelta(days=1).timestamp()))
+                    (user.id, ctx.guild.id, (datetime.utcnow() + timedelta(days=1)).timestamp())
                 )
         else:
             await ctx.send(
