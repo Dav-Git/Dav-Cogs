@@ -32,7 +32,9 @@ class Bday(commands.Cog):
             )
             await ctx.send("Happy birthday {} !".format(user.mention))
             async with self.config.bdays() as bdays:
-                bdays.append((user.id, ctx.guild.id, (datetime.utcnow()+timedelta(days=1).timestamp()))
+                bdays.append(
+                    (user.id, ctx.guild.id, (datetime.utcnow() + timedelta(days=1).timestamp()))
+                )
         else:
             await ctx.send(
                 "You need to configure a birthday role first by using ``[p]setbirthday``."
@@ -41,9 +43,7 @@ class Bday(commands.Cog):
     @commands.command()
     @checks.admin()
     async def setbirthday(self, ctx, role: discord.Role):
-
         """Set the role that will be assigned on a birthday."""
-
         await self.config.guild(ctx.guild).bdayRole.set(role.id)
         await ctx.send("The birthday role has been set to {}".format(role.name))
 
