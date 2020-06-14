@@ -1,5 +1,5 @@
 import discord
-from datetime import datetime
+from datetime import datetime, timedelta
 from discord.ext import tasks
 from redbot.core import commands, checks, Config
 
@@ -32,7 +32,7 @@ class Bday(commands.Cog):
             )
             await ctx.send("Happy birthday {} !".format(user.mention))
             async with self.config.bdays() as bdays:
-                bdays.append((user.id, ctx.guild.id, datetime.utcnow().timestamp()))
+                bdays.append((user.id, ctx.guild.id, (datetime.utcnow()+timedelta(days=1).timestamp()))
         else:
             await ctx.send(
                 "You need to configure a birthday role first by using ``[p]setbirthday``."
@@ -61,11 +61,11 @@ class Bday(commands.Cog):
 
     @tasks.loop(hours=1)
     async def bdaytask(self):
-        time = datetime.utcnow().timestamp()
+        time = datetime.utcnow()
         async with self.config.bdays() as bdays:
             for bday in bdays:
-                delta = bday[2] - time
-                if delta.seconds > 86400:
+                expiry = datetime.utcfromtimestamp(bday[2])
+                if time > expiry:
                     guild = self.bot.get_guild(bday[1])
                     await guild.get_member(bday[0]).remove_roles(
                         guild.get_role(await self.config.guild(guild).bdayRole()),
