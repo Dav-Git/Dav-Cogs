@@ -71,3 +71,4 @@ class Bday(commands.Cog):
                         guild.get_role(await self.config.guild(guild).bdayRole()),
                         reason="24h have passed. This birthday must be over.",
                     )
+                    bdays.remove(bday)
