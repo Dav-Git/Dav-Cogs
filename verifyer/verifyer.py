@@ -29,7 +29,7 @@ class Verifyer(commands.Cog):
         if not member:
             member = ctx.author
         try:
-            verifiedtext = self.config.guild(ctx.guild).verifiedtext()
+            verifiedtext = await self.config.guild(ctx.guild).verifiedtext()
             if verifiedtext:
                 await member.send(verifiedtext)
         except discord.Forbidden:
