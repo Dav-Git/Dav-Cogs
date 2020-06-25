@@ -1,0 +1,72 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 23:47+0200\n"
+"PO-Revision-Date: 2020-06-25 22:14\n"
+"Last-Translator: \n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: da\n"
+"X-Crowdin-File: /master/verifyer/locales/messages.pot\n"
+"X-Crowdin-File-ID: 62\n"
+"Language: da_DK\n"
+
+#: verifyer\verifyer.py:28
+msgid "Verification required."
+msgstr ""
+
+#: verifyer\verifyer.py:45 verifyer\verifyer.py:52
+msgid "Member verified themselves."
+msgstr ""
+
+#: verifyer\verifyer.py:62
+#, docstring
+msgid "Settings for verifyer"
+msgstr ""
+
+#: verifyer\verifyer.py:68
+#, docstring
+msgid "Set the role to assign to a user on guild join.\\n\\nLeave empty to disable this feature."
+msgstr ""
+
+#: verifyer\verifyer.py:72
+msgid "Verification role disabled."
+msgstr ""
+
+#: verifyer\verifyer.py:76
+msgid "Verification role set to {rolemention}."
+msgstr ""
+
+#: verifyer\verifyer.py:82
+#, docstring
+msgid "Specify what message should be DMed to a user when they join the guild.\\n\\nLeave empty to disable this feature."
+msgstr ""
+
+#: verifyer\verifyer.py:84 verifyer\verifyer.py:91
+msgid "Message set to: ```{text}```"
+msgstr ""
+
+#: verifyer\verifyer.py:89
+#, docstring
+msgid "Specify what message should be DMed to a user when they verify themselves.\\n\\nLeave empty to disable this feature."
+msgstr ""
+
+#: verifyer\verifyer.py:96
+#, docstring
+msgid "Set the role to assign to a user when they verify themselves.\\n\\nLeave empty to disable this feature."
+msgstr ""
+
+#: verifyer\verifyer.py:100
+msgid "Member role disabled."
+msgstr ""
+
+#: verifyer\verifyer.py:103
+msgid "Member role set to {rolemention}."
+msgstr ""
+
