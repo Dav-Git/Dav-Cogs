@@ -1,0 +1,36 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 22:55+0200\n"
+"PO-Revision-Date: 2020-06-25 22:08\n"
+"Last-Translator: \n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: nl\n"
+"X-Crowdin-File: /master/check/locales/messages.pot\n"
+"X-Crowdin-File-ID: 50\n"
+"Language: nl_NL\n"
+
+#: check\check.py:10
+#, docstring
+msgid "Check"
+msgstr ""
+
+#: check\check.py:23
+msgid ":mag_right: Starting lookup for: {usermention}({userid})"
+msgstr ""
+
+#: check\check.py:29
+msgid ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
+msgstr ""
+
+#: check\check.py:48
+msgid "Lookup completed."
+msgstr ""
+
