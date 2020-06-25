@@ -1,0 +1,14 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Add a safety barrier to your discord server and require users to run a command before accessing the server.",
+    "hidden": false,
+    "install_msg": "Thank you for installing verifyer. Please complete the setup by looking at ``[p]verifyerset``.",
+    "short": "Force users to verify themselves.",
+    "tags": [
+        "safety",
+        "security",
+        "verification"
+    ]
+}
