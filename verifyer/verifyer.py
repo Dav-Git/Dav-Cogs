@@ -1,8 +1,12 @@
 from redbot.core import commands, Config
 import discord
 from typing import Optional
+from redbot.core.i18n import Translator, cog_i18n
+
+_ = Translator("Verifyer", __file__)
 
 
+@cog_i18n(_)
 class Verifyer(commands.Cog):
     def __init__(self):
         self.config = Config.get_conf(self, identifier=250620201622, force_registration=True)
@@ -21,7 +25,7 @@ class Verifyer(commands.Cog):
             await member.send(text)
         role = await self.config.guild(member.guild).role()
         if role:
-            await member.add_roles(member.guild.get_role(role), reason="Verification required.")
+            await member.add_roles(member.guild.get_role(role), reason=_("Verification required."))
 
     @commands.guild_only()
     @commands.command()
@@ -38,14 +42,14 @@ class Verifyer(commands.Cog):
         if role:
             try:
                 await member.remove_roles(
-                    ctx.guild.get_role(role), reason="Member verified themselves."
+                    ctx.guild.get_role(role), reason=_("Member verified themselves.")
                 )
             except:
                 pass
         memrole = await self.config.guild(ctx.guild).memrole()
         if memrole:
             await member.add_roles(
-                ctx.guild.get_role(memrole), reason="Member verified themselves."
+                ctx.guild.get_role(memrole), reason=_("Member verified themselves.")
             )
         try:
             await ctx.message.remove()
@@ -65,24 +69,26 @@ class Verifyer(commands.Cog):
         if not role:
             await self.config.guild(ctx.guild).role.set(None)
             await ctx.send_help()
-            await ctx.send("Verification role disabled.")
+            await ctx.send(_("Verification role disabled."))
         else:
             await self.config.guild(ctx.guild).role.set(role.id)
-            await ctx.send(f"Verification role set to {role.mention}.")
+            await ctx.send(
+                _("Verification role set to {rolemention}.").format(rolemention=role.mention)
+            )
 
     @commands.guild_only()
     @verifyerset.command()
     async def message(self, ctx, *, text: Optional[str]):
         """Specify what message should be DMed to a user when they join the guild.\n\nLeave empty to disable this feature."""
         await self.config.guild(ctx.guild).text.set(text)
-        await ctx.send(f"Message set to: ```{text}```")
+        await ctx.send(_("Message set to: ```{text}```").format(text=text))
 
     @commands.guild_only()
     @verifyerset.command()
     async def verifiedmessage(self, ctx, *, text: Optional[str]):
         """Specify what message should be DMed to a user when they verify themselves.\n\nLeave empty to disable this feature."""
         await self.config.guild(ctx.guild).verifiedtext.set(text)
-        await ctx.send(f"Message set to: ```{text}```")
+        await ctx.send(_("Message set to: ```{text}```").format(text=text))
 
     @commands.guild_only()
     @verifyerset.command()
@@ -91,7 +97,7 @@ class Verifyer(commands.Cog):
         if not role:
             await self.config.guild(ctx.guild).role.set(None)
             await ctx.send_help()
-            await ctx.send("Member role disabled.")
+            await ctx.send(_("Member role disabled."))
         else:
             await self.config.guild(ctx.guild).memrole.set(role.id)
-            await ctx.send(f"Member role set to {role.mention}.")
+            await ctx.send(_("Member role set to {rolemention}.").format(rolemention=role.mention))
