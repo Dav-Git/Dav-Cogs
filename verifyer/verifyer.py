@@ -64,6 +64,7 @@ class Verifyer(commands.Cog):
         """Set the role to assign to a user on guild join.\n\nLeave empty to disable this feature."""
         if not role:
             await self.config.guild(ctx.guild).role.set(None)
+            await ctx.send_help()
             await ctx.send("Verification role disabled.")
         else:
             await self.config.guild(ctx.guild).role.set(role.id)
@@ -89,6 +90,7 @@ class Verifyer(commands.Cog):
         """Set the role to assign to a user when they verify themselves.\n\nLeave empty to disable this feature."""
         if not role:
             await self.config.guild(ctx.guild).role.set(None)
+            await ctx.send_help()
             await ctx.send("Member role disabled.")
         else:
             await self.config.guild(ctx.guild).memrole.set(role.id)
