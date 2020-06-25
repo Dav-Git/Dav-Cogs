@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 22:22+0200\n"
+"PO-Revision-Date: 2020-06-25 22:10\n"
+"Last-Translator: \n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: tr\n"
+"X-Crowdin-File: /master/botstatus/locales/messages.pot\n"
+"X-Crowdin-File-ID: 46\n"
+"Language: tr_TR\n"
+
+#: botstatus\botstatus.py:12
+#, docstring
+msgid "Botstatus"
+msgstr ""
+
+#: botstatus\botstatus.py:51
+#, docstring
+msgid "Set a status that doesn't dissappear on reboot.\\n            Usage: [p]botstatus <type> <status> <text>"
+msgstr ""
+
+#: botstatus\botstatus.py:57
+#, docstring
+msgid "Usage: [p]botstatus playing <status> <text>"
+msgstr ""
+
+#: botstatus\botstatus.py:63 botstatus\botstatus.py:72
+#: botstatus\botstatus.py:81 botstatus\botstatus.py:90
+#: botstatus\botstatus.py:104 botstatus\botstatus.py:113
+#: botstatus\botstatus.py:122 botstatus\botstatus.py:131
+#: botstatus\botstatus.py:145 botstatus\botstatus.py:154
+#: botstatus\botstatus.py:163 botstatus\botstatus.py:172
+#: botstatus\botstatus.py:186 botstatus\botstatus.py:195
+#: botstatus\botstatus.py:204 botstatus\botstatus.py:213
+msgid "The chracter limit for status messages is 128."
+msgstr ""
+
+#: botstatus\botstatus.py:67
+msgid "Status set to ``Online | Playing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:76
+msgid "Status set to ``Idle | Playing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:85
+msgid "Status set to ``DND | Playing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:94
+msgid "Status set to ``Offline | Playing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:98
+#, docstring
+msgid "Usage: [p]botstatus listening <status> <text>"
+msgstr ""
+
+#: botstatus\botstatus.py:108
+msgid "Status set to ``Online | Listening to {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:117
+msgid "Status set to ``Idle | Listening to {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:126
+msgid "Status set to ``DND | Listening to {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:135
+msgid "Status set to ``Offline | Listening to {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:139
+#, docstring
+msgid "Usage: [p]botstatus watching <status> <text>"
+msgstr ""
+
+#: botstatus\botstatus.py:149
+msgid "Status set to ``Online | Watching {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:158
+msgid "Status set to ``Idle | Watching {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:167
+msgid "Status set to ``DND | Watching {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:176
+msgid "Status set to ``Offline | Watching {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:180
+#, docstring
+msgid "Usage: [p]botstatus streaming <status> <text>"
+msgstr ""
+
+#: botstatus\botstatus.py:190
+msgid "Status set to ``Online | Streaming {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:199
+msgid "Status set to ``Idle | Streaming {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:208
+msgid "Status set to ``DND | Streaming {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:217
+msgid "Status set to ``Offline | Streaming {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:221
+#, docstring
+msgid "Clear the saved botstatus and disable auto-setting on reboot."
+msgstr ""
+
+#: botstatus\botstatus.py:223
+msgid "Saved botstatus has been cleared."
+msgstr ""
+
