@@ -1,0 +1,36 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 22:58+0200\n"
+"PO-Revision-Date: 2020-06-25 22:09\n"
+"Last-Translator: \n"
+"Language-Team: Norwegian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: no\n"
+"X-Crowdin-File: /master/caserelayer/locales/messages.pot\n"
+"X-Crowdin-File-ID: 48\n"
+"Language: no_NO\n"
+
+#: caserelayer\caserelayer.py:10
+#, docstring
+msgid "CaseRelayer"
+msgstr ""
+
+#: caserelayer\caserelayer.py:21
+msgid "That case does not exist for that server."
+msgstr ""
+
+#: caserelayer\caserelayer.py:28
+msgid "Case has been relayed to {username}#{userdiscriminator}."
+msgstr ""
+
+#: caserelayer\caserelayer.py:33
+msgid "Something went wrong."
+msgstr ""
+
