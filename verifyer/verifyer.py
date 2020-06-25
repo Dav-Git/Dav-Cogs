@@ -23,6 +23,7 @@ class Verifyer(commands.Cog):
         if role:
             await member.add_roles(member.guild.get_role(role), reason="Verification required.")
 
+    @commands.guild_only()
     @commands.command()
     async def verify(self, ctx, member: Optional[discord.Member]):
         if not member:
@@ -51,31 +52,44 @@ class Verifyer(commands.Cog):
         except:
             pass
 
+    @commands.guild_only()
     @commands.group()
     async def verifyerset(self, ctx):
         """Settings for verifyer"""
         pass
 
+    @commands.guild_only()
     @verifyerset.command()
     async def role(self, ctx, role: Optional[discord.Role]):
         """Set the role to assign to a user on guild join.\n\nLeave empty to disable this feature."""
-        await self.config.guild(ctx.guild).role.set(role.id)
-        await ctx.send(f"Verification role set to {role.mention}.")
+        if not role:
+            await self.config.guild(ctx.guild).role.set(None)
+            await ctx.send("Verification role disabled.")
+        else:
+            await self.config.guild(ctx.guild).role.set(role.id)
+            await ctx.send(f"Verification role set to {role.mention}.")
 
+    @commands.guild_only()
     @verifyerset.command()
     async def message(self, ctx, text: Optional[str]):
         """Specify what message should be DMed to a user when they join the guild.\n\nLeave empty to disable this feature."""
         await self.config.guild(ctx.guild).text.set(text)
         await ctx.send(f"Message set to: ```{text}```")
 
+    @commands.guild_only()
     @verifyerset.command()
     async def verifiedmessage(self, ctx, text: Optional[str]):
         """Specify what message should be DMed to a user when they verify themselves.\n\nLeave empty to disable this feature."""
         await self.config.guild(ctx.guild).verifiedtext.set(text)
         await ctx.send(f"Message set to: ```{text}```")
 
+    @commands.guild_only()
     @verifyerset.command()
     async def memberrole(self, ctx, role: Optional[discord.Role]):
         """Set the role to assign to a user when they verify themselves.\n\nLeave empty to disable this feature."""
-        await self.config.guild(ctx.guild).memrole.set(role.id)
-        await ctx.send(f"Member role set to {role.mention}.")
+        if not role:
+            await self.config.guild(ctx.guild).role.set(None)
+            await ctx.send("Member role disabled.")
+        else:
+            await self.config.guild(ctx.guild).memrole.set(role.id)
+            await ctx.send(f"Member role set to {role.mention}.")
