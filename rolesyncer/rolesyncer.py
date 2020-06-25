@@ -1,8 +1,12 @@
 import logging
 import discord
 from redbot.core import commands, checks, Config
+from redbot.core.i18n import Translator, cog_i18n
+
+_ = Translator("RoleSyncer", __file__)
 
 
+@cog_i18n(_)
 class RoleSyncer(commands.Cog):
     """Sync Roles"""
 
@@ -24,14 +28,20 @@ class RoleSyncer(commands.Cog):
                     if r1 in after.roles:
                         try:
                             await after.add_roles(
-                                r2, reason=f"One-way rolesync / {r1.name} added."
+                                r2,
+                                reason=_("One-way rolesync / {r1name} added.").format(
+                                    r1name=r1.name
+                                ),
                             )
                         except discord.HTTPException as e:
                             self.log.exception(e, exc_info=True)
                     elif r1 in before.roles:
                         try:
                             await after.remove_roles(
-                                r2, reason=f"One-way rolesync / {r1.name} removed."
+                                r2,
+                                reason=_("One-way rolesync / {r1name} removed.").format(
+                                    r1name=r1.name
+                                ),
                             )
                         except discord.HTTPException as e:
                             self.log.exception(e, exc_info=True)
@@ -41,25 +51,31 @@ class RoleSyncer(commands.Cog):
                         if not r1 in after.roles:
                             try:
                                 await after.remove_roles(
-                                    r2, reason=f"Two-way rolesync / {r1.name} removed."
+                                    r2,
+                                    reason=_("Two-way rolesync / {r1name} removed.").format(
+                                        r1name=r1.name
+                                    ),
                                 )
                             except discord.HTTPException as e:
                                 self.log.exception(e, exc_info=True)
                         elif not r2 in after.roles:
                             try:
                                 await after.remove_roles(
-                                    r1, reason=f"Two-way rolesync / {r2.name} removed."
+                                    r1,
+                                    reason=_("Two-way rolesync / {r2name} removed.").format(
+                                        r2name=r2.name
+                                    ),
                                 )
                             except discord.HTTPException as e:
                                 self.log.exception(e, exc_info=True)
                     elif r1 in after.roles:
                         try:
-                            await after.add_roles(r2, reason="Two-way rolesync")
+                            await after.add_roles(r2, reason=_("Two-way rolesync"))
                         except discord.HTTPException as e:
                             self.log.exception(e, exc_info=True)
                     elif r2 in after.roles:
                         try:
-                            await after.add_roles(r1, reason="Two-way rolesync")
+                            await after.add_roles(r1, reason=_("Two-way rolesync"))
                         except discord.HTTPException as e:
                             self.log.exception(e, exc_info=True)
             except Exception as e:
@@ -77,7 +93,11 @@ class RoleSyncer(commands.Cog):
 
         async with self.config.guild(ctx.guild).onesync() as conf:
             conf.append((role1.id, role2.id))
-        await ctx.send(f"{role2.name} will now be synced to {role1.name}")
+        await ctx.send(
+            _("{role2name} will now be synced to {role1name}").format(
+                role2name=role2.name, role1name=role1.name
+            )
+        )
 
     @rolesyncer.command()
     @checks.admin()
@@ -86,7 +106,11 @@ class RoleSyncer(commands.Cog):
 
         async with self.config.guild(ctx.guild).twosync() as conf:
             conf.append((role1.id, role2.id))
-        await ctx.send(f"{role1.name} and {role2.name} will now be synced.")
+        await ctx.send(
+            _("{role1name} and {role2name} will now be synced.").format(
+                role1name=role1.name, role2name=role2.name
+            )
+        )
 
     @commands.group()
     @checks.admin()
@@ -102,9 +126,13 @@ class RoleSyncer(commands.Cog):
             for e in conf:
                 if role1.id in e and role2.id in e:
                     conf.remove(e)
-                    await ctx.send(f"Sync removed from {role1.name} and {role2.name}.")
+                    await ctx.send(
+                        _("Sync removed from {role1name} and {role2name}.").format(
+                            role1name=role1.name, role2name=role2.name
+                        )
+                    )
                     return
-        await ctx.send("Couldn't find these roles in the sync database.")
+        await ctx.send(_("Couldn't find these roles in the sync database."))
 
     @unsync.command(name="twoway")
     @checks.admin()
@@ -114,9 +142,13 @@ class RoleSyncer(commands.Cog):
             for e in conf:
                 if role1.id in e and role2.id in e:
                     conf.remove(e)
-                    await ctx.send(f"Sync removed from {role1.name} and {role2.name}.")
+                    await ctx.send(
+                        _("Sync removed from {role1name} and {role2name}.").format(
+                            role1name=role1.name, role2name=role2.name
+                        )
+                    )
                     return
-        await ctx.send("Couldn't find these roles in the sync database.")
+        await ctx.send(_("Couldn't find these roles in the sync database."))
 
     @commands.command()
     @checks.admin()
@@ -124,7 +156,7 @@ class RoleSyncer(commands.Cog):
         """List all exclusive roles"""
 
         settings = await self.config.guild(ctx.guild).all()
-        embed = discord.Embed(title="Rolesync")
+        embed = discord.Embed(title=_("Rolesync"))
         mentions = []
         for roles in settings["onesync"]:
             mentions.append(
@@ -132,8 +164,8 @@ class RoleSyncer(commands.Cog):
             )
         text = "\n".join(mentions)
         if not text:
-            text = "No roles in one-way sync."
-        embed.add_field(name="One-way sync:", value=text)
+            text = _("No roles in one-way sync.")
+        embed.add_field(name=_("One-way sync:"), value=text)
         mentions = []
         for roles in settings["twosync"]:
             mentions.append(
@@ -141,6 +173,6 @@ class RoleSyncer(commands.Cog):
             )
         text2 = "\n".join(mentions)
         if not text2:
-            text2 = "No roles in two-way sync."
-        embed.add_field(name="Two-way sync:", value=text2)
+            text2 = _("No roles in two-way sync.")
+        embed.add_field(name=_("Two-way sync:"), value=text2)
         await ctx.send(embed=embed)
