@@ -1,7 +1,11 @@
 from redbot.core import modlog, commands, checks
 import discord
+from redbot.core.i18n import Translator, cog_i18n
+
+_ = Translator("CaseRelayer", __file__)
 
 
+@cog_i18n(_)
 class CaseRelayer(commands.Cog):
     """CaseRelayer"""
 
@@ -14,12 +18,16 @@ class CaseRelayer(commands.Cog):
         try:
             case = await modlog.get_case(case_no, ctx.guild, self.bot)
         except RuntimeError:
-            await ctx.send("That case does not exist for that server.")
+            await ctx.send(_("That case does not exist for that server."))
             return
         embed = await case.message_content(embed=True)
         embed.remove_field(0)
         try:
             await user.send(embed=embed)
-            await ctx.send(f"Case has been relayed to {user.name}#{user.discriminator}.")
+            await ctx.send(
+                _("Case has been relayed to {username}#{userdiscriminator}.").format(
+                    username=user.name, userdiscriminator=user.discriminator
+                )
+            )
         except:
-            await ctx.send("Something went wrong.")
+            await ctx.send(_("Something went wrong."))
