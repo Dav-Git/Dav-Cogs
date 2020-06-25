@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 23:31+0200\n"
+"PO-Revision-Date: 2020-06-25 22:08\n"
+"Last-Translator: \n"
+"Language-Team: Korean\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: ko\n"
+"X-Crowdin-File: /master/prunecmd/locales/messages.pot\n"
+"X-Crowdin-File-ID: 58\n"
+"Language: ko_KR\n"
+
+#: prunecmd\prunecmd.py:9
+#, docstring
+msgid "Prunecmd"
+msgstr ""
+
+#: prunecmd\prunecmd.py:21
+msgid "The member list has been pruned successfully"
+msgstr ""
+
