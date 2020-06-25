@@ -4,8 +4,12 @@ from pathlib import Path
 import aiohttp
 from discord import Embed
 from redbot.core import Config, checks, commands
+from redbot.core.i18n import Translator, cog_i18n
+
+_ = Translator("McWhitelister", __file__)
 
 
+@cog_i18n(_)
 class McWhitelister(commands.Cog):
     def __init__(self):
         self.config = Config.get_conf(self, identifier=110320200153)
@@ -41,7 +45,7 @@ class McWhitelister(commands.Cog):
             for e in file:
                 if e["name"] == name:
                     whitelisted = True
-                    await ctx.send("{} is already on the whitelist.".format(name))
+                    await ctx.send(_("{} is already on the whitelist.").format(name))
             if not whitelisted:
                 try:
                     async with aiohttp.ClientSession() as session:
@@ -56,10 +60,10 @@ class McWhitelister(commands.Cog):
                     }
                     await self.config.guild(ctx.guild).players.set(p_in_conf)
                 except:
-                    await ctx.send("{} is not a valid username.".format(name))
+                    await ctx.send(_("{} is not a valid username.").format(name))
                     return
                 await ctx.send(
-                    "{} successfully whitelisted {}.".format(
+                    _("{} successfully whitelisted {}.").format(
                         ctx.author.mention, playerinfo["name"]
                     )
                 )
@@ -67,7 +71,7 @@ class McWhitelister(commands.Cog):
                 with open(path, "w") as json_file:
                     json.dump(file, json_file, indent=4)
         else:
-            await ctx.send("You need to set a path with ``[p]whitelister setup`` first.")
+            await ctx.send(_("You need to set a path with ``[p]whitelister setup`` first."))
 
     @checks.is_owner()
     @whitelister.command()
@@ -80,9 +84,9 @@ class McWhitelister(commands.Cog):
         p = Path(path)
         if p.exists():
             await self.config.guild(ctx.guild).path_to_server.set(path)
-            await ctx.send("Path set to {}".format(path))
+            await ctx.send(_("Path set to {}").format(path))
         else:
-            await ctx.send("The whitelist.json could not be found at this path.")
+            await ctx.send(_("The whitelist.json could not be found at this path."))
 
     @checks.admin()
     @whitelister.command(name="list")
@@ -93,11 +97,11 @@ class McWhitelister(commands.Cog):
             outstr.append(
                 "{} | {} \n".format(ctx.guild.get_member(int(e)).mention, p_in_config[e]["name"])
             )
-        emb = Embed(title="Whielisted with whitelister:")
+        emb = Embed(title=_("Whielisted with whitelister:"))
         if len(p_in_config) == 0:
             emb.add_field(
-                name="Whitelisted", value="Nobody was whitelisted using whitelister yet."
+                name=_("Whitelisted"), value=_("Nobody was whitelisted using whitelister yet.")
             )
         else:
-            emb.add_field(name="Whitelisted", value="".join(outstr))
+            emb.add_field(name=_("Whitelisted"), value="".join(outstr))
         await ctx.send(embed=emb)
