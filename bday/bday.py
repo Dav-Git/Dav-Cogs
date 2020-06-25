@@ -1,9 +1,14 @@
-import discord
 from datetime import datetime, timedelta
+
+import discord
 from discord.ext import tasks
-from redbot.core import commands, checks, Config
+from redbot.core import Config, checks, commands
+from redbot.core.i18n import Translator, cog_i18n
+
+_ = Translator("Bday", __file__)
 
 
+@cog_i18n(_)
 class Bday(commands.Cog):
     """Bday"""
 
@@ -28,16 +33,16 @@ class Bday(commands.Cog):
         if not await self.config.guild(ctx.guild).bdayRole() == 0:
             await user.add_roles(
                 ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
-                reason="It's their birthday!",
+                reason=_("It's their birthday!"),
             )
-            await ctx.send("Happy birthday {} !".format(user.mention))
+            await ctx.send(_("Happy birthday {} !").format(user.mention))
             async with self.config.bdays() as bdays:
                 bdays.append(
                     (user.id, ctx.guild.id, (datetime.utcnow() + timedelta(days=1)).timestamp())
                 )
         else:
             await ctx.send(
-                "You need to configure a birthday role first by using ``[p]setbirthday``."
+                _("You need to configure a birthday role first by using ``[p]setbirthday``.")
             )
 
     @commands.command()
@@ -45,7 +50,7 @@ class Bday(commands.Cog):
     async def setbirthday(self, ctx, role: discord.Role):
         """Set the role that will be assigned on a birthday."""
         await self.config.guild(ctx.guild).bdayRole.set(role.id)
-        await ctx.send("The birthday role has been set to {}".format(role.name))
+        await ctx.send(_("The birthday role has been set to {}").format(role.name))
 
     @commands.command()
     @checks.mod()
@@ -56,7 +61,7 @@ class Bday(commands.Cog):
         for user in ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()).members:
             await user.remove_roles(
                 ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
-                reason="Birthdays cleared.",
+                reason=_("Birthdays cleared."),
             )
 
     @tasks.loop(hours=1)
@@ -69,6 +74,6 @@ class Bday(commands.Cog):
                     guild = self.bot.get_guild(bday[1])
                     await guild.get_member(bday[0]).remove_roles(
                         guild.get_role(await self.config.guild(guild).bdayRole()),
-                        reason="24h have passed. This birthday must be over.",
+                        reason=_("24h have passed. This birthday must be over."),
                     )
                     bdays.remove(bday)

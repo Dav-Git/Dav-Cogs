@@ -2,3 +2,4 @@ __pycache__/
 readyPS.txt
 .vscode/
 desktop.ini
+*.mo
