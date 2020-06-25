@@ -1,9 +1,14 @@
-import discord
 from datetime import datetime, timedelta
+
+import discord
 from discord.ext import tasks
-from redbot.core import commands, checks, Config
+from redbot.core import Config, checks, commands
+from redbot.core.i18n import Translator, cog_i18n
+
+_ = Translator("Bday", __file__)
 
 
+@cog_i18n(_)
 class Bday(commands.Cog):
     """Bday"""
 
