@@ -45,6 +45,10 @@ E-Mail me dav@mail.stopdavabuse.de\
 Cogs not listed above will **NOT** work on your bot.\
 You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
 
+# Contributing
+
+Want to help out with translating or developing these cogs?\
+Please check [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/TRANSLATING.md) for translation instructions and [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/CONTRIBUTING.md) for contribution guidelines.
 # Credits
 
 Thanks to Draper for helping with exclusiveroles.
