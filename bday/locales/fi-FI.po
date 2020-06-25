@@ -1,0 +1,53 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 19:44+0200\n"
+"PO-Revision-Date: 2020-06-25 22:14\n"
+"Last-Translator: \n"
+"Language-Team: Finnish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: fi\n"
+"X-Crowdin-File: /master/bday/locales/messages.pot\n"
+"X-Crowdin-File-ID: 44\n"
+"Language: fi_FI\n"
+
+#: bday\bday.py:13
+#, docstring
+msgid "Bday"
+msgstr ""
+
+#: bday\bday.py:36
+msgid "It's their birthday!"
+msgstr ""
+
+#: bday\bday.py:38
+msgid "Happy birthday {} !"
+msgstr ""
+
+#: bday\bday.py:45
+msgid "You need to configure a birthday role first by using ``[p]setbirthday``."
+msgstr ""
+
+#: bday\bday.py:51
+#, docstring
+msgid "Set the role that will be assigned on a birthday."
+msgstr ""
+
+#: bday\bday.py:53
+msgid "The birthday role has been set to {}"
+msgstr ""
+
+#: bday\bday.py:64
+msgid "Birthdays cleared."
+msgstr ""
+
+#: bday\bday.py:77
+msgid "24h have passed. This birthday must be over."
+msgstr ""
+
