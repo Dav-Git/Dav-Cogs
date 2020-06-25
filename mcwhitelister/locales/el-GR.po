@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dav-cogs\n"
+"POT-Creation-Date: 2020-06-25 23:13+0200\n"
+"PO-Revision-Date: 2020-06-25 22:14\n"
+"Last-Translator: \n"
+"Language-Team: Greek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: dav-cogs\n"
+"X-Crowdin-Project-ID: 409074\n"
+"X-Crowdin-Language: el\n"
+"X-Crowdin-File: /master/mcwhitelister/locales/messages.pot\n"
+"X-Crowdin-File-ID: 54\n"
+"Language: el_GR\n"
+
+#: mcwhitelister\mcwhitelister.py:48
+msgid "{} is already on the whitelist."
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:63
+msgid "{} is not a valid username."
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:66
+msgid "{} successfully whitelisted {}."
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:74
+msgid "You need to set a path with ``[p]whitelister setup`` first."
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:79
+#, docstring
+msgid "Set up the path to your minecraft server jar.\\n        It needs to lead to the folder that contains both the server jar and whitelist.json .\\n\\n        Example on a linux system:\\n        ``[p]whitelister setup /home/user/mcserver/whitelist.json``"
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:87
+msgid "Path set to {}"
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:89
+msgid "The whitelist.json could not be found at this path."
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:100
+msgid "Whielisted with whitelister:"
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:103 mcwhitelister\mcwhitelister.py:106
+msgid "Whitelisted"
+msgstr ""
+
+#: mcwhitelister\mcwhitelister.py:103
+msgid "Nobody was whitelisted using whitelister yet."
+msgstr ""
+
