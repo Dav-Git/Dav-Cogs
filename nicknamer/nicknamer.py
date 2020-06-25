@@ -14,8 +14,16 @@ class NickNamer(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
-        self.config = Config.get_conf(self, identifier=190420201535, force_registration=True)
-        standard = {"modlog": True, "nick": "CHANGEME", "dm": False, "frozen": [], "active": []}
+        self.config = Config.get_conf(
+            self, identifier=190420201535, force_registration=True
+        )
+        standard = {
+            "modlog": True,
+            "nick": "CHANGEME",
+            "dm": False,
+            "frozen": [],
+            "active": [],
+        }
         self.config.register_guild(**standard)
         self._rename_tempnicknames.start()
 
@@ -119,7 +127,9 @@ class NickNamer(commands.Cog):
 
     @checks.mod()
     @commands.command()
-    async def cnick(self, ctx, user: discord.Member, nickname: str, *, reason: Optional[str]):
+    async def cnick(
+        self, ctx, user: discord.Member, nickname: str, *, reason: Optional[str]
+    ):
         """Forcibly change a user's nickname."""
         if not reason:
             reason = _("Nickname force-changed")
@@ -200,9 +210,9 @@ class NickNamer(commands.Cog):
                     if await self.config.guild(ctx.guild).dm():
                         try:
                             await user.send(
-                                _("Your nickname on ``{ctxguildname}`` has been unfrozen.").format(
-                                    ctxguildname=ctx.guild.name
-                                )
+                                _(
+                                    "Your nickname on ``{ctxguildname}`` has been unfrozen."
+                                ).format(ctxguildname=ctx.guild.name)
                             )
                         except:
                             pass
@@ -267,7 +277,9 @@ class NickNamer(commands.Cog):
         """Set if you would like to create a modlog entry everytime a nickname is being changed."""
         await self.config.guild(ctx.guild).modlog.set(true_or_false)
         await ctx.send(
-            _("Modlog entries set to {true_or_false}.").format(true_or_false=true_or_false)
+            _("Modlog entries set to {true_or_false}.").format(
+                true_or_false=true_or_false
+            )
         )
 
     @nickset.command()
