@@ -99,14 +99,20 @@ class Verifyer(commands.Cog):
     async def message(self, ctx, *, text: Optional[str]):
         """Specify what message should be DMed to a user when they join the guild.\n\nLeave empty to disable this feature."""
         await self.config.guild(ctx.guild).text.set(text)
-        await ctx.send(_("Message set to: ```{text}```").format(text=text))
+        if text:
+            await ctx.send(_("Message set to: ```{text}```").format(text=text))
+        else:
+            await ctx.send(_("DM on join disabled."))
 
     @commands.guild_only()
     @verifyerset.command()
     async def verifiedmessage(self, ctx, *, text: Optional[str]):
         """Specify what message should be DMed to a user when they verify themselves.\n\nLeave empty to disable this feature."""
         await self.config.guild(ctx.guild).verifiedtext.set(text)
-        await ctx.send(_("Message set to: ```{text}```").format(text=text))
+        if text:
+            await ctx.send(_("Message set to: ```{text}```").format(text=text))
+        else:
+            await ctx.send(_("Message on verification disabled."))
 
     @commands.guild_only()
     @verifyerset.command()
