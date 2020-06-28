@@ -15,17 +15,21 @@ class Verifyer(commands.Cog):
             "verifiedtext": "",
             "role": None,
             "memrole": None,
+            "enabled": False,
         }
         self.config.register_guild(**default_guild)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        text = await self.config.guild(member.guild).text()
-        if text:
-            await member.send(text)
-        role = await self.config.guild(member.guild).role()
-        if role:
-            await member.add_roles(member.guild.get_role(role), reason=_("Verification required."))
+        if await self.config.guild(member.guild).enabled():
+            text = await self.config.guild(member.guild).text()
+            if text:
+                await member.send(text)
+            role = await self.config.guild(member.guild).role()
+            if role:
+                await member.add_roles(
+                    member.guild.get_role(role), reason=_("Verification required.")
+                )
 
     @commands.guild_only()
     @commands.command()
@@ -61,6 +65,20 @@ class Verifyer(commands.Cog):
     async def verifyerset(self, ctx):
         """Settings for verifyer"""
         pass
+
+    @commands.guild_only()
+    @verifyerset.command()
+    async def enable(self, ctx):
+        """Enable verifyer.\nThis is per guild."""
+        await self.config.guild(ctx.guild).enabled.set(True)
+        await ctx.send(_("Verifyer enabled."))
+
+    @commands.guild_only()
+    @verifyerset.command()
+    async def Disable(self, ctx):
+        """Disable verifyer.\nThis is per guild."""
+        await self.config.guild(ctx.guild).enabled.set(False)
+        await ctx.send(_("Verifyer disabled."))
 
     @commands.guild_only()
     @verifyerset.command()
