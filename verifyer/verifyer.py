@@ -75,7 +75,7 @@ class Verifyer(commands.Cog):
 
     @commands.guild_only()
     @verifyerset.command()
-    async def Disable(self, ctx):
+    async def disable(self, ctx):
         """Disable verifyer.\nThis is per guild."""
         await self.config.guild(ctx.guild).enabled.set(False)
         await ctx.send(_("Verifyer disabled."))
