@@ -64,23 +64,34 @@ class Roomer(commands.Cog):
             await self.config.guild(ctx.guild).auto.set(True)
             await ctx.send(_("Automatic voicechannel creation enabled."))
         except:
-            await ctx.send(_("Make sure you set a category with {command} and have at least one voicechannel in it.").format(command=f"``{ctx.clean_prefix}roomer auto category [category-ID]``"))
+            await ctx.send(
+                _(
+                    "Make sure you set a category with {command} and have at least one voicechannel in it."
+                ).format(command=f"``{ctx.clean_prefix}roomer auto category [category-ID]``")
+            )
 
     @auto.command()
-    async def disable(self,ctx):
+    async def disable(self, ctx):
         """Disable automatic voicechannel creation."""
         await self.config.guild(ctx.guild).auto.set(True)
         await ctx.send(_("Automatic voicechannel creation disabled."))
 
     @auto.command()
-    async def name(self,ctx,*,name:str):
-        """Set the name that is used for automatically created voicechannels.""""
+    async def name(self, ctx, *, name: str):
+        """Set the name that is used for automatically created voicechannels."""
         await self.config.guild(ctx.guild).name.set(name)
-        await ctx.send(_("Automatically created voicechannels will now be named ``{name}``.").format(name=name))
+        await ctx.send(
+            _("Automatically created voicechannels will now be named ``{name}``.").format(
+                name=name
+            )
+        )
 
     @auto.command()
-    async def category(self,ctx,*,category:discord.CategoryChannel):
+    async def category(self, ctx, *, category: discord.CategoryChannel):
         """Set the category used for automatic voicechannels."""
         await self.config.guild(ctx.guild).category.set(category.id)
-        await ctx.send(_("Category used for automatic voicechannels set to: {category}").format(category=category.name))
-        
+        await ctx.send(
+            _("Category used for automatic voicechannels set to: {category}").format(
+                category=category.name
+            )
+        )
