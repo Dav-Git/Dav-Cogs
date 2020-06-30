@@ -19,14 +19,15 @@ class Roomer(commands.Cog):
         settings = await self.config.guild(member.guild).all()
         if settings["auto"]:  # Autoroom stuff
             if not after.channel:
-                if len(before.channel.members) == 1:
-                    await before.channel.delete(reason=_("Channel empty"))
-                    if not member.guild.get_channel(settings["category"]).voice_channels:
-                        await member.guild.create_voice_channel(
-                            name=settings["name"],
-                            category=member.guild.get_channel(settings["category"]),
-                            reason=_("No channels exist. We need one for people to join though."),
-                        )
+                for vc in member.guild.get_channel(settings["category"]).voice_channels:
+                    if not vc.members:
+                        await vc.delete(reason=_("Channel empty"))
+                if not member.guild.get_channel(settings["category"]).voice_channels:
+                    await member.guild.create_voice_channel(
+                        name=settings["name"],
+                        category=member.guild.get_channel(settings["category"]),
+                        reason=_("No channels exist. We need one for people to join though."),
+                    )
             else:
                 channel_needed = True
                 for vc in member.guild.get_channel(settings["category"]).voice_channels:
