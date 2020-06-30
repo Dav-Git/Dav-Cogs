@@ -18,30 +18,18 @@ class Roomer(commands.Cog):
     async def on_voice_state_update(self, member, before, after):
         settings = await self.config.guild(member.guild).all()
         if settings["auto"]:  # Autoroom stuff
-            if not after.channel:
-                for vc in member.guild.get_channel(settings["category"]).voice_channels:
-                    if not vc.members:
-                        await vc.delete(reason=_("Channel empty"))
-                channel_needed = True
-                for vc in member.guild.get_channel(settings["category"]).voice_channels:
-                    if not vc.members:
-                        channel_needed = False
-                    if channel_needed:
-                        await member.guild.create_voice_channel(
-                            name=settings["name"],
-                            category=member.guild.get_channel(settings["category"]),
-                            reason=_("A channel is needed."),
-                        )
-            else:
-                channel_needed = True
-                for vc in member.guild.get_channel(settings["category"]).voice_channels:
-                    if not vc.members:
-                        channel_needed = False
+            for vc in member.guild.get_channel(settings["category"]).voice_channels:
+                if not vc.members:
+                    await vc.delete(reason=_("Channel empty"))
+            channel_needed = True
+            for vc in member.guild.get_channel(settings["category"]).voice_channels:
+                if not vc.members:
+                    channel_needed = False
                 if channel_needed:
                     await member.guild.create_voice_channel(
                         name=settings["name"],
                         category=member.guild.get_channel(settings["category"]),
-                        reason=_("Someone joined an empty VC. We need a new one."),
+                        reason=_("A channel is needed."),
                     )
 
     @commands.group()
