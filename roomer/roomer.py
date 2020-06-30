@@ -22,12 +22,16 @@ class Roomer(commands.Cog):
                 for vc in member.guild.get_channel(settings["category"]).voice_channels:
                     if not vc.members:
                         await vc.delete(reason=_("Channel empty"))
-                if not member.guild.get_channel(settings["category"]).voice_channels:
-                    await member.guild.create_voice_channel(
-                        name=settings["name"],
-                        category=member.guild.get_channel(settings["category"]),
-                        reason=_("No channels exist. We need one for people to join though."),
-                    )
+                channel_needed = True
+                for vc in member.guild.get_channel(settings["category"]).voice_channels:
+                    if not vc.members:
+                        channel_needed = False
+                    if channel_needed:
+                        await member.guild.create_voice_channel(
+                            name=settings["name"],
+                            category=member.guild.get_channel(settings["category"]),
+                            reason=_("A channel is needed."),
+                        )
             else:
                 channel_needed = True
                 for vc in member.guild.get_channel(settings["category"]).voice_channels:
