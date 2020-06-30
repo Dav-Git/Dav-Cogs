@@ -23,7 +23,7 @@ class Roomer(commands.Cog):
                 if not vc.members:
                     dellist.append(vc)
             if len(dellist) > 1:
-                dellist.remove[dellist[0]]
+                dellist.remove(dellist[0])
                 for vc in dellist:
                     await vc.delete(reason=_("Channel empty."))
             channel_needed = True
