@@ -18,9 +18,14 @@ class Roomer(commands.Cog):
     async def on_voice_state_update(self, member, before, after):
         settings = await self.config.guild(member.guild).all()
         if settings["auto"]:  # Autoroom stuff
+            dellist = []
             for vc in member.guild.get_channel(settings["category"]).voice_channels:
                 if not vc.members:
-                    await vc.delete(reason=_("Channel empty"))
+                    dellist.append(vc)
+            if len(dellist) > 1:
+                dellist.remove[dellist[0]]
+                for vc in dellist:
+                    await vc.delete(reason=_("Channel empty."))
             channel_needed = True
             for vc in member.guild.get_channel(settings["category"]).voice_channels:
                 if not vc.members:
