@@ -19,7 +19,7 @@ class Roomer(commands.Cog):
         settings = await self.config.guild(member.guild).all()
         if settings["auto"]:  # Autoroom stuff
             if not after.channel:
-                if before.channel.members:
+                if not before.channel.members:
                     await before.channel.delete(reason=_("Channel empty"))
                     if not member.guild.get_channel(settings["category"]).voice_channels:
                         await member.guild.create_voice_channel(
