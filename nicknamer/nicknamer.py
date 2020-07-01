@@ -70,7 +70,7 @@ class NickNamer(commands.Cog):
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
         for guild in self.bot.guilds:
-            async with await self.config.guild(guild).all() as settings:
+            async with self.config.guild(guild).all() as settings:
                 if not settings["active"]:
                     continue
                 else:
