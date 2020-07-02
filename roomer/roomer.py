@@ -1,4 +1,4 @@
-from redbot.core import commands, Config
+from redbot.core import commands, Config, checks
 import discord
 from redbot.core.i18n import Translator, cog_i18n
 
@@ -37,6 +37,7 @@ class Roomer(commands.Cog):
                     reason=_("A channel is needed."),
                 )
 
+    @checks.admin()
     @commands.group()
     async def roomer(self, ctx):
         """Roomer settings"""

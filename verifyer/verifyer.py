@@ -1,4 +1,4 @@
-from redbot.core import commands, Config
+from redbot.core import commands, Config, checks
 import discord
 from typing import Optional
 from redbot.core.i18n import Translator, cog_i18n
@@ -62,6 +62,7 @@ class Verifyer(commands.Cog):
 
     @commands.guild_only()
     @commands.group()
+    @checks.admin()
     async def verifyerset(self, ctx):
         """Settings for verifyer"""
         pass
