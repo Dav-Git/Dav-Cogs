@@ -77,9 +77,10 @@ class NickNamer(commands.Cog):
                     for e in settings["active"]:
                         expiry_time = datetime.utcfromtimestamp(e[2])
                         if datetime.utcnow() > expiry_time:
-                            await guild.get_member(e[0]).edit(
-                                nick=e[1], reason=_("Temporary nickname expired.")
-                            )
+                            if guild.get_member(e[0]):
+                                await guild.get_member(e[0]).edit(
+                                    nick=e[1], reason=_("Temporary nickname expired.")
+                                )
                             settings["active"].remove(e)
                             if settings["dm"]:
                                 try:
