@@ -14,7 +14,11 @@ class Check(commands.Cog):
 
     @commands.command()
     @checks.mod()
-    async def check(self, ctx, user: discord.User):
+    async def check(self, ctx, userid: int):
+        try:
+            user = self.bot.fetch_user(userid)
+        except:
+            await ctx.send(_("User {userid} not found.").format(userid=userid))
         ctx.assume_yes = True
         member = False
         try:
@@ -28,7 +32,7 @@ class Check(commands.Cog):
             await ctx.send(
                 _(
                     ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
-                ).format(userid=user.id)
+                ).format(userid=userid)
             )
         try:
             if member:
