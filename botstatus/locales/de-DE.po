@@ -3,15 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2020-06-25 22:22+0200\n"
-"PO-Revision-Date: 2020-06-25 20:43+0000\n"
+"PO-Revision-Date: 2020-07-10 13:53+0200\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.1\n"
 "X-Generator: Poedit 2.3.1\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: Dav <dav@mail.stopdavabuse.de>\n"
 "Language: de_DE\n"
 
 #: botstatus\botstatus.py:12
@@ -43,79 +43,79 @@ msgstr "Ein Status kann maximal 128 Zeichen lang sein."
 
 #: botstatus\botstatus.py:67
 msgid "Status set to ``Online | Playing {text}``"
-msgstr ""
+msgstr "Satus auf ``Online | Spielt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:76
 msgid "Status set to ``Idle | Playing {text}``"
-msgstr ""
+msgstr "Satus auf ``Beschäftigt | Spielt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:85
 msgid "Status set to ``DND | Playing {text}``"
-msgstr ""
+msgstr "Satus auf ``Nicht stören | Spielt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:94
 msgid "Status set to ``Offline | Playing {text}``"
-msgstr ""
+msgstr "Satus auf ``Offline | Spielt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:98
 msgid "Usage: [p]botstatus listening <status> <text>"
-msgstr ""
+msgstr "Verwendung: [p]botstatus lsitening <status> <text>"
 
 #: botstatus\botstatus.py:108
 msgid "Status set to ``Online | Listening to {text}``"
-msgstr ""
+msgstr "Satus auf ``Online | Hört {text}`` gesetzt."
 
 #: botstatus\botstatus.py:117
 msgid "Status set to ``Idle | Listening to {text}``"
-msgstr ""
+msgstr "Satus auf ``Beschäftigt | Hört {text}`` gesetzt."
 
 #: botstatus\botstatus.py:126
 msgid "Status set to ``DND | Listening to {text}``"
-msgstr ""
+msgstr "Satus auf ``Nicht stören | Hört {text}`` gesetzt."
 
 #: botstatus\botstatus.py:135
 msgid "Status set to ``Offline | Listening to {text}``"
-msgstr ""
+msgstr "Satus auf ``Offline | Hört {text}`` gesetzt."
 
 #: botstatus\botstatus.py:139
 msgid "Usage: [p]botstatus watching <status> <text>"
-msgstr ""
+msgstr "Verwendung: [p]botstatus watching <status> <text>"
 
 #: botstatus\botstatus.py:149
 msgid "Status set to ``Online | Watching {text}``"
-msgstr ""
+msgstr "Satus auf ``Online | Schaut {text}`` gesetzt."
 
 #: botstatus\botstatus.py:158
 msgid "Status set to ``Idle | Watching {text}``"
-msgstr ""
+msgstr "Satus auf ``Beschäftigt | Schaut {text}`` gesetzt."
 
 #: botstatus\botstatus.py:167
 msgid "Status set to ``DND | Watching {text}``"
-msgstr ""
+msgstr "Satus auf ``Nicht stören | Schaut {text}`` gesetzt."
 
 #: botstatus\botstatus.py:176
 msgid "Status set to ``Offline | Watching {text}``"
-msgstr ""
+msgstr "Satus auf ``Offline | Schaut {text}`` gesetzt."
 
 #: botstatus\botstatus.py:180
 msgid "Usage: [p]botstatus streaming <status> <text>"
-msgstr ""
+msgstr "Verwendung: [p]botstatus streaming <status> <text>"
 
 #: botstatus\botstatus.py:190
 msgid "Status set to ``Online | Streaming {text}``"
-msgstr ""
+msgstr "Satus auf ``Online | Streamt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:199
 msgid "Status set to ``Idle | Streaming {text}``"
-msgstr ""
+msgstr "Satus auf ``Beschäftigt | Streamt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:208
 msgid "Status set to ``DND | Streaming {text}``"
-msgstr ""
+msgstr "Satus auf ``Nicht stören | Streamt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:217
 msgid "Status set to ``Offline | Streaming {text}``"
-msgstr ""
+msgstr "Satus auf ``Offline | Streamt {text}`` gesetzt."
 
 #: botstatus\botstatus.py:221
 msgid "Clear the saved botstatus and disable auto-setting on reboot."

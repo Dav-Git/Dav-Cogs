@@ -1,0 +1,39 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-07-10 13:20+0200\n"
+"PO-Revision-Date: 2020-07-10 13:58+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Dav <dav@mail.stopdavabuse.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: check\check.py:10
+msgid "Check"
+msgstr "Check"
+
+#: check\check.py:21
+msgid "User {userid} not found."
+msgstr "Benutzer mit der ID: {userid} wurde nicht gefunden."
+
+#: check\check.py:27
+msgid ":mag_right: Starting lookup for: {usermention}({userid})"
+msgstr ":mag_right: Starte suche für: {usermention}({userid})"
+
+#: check\check.py:33
+msgid ""
+":mag: This user is not in your guild anymore. Fetching reduced information "
+"for UID: {userid}."
+msgstr ""
+":mag: Dieser Nutzer ist nicht mehr in deinem Server. Reduzierte "
+"Informationen für User-ID: {userid}."
+
+#: check\check.py:52
+msgid "Lookup completed."
+msgstr "Suche beendet."
