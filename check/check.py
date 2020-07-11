@@ -20,7 +20,7 @@ class Check(commands.Cog):
         try:
             member = ctx.guild.get_member(user.id)
             await ctx.send(
-                _(":mag_right: Starting lookup for: {usermention}({user.id})").format(
+                _(":mag_right: Starting lookup for: {usermention}({userid})").format(
                     usermention=user.mention, userid=user.id
                 )
             )
