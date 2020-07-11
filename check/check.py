@@ -15,12 +15,15 @@ class Check(commands.Cog):
     @commands.command()
     @checks.mod()
     async def check(self, ctx, userid: int):
+        user = None
         try:
             user = self.bot.fetch_user(userid)
         except:
             await ctx.send(_("User {userid} not found.").format(userid=userid))
         ctx.assume_yes = True
         member = False
+        if user is None:
+            user = ctx.guild.me.get_user(userid)
         try:
             member = ctx.guild.get_member(user.id)
             await ctx.send(
