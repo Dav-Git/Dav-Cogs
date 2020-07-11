@@ -37,7 +37,7 @@ class Check(commands.Cog):
                     ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
                 ).format(userid=userid)
             )
-        except Inbound local error:
+        except InboundLocalError:
             return
         try:
             if member:
