@@ -9,8 +9,8 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    def __init__(self):
-        pass
+    def __init__(self,bot):
+        self.bot = bot
 
     @commands.command()
     @checks.mod()
@@ -23,7 +23,7 @@ class Check(commands.Cog):
         ctx.assume_yes = True
         member = False
         if user is None:
-            user = ctx.guild.me.get_user(userid)
+            user = self.bot.get_user(userid)
         try:
             member = ctx.guild.get_member(user.id)
             await ctx.send(
@@ -37,6 +37,8 @@ class Check(commands.Cog):
                     ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
                 ).format(userid=userid)
             )
+        except Inbound local error:
+            return
         try:
             if member:
                 await ctx.invoke(ctx.bot.get_command("userinfo"), user=member)
