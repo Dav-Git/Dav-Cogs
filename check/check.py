@@ -14,28 +14,21 @@ class Check(commands.Cog):
 
     @commands.command()
     @checks.mod()
-    async def check(self, ctx, userid: int):
-        user = None
-        try:
-            user = self.bot.fetch_user(userid)
-        except:
-            await ctx.send(_("User {userid} not found.").format(userid=userid))
+    async def check(self, ctx, user: discord.User):
         ctx.assume_yes = True
         member = False
-        if user is None:
-            user = self.bot.get_user(userid)
         try:
             member = ctx.guild.get_member(user.id)
             await ctx.send(
-                _(":mag_right: Starting lookup for: {usermention}({userid})").format(
+                _(":mag_right: Starting lookup for: {usermention}({user.id})").format(
                     usermention=user.mention, userid=user.id
                 )
             )
         except AttributeError:
             await ctx.send(
                 _(
-                    ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
-                ).format(userid=userid)
+                    ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {user.id}."
+                ).format(userid=user.id)
             )
         except InboundLocalError:
             return
