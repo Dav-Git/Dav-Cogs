@@ -30,8 +30,6 @@ class Check(commands.Cog):
                     ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {user.id}."
                 ).format(userid=user.id)
             )
-        except InboundLocalError:
-            return
         try:
             if member:
                 await ctx.invoke(ctx.bot.get_command("userinfo"), user=member)
