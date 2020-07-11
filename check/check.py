@@ -27,7 +27,7 @@ class Check(commands.Cog):
         except AttributeError:
             await ctx.send(
                 _(
-                    ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {user.id}."
+                    ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
                 ).format(userid=user.id)
             )
         try:
