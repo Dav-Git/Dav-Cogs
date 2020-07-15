@@ -8,6 +8,9 @@ class NoMic(commands.Cog):
         self.config=self.Config.get_conf(self,identifier=889,force_registration=True)
         default={"channels":{}}
         self.config.register_default(**default)
+        self.vc=None
+
+    async def initialize(self):
         self.vc = await self.config.channels()
 
     @commands.Cog.listener()
