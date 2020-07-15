@@ -38,6 +38,6 @@ class NoMic(commands.Cog):
         """Define the channel used as no-mic channel.\n\nLeave empty to disable."""
         async with self.config.channels() as channels:
             channels[str(ctx.guild.id)] = channel.id
-        await ctx.send("No-mic channel set to {channel}".format(channel=channel.memtion))
+        await ctx.send("No-mic channel set to {channel}".format(channel=channel.mention))
         self.vc = await self.config.channels()
             
