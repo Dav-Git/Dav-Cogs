@@ -1,4 +1,6 @@
 from .nomic import NoMic
 
-def setup(bot):
-    bot.add_cog(NoMic())
+async def setup(bot):
+    cog=NoMic()
+    await cog.initialize()
+    bot.add_cog(cog)
