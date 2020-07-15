@@ -7,7 +7,7 @@ class NoMic(commands.Cog):
     def __init__(self):
         self.config=Config.get_conf(self,identifier=889,force_registration=True)
         default={"channels":{}}
-        self.config.register_default(**default)
+        self.config.register_global(**default)
         self.vc=None
 
     async def initialize(self):
