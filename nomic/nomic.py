@@ -5,7 +5,7 @@ from redbot.core import commands, Config, checks
 class NoMic(commands.Cog):
     """#No-mic manager"""
     def __init__(self):
-        self.config=self.Config.get_conf(self,identifier=889,force_registration=True)
+        self.config=Config.get_conf(self,identifier=889,force_registration=True)
         default={"channels":{}}
         self.config.register_default(**default)
         self.vc=None
