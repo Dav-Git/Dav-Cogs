@@ -9,16 +9,12 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    def __init__(self):
-        pass
+    def __init__(self,bot):
+        self.bot = bot
 
     @commands.command()
     @checks.mod()
-    async def check(self, ctx, userid: int):
-        try:
-            user = self.bot.fetch_user(userid)
-        except:
-            await ctx.send(_("User {userid} not found.").format(userid=userid))
+    async def check(self, ctx, user: discord.User):
         ctx.assume_yes = True
         member = False
         try:
@@ -32,7 +28,7 @@ class Check(commands.Cog):
             await ctx.send(
                 _(
                     ":mag: This user is not in your guild anymore. Fetching reduced information for UID: {userid}."
-                ).format(userid=userid)
+                ).format(userid=user.id)
             )
         try:
             if member:

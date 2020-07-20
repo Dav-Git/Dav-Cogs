@@ -1,0 +1,9 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "description": "Show a no-mic textchannel when users are in a voicechannel.",
+  "hidden": false,
+  "install_msg": "Thank you for installing no-mic. This cog requires configuration prior to use. Please use ``[p]setnomic``.",
+  "short": "No-mic channel"
+}
