@@ -19,6 +19,9 @@ class Bday(commands.Cog):
         self.config.register_guild(**default_guild)
         self.config.register_global(**default_global)
         self.bot = bot
+
+    async def initialize(self):
+        await self.bot.wait_until_red_ready()
         self.bdaytask.start()
 
     def cog_unload(self):
