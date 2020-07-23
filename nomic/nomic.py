@@ -1,8 +1,12 @@
 import discord
 from redbot.core import commands, Config, checks
 from typing import Optional
+from redbot.core.i18n import cog_i18n, Translator
+
+_ = Translator("nomic", __file__)
 
 
+@cog_i18n(_)
 class NoMic(commands.Cog):
     """#No-mic manager"""
 
@@ -72,7 +76,7 @@ class NoMic(commands.Cog):
             else:
                 channels[str(ctx.guild.id)] = None
         await ctx.send(
-            "No-mic channel set to {channel}.".format(
+            _("No-mic channel set to {channel}.").format(
                 channel=channel.mention if channel else "disabled"
             )
         )
@@ -89,7 +93,7 @@ class NoMic(commands.Cog):
             else:
                 channels[str(ctx.guild.id)][str(vc.id)] = None
         await ctx.send(
-            "No-mic for {vc} set to {textchannel}.".format(
+            _("No-mic for {vc} set to {textchannel}.").format(
                 vc=vc.name, textchannel=textchannel.mention if textchannel else "``None``"
             )
         )
@@ -99,7 +103,7 @@ class NoMic(commands.Cog):
     async def mapping(self, ctx):
         """Show the current nomic mapping."""
         if type(self.vc[str(ctx.guild.id)]) == int:
-            await ctx.send("NoMic is currently in simple mode.")
+            await ctx.send(_("NoMic is currently in simple mode."))
         else:
             message = []
             for key in self.vc[str(ctx.guild.id)]:
@@ -111,5 +115,5 @@ class NoMic(commands.Cog):
                         ).mention,
                     )
                 )
-            sendable = "Current mapping\n" + "\n".join(message)
+            sendable = _("Current mapping\n") + "\n".join(message)
             await ctx.send(sendable)
