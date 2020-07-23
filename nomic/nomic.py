@@ -24,13 +24,36 @@ class NoMic(commands.Cog):
                     overwrite = discord.PermissionOverwrite()
                     overwrite.send_messages = True
                     overwrite.read_messages = True
-                    await member.guild.get_channel(self.vc[str(member.guild.id)]).set_permissions(
-                        member, overwrite=overwrite
-                    )
+                    if type(self.vc[str(member.guild.id)]) == int:
+                        await member.guild.get_channel(
+                            self.vc[str(member.guild.id)]
+                        ).set_permissions(member, overwrite=overwrite)
+                    elif type(self.vc[str(member.guild.id)]) == dict:
+                        try:
+                            await member.guild.get_channel(
+                                self.vc[str(member.guild.id)][str(after.channel.id)]
+                            ).set_permissions(member, overwrite=overwrite)
+                        except KeyError:
+                            pass
+                        if before.channel:
+                            try:
+                                await member.guild.get_channel(
+                                    self.vc[str(member.guild.id)][str(before.channel.id)]
+                                ).set_permissions(member, overwrite=None)
+                            except KeyError:
+                                pass
                 else:
-                    await member.guild.get_channel(self.vc[str(member.guild.id)]).set_permissions(
-                        member, overwrite=None
-                    )
+                    if type(self.vc[str(member.guild.id)]) == int:
+                        await member.guild.get_channel(
+                            self.vc[str(member.guild.id)]
+                        ).set_permissions(member, overwrite=None)
+                    elif type(self.vc[str(member.guild.id)]) == dict:
+                        try:
+                            await member.guild.get_channel(
+                                self.vc[str(member.guild.id)][str(before.channel.id)]
+                            ).set_permissions(member, overwrite=None)
+                        except KeyError:
+                            pass
         except KeyError:
             pass
 
