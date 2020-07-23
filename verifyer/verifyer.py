@@ -2,6 +2,8 @@ from redbot.core import commands, Config, checks
 import discord
 from typing import Optional
 from redbot.core.i18n import Translator, cog_i18n
+from asyncio import sleep as asyncio.sleep
+
 
 _ = Translator("Verifyer", __file__)
 
@@ -56,6 +58,8 @@ class Verifyer(commands.Cog):
                 ctx.guild.get_role(memrole), reason=_("Member verified themselves.")
             )
         try:
+            await ctx.tick()
+            await asyncio.sleep(5)
             await ctx.message.remove()
         except:
             pass
