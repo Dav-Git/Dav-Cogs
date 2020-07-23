@@ -1,9 +1,9 @@
 {
-	"AUTHOR": [
+	"author": [
 		"Dav"
 	],
-	"INSTALL_MSG": "Thank you for installing Dav-cogs. Feel free to open an issue on my repo if you notice a bug or want to request a feature.\n\n For support, either visit the official Red-Cogsupport server or my dedicated support server at https://discord.gg/z6Nhqc5",
-	"NAME": "Dav-cogs",
-	"SHORT": "Cogs made by Dav",
-	"DESCRIPTION": "Cogs for RED DiscordBot by Dav"
+	"install_msg": "Thank you for installing Dav-cogs. Feel free to open an issue on my repo if you notice a bug or want to request a feature.\n\n For support, either visit the official Red-Cogsupport server or my dedicated support server at https://discord.gg/z6Nhqc5",
+	"name": "Dav-cogs",
+	"short": "Cogs made by Dav",
+	"description": "Cogs for RED DiscordBot by Dav"
 }
