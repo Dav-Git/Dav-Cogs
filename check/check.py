@@ -9,7 +9,11 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    def __init__(self,bot):
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog stores no EUD
+        return
+
+    def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
