@@ -10,6 +10,10 @@ _ = Translator("ExclusiveRoles", __file__)
 class ExclusiveRoles(commands.Cog):
     """Exclusive Roles"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog does not store EUD
+        return
+
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=2005200611566)
