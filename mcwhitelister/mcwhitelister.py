@@ -11,10 +11,17 @@ _ = Translator("McWhitelister", __file__)
 
 @cog_i18n(_)
 class McWhitelister(commands.Cog):
-    def __init__(self):
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        for guild in self.bot.guilds:
+            member = guild.get_member(user_id)
+            if member:
+                await self.on_member_remove(member)
+
+    def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=110320200153)
         default_guild = {"players": {}, "path_to_server": ""}
         self.config.register_guild(**default_guild)
+        self.bot = bot
 
     @commands.Cog.listener()
     async def on_member_remove(self, member):
