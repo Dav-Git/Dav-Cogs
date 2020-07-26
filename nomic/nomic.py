@@ -10,6 +10,10 @@ _ = Translator("nomic", __file__)
 class NoMic(commands.Cog):
     """#No-mic manager"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog does not store EUD
+        return
+
     def __init__(self):
         self.config = Config.get_conf(self, identifier=889, force_registration=True)
         default = {"channels": {}}
