@@ -16,7 +16,7 @@ class ForceNick(commands.Cog):
     async def initialize(self):
         await self.register_casetypes()
         await self.bot.send_to_owners(
-            "Forcenick is outdated and will be removed in December 2020. Use NickNamer instead."
+            "Forcenick is outdated and will be removed in August 2020 (this date has been moved forward due to new discord and red guideline changes). Use NickNamer instead."
         )
 
     @staticmethod
