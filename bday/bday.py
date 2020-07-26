@@ -12,6 +12,16 @@ _ = Translator("Bday", __file__)
 class Bday(commands.Cog):
     """Bday"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        if requester == "discord_deleted_user" or requester == "owner":
+            async with self.config.bdays() as bdays:
+                for e in bdays:
+                    if str(e[0]) == str(user_id):
+                        bdays.remove(e)
+        elif requester == "user" or requester == "user_strict":
+            # Don't allow users to keep the bday role indefinitely
+            return
+
     def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=1072001)
         default_guild = {"bdayRole": 0}
