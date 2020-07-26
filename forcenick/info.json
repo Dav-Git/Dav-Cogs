@@ -1,9 +1,0 @@
-{
-    "author": [
-        "Dav"
-    ],
-    "description": "Forcibly change a user's nickname",
-    "hidden": true,
-    "install_msg": "Forcenick is outdated. Use Nicknamer instead.",
-    "short": "Forcenick tool"
-}
