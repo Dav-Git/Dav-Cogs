@@ -8,6 +8,10 @@ _ = Translator("Prunecmd", __file__)
 class Prunecmd(commands.Cog):
     """Prunecmd"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog stores no EUD
+        return
+
     def __init__(self):
         pass
 
