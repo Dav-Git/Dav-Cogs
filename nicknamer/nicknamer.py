@@ -12,6 +12,26 @@ _ = Translator("NickNamer", __file__)
 class NickNamer(commands.Cog):
     """NickNamer"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        if requester == "user":
+            return
+        elif requester == "user_strict":
+            for guild in self.bot.guilds:
+                async with self.config.guild(guild).active() as active:
+                    for e in active:
+                        if e[0] == user_id:
+                            active.remove(e)
+        elif requester == "owner" or requester == "discord_deleted_user":
+            for guild in self.bot.guilds:
+                async with self.config.guild(guild).active() as active:
+                    for e in active:
+                        if e[0] == user_id:
+                            active.remove(e)
+                async with self.config.guild(guild).frozen() as frozen:
+                    for e in frozen:
+                        if e[0] == user_id:
+                            frozen.remove(e)
+
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=190420201535, force_registration=True)
