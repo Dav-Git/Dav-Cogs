@@ -10,6 +10,10 @@ _ = Translator("RoleSyncer", __file__)
 class RoleSyncer(commands.Cog):
     """Sync Roles"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog doesn't store EUD
+        return
+
     def __init__(self, bot):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=235228062020)
