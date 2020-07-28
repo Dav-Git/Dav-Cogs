@@ -1,6 +1,9 @@
 from .bday import Bday
+from pathlib import Path
+import json
 
-__red_end_user_data_statement__ = "This cog stores user IDs for the duration of approximately 24h to revoke the birthday role 24h after assignment."
+with open(Path(__file__).parent / "info.json") as fp:
+    __red_end_user_data_statement__ = json.load(fp)["end_user_data_statement"]
 
 
 def setup(bot):

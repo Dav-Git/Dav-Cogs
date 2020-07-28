@@ -1,6 +1,9 @@
 from .mcwhitelister import McWhitelister
+from pathlib import Path
+import json
 
-__red_end_user_data_statement__ = "This cog stores end user data in order to allow it to whitelist players on a minecraft server. It stores minecraft player names(and user IDs) as well as discord user IDs."
+with open(Path(__file__).parent / "info.json") as fp:
+    __red_end_user_data_statement__ = json.load(fp)["end_user_data_statement"]
 
 
 def setup(bot):
