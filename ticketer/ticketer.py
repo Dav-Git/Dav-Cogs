@@ -6,6 +6,9 @@ from redbot.core import commands, checks, Config, modlog
 
 class Ticketer(commands.Cog):
     """Ticketer"""
+    async def red_delete_data_for_user(self,*,requester,user_id):
+        # This cog stores no EUD
+        return
 
     def __init__(self):
         self.config = Config.get_conf(self, 200730042020, force_registration=True)
