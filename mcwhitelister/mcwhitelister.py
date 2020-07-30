@@ -12,10 +12,19 @@ _ = Translator("McWhitelister", __file__)
 @cog_i18n(_)
 class McWhitelister(commands.Cog):
     async def red_delete_data_for_user(self, *, requester, user_id):
-        for guild in self.bot.guilds:
-            member = guild.get_member(user_id)
-            if member:
-                await self.on_member_remove(member)
+        data = await self.config.all_guilds()
+        for guild_id in data:
+            if str(user_id) in data[guild_id]["players"]:
+                path = data[guild_id]["path_to_server"]
+                with open(path) as json_file:
+                    file = json.load(json_file)
+                for e in file:
+                    if e["uuid"] == data[guild_id]["players"][str(user_id)]["uuid"]:
+                        del file[file.index(e)]
+                        with open("{}whitelist.json".format(path), "w") as json_file:
+                            json.dump(file, json_file, indent=4)
+                del data[guild_id]["players"][str(user_id)]
+                await self.config.guild_from_id(guild_id).players.set(data[guild_id]["players"])
 
     def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=110320200153)
