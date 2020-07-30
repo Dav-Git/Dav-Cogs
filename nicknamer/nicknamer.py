@@ -16,18 +16,20 @@ class NickNamer(commands.Cog):
         if requester == "user":
             return
         elif requester == "user_strict":
-            for guild in self.bot.guilds:
-                async with self.config.guild(guild).active() as active:
+            data = await self.config.all_guilds()
+            for guild_id in data:
+                async with self.config.guild_from_id(guild_id).active() as active:
                     for e in active:
                         if e[0] == user_id:
                             active.remove(e)
         elif requester == "owner" or requester == "discord_deleted_user":
-            for guild in self.bot.guilds:
-                async with self.config.guild(guild).active() as active:
+            data = await self.config.all_guilds()
+            for guild_id in data:
+                async with self.config.guild_from_id(guild_id).active() as active:
                     for e in active:
                         if e[0] == user_id:
                             active.remove(e)
-                async with self.config.guild(guild).frozen() as frozen:
+                async with self.config.guild_from_id(guild_id).frozen() as frozen:
                     for e in frozen:
                         if e[0] == user_id:
                             frozen.remove(e)
