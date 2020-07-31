@@ -1,7 +1,7 @@
 from .bday import Bday
 
 
-def setup(bot):
+async def setup(bot):
     cog = Bday(bot)
     bot.add_cog(cog)
-    cog.initialize()
+    await cog.initialize()

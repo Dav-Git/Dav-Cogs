@@ -10,14 +10,18 @@ _ = Translator("nomic", __file__)
 class NoMic(commands.Cog):
     """#No-mic manager"""
 
-    def __init__(self):
+    def __init__(self,bot):
         self.config = Config.get_conf(self, identifier=889, force_registration=True)
         default = {"channels": {}}
         self.config.register_global(**default)
         self.vc = None
+        self.bot = bot
 
     async def initialize(self):
         self.vc = await self.config.channels()
+        await self.bot.send_to_owners(
+            "Nomic is outdated and will be removed in August 2020. Use InVoice (<https://github.com/zephyrkul/FluffyCogs/>) instead."
+        )
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
