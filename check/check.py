@@ -9,7 +9,7 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    def __init__(self,bot):
+    def __init__(self, bot):
         self.bot = bot
 
     @commands.command()
@@ -41,7 +41,7 @@ class Check(commands.Cog):
             if member:
                 await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
         try:
-            await ctx.invoke(ctx.bot.get_command("listflag"), member=user)
+            await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
         except:
             pass
 
