@@ -288,4 +288,3 @@ class NickNamer(commands.Cog):
         await ctx.send(
             _("Sending a DM set to {true_or_false}.").format(true_or_false=true_or_false)
         )
-
