@@ -52,9 +52,9 @@ Want to help out with translating or developing these cogs?\
 Please check [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/TRANSLATING.md) for translation instructions and [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/CONTRIBUTING.md) for contribution guidelines.
 # Credits
 
-Thanks to [Draper](https://github.com/Drapersniper) for helping with exclusiveroles.
-Thanks to [Jack](https://github.com/jack1142) for supplying the code used to pull the ``end_user_data_statement`` into the ``__init__.py``s.
-Also a big thank you to everyone in the coding channel on the support discord for your help along the way.
+Thanks to [Draper](https://github.com/Drapersniper) for helping with exclusiveroles. \
+Thanks to [Jack](https://github.com/jack1142) for supplying the code used to pull the ``end_user_data_statement`` into the ``__init__.py``s. \
+Also a big thank you to everyone in the coding channel on the support discord for your help along the way. \
 
 # Privacy
 
