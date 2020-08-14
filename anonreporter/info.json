@@ -1,0 +1,18 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Allow for users to report things anonymously",
+    "hidden": true,
+    "install_msg": ":eyes:",
+    "short": "Anonymous reports",
+    "tags": [
+        "report",
+        "anonymous",
+        "moderation",
+        "global",
+        "guild",
+        "tools"
+    ],
+    "end_user_data_statement": "This cog does not store end user data."
+}
