@@ -140,7 +140,9 @@ class Supporter(commands.Cog):
             async with self.config.guild(ctx.guild).closed() as closed:
                 for channel in closed:
                     try:
-                        await ctx.guild.get_channel(channel).delete(reason="Ticket purge")
+                        channel_obj = ctx.guild.get_channel(channel)
+                        if channel_obj:
+                            await channel_obj.delete(reason="Ticket purge")
                         closed.remove(channel)
                     except discord.Forbidden:
                         await ctx.send(

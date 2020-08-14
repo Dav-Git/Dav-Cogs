@@ -1,0 +1,112 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-06-25 23:29+0200\n"
+"PO-Revision-Date: 2020-07-10 14:23+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Dav <dav@mail.stopdavabuse.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: nicknamer\nicknamer.py:13
+msgid "NickNamer"
+msgstr "NickNamer"
+
+#: nicknamer\nicknamer.py:75
+msgid "Temporary nickname expired."
+msgstr "Temporärer Spitzname abgelaufen."
+
+#: nicknamer\nicknamer.py:81
+msgid ""
+"Your nickname in ``{guildname}`` has been reset to your original nickname."
+msgstr ""
+"Dein Spitzname in ``{guildname}`` wurde auf deinen originalen Spitznamen "
+"zurückgesetzt."
+
+#: nicknamer\nicknamer.py:91
+msgid "Forcibly change a user's nickname to a predefined string."
+msgstr ""
+"Setze den Spitznamen eines Benutzers auf einen gespeicherten Spitznamen."
+
+#: nicknamer\nicknamer.py:93 nicknamer\nicknamer.py:125
+msgid "Nickname force-changed"
+msgstr "Spitzname zwanghaft geändert"
+
+#: nicknamer\nicknamer.py:111 nicknamer\nicknamer.py:143
+msgid ""
+"Your nickname on ``{ctxguildname}`` has been force-changed by a moderator."
+msgstr ""
+"Dein Spitzname in ``{ctxguildname}`` wurde zwangsmäßig von einem Moderator "
+"geändert."
+
+#: nicknamer\nicknamer.py:118 nicknamer\nicknamer.py:150
+#: nicknamer\nicknamer.py:189 nicknamer\nicknamer.py:250
+msgid "Missing permissions."
+msgstr "Fehlende Berechtigungen."
+
+#: nicknamer\nicknamer.py:123
+msgid "Forcibly change a user's nickname."
+msgstr ""
+
+#: nicknamer\nicknamer.py:162
+msgid "Freeze a users nickname."
+msgstr ""
+
+#: nicknamer\nicknamer.py:182
+msgid "Your nickname on ``{ctxguildname}`` has been frozen."
+msgstr ""
+
+#: nicknamer\nicknamer.py:194
+msgid "Unfreeze a user's nickname."
+msgstr ""
+
+#: nicknamer\nicknamer.py:203
+msgid "Your nickname on ``{ctxguildname}`` has been unfrozen."
+msgstr ""
+
+#: nicknamer\nicknamer.py:221
+msgid ""
+"Temporarily rename a user.\\n**IMPORTANT**: For better performance, "
+"temporary nicknames are checked in a 10 minute intervall."
+msgstr ""
+
+#: nicknamer\nicknamer.py:243
+msgid "Your nickname in ``{ctxguildname}`` has been temporarily changed."
+msgstr ""
+
+#: nicknamer\nicknamer.py:255
+msgid "Nicknamer settings"
+msgstr ""
+
+#: nicknamer\nicknamer.py:260
+msgid "Set the default name that will be applied when using ``[p]nick``"
+msgstr ""
+
+#: nicknamer\nicknamer.py:263
+msgid "Standard Nickname set to ``{name}``."
+msgstr ""
+
+#: nicknamer\nicknamer.py:267
+msgid ""
+"Set if you would like to create a modlog entry everytime a nickname is being "
+"changed."
+msgstr ""
+
+#: nicknamer\nicknamer.py:270
+msgid "Modlog entries set to {true_or_false}."
+msgstr ""
+
+#: nicknamer\nicknamer.py:275
+msgid ""
+"Set if you would like the bot to DM the user who's nickname was changed."
+msgstr ""
+
+#: nicknamer\nicknamer.py:278
+msgid "Sending a DM set to {true_or_false}."
+msgstr ""

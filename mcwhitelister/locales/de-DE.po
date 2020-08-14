@@ -1,0 +1,63 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-06-25 23:13+0200\n"
+"PO-Revision-Date: 2020-07-10 14:17+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Dav <dav@mail.stopdavabuse.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: mcwhitelister\mcwhitelister.py:48
+msgid "{} is already on the whitelist."
+msgstr "{} ist bereits auf der whitelist."
+
+#: mcwhitelister\mcwhitelister.py:63
+msgid "{} is not a valid username."
+msgstr "{} ist kein bekannter Nutzername."
+
+#: mcwhitelister\mcwhitelister.py:66
+msgid "{} successfully whitelisted {}."
+msgstr "{} hat {} gewhitelisted."
+
+#: mcwhitelister\mcwhitelister.py:74
+msgid "You need to set a path with ``[p]whitelister setup`` first."
+msgstr "Lege zunächst einen Systempfad mit ``[p]whitelister setup`` fest."
+
+#: mcwhitelister\mcwhitelister.py:79
+msgid ""
+"Set up the path to your minecraft server jar.\\n        It needs to lead to "
+"the folder that contains both the server jar and whitelist.json .\\n"
+"\\n        Example on a linux system:\\n        ``[p]whitelister setup /home/"
+"user/mcserver/whitelist.json``"
+msgstr ""
+"Stelle den Pfad zu deine minecraft server jar ein.\\n        Der Pfad muss "
+"auf den Ordner zeigen, der die Server jar und die ``whitelist.json`` Datei "
+"enthält.\\n\\n        Beispiel für ein Linux System:\\n        "
+"``[p]whitelister setup /home/user/mcserver/whitelist.json``"
+
+#: mcwhitelister\mcwhitelister.py:87
+msgid "Path set to {}"
+msgstr "Pfad auf {} gesetzt."
+
+#: mcwhitelister\mcwhitelister.py:89
+msgid "The whitelist.json could not be found at this path."
+msgstr "Die ``whitelist.json`` Datei konnte nicht gefunden werden."
+
+#: mcwhitelister\mcwhitelister.py:100
+msgid "Whielisted with whitelister:"
+msgstr "Mit whitelister gewhitelistete Personen:"
+
+#: mcwhitelister\mcwhitelister.py:103 mcwhitelister\mcwhitelister.py:106
+msgid "Whitelisted"
+msgstr "Whitelist"
+
+#: mcwhitelister\mcwhitelister.py:103
+msgid "Nobody was whitelisted using whitelister yet."
+msgstr "Noch niemand wurde mit whitelister gewhitelisted."

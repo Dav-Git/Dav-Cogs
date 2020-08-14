@@ -14,7 +14,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 
 | Cog | Description |
 | --- | ----------- |
-| bday | <details><summary>Celebrate birthdays with a role and message.</summary>Set a birthday role and assign it to your members using a command. In combination with [Sinbad's scheduler](https://github.com/TrustyJAID/SinbadCogs) you can even automate the removal of the birthday role.</details> |
+| bday | <details><summary>Celebrate birthdays with a role and message.</summary>Set a birthday role and assign it to your members using a command. After 24h the role removes itself.</details> |
 | botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> |
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> |
 | caserelayer | Send modlog cases to a user. |
@@ -26,6 +26,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | prunecmd | Introduces a command to prune the member list. |
 | supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
+| verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> |
 
 # Installation
 
@@ -44,6 +45,10 @@ E-Mail me dav@mail.stopdavabuse.de\
 Cogs not listed above will **NOT** work on your bot.\
 You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
 
+# Contributing
+
+Want to help out with translating or developing these cogs?\
+Please check [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/TRANSLATING.md) for translation instructions and [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/CONTRIBUTING.md) for contribution guidelines.
 # Credits
 
 Thanks to Draper for helping with exclusiveroles.

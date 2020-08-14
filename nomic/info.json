@@ -1,0 +1,9 @@
+{
+  "author": [
+    "Dav"
+  ],
+  "description": "Show a no-mic textchannel when users are in a voicechannel.",
+  "hidden": true,
+  "install_msg": "This cog is deprecated. Use https://github.com/zephyrkul/FluffyCogs/ ``invoice`` instead.",
+  "short": " "
+}

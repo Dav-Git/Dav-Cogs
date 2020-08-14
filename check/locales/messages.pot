@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2020-07-10 13:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+
+#: check\check.py:10
+#, docstring
+msgid "Check"
+msgstr ""
+
+#: check\check.py:21
+msgid "User {userid} not found."
+msgstr ""
+
+#: check\check.py:27
+msgid ":mag_right: Starting lookup for: {usermention}({userid})"
+msgstr ""
+
+#: check\check.py:33
+msgid ""
+":mag: This user is not in your guild anymore. Fetching reduced information "
+"for UID: {userid}."
+msgstr ""
+
+#: check\check.py:52
+msgid "Lookup completed."
+msgstr ""

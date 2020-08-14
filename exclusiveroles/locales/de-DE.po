@@ -1,0 +1,102 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2020-06-25 23:04+0200\n"
+"PO-Revision-Date: 2020-07-10 14:05+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.1\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Dav <dav@mail.stopdavabuse.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: exclusiveroles\exclusiveroles.py:11
+msgid "Exclusive Roles"
+msgstr "Exklusive Rollen"
+
+#: exclusiveroles\exclusiveroles.py:41
+msgid ""
+"Takes 2 Roles. Removes the second role if both roles are present on a user. "
+msgstr ""
+"Gib 2 Rollen an. Dieser Befehl entfernt die 2. Rolle, wenn ein Benutzer "
+"beide Rollen besitzt."
+
+#: exclusiveroles\exclusiveroles.py:44
+msgid "You need to provide at least 2 roles"
+msgstr "Gib mindestens 2 Rollen an."
+
+#: exclusiveroles\exclusiveroles.py:47
+msgid "\\n`Started...`\\n"
+msgstr "\\n`Starte...`\\n"
+
+#: exclusiveroles\exclusiveroles.py:52
+msgid "\\n`Completed.`\\n"
+msgstr "\\n`Erledigt.`\\n"
+
+#: exclusiveroles\exclusiveroles.py:57
+msgid ""
+"Takes 2 Roles. Removes the second role if the first role is assigned to a "
+"user in the future. "
+msgstr ""
+"Gib 2 Rollen an. Dieser Befehl entfernt die 2. Rolle wenn einem Benutzer "
+"die 1. Rolle zugewiesen wird."
+
+#: exclusiveroles\exclusiveroles.py:61
+msgid "{} will now be overwritten by {}"
+msgstr "{} wird nun von {} überschrieben."
+
+#: exclusiveroles\exclusiveroles.py:66
+msgid "Takes 2 roles and removes their exclusivity"
+msgstr "Gib 2 rollen an um ihre Exklusivität aufzuheben."
+
+#: exclusiveroles\exclusiveroles.py:73
+msgid "{} will no longer be overwritten by {}"
+msgstr "{} wird nicht mehr von {} überschrieben."
+
+#: exclusiveroles\exclusiveroles.py:76
+msgid "```An Error occured```"
+msgstr "```Ein Fehler ist aufgetreten.```"
+
+#: exclusiveroles\exclusiveroles.py:79
+msgid "{} and {} are not registered as exclusive roles"
+msgstr "{} und {} sind nicht als exklusive Rollen registriert."
+
+#: exclusiveroles\exclusiveroles.py:87
+msgid "List all exclusive roles"
+msgstr "Liste alle exklusiven Rollen auf."
+
+#: exclusiveroles\exclusiveroles.py:93
+msgid "No exclusive roles set"
+msgstr "Keine exklusiven Rollen gesetzt."
+
+#: exclusiveroles\exclusiveroles.py:98
+msgid "\\n{} overwrites {}"
+msgstr "\\n{} überschreibt {}"
+
+#: exclusiveroles\exclusiveroles.py:103
+msgid "All exclusive role pairs:"
+msgstr "Alle exklusiven Rollenpaare:"
+
+#: exclusiveroles\exclusiveroles.py:109
+msgid "Scans the entire user list for roles that have been set as exclusive."
+msgstr "Scanne die gesamte Benutzerliste auf exklusive Rollen."
+
+#: exclusiveroles\exclusiveroles.py:112
+msgid "``This may take a while...``"
+msgstr "```Dies kann einen Moment dauern...```"
+
+#: exclusiveroles\exclusiveroles.py:124
+msgid "``Starting with {} and {}``"
+msgstr "``{} und {}```"
+
+#: exclusiveroles\exclusiveroles.py:131
+msgid "{} overwrites {}"
+msgstr "{} überschreibt {}"
+
+#: exclusiveroles\exclusiveroles.py:133
+msgid "``Retroscan completed.``"
+msgstr "```Scan beendet.```"
