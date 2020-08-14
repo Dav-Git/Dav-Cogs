@@ -10,6 +10,10 @@ _ = Translator("Verifyer", __file__)
 
 @cog_i18n(_)
 class Verifyer(commands.Cog):
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog stores no EUD
+        return
+
     def __init__(self):
         self.config = Config.get_conf(self, identifier=250620201622, force_registration=True)
         default_guild = {

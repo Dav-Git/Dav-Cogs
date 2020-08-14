@@ -12,6 +12,17 @@ _ = Translator("Bday", __file__)
 class Bday(commands.Cog):
     """Bday"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        async with self.config.bdays() as bdays:
+            for e in bdays:
+                if str(e[0]) == str(user_id):
+                    guild = self.bot.get_guild(int(e[1]))
+                    await guild.get_user([int(e[0])]).remove_roles(
+                        guild.get_role(await self.config.guild(guild).bdayRole()),
+                        reason=_("User data deleted."),
+                    )
+                    bdays.remove(e)
+
     def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=1072001)
         default_guild = {"bdayRole": 0}

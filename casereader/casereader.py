@@ -10,6 +10,10 @@ _ = Translator("CaseReader", __file__)
 class CaseReader(commands.Cog):
     """CaseReader"""
 
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog does not store EUD
+        return
+
     def __init__(self, bot):
         self.bot = bot
 

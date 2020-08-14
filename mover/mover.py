@@ -4,6 +4,10 @@ from typing import Optional
 
 
 class Mover(commands.Cog):
+    async def red_delete_data_for_user(self, *, requester, user_id):
+        # This cog does not store EUD
+        return
+
     @commands.command()
     @checks.mod()
     async def massmove(

@@ -10,5 +10,6 @@
         "Voice",
         "Move",
         "Massmove"
-    ]
+    ],
+    "end_user_data_statement": "This cog does not store end user data."
 }

@@ -5,5 +5,6 @@
     "description": "Multiple Nickname tools",
     "hidden": false,
     "install_msg": "Thank you for choosing Nickname. Make sure to check ``[p]nickset``.",
-    "short": "Nickname toolkit"
+    "short": "Nickname toolkit",
+    "end_user_data_statement": "This cog stores nicknames and user IDs to allow for the freezing of nicknames and the temporary changing and restoring of nickanems."
 }

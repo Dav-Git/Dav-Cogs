@@ -24,6 +24,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | mover | Massmove members from one voicechannel to another. |
 | nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> |
 | prunecmd | Introduces a command to prune the member list. |
+| rolesyncer | Sync roles within a guild |
 | supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 | verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> |
@@ -51,8 +52,8 @@ Want to help out with translating or developing these cogs?\
 Please check [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/TRANSLATING.md) for translation instructions and [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/CONTRIBUTING.md) for contribution guidelines.
 # Credits
 
-Thanks to Draper for helping with exclusiveroles.
-
+Thanks to [Draper](https://github.com/Drapersniper) for helping with exclusiveroles.
+Thanks to [Jack](https://github.com/jack1142) for supplying the code used to pull the ``end_user_data_statement`` into the ``__init__.py``s.
 Also a big thank you to everyone in the coding channel on the support discord for your help along the way.
 
 # Privacy
@@ -62,7 +63,7 @@ Some of my cogs store end user data. In the following list I try to name and exp
 | Cog | Type of data stored | Reason for storing the data |
 | --- | ------------------- | --------------------------- |
 | botstatus | Custom status text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Custom status text`` : This info is stored so that the set text can be applied as the bot's status message on startup.</details> |
-| forcenick | Nickname text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Nickname text`` : This info is stored so that the set nickname can be applied to a user on command usage.</details> |
 | mcwhitelister | Discord-UUID<br/>Minecraft-Username<br/>Minecraft-UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> ``Discord-UUID`` : This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>``Minecraft-Username`` : This info is stored to be able to provide a list of currently whitelisted users.<br/>``Minecraft-UUID`` : This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
+| nicknamer | Previous user nicknames and user IDs| <details><summary>This info is stored to provide cog functionality.</summary><br/>``Previous nicknames`` This info is stored to be able to re-give a users nickname after a temp nickname has been applied.<br/>``User IDs`` User IDs are stored in order to detect users whose nicknames have been frozen and to match the nicknames saved as temporary to a user.</details> |
 
 For questions, feel free to contact me on discord.
