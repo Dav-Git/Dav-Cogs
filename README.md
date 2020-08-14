@@ -23,7 +23,6 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. Make sure that you add a ``/`` or ``\`` (depending on your OS) to the end of the path to your minecraft server.</details> |
 | mover | Massmove members from one voicechannel to another. |
 | nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> |
-| nomic | Show a textchannel whenever users join a voicechannel. |
 | prunecmd | Introduces a command to prune the member list. |
 | rolesyncer | Sync roles within a guild |
 | supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |

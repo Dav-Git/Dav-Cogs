@@ -189,6 +189,10 @@ class NickNamer(commands.Cog):
         reason: Optional[str] = "Nickname frozen.",
     ):
         """Freeze a users nickname."""
+        name_check = await self.config.guild(ctx.guild).frozen()
+        for id in name_check:
+            if user.id in id:
+                return await ctx.send("User is already frozen. Unfreeze them first.")
         try:
             await user.edit(nick=nickname)
             await ctx.tick()
@@ -306,4 +310,3 @@ class NickNamer(commands.Cog):
         await ctx.send(
             _("Sending a DM set to {true_or_false}.").format(true_or_false=true_or_false)
         )
-
