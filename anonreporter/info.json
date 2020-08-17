@@ -3,8 +3,8 @@
         "Dav"
     ],
     "description": "Allow for users to report things anonymously",
-    "hidden": true,
-    "install_msg": ":eyes:",
+    "hidden": false,
+    "install_msg": "For support with this cog, visit https://discord.gg/GET4DVk",
     "short": "Anonymous reports",
     "tags": [
         "report",
