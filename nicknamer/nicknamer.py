@@ -310,3 +310,20 @@ class NickNamer(commands.Cog):
         await ctx.send(
             _("Sending a DM set to {true_or_false}.").format(true_or_false=true_or_false)
         )
+
+    @checks.admin()
+    @commands.command()
+    async def nickpurge(self, ctx, are_you_sure: Optional[bool]):
+        """Remove all nicknames in the server."""
+        if are_you_sure:
+            for member in ctx.guild.members:
+                if member.nick:
+                    await member.edit(nick=None, reason="Nickname purge")
+            await ctx.send(_("Nicknames purged"))
+        else:
+            await ctx.send(
+                _(
+                    "This will remove the nicknames of all members. If you are sure you want to do this run:\n{command}"
+                ).format(command=f"``{ctx.clean_prefix}nickpurge yes``")
+            )
+
