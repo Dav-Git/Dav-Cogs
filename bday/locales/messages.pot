@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-06-25 19:44+0200\n"
+"POT-Creation-Date: 2020-08-17 13:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,32 +16,36 @@ msgstr ""
 msgid "Bday"
 msgstr ""
 
-#: bday\bday.py:36
+#: bday\bday.py:22
+msgid "User data deleted."
+msgstr ""
+
+#: bday\bday.py:50
 msgid "It's their birthday!"
 msgstr ""
 
-#: bday\bday.py:38
+#: bday\bday.py:52
 msgid "Happy birthday {} !"
 msgstr ""
 
-#: bday\bday.py:45
+#: bday\bday.py:59
 msgid ""
 "You need to configure a birthday role first by using ``[p]setbirthday``."
 msgstr ""
 
-#: bday\bday.py:51
+#: bday\bday.py:65
 #, docstring
 msgid "Set the role that will be assigned on a birthday."
 msgstr ""
 
-#: bday\bday.py:53
+#: bday\bday.py:67
 msgid "The birthday role has been set to {}"
 msgstr ""
 
-#: bday\bday.py:64
+#: bday\bday.py:78
 msgid "Birthdays cleared."
 msgstr ""
 
-#: bday\bday.py:77
+#: bday\bday.py:91
 msgid "24h have passed. This birthday must be over."
 msgstr ""

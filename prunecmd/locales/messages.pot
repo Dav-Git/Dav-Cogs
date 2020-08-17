@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-06-25 23:31+0200\n"
+"POT-Creation-Date: 2020-08-17 13:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,6 @@ msgstr ""
 msgid "Prunecmd"
 msgstr ""
 
-#: prunecmd\prunecmd.py:21
+#: prunecmd\prunecmd.py:25
 msgid "The member list has been pruned successfully"
 msgstr ""

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-06-25 23:04+0200\n"
+"POT-Creation-Date: 2020-08-17 13:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,86 +16,86 @@ msgstr ""
 msgid "Exclusive Roles"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:41
+#: exclusiveroles\exclusiveroles.py:45
 #, docstring
 msgid ""
 "Takes 2 Roles. Removes the second role if both roles are present on a user. "
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:44
+#: exclusiveroles\exclusiveroles.py:48
 msgid "You need to provide at least 2 roles"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:47
+#: exclusiveroles\exclusiveroles.py:51
 msgid "\\n`Started...`\\n"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:52
+#: exclusiveroles\exclusiveroles.py:56
 msgid "\\n`Completed.`\\n"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:57
+#: exclusiveroles\exclusiveroles.py:61
 #, docstring
 msgid ""
 "Takes 2 Roles. Removes the second role if the first role is assigned to a "
 "user in the future. "
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:61
+#: exclusiveroles\exclusiveroles.py:65
 msgid "{} will now be overwritten by {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:66
+#: exclusiveroles\exclusiveroles.py:70
 #, docstring
 msgid "Takes 2 roles and removes their exclusivity"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:73
+#: exclusiveroles\exclusiveroles.py:77
 msgid "{} will no longer be overwritten by {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:76
+#: exclusiveroles\exclusiveroles.py:80
 msgid "```An Error occured```"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:79
+#: exclusiveroles\exclusiveroles.py:83
 msgid "{} and {} are not registered as exclusive roles"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:87
+#: exclusiveroles\exclusiveroles.py:91
 #, docstring
 msgid "List all exclusive roles"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:93
+#: exclusiveroles\exclusiveroles.py:97
 msgid "No exclusive roles set"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:98
+#: exclusiveroles\exclusiveroles.py:102
 msgid "\\n{} overwrites {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:103
+#: exclusiveroles\exclusiveroles.py:107
 msgid "All exclusive role pairs:"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:109
+#: exclusiveroles\exclusiveroles.py:113
 #, docstring
 msgid "Scans the entire user list for roles that have been set as exclusive."
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:112
+#: exclusiveroles\exclusiveroles.py:116
 msgid "``This may take a while...``"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:124
+#: exclusiveroles\exclusiveroles.py:128
 msgid "``Starting with {} and {}``"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:131
+#: exclusiveroles\exclusiveroles.py:135
 msgid "{} overwrites {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:133
+#: exclusiveroles\exclusiveroles.py:137
 msgid "``Retroscan completed.``"
 msgstr ""

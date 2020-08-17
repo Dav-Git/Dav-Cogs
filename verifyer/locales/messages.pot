@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-06-28 16:47+0200\n"
+"POT-Creation-Date: 2020-08-17 13:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,89 +11,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.1\n"
 
-#: verifyer\verifyer.py:31
+#: verifyer\verifyer.py:37
 msgid "Verification required."
 msgstr ""
 
-#: verifyer\verifyer.py:49 verifyer\verifyer.py:56
+#: verifyer\verifyer.py:55 verifyer\verifyer.py:62
 msgid "Member verified themselves."
 msgstr ""
 
-#: verifyer\verifyer.py:66
+#: verifyer\verifyer.py:75
 #, docstring
 msgid "Settings for verifyer"
 msgstr ""
 
-#: verifyer\verifyer.py:72
+#: verifyer\verifyer.py:81
 #, docstring
 msgid "Enable verifyer.\\nThis is per guild."
 msgstr ""
 
-#: verifyer\verifyer.py:74
+#: verifyer\verifyer.py:83
 msgid "Verifyer enabled."
 msgstr ""
 
-#: verifyer\verifyer.py:79
+#: verifyer\verifyer.py:88
 #, docstring
 msgid "Disable verifyer.\\nThis is per guild."
 msgstr ""
 
-#: verifyer\verifyer.py:81
+#: verifyer\verifyer.py:90
 msgid "Verifyer disabled."
 msgstr ""
 
-#: verifyer\verifyer.py:86
+#: verifyer\verifyer.py:95
 #, docstring
 msgid ""
 "Set the role to assign to a user on guild join.\\n\\nLeave empty to disable "
 "this feature."
 msgstr ""
 
-#: verifyer\verifyer.py:90
+#: verifyer\verifyer.py:99
 msgid "Verification role disabled."
 msgstr ""
 
-#: verifyer\verifyer.py:94
+#: verifyer\verifyer.py:103
 msgid "Verification role set to {rolemention}."
 msgstr ""
 
-#: verifyer\verifyer.py:100
+#: verifyer\verifyer.py:109
 #, docstring
 msgid ""
 "Specify what message should be DMed to a user when they join the "
 "guild.\\n\\nLeave empty to disable this feature."
 msgstr ""
 
-#: verifyer\verifyer.py:103 verifyer\verifyer.py:113
+#: verifyer\verifyer.py:112 verifyer\verifyer.py:122
 msgid "Message set to: ```{text}```"
 msgstr ""
 
-#: verifyer\verifyer.py:105
+#: verifyer\verifyer.py:114
 msgid "DM on join disabled."
 msgstr ""
 
-#: verifyer\verifyer.py:110
+#: verifyer\verifyer.py:119
 #, docstring
 msgid ""
 "Specify what message should be DMed to a user when they verify "
 "themselves.\\n\\nLeave empty to disable this feature."
 msgstr ""
 
-#: verifyer\verifyer.py:115
+#: verifyer\verifyer.py:124
 msgid "Message on verification disabled."
 msgstr ""
 
-#: verifyer\verifyer.py:120
+#: verifyer\verifyer.py:129
 #, docstring
 msgid ""
 "Set the role to assign to a user when they verify themselves.\\n\\nLeave "
 "empty to disable this feature."
 msgstr ""
 
-#: verifyer\verifyer.py:124
+#: verifyer\verifyer.py:133
 msgid "Member role disabled."
 msgstr ""
 
-#: verifyer\verifyer.py:127
+#: verifyer\verifyer.py:136
 msgid "Member role set to {rolemention}."
 msgstr ""

@@ -10,20 +10,3 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.1\n"
-
-#: caserelayer\caserelayer.py:10
-#, docstring
-msgid "CaseRelayer"
-msgstr ""
-
-#: caserelayer\caserelayer.py:25
-msgid "That case does not exist for that server."
-msgstr ""
-
-#: caserelayer\caserelayer.py:32
-msgid "Case has been relayed to {username}#{userdiscriminator}."
-msgstr ""
-
-#: caserelayer\caserelayer.py:37
-msgid "Something went wrong."
-msgstr ""
