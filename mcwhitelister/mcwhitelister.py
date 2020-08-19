@@ -5,6 +5,8 @@ import aiohttp
 from discord import Embed
 from redbot.core import Config, checks, commands
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.chat_formatting import pagify
+from redbot.core.utils.menus import menu, DEFAULT_CONTROLS
 
 _ = Translator("McWhitelister", __file__)
 
@@ -109,15 +111,17 @@ class McWhitelister(commands.Cog):
     async def liste(self, ctx):
         p_in_config = await self.config.guild(ctx.guild).players()
         outstr = []
+        if len(p_in_config) == 0:
+            await ctx.send(_("Nobody was whitelisted using whitelister yet."))
+            return
         for e in p_in_config:
             outstr.append(
                 "{} | {} \n".format(ctx.guild.get_member(int(e)).mention, p_in_config[e]["name"])
             )
-        emb = Embed(title=_("Whielisted with whitelister:"))
-        if len(p_in_config) == 0:
-            emb.add_field(
-                name=_("Whitelisted"), value=_("Nobody was whitelisted using whitelister yet.")
-            )
-        else:
-            emb.add_field(name=_("Whitelisted"), value="".join(outstr))
-        await ctx.send(embed=emb)
+        pages = list(pagify(outstr, page_length=1024))
+        rendered = []
+        for page in pages:
+            emb = Embed(title=_("Whielisted with whitelister:"))
+            emb.add_field(name=_("Whitelisted"), value=page)
+            rendered.append(emb)
+        await menu(ctx, rendered, controls=DEFAULT_CONTROLS, timeout=60.0)
