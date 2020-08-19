@@ -118,7 +118,7 @@ class McWhitelister(commands.Cog):
             outstr.append(
                 "{} | {} \n".format(ctx.guild.get_member(int(e)).mention, p_in_config[e]["name"])
             )
-        pages = list(pagify(outstr, page_length=1024))
+        pages = list(pagify("\n".join(outstr), page_length=1024))
         rendered = []
         for page in pages:
             emb = Embed(title=_("Whielisted with whitelister:"))
