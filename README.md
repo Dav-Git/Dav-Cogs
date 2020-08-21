@@ -14,6 +14,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 
 | Cog | Description |
 | --- | ----------- |
+| anonreporter | Anonymous version of the core reports cog. |
 | bday | <details><summary>Celebrate birthdays with a role and message.</summary>Set a birthday role and assign it to your members using a command. After 24h the role removes itself.</details> |
 | botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> |
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> |
@@ -25,6 +26,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> |
 | prunecmd | Introduces a command to prune the member list. |
 | rolesyncer | Sync roles within a guild |
+| roomer BETA | <details><summary>This cog is in BETA. It's full featureset is not yet available and it may be buggy at times.</summary>Feel free to test/use this at your own risk. Tools for voicechannels.<br>- Automated voicechannel creation<br>- Private voicechannels | 
 | supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 | verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> |
