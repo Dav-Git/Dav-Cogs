@@ -6,7 +6,8 @@ from redbot.core import commands, checks, Config, modlog
 
 class Ticketer(commands.Cog):
     """Ticketer"""
-    async def red_delete_data_for_user(self,*,requester,user_id):
+
+    async def red_delete_data_for_user(self, *, requester, user_id):
         # This cog stores no EUD
         return
 
@@ -61,13 +62,13 @@ class Ticketer(commands.Cog):
         """Set the categories for open and closed tickets."""
 
     @category.group()
-    async def open(self, ctx, category: discord.CategoryChannel):
+    async def open(self, ctx, *, category: discord.CategoryChannel):
         """Set the category for open tickets."""
         await self.config.guild(ctx.guild).open_category.set(category.id)
         await ctx.send(f"Category for open tickets has been set to {category.mention}")
 
     @category.group()
-    async def closed(self, ctx, category: discord.CategoryChannel):
+    async def closed(self, ctx, *, category: discord.CategoryChannel):
         """Set the category for open tickets."""
         await self.config.guild(ctx.guild).closed_category.set(category.id)
         await ctx.send(f"Category for closed tickets has been set to {category.mention}")
