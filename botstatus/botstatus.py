@@ -1,4 +1,5 @@
 import discord
+from discord.ext import tasks
 import asyncio
 from typing import Optional
 from redbot.core import commands, checks, Config
@@ -23,16 +24,21 @@ class Botstatus(commands.Cog):
         self.config.register_global(**standard)
         self.ready = True
         self.start_task: Optional[asyncio.Task] = None
+        self._update_task.start()
 
     def init(self):
         self.start_task = asyncio.create_task(self.fromconf())
 
     def cog_unload(self):
+        self._update_task.cancel()
         if self.start_task:
             self.start_task.cancel()
 
-    async def setfunc(self, sType, status, text):
+    @tasks.loop(minutes=10)
+    async def _update_task(self):
+        await self.fromconf()
 
+    async def setfunc(self, sType, status, text):
         # This will get removed in future versions and is to ensure config backwards-compatibility
         if sType == "game":
             sType = "playing"
