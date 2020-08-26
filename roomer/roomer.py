@@ -110,14 +110,14 @@ class Roomer(commands.Cog):
         """Change settings for private rooms"""
         pass
 
-    @private.command()
-    async def enable(self, ctx):
+    @private.command(name="enable")
+    async def penable(self, ctx):
         """Enable private rooms"""
         await self.config.guild(ctx.guild).private.set(True)
         await ctx.send(_("Private channels enabled."))
 
-    @private.command()
-    async def disable(self, ctx):
+    @private.command(name="disable")
+    async def pdisable(self, ctx):
         """Disable private rooms"""
         await self.config.guild(ctx.guild).private.set(False)
         await ctx.send(_("Private channels disabled."))
