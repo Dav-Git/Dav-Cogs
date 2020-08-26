@@ -113,14 +113,31 @@ class Roomer(commands.Cog):
     @private.command(name="enable")
     async def penable(self, ctx):
         """Enable private rooms"""
-        await self.config.guild(ctx.guild).private.set(True)
-        await ctx.send(_("Private channels enabled."))
+        if await self.config.guild(ctx.guild).pstart():
+            await self.config.guild(ctx.guild).private.set(True)
+            await ctx.send(_("Private channels enabled."))
+        else:
+            await ctx.send(
+                _("Set up a starting channel using {command} first.").format(
+                    command=f"``{ctx.clean_prefix}roomer private startchannel``"
+                )
+            )
 
     @private.command(name="disable")
     async def pdisable(self, ctx):
         """Disable private rooms"""
         await self.config.guild(ctx.guild).private.set(False)
         await ctx.send(_("Private channels disabled."))
+
+    @private.command()
+    async def startchannel(self, ctx, vc: discord.VoiceChannel):
+        """Set a channel that users will join to start using private rooms.\nI recommend not allowing talking permissions here."""
+        await self.config.guild(ctx.guild).pstart.set(vc.id)
+        await ctx.send(
+            _(
+                "Private starting channel set. USers can join this channel to use all features of private rooms.\nI recommend not allowing members to speak in this channel."
+            )
+        )
 
     # endregion private
 
