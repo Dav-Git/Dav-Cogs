@@ -11,7 +11,13 @@ class Roomer(commands.Cog):
 
     def __init__(self):
         self.config = Config.get_conf(self, identifier=300620201743, force_registration=True)
-        default_guild = {"category": None, "name": "general", "auto": False}
+        default_guild = {
+            "category": None,
+            "name": "general",
+            "auto": False,
+            "pstart": None,
+            "private": False,
+        }
         self.config.register_guild(**default_guild)
 
     @commands.Cog.listener()
@@ -43,6 +49,7 @@ class Roomer(commands.Cog):
         """Roomer settings"""
         pass
 
+    # region auto
     @roomer.group()
     async def auto(self, ctx):
         """Automation settings."""
@@ -94,3 +101,26 @@ class Roomer(commands.Cog):
                 category=category.name
             )
         )
+
+    # endregion auto
+
+    # region private
+    @roomer.group()
+    async def private(self, ctx):
+        """Change settings for private rooms"""
+        pass
+
+    @private.command()
+    async def enable(self, ctx):
+        """Enable private rooms"""
+        await self.config.guild(ctx.guild).private.set(True)
+        await ctx.send(_("Private channels enabled."))
+
+    @private.command()
+    async def disable(self, ctx):
+        """Disable private rooms"""
+        await self.config.guild(ctx.guild).private.set(False)
+        await ctx.send(_("Private channels disabled."))
+
+    # endregion private
+
