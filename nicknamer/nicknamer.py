@@ -326,4 +326,3 @@ class NickNamer(commands.Cog):
                     "This will remove the nicknames of all members. If you are sure you want to do this run:\n{command}"
                 ).format(command=f"``{ctx.clean_prefix}nickpurge yes``")
             )
-

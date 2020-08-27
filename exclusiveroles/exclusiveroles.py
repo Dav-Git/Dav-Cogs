@@ -100,7 +100,8 @@ class ExclusiveRoles(commands.Cog):
             for r in roles:
                 mentions.append(
                     _("\n{} overwrites {}").format(
-                        ctx.guild.get_role(r[0]).mention, ctx.guild.get_role(r[1]).mention,
+                        ctx.guild.get_role(r[0]).mention,
+                        ctx.guild.get_role(r[1]).mention,
                     )
                 )
             text = "\n".join(mentions)

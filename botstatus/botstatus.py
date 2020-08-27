@@ -59,7 +59,7 @@ class Botstatus(commands.Cog):
     @checks.is_owner()
     async def botstatus(self, ctx):
         """Set a status that doesn't dissappear on reboot.
-            Usage: [p]botstatus <type> <status> <text>"""
+        Usage: [p]botstatus <type> <status> <text>"""
         pass
 
     @botstatus.group(name="playing", aliases=["game"])
