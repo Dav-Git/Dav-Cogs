@@ -70,9 +70,9 @@ class ExclusiveRoles(commands.Cog):
         """Takes 2 roles and removes their exclusivity"""
 
         async with self.config.guild(ctx.guild).exclusives() as conf:
-            if (str(role1.id), str(role2.id)) in conf:
+            if [role1.id, role2.id] in conf:
                 try:
-                    conf.remove((str(role1.id), str(role2.id)))
+                    conf.remove([role1.id, role2.id])
                     await ctx.send(
                         _("{} will no longer be overwritten by {}").format(role2.name, role1.name)
                     )
