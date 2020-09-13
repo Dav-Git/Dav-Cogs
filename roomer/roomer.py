@@ -1,6 +1,7 @@
 from redbot.core import commands, Config, checks
 import discord
 from redbot.core.i18n import Translator, cog_i18n
+from typing import Optional
 
 _ = Translator("Roomer", __file__)
 
@@ -138,5 +139,9 @@ class Roomer(commands.Cog):
                 "Private starting channel set. USers can join this channel to use all features of private rooms.\nI recommend not allowing members to speak in this channel."
             )
         )
+
+    @private.command()
+    async def create(self, ctx, public: Optional[bool] = False, *, name: str):
+        pass
 
     # endregion private
