@@ -47,6 +47,16 @@ class Roomer(commands.Cog):
                     category=member.guild.get_channel(settings["category"]),
                     reason=_("A channel is needed."),
                 )
+        if settings["private"]:
+            if before.channel:
+                if before.channel.id in settings["pchannels"].values():
+                    if len(before.channel.members) == 0:
+                        for key in settings["pchannels"]:
+                            if settings["pchannels"][key] == before.channel.id:
+                                ckey = key
+                        del settings["pchannels"][ckey]
+                        await self.config.guild(member.guild).pchannels.set(settings["pchannels"])
+                        await before.channel.delete(reason=_("Private room empty."))
 
     @checks.admin()
     @commands.group()
@@ -146,7 +156,7 @@ class Roomer(commands.Cog):
         await self.config.guild(ctx.guild).pcat.set(vc.category_id)
         await ctx.send(
             _(
-                "Private starting channel set. USers can join this channel to use all features of private rooms.\nI recommend not allowing members to speak in this channel."
+                "Private starting channel set. Users can join this channel to use all features of private rooms.\nI recommend not allowing members to speak in this channel."
             )
         )
 
@@ -190,7 +200,7 @@ class Roomer(commands.Cog):
                 c = await ctx.guild.create_voice_channel(
                     name,
                     overwrites=ov,
-                    category=ctx.guild.get_channel["pcat"],
+                    category=ctx.guild.get_channel(data["pcat"]),
                     reason=_("Private room"),
                 )
                 await ctx.author.move_to(c, reason=_("Private channel."))
@@ -204,5 +214,24 @@ class Roomer(commands.Cog):
                 )
         else:
             await ctx.send(_("Private rooms are not enabled on this server."))
+
+    @vc.command()
+    async def join(self, ctx, key: str):
+        """Join a private room."""
+        await ctx.message.delete()
+        async with ctx.typing():
+            data = await self.config.guild(ctx.guild).all()
+            if data["private"]:
+                if ctx.author.voice.channel.id == data["pstart"]:
+                    if key in data["pchannels"]:
+                        await ctx.author.move_to(ctx.guild.get_channel(data["pchannels"][key]))
+                else:
+                    await ctx.send(
+                        _("You must be in the voicechannel {vc} first.").format(
+                            vc=ctx.guild.get_channel(data["pstart"]).mention
+                        )
+                    )
+            else:
+                await ctx.send(_("Private rooms are not enabled on this server."))
 
     # endregion private

@@ -3,9 +3,9 @@
     "Dav"
   ],
   "description": "Tools for voicechannels. \n - Automated voicechannel creation \n - Private voicechannels BETA",
-  "hidden": true,
+  "hidden": false,
   "install_msg": "Parts of this cog are in BETA, report any bugs you find at <https://github.com/Dav-Git/Dav-Cogs/issues/new>",
-  "short": "Voicechannel tools.",
+  "short": "OUT NOW: Private rooms BETA.",
   "tags": [
     "members",
     "vc",
