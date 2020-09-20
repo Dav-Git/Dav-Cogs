@@ -3,7 +3,7 @@
     "Dav"
   ],
   "description": "Tools for voicechannels. \n - Automated voicechannel creation \n - Private voicechannels BETA",
-  "hidden": false,
+  "hidden": true,
   "install_msg": "Parts of this cog are in BETA, report any bugs you find at <https://github.com/Dav-Git/Dav-Cogs/issues/new>",
   "short": "Voicechannel tools.",
   "tags": [

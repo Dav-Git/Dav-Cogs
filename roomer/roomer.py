@@ -2,6 +2,8 @@ from redbot.core import commands, Config, checks
 import discord
 from redbot.core.i18n import Translator, cog_i18n
 from typing import Optional
+from random import choice
+import string
 
 _ = Translator("Roomer", __file__)
 
@@ -17,6 +19,8 @@ class Roomer(commands.Cog):
             "name": "general",
             "auto": False,
             "pstart": None,
+            "pcat": None,
+            "pchannels": {},
             "private": False,
         }
         self.config.register_guild(**default_guild)
@@ -48,6 +52,11 @@ class Roomer(commands.Cog):
     @commands.group()
     async def roomer(self, ctx):
         """Roomer settings"""
+        pass
+
+    @commands.group()
+    async def vc(self, ctx):
+        """Voicechannel commands."""
         pass
 
     # region auto
@@ -134,14 +143,66 @@ class Roomer(commands.Cog):
     async def startchannel(self, ctx, vc: discord.VoiceChannel):
         """Set a channel that users will join to start using private rooms.\nI recommend not allowing talking permissions here."""
         await self.config.guild(ctx.guild).pstart.set(vc.id)
+        await self.config.guild(ctx.guild).pcat.set(vc.category_id)
         await ctx.send(
             _(
                 "Private starting channel set. USers can join this channel to use all features of private rooms.\nI recommend not allowing members to speak in this channel."
             )
         )
 
-    @private.command()
+    @vc.command()
     async def create(self, ctx, public: Optional[bool] = False, *, name: str):
-        pass
+        """Create a private voicechannel."""
+        data = await self.config.guild(ctx.guild).all()
+        if data["private"]:
+            if ctx.author.voice.channel.id == data["pstart"]:
+                key = "".join(choice(string.ascii_lowercase + "0123456789") for i in range(8))
+                if key in data["pchannels"]:
+                    key = "".join(
+                        choice(string.ascii_lowercase + "0123456789") for i in range(16)
+                    )  # Yes I know this can still cause conflicts. But falling back to a larger number of chars will decrease the likelihood dramatically.
+                try:
+                    await ctx.author.send(
+                        _(
+                            "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
+                        ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
+                    )
+                except discord.Forbidden:
+                    await ctx.send(
+                        _("Couldn't send the key to your private channel via DM. Aborting...")
+                    )
+                    return
+                if public:
+                    ov = {
+                        ctx.author: discord.PermissionOverwrite(
+                            view_channel=True, connect=True, speak=True, manage_channels=True
+                        )
+                    }
+                else:
+                    ov = {
+                        ctx.guild.default_role: discord.PermissionOverwrite(
+                            view_channel=False, connect=False
+                        ),
+                        ctx.author: discord.PermissionOverwrite(
+                            view_channel=True, connect=True, speak=True, manage_channels=True
+                        ),
+                    }
+                c = await ctx.guild.create_voice_channel(
+                    name,
+                    overwrites=ov,
+                    category=ctx.guild.get_channel["pcat"],
+                    reason=_("Private room"),
+                )
+                await ctx.author.move_to(c, reason=_("Private channel."))
+                data["pchannels"][key] = c.id
+                await self.config.guild(ctx.guild).pchannels.set(data["pchannels"])
+            else:
+                await ctx.send(
+                    _("You must be in the voicechannel {vc} first.").format(
+                        vc=ctx.guild.get_channel(data["pstart"]).mention
+                    )
+                )
+        else:
+            await ctx.send(_("Private rooms are not enabled on this server."))
 
     # endregion private
