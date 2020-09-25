@@ -5,3 +5,4 @@ desktop.ini
 *.mo
 channeldashremover/
 .history/
+.mypy_cache/
