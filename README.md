@@ -27,7 +27,6 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | prunecmd | Introduces a command to prune the member list. |
 | rolesyncer | Sync roles within a guild |
 | roomer | <details><summary>Parts of this cog are in BETA. It's full featureset is not yet available.</summary>Tools for voicechannels.<br>- Automated voicechannel creation<br>- Private voicechannels BETA<br>- User generated voicechannels PLANNED<br>- user generated text channels PLANNED </details> | 
-| supporter | <details><summary>A more advanced version of Ticketer.</summary>Allows for the creation of multiple support departments and asks the user which department should handle their ticket before ticket creation.<br>For most users Ticketer will be the better and easier option.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 | verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> |
 
