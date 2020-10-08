@@ -45,7 +45,7 @@ Ping me (@Dav) in the [#support_othercogs](https://discordapp.com/channels/24015
 Visit my own server for quicker responses: [Dav-Server](https://discord.gg/z6Nhqc5)\
 E-Mail me dav@mail.stopdavabuse.de\
 Cogs not listed above will **NOT** work on your bot.\
-You can find other approved repos at the [Cogboard](https://cogboard.red/t/approved-repositories/210).
+You can find other approved repos on the [Red Index](https://index.discord.red).
 
 # Contributing
 
