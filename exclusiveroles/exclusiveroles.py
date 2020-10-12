@@ -106,9 +106,8 @@ class ExclusiveRoles(commands.Cog):
                     )
                 )
             text = "\n".join(mentions)
-        raw_pages = pagify(text, ["\n"], escape_mass_mentions=False, page_length=1000)
         pages = []
-        for page in raw_pages:
+        for page in pagify(text, ["\n"], escape_mass_mentions=False, page_length=1000):
             embed = discord.Embed(title=_("Exclusiveroles"))
             embed.add_field(name=_("All exclusive role pairs:"), value=page)
             pages.append(embed)
