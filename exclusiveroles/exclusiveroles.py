@@ -2,6 +2,8 @@ import logging
 import discord
 from redbot.core import commands, checks, Config
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.chat_formatting import pagify
+from redbot.core.utils.menus import menu, DEFAULT_CONTROLS
 
 _ = Translator("ExclusiveRoles", __file__)
 
@@ -91,7 +93,6 @@ class ExclusiveRoles(commands.Cog):
         """List all exclusive roles"""
 
         roles = await self.config.guild(ctx.guild).exclusives()
-        embed = discord.Embed(title="Exclusivroles")
         text = ""
         if roles == []:
             text = _("No exclusive roles set")
@@ -105,8 +106,14 @@ class ExclusiveRoles(commands.Cog):
                     )
                 )
             text = "\n".join(mentions)
-        embed.add_field(name=_("All exclusive role pairs:"), value=text)
-        await ctx.send(embed=embed)
+        raw_pages = pagify(text, ["\n"], escape_mass_mentions=False, page_length=1000)
+        pages = []
+        for page in raw_pages:
+            embed = discord.Embed(title=_("Exclusiveroles"))
+            embed.add_field(name=_("All exclusive role pairs:"), value=text)
+            pages.append(embed)
+
+        await menu(ctx, pages, DEFAULT_CONTROLS)
 
     @commands.command()
     @checks.admin()
