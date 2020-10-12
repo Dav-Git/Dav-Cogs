@@ -185,47 +185,6 @@ class Botstatus(commands.Cog):
             await self.setfunc("watching", "offline", text)
             await ctx.send(_("Status set to ``Offline | Watching {text}``").format(text=text))
 
-    @botstatus.group()
-    async def streaming(self, ctx):
-        """Usage: [p]botstatus streaming <status> <text>"""
-        pass
-
-    @streaming.command(name="online")
-    async def s_online(self, ctx, *, text: str):
-        if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
-        else:
-            await self.config.status.set(("streaming", "online", text))
-            await self.setfunc("streaming", "online", text)
-            await ctx.send(_("Status set to ``Online | Streaming {text}``").format(text=text))
-
-    @streaming.command(name="idle")
-    async def s_idle(self, ctx, *, text: str):
-        if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
-        else:
-            await self.config.status.set(("streaming", "idle", text))
-            await self.setfunc("streaming", "idle", text)
-            await ctx.send(_("Status set to ``Idle | Streaming {text}``").format(text=text))
-
-    @streaming.command(name="dnd")
-    async def s_dnd(self, ctx, *, text: str):
-        if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
-        else:
-            await self.config.status.set(("streaming", "dnd", text))
-            await self.setfunc("streaming", "dnd", text)
-            await ctx.send(_("Status set to ``DND | Streaming {text}``").format(text=text))
-
-    @streaming.command(name="offline")
-    async def s_offline(self, ctx, *, text: str):
-        if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
-        else:
-            await self.config.status.set(("streaming", "offline", text))
-            await self.setfunc("streaming", "offline", text)
-            await ctx.send(_("Status set to ``Offline | Streaming {text}``").format(text=text))
-
     @botstatus.command()
     async def clear(self, ctx):
         """Clear the saved botstatus and disable auto-setting on reboot."""
