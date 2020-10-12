@@ -110,7 +110,7 @@ class ExclusiveRoles(commands.Cog):
         pages = []
         for page in raw_pages:
             embed = discord.Embed(title=_("Exclusiveroles"))
-            embed.add_field(name=_("All exclusive role pairs:"), value=text)
+            embed.add_field(name=_("All exclusive role pairs:"), value=page)
             pages.append(embed)
 
         await menu(ctx, pages, DEFAULT_CONTROLS)
