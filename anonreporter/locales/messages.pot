@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-19 15:48+0200\n"
+"POT-Creation-Date: 2020-10-12 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.1\n"
+"Generated-By: redgettext 3.3\n"
 
 #: anonreporter\anonreporter.py:27
 #, docstring
@@ -55,8 +55,10 @@ msgstr ""
 msgid "Anonreport is not configured correctly."
 msgstr ""
 
-#: anonreporter\anonreporter.py:82
-msgid "**New anonymous report:**\\n{report}"
+#: anonreporter\anonreporter.py:82 anonreporter\anonreporter.py:95
+msgid ""
+"**New anonymous report:**\n"
+"{report}"
 msgstr ""
 
 #: anonreporter\anonreporter.py:87
@@ -66,8 +68,4 @@ msgstr ""
 #: anonreporter\anonreporter.py:92
 #, docstring
 msgid "Report something to the bot owner anonymously."
-msgstr ""
-
-#: anonreporter\anonreporter.py:95
-msgid "**New anonymous report:**\\n{report}"
 msgstr ""

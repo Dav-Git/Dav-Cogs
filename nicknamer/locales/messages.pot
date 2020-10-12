@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-19 15:48+0200\n"
+"POT-Creation-Date: 2020-10-12 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.1\n"
+"Generated-By: redgettext 3.3\n"
 
 #: nicknamer\nicknamer.py:13
 #, docstring
@@ -70,8 +70,8 @@ msgstr ""
 #: nicknamer\nicknamer.py:254
 #, docstring
 msgid ""
-"Temporarily rename a user.\\n**IMPORTANT**: For better performance, "
-"temporary nicknames are checked in a 10 minute intervall."
+"Temporarily rename a user.\n"
+"**IMPORTANT**: For better performance, temporary nicknames are checked in a 10 minute intervall."
 msgstr ""
 
 #: nicknamer\nicknamer.py:276
@@ -124,6 +124,6 @@ msgstr ""
 
 #: nicknamer\nicknamer.py:325
 msgid ""
-"This will remove the nicknames of all members. If you are sure you want to "
-"do this run:\\n{command}"
+"This will remove the nicknames of all members. If you are sure you want to do this run:\n"
+"{command}"
 msgstr ""

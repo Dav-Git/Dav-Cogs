@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-19 15:48+0200\n"
+"POT-Creation-Date: 2020-10-12 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.1\n"
+"Generated-By: redgettext 3.3\n"
 
 #: verifyer\verifyer.py:37
 msgid "Verification required."
@@ -26,7 +26,9 @@ msgstr ""
 
 #: verifyer\verifyer.py:81
 #, docstring
-msgid "Enable verifyer.\\nThis is per guild."
+msgid ""
+"Enable verifyer.\n"
+"This is per guild."
 msgstr ""
 
 #: verifyer\verifyer.py:83
@@ -35,7 +37,9 @@ msgstr ""
 
 #: verifyer\verifyer.py:88
 #, docstring
-msgid "Disable verifyer.\\nThis is per guild."
+msgid ""
+"Disable verifyer.\n"
+"This is per guild."
 msgstr ""
 
 #: verifyer\verifyer.py:90
@@ -45,8 +49,9 @@ msgstr ""
 #: verifyer\verifyer.py:95
 #, docstring
 msgid ""
-"Set the role to assign to a user on guild join.\\n\\nLeave empty to disable "
-"this feature."
+"Set the role to assign to a user on guild join.\n"
+"\n"
+"Leave empty to disable this feature."
 msgstr ""
 
 #: verifyer\verifyer.py:99
@@ -60,8 +65,9 @@ msgstr ""
 #: verifyer\verifyer.py:109
 #, docstring
 msgid ""
-"Specify what message should be DMed to a user when they join the "
-"guild.\\n\\nLeave empty to disable this feature."
+"Specify what message should be DMed to a user when they join the guild.\n"
+"\n"
+"Leave empty to disable this feature."
 msgstr ""
 
 #: verifyer\verifyer.py:112 verifyer\verifyer.py:122
@@ -75,8 +81,9 @@ msgstr ""
 #: verifyer\verifyer.py:119
 #, docstring
 msgid ""
-"Specify what message should be DMed to a user when they verify "
-"themselves.\\n\\nLeave empty to disable this feature."
+"Specify what message should be DMed to a user when they verify themselves.\n"
+"\n"
+"Leave empty to disable this feature."
 msgstr ""
 
 #: verifyer\verifyer.py:124
@@ -86,8 +93,9 @@ msgstr ""
 #: verifyer\verifyer.py:129
 #, docstring
 msgid ""
-"Set the role to assign to a user when they verify themselves.\\n\\nLeave "
-"empty to disable this feature."
+"Set the role to assign to a user when they verify themselves.\n"
+"\n"
+"Leave empty to disable this feature."
 msgstr ""
 
 #: verifyer\verifyer.py:133

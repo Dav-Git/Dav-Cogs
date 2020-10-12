@@ -2,14 +2,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-08-19 15:48+0200\n"
+"POT-Creation-Date: 2020-10-12 12:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.1\n"
+"Generated-By: redgettext 3.3\n"
 
 #: exclusiveroles\exclusiveroles.py:11
 #, docstring
@@ -27,11 +27,15 @@ msgid "You need to provide at least 2 roles"
 msgstr ""
 
 #: exclusiveroles\exclusiveroles.py:51
-msgid "\\n`Started...`\\n"
+msgid ""
+"\n"
+"`Started...`\n"
 msgstr ""
 
 #: exclusiveroles\exclusiveroles.py:56
-msgid "\\n`Completed.`\\n"
+msgid ""
+"\n"
+"`Completed.`\n"
 msgstr ""
 
 #: exclusiveroles\exclusiveroles.py:61
@@ -72,30 +76,32 @@ msgid "No exclusive roles set"
 msgstr ""
 
 #: exclusiveroles\exclusiveroles.py:102
-msgid "\\n{} overwrites {}"
+msgid ""
+"\n"
+"{} overwrites {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:107
+#: exclusiveroles\exclusiveroles.py:108
 msgid "All exclusive role pairs:"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:113
+#: exclusiveroles\exclusiveroles.py:114
 #, docstring
 msgid "Scans the entire user list for roles that have been set as exclusive."
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:116
+#: exclusiveroles\exclusiveroles.py:117
 msgid "``This may take a while...``"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:128
+#: exclusiveroles\exclusiveroles.py:129
 msgid "``Starting with {} and {}``"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:135
+#: exclusiveroles\exclusiveroles.py:136
 msgid "{} overwrites {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:137
+#: exclusiveroles\exclusiveroles.py:138
 msgid "``Retroscan completed.``"
 msgstr ""
