@@ -22,12 +22,13 @@ class Check(commands.Cog):
         ctx.assume_yes = True
         member = False
         try:
-            member = ctx.guild.get_member(user.id)
-            await ctx.send(
-                _(":mag_right: Starting lookup for: {usermention}({userid})").format(
-                    usermention=user.mention, userid=user.id
+            async with ctx.typing():
+                member = ctx.guild.get_member(user.id)
+                await ctx.send(
+                    _(":mag_right: Starting lookup for: {usermention}({userid})").format(
+                        usermention=user.mention, userid=user.id
+                    )
                 )
-            )
         except AttributeError:
             await ctx.send(
                 _(
@@ -35,17 +36,21 @@ class Check(commands.Cog):
                 ).format(userid=user.id)
             )
         try:
-            if member:
-                await ctx.invoke(ctx.bot.get_command("userinfo"), user=member)
+            async with ctx.typing():
+                if member:
+                    await ctx.invoke(ctx.bot.get_command("userinfo"), user=member)
         except:
             pass
         try:
-            await ctx.invoke(ctx.bot.get_command("read"), user=user)
+            async with ctx.typing():
+                await ctx.invoke(ctx.bot.get_command("read"), user=user)
         except:
-            if member:
-                await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
+            async with ctx.typing():
+                if member:
+                    await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
         try:
-            await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
+            async with ctx.typing():
+                await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
         except:
             pass
 
