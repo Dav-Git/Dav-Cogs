@@ -1,4 +1,4 @@
-Heyo, you seem to be interested in ccontributing to my cogs. That's awesome! \
+Heyo, you seem to be interested in contributing to my cogs. That's awesome! \
 
 # Basics
 If you've never contributed to a GitHub repository before, please check out [this guide](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github) on "How to make a PR". Don't worry, it's not difficult at all.
