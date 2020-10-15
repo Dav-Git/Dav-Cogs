@@ -27,6 +27,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | prunecmd | Introduces a command to prune the member list. |
 | rolesyncer | Sync roles within a guild |
 | roomer | <details><summary>Parts of this cog are in BETA. It's full featureset is not yet available.</summary>Tools for voicechannels.<br>- Automated voicechannel creation<br>- Private voicechannels BETA<br>- User generated voicechannels PLANNED<br>- user generated text channels PLANNED </details> | 
+| stickymember | <details><summary>Make a member sticky and keep all their roles.</summary>Ever had a member leave and rejoin frequently so you had to give them back all their roles? Me neither, but someone did. So I made this. Any member saved to the cog will retain all their roles when they rejoin the server.</details> |
 | ticketer | A command based ticket system. Run ``[p]ticketer`` and ``[p]ticket`` for help. | 
 | verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> |
 
@@ -59,12 +60,7 @@ Also a big thank you to everyone in the coding channel on the support discord fo
 
 # Privacy
 
-Some of my cogs store end user data. In the following list I try to name and explain all these instances of storing end-user data per cog. This list may not necessarily be 100 percent complete. It is designed for transparency reasons, not to give legal advice.
-
-| Cog | Type of data stored | Reason for storing the data |
-| --- | ------------------- | --------------------------- |
-| botstatus | Custom status text | <details><summary>This info is stored to provide basic cog functionality.</summary><br/>``Custom status text`` : This info is stored so that the set text can be applied as the bot's status message on startup.</details> |
-| mcwhitelister | Discord-UUID<br/>Minecraft-Username<br/>Minecraft-UUID | <details><summary>This info is stored to provide basic cog functionality.</summary><br/> ``Discord-UUID`` : This info is stored to be able to remove a user's whitelist when they leave the discord server.<br/>``Minecraft-Username`` : This info is stored to be able to provide a list of currently whitelisted users.<br/>``Minecraft-UUID`` : This info is stored to add and remove the user from the minecraft server's whitelist file.</details> |
-| nicknamer | Previous user nicknames and user IDs| <details><summary>This info is stored to provide cog functionality.</summary><br/>``Previous nicknames`` This info is stored to be able to re-give a users nickname after a temp nickname has been applied.<br/>``User IDs`` User IDs are stored in order to detect users whose nicknames have been frozen and to match the nicknames saved as temporary to a user.</details> |
-
-For questions, feel free to contact me on discord.
+Some of my cogs store end user data. \
+You can find info on this data by using the ``[p]mydata 3rdparty`` command. \
+\
+For questions, feel free to contact me as described at the top.
