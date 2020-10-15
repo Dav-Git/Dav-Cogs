@@ -39,7 +39,7 @@ class StickyMember(commands.Cog):
     async def stickymem(self, ctx, member: Member) -> None:
         await self.config.member(member).active.set(True)
         await self.config.member(member).roles.set([r.id for r in member.roles])
-        await ctx.send(_("Stickied {member}.").format(member.display_name))
+        await ctx.send(_("Stickied {member}.").format(member=member.display_name))
 
     @checks.admin()
     @commands.command()
