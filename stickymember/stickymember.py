@@ -30,9 +30,11 @@ class StickyMember(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         if await self.config.member(member).active():
-            await member.add_roles(
-                [member.guild.get_role(i) for i in await self.config.member(member).roles()]
-            )
+            for role in await self.config.member(member).roles():
+                try:
+                    await member.add_roles(role)
+                except Exception:  # Yes I know this is bad practice. Why is everybody analyzing my code all of a sudden? Lol
+                    pass  # This currently disregards any roles that throw an exception when being assigned. I want to limit this to exceptions thrown due to role hierarchy in the future when I actually have time to figure out what error it raises.
 
     @checks.admin()
     @commands.command()
