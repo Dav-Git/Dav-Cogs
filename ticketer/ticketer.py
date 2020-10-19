@@ -97,6 +97,7 @@ class Ticketer(commands.Cog):
 
     @ticketer.command()
     async def quicksetup(self, ctx):
+        """Sets configurations automatically."""
         settings = await self.config.guild(ctx.guild).all()
         if not settings["role"]:
             role = await ctx.guild.create_role(
@@ -146,6 +147,7 @@ class Ticketer(commands.Cog):
 
     @ticketer.command()
     async def purge(self, ctx, are_you_sure: Optional[bool]):
+        """Deletes all closed ticket channels."""
         if are_you_sure:
             async with self.config.guild(ctx.guild).closed() as closed:
                 for channel in closed:
