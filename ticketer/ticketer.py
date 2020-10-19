@@ -97,7 +97,7 @@ class Ticketer(commands.Cog):
 
     @ticketer.command()
     async def quicksetup(self, ctx):
-        """Sets configurations automatically.
+        """Sets configurations automatically."""
         settings = await self.config.guild(ctx.guild).all()
         if not settings["role"]:
             role = await ctx.guild.create_role(
