@@ -45,9 +45,12 @@ class Check(commands.Cog):
             async with ctx.typing():
                 await ctx.invoke(ctx.bot.get_command("read"), user=user)
         except:
-            async with ctx.typing():
-                if member:
-                    await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
+            try:
+                async with ctx.typing():
+                    if member:
+                        await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
+            except:
+                pass
         try:
             async with ctx.typing():
                 await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
