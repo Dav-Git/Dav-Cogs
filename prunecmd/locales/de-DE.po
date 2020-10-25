@@ -1,27 +1,31 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: 2020-10-25 02:20+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2020-10-25 02:22+0100\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
+"X-Generator: Poedit 2.3.1\n"
+"Last-Translator: Dav <dav@mail.stopdavabuse.de>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
 
 #: prunecmd\prunecmd.py:9
-#, docstring
 msgid "Prunecmd"
-msgstr ""
+msgstr "Prunecmd"
 
 #: prunecmd\prunecmd.py:25
 msgid "The member list has been pruned successfully"
-msgstr ""
+msgstr "Die Mitgliederliste wurde erfolgreich bereinigt"
 
 #: prunecmd\prunecmd.py:28
 msgid ""
 "This will kick members from your guild. If you are sure you want to proceed "
 "run {command}"
 msgstr ""
+"Dieser Befehl wird Mitglieder von deinem Server entfernen. Wenn du dir "
+"sicher bist, dass du das tun möchtest verwende {command}"
