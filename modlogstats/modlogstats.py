@@ -1,6 +1,7 @@
 from redbot.core import commands, modlog
 from datetime import timedelta
 from typing import Optional
+from collections import defaultdict
 
 
 class ModLogStats(commands.Cog):
@@ -11,4 +12,10 @@ class ModLogStats(commands.Cog):
     async def modlogstats(self, ctx, *, time: Optional[commands.TimedeltaConverter] = None):
         """Get modlog stats for the timeframe specified."""
         cases = modlog.get_all_cases(ctx.guild, ctx.bot)
-        types = []
+        counts = defaultdict(int)
+        min_date = 0
+        async with ctx.typing():
+            for case in cases:
+                if case.created_at > min_date:
+                    counts[case.action_type] = counts[case.action_type] + 1
+            await ctx.send(counts)
