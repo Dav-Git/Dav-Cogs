@@ -16,7 +16,8 @@ class ModLogStats(commands.Cog):
         min_date = 0
         async with ctx.typing():
             for case in cases:
-                print(case.created_at)
+                await ctx.send("Entered for loop.")
                 if case.created_at > min_date:
+                    await ctx.send("Matching case")
                     counts[case.action_type] = counts[case.action_type] + 1
             await ctx.send(counts)
