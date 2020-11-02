@@ -11,7 +11,7 @@ class ModLogStats(commands.Cog):
     @commands.command()
     async def modlogstats(self, ctx, *, time: Optional[commands.TimedeltaConverter] = None):
         """Get modlog stats for the timeframe specified."""
-        cases = modlog.get_all_cases(ctx.guild, ctx.bot)
+        cases = await modlog.get_all_cases(ctx.guild, ctx.bot)
         counts = defaultdict(int)
         min_date = 0
         async with ctx.typing():
