@@ -11,13 +11,14 @@ class ModLogStats(commands.Cog):
     @commands.command()
     async def modlogstats(self, ctx, *, time: Optional[commands.TimedeltaConverter] = None):
         """Get modlog stats for the timeframe specified."""
+        await ctx.send("Getting cases...")
         cases = await modlog.get_all_cases(ctx.guild, ctx.bot)
+        await ctx.send("Got cases...")
         counts = defaultdict(int)
         min_date = 0
         async with ctx.typing():
+            await ctx.send("Entering for loop.")
             for case in cases:
-                await ctx.send("Entered for loop.")
                 if case.created_at > min_date:
-                    await ctx.send("Matching case")
                     counts[case.action_type] = counts[case.action_type] + 1
             await ctx.send(counts)
