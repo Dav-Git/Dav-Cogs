@@ -144,6 +144,7 @@ class SendProcessingCasesTask(threading.Thread):
             sleep(UPDATE_DELAY)
 
 
+# Thanks phenom4n4n, you've been a massive help with this.
 def _edit_webhook_message_embeds(url, message_id, embeds: List[discord.Embed]):
     with Session() as session:
         with session.patch(
