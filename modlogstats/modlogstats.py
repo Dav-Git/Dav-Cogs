@@ -4,7 +4,7 @@ from collections import defaultdict
 from datetime import timedelta
 from time import sleep
 from typing import List, Optional
-
+from datetime import datetime
 import discord
 from redbot.core import commands, modlog
 from redbot.core.i18n import Translator, cog_i18n
@@ -44,15 +44,31 @@ class ModLogStats(commands.Cog):
         cases[ctx.guild.id] = len(modlogcases)
         tasks[ctx.guild.id] = 2
         counts = defaultdict(int)
-        min_date = 0
+        min_date = (datetime.utcnow() - time).timestamp()
         for modlogcase in modlogcases:
             if modlogcase.created_at > min_date:
                 counts[modlogcase.action_type] = counts[modlogcase.action_type] + 1
         tasks[ctx.guild.id] = False
-        em = discord.Embed(title="Results", description=f"{counts}")
+        em = discord.Embed(title=_("Results"))
         em.color = discord.Color.green()
+        em.set_footer(
+            text=_("Total cases: {amount}").format(
+                amount=(await modlog.get_latest_case(ctx.guild, ctx.bot)).case_number
+            )
+        )
+        em_list = []
+        embed_fields_filled = 0
+        for casetype in counts:
+            if embed_fields_filled == 25:
+                em_list.append(em)
+                em = discord.Embed(title=_("Results"))
+                em.color = discord.Color.green()
+            em.add_field(
+                name=(await modlog.get_casetype(casetype)).case_str, value=counts[casetype]
+            )
+        em_list.append(em)
         await asyncio.sleep(3)
-        _edit_webhook_message_embeds(self.webhooks[ctx.guild.id].url, message_id, [em])
+        _edit_webhook_message_embeds(self.webhooks[ctx.guild.id].url, message_id, em_list)
 
     async def _maybe_create_webhook(self, channel):
         if not self.webhooks[channel.guild.id]:
