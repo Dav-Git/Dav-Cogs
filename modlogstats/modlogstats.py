@@ -78,12 +78,12 @@ class ModLogStats(commands.Cog):
         await asyncio.sleep(
             1
         )  # Allow for the last webhook request to reach discord before sending another one.
-        _edit_webhook_message_embeds(self.webhooks[ctx.guild.id].url, message_id, em_list)
+        _edit_webhook_message_embeds(self.webhooks[ctx.channel.id].url, message_id, em_list)
         send_ready[ctx.guild.id] = False
 
     async def _maybe_create_webhook(self, channel):
-        if not self.webhooks[channel.guild.id]:
-            self.webhooks[channel.guild.id] = await channel.create_webhook(
+        if not self.webhooks[channel.id]:
+            self.webhooks[channel.id] = await channel.create_webhook(
                 name=_("Modlogstats"), reason=_("Modlogstats status message.")
             )
 
@@ -91,11 +91,11 @@ class ModLogStats(commands.Cog):
         await self._maybe_create_webhook(channel)
         em = discord.Embed(title="\u200b")
         try:
-            await self.webhooks[channel.guild.id].send(embed=em)
+            await self.webhooks[channel.id].send(embed=em)
         except discord.NotFound:
-            self.webhooks[channel.guild.id] = None
+            self.webhooks[channel.id] = None
             await self._maybe_create_webhook(channel)
-            await self.webhooks[channel.guild.id].send(embed=em)
+            await self.webhooks[channel.id].send(embed=em)
         async for message in channel.history(limit=15, oldest_first=False):
             if message.author.id == self.webhooks[channel.guild.id].id:
                 message_id = message.id
