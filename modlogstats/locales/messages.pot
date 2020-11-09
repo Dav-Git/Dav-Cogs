@@ -1,0 +1,73 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2020-11-10 00:33+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.3\n"
+
+#: modlogstats\modlogstats.py:40
+#, docstring
+msgid "Get modlog stats for the timeframe specified."
+msgstr ""
+
+#: modlogstats\modlogstats.py:58 modlogstats\modlogstats.py:70
+msgid "Results"
+msgstr ""
+
+#: modlogstats\modlogstats.py:61
+msgid "Total cases: {amount}"
+msgstr ""
+
+#: modlogstats\modlogstats.py:87
+msgid "Modlogstats"
+msgstr ""
+
+#: modlogstats\modlogstats.py:87
+msgid "Modlogstats status message."
+msgstr ""
+
+#: modlogstats\modlogstats.py:119
+msgid "This WILL take a while."
+msgstr ""
+
+#: modlogstats\modlogstats.py:122
+msgid "Getting cases."
+msgstr ""
+
+#: modlogstats\modlogstats.py:126
+msgid "Getting cases.."
+msgstr ""
+
+#: modlogstats\modlogstats.py:130
+msgid "Getting cases..."
+msgstr ""
+
+#: modlogstats\modlogstats.py:134
+msgid "Getting cases"
+msgstr ""
+
+#: modlogstats\modlogstats.py:137
+msgid "This might take a while."
+msgstr ""
+
+#: modlogstats\modlogstats.py:140
+msgid "Processing {cases} cases"
+msgstr ""
+
+#: modlogstats\modlogstats.py:144
+msgid "Processing {cases} cases."
+msgstr ""
+
+#: modlogstats\modlogstats.py:148
+msgid "Processing {cases} cases.."
+msgstr ""
+
+#: modlogstats\modlogstats.py:152
+msgid "Processing {cases} cases..."
+msgstr ""
