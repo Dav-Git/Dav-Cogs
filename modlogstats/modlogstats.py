@@ -1,10 +1,11 @@
 import asyncio
 import threading
 from collections import defaultdict
-from datetime import timedelta
+from datetime import datetime, timedelta
+from logging import getLogger
 from time import sleep
 from typing import List, Optional
-from datetime import datetime
+
 import discord
 from redbot.core import commands, modlog
 from redbot.core.i18n import Translator, cog_i18n
@@ -157,9 +158,12 @@ class SendProcessingCasesTask(threading.Thread):
 # Thanks phenom4n4n, you've been a massive help with this.
 def _edit_webhook_message_embeds(url, message_id, embeds: List[discord.Embed]):
     with Session() as session:
-        with session.patch(
-            f"{url}/messages/{message_id}",
-            headers={"Content-Type": "application/json"},
-            json={"embeds": [embed.to_dict() for embed in embeds]},
-        ):
-            pass
+        try:
+            with session.patch(
+                f"{url}/messages/{message_id}",
+                headers={"Content-Type": "application/json"},
+                json={"embeds": [embed.to_dict() for embed in embeds]},
+            ):
+                pass
+        except ConnectionError as e:
+            getLogger("red.dav-cogs.modlogstats").warn(f"Error when trying to edit embed: {e}")
