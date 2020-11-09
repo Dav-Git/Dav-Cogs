@@ -32,6 +32,7 @@ class ModLogStats(commands.Cog):
     def red_delete_data_for_user(self, *, requester, user_id):
         return  # This cog stores no EUD
 
+    @commands.admin()
     @commands.bot_has_permissions(manage_webhooks=True)
     @commands.max_concurrency(1, commands.BucketType.guild, wait=False)
     @commands.command()
