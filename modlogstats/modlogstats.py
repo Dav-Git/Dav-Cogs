@@ -41,7 +41,7 @@ class ModLogStats(commands.Cog):
         message_id = await self._initialize_webhook_message(ctx.channel)
         tasks[ctx.guild.id] = 1
         SendProcessingCasesTask(
-            self.webhooks[ctx.guild.id].url, ctx.guild.id, message_id, len(cases)
+            self.webhooks[ctx.channel.id].url, ctx.guild.id, message_id, len(cases)
         ).start()
         modlogcases = await modlog.get_all_cases(ctx.guild, ctx.bot)
         cases[ctx.guild.id] = len(modlogcases)
