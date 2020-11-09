@@ -44,7 +44,10 @@ class ModLogStats(commands.Cog):
         cases[ctx.guild.id] = len(modlogcases)
         tasks[ctx.guild.id] = 2
         counts = defaultdict(int)
-        min_date = (datetime.utcnow() - time).timestamp()
+        if time:
+            min_date = (datetime.utcnow() - time).timestamp()
+        else:
+            min_date = 0
         for modlogcase in modlogcases:
             if modlogcase.created_at > min_date:
                 counts[modlogcase.action_type] = counts[modlogcase.action_type] + 1
