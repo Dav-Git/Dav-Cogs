@@ -26,8 +26,8 @@ class ModLogStats(commands.Cog):
     def cog_unload(self):
         for guild_id in tasks:
             tasks[guild_id] = False
-        for guild_id in self.webhooks:
-            asyncio.create_task(self.webhooks[guild_id].delete(reason="Cog unload."))
+        for channel_id in self.webhooks:
+            asyncio.create_task(self.webhooks[channel_id].delete(reason="Cog unload."))
 
     def red_delete_data_for_user(self, *, requester, user_id):
         return  # This cog stores no EUD
@@ -97,7 +97,7 @@ class ModLogStats(commands.Cog):
             await self._maybe_create_webhook(channel)
             await self.webhooks[channel.id].send(embed=em)
         async for message in channel.history(limit=15, oldest_first=False):
-            if message.author.id == self.webhooks[channel.guild.id].id:
+            if message.author.id == self.webhooks[channel.id].id:
                 message_id = message.id
                 break
         return message_id
