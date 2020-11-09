@@ -14,6 +14,7 @@ _ = Translator("ModLogStats", __file__)
 UPDATE_DELAY = 0.3
 tasks = defaultdict(lambda: False)
 cases = defaultdict(lambda: 0)
+send_ready = defaultdict(lambda: False)
 
 
 @cog_i18n(_)
@@ -70,8 +71,13 @@ class ModLogStats(commands.Cog):
                 name=(await modlog.get_casetype(casetype)).case_str, value=counts[casetype]
             )
         em_list.append(em)
-        await asyncio.sleep(3)
+        while not send_ready[ctx.guild.id]:
+            await asyncio.sleep(1)
+        await asyncio.sleep(
+            1
+        )  # Allow for the last webhook request to reach discord before sending another one.
         _edit_webhook_message_embeds(self.webhooks[ctx.guild.id].url, message_id, em_list)
+        send_ready[ctx.guild.id] = False
 
     async def _maybe_create_webhook(self, channel):
         if not self.webhooks[channel.guild.id]:
@@ -145,6 +151,7 @@ class SendProcessingCasesTask(threading.Thread):
             em.color = discord.Color(0x000000)
             _edit_webhook_message_embeds(url, message_id, [em])
             sleep(UPDATE_DELAY)
+        send_ready[guild_id] = True
 
 
 # Thanks phenom4n4n, you've been a massive help with this.
