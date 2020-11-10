@@ -99,7 +99,7 @@ class NickNamer(commands.Cog):
                             async with self.config.guild(after.guild).frozen() as frozen:
                                 for e in frozen:
                                     if e[0] == before.id:
-                                        settings.remove(e)
+                                        frozen.remove(e)
 
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
