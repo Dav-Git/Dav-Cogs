@@ -93,7 +93,7 @@ class NickNamer(commands.Cog):
                         try:
                             await after.edit(nick=e[1], reason="Nickname frozen.")
                         except discord.errors.Forbidden:
-                            log.info(f"Missing permissions to change {before.nick} ({before.id}) in {before.guild.id}"
+                            log.info(f"Missing permissions to change {before.nick} ({before.id}) in {before.guild.id}")
 
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
