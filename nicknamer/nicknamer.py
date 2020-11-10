@@ -96,8 +96,8 @@ class NickNamer(commands.Cog):
                             log.info(
                                 f"Missing permissions to change {before.nick} ({before.id}) in {before.guild.id}, removing freeze"
                             )
-                            async with self.config.guild(after.guild).frozen() as settings:
-                                for e in settings:
+                            async with self.config.guild(after.guild).frozen() as frozen:
+                                for e in frozen:
                                     if e[0] == before.id:
                                         settings.remove(e)
 
