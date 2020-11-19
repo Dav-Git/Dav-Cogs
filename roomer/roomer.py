@@ -165,30 +165,85 @@ class Roomer(commands.Cog):
         """Create a private voicechannel."""
         data = await self.config.guild(ctx.guild).all()
         if data["private"]:
-            if ctx.author.voice.channel.id == data["pstart"]:
-                key = "".join(choice(string.ascii_lowercase + "0123456789") for i in range(8))
-                if key in data["pchannels"]:
-                    key = "".join(
-                        choice(string.ascii_lowercase + "0123456789") for i in range(16)
-                    )  # Yes I know this can still cause conflicts. But falling back to a larger number of chars will decrease the likelihood dramatically.
-                try:
-                    await ctx.author.send(
-                        _(
-                            "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
-                        ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
-                    )
-                except discord.Forbidden:
-                    await ctx.send(
-                        _("Couldn't send the key to your private channel via DM. Aborting...")
-                    )
-                    return
-                if public:
-                    ov = {
-                        ctx.author: discord.PermissionOverwrite(
-                            view_channel=True, connect=True, speak=True, manage_channels=True
+            if ctx.author.voice.channel:
+                if ctx.author.voice.channel.id == data["pstart"]:
+                    uniqueKeyFound = False
+                    while not uniqueKeyFound:
+                        # This probably won't turn into an endless loop bceause it has more possibilities than discord allows channels per guild
+                        key = "".join(
+                            choice(string.ascii_lowercase + "0123456789") for i in range(16)
                         )
-                    }
+                        if not (key in data["pchannels"]):
+                            uniqueKeyFound = True
+                    try:
+                        await ctx.author.send(
+                            _(
+                                "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
+                            ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
+                        )
+                    except discord.Forbidden:
+                        await ctx.send(
+                            _("Couldn't send the key to your private channel via DM. Aborting...")
+                        )
+                        return
+                    if public:
+                        ov = {
+                            ctx.author: discord.PermissionOverwrite(
+                                view_channel=True, connect=True, speak=True, manage_channels=True
+                            )
+                        }
+                    else:
+                        ov = {
+                            ctx.guild.default_role: discord.PermissionOverwrite(
+                                view_channel=True, connect=False
+                            ),
+                            ctx.author: discord.PermissionOverwrite(
+                                view_channel=True, connect=True, speak=True, manage_channels=True
+                            ),
+                        }
+                    c = await ctx.guild.create_voice_channel(
+                        name,
+                        overwrites=ov,
+                        category=ctx.guild.get_channel(data["pcat"]),
+                        reason=_("Private room"),
+                    )
+                    await ctx.author.move_to(c, reason=_("Private channel."))
+                    data["pchannels"][key] = c.id
+                    await self.config.guild(ctx.guild).pchannels.set(data["pchannels"])
                 else:
+                    await self.sendNotInStartChannelMessage(ctx, data["pstart"])
+            else:
+                await self.sendNotInStartChannelMessage(ctx, data["pstart"])
+        else:
+            await ctx.send(_("Private rooms are not enabled on this server."))
+
+    @commands.guild_only()
+    @vc.command()
+    async def join(self, ctx, key: str):
+        """Join a private room."""
+        await ctx.message.delete()
+        async with ctx.typing():
+            data = await self.config.guild(ctx.guild).all()
+            if data["private"]:
+                if ctx.author.voice.channel:
+                    if ctx.author.voice.channel.id == data["pstart"]:
+                        if key in data["pchannels"]:
+                            await ctx.author.move_to(ctx.guild.get_channel(data["pchannels"][key]))
+                    else:
+                        await self.sendNotInStartChannelMessage(ctx, data["pstart"])
+                else:
+                    await self.sendNotInStartChannelMessage(ctx, data["pstart"])
+            else:
+                await ctx.send(_("Private rooms are not enabled on this server."))
+
+    @commands.guild_only()
+    @vc.command()
+    async def hidden(self, ctx, true_or_false: Optional[bool] = True):
+        """Hide or unhide a voicechannel you own."""
+        data = await self.config.guild(ctx.guild).pchannels()
+        if ctx.author.voice.channel:
+            for key in data:
+                if data[key] == ctx.author.voice.channel.id:
                     ov = {
                         ctx.guild.default_role: discord.PermissionOverwrite(
                             view_channel=False, connect=False
@@ -197,41 +252,16 @@ class Roomer(commands.Cog):
                             view_channel=True, connect=True, speak=True, manage_channels=True
                         ),
                     }
-                c = await ctx.guild.create_voice_channel(
-                    name,
-                    overwrites=ov,
-                    category=ctx.guild.get_channel(data["pcat"]),
-                    reason=_("Private room"),
-                )
-                await ctx.author.move_to(c, reason=_("Private channel."))
-                data["pchannels"][key] = c.id
-                await self.config.guild(ctx.guild).pchannels.set(data["pchannels"])
-            else:
-                await ctx.send(
-                    _("You must be in the voicechannel {vc} first.").format(
-                        vc=ctx.guild.get_channel(data["pstart"]).mention
-                    )
-                )
-        else:
-            await ctx.send(_("Private rooms are not enabled on this server."))
-
-    @vc.command()
-    async def join(self, ctx, key: str):
-        """Join a private room."""
-        await ctx.message.delete()
-        async with ctx.typing():
-            data = await self.config.guild(ctx.guild).all()
-            if data["private"]:
-                if ctx.author.voice.channel.id == data["pstart"]:
-                    if key in data["pchannels"]:
-                        await ctx.author.move_to(ctx.guild.get_channel(data["pchannels"][key]))
-                else:
-                    await ctx.send(
-                        _("You must be in the voicechannel {vc} first.").format(
-                            vc=ctx.guild.get_channel(data["pstart"]).mention
-                        )
-                    )
-            else:
-                await ctx.send(_("Private rooms are not enabled on this server."))
+                    await ctx.author.voice.channel.edit(overwrites=ov)
 
     # endregion private
+
+    # region helpers
+    async def sendNotInStartChannelMessage(self, ctx, channel_id):
+        await ctx.send(
+            _("You must be in the voicechannel {vc} first.").format(
+                vc=ctx.guild.get_channel(channel_id).mention
+            )
+        )
+
+    # endregion helpers
