@@ -185,6 +185,47 @@ class Botstatus(commands.Cog):
             await self.setfunc("watching", "offline", text)
             await ctx.send(_("Status set to ``Offline | Watching {text}``").format(text=text))
 
+    @botstatus.group()
+    async def competing(self, ctx):
+        """Set a competing status"""
+        pass
+
+    @competing.command(name="online")
+    async def c_online(self, ctx, *, text: str):
+        if len(text) > 128:
+            await ctx.send(_("The chracter limit for status messages is 128."))
+        else:
+            await self.config.status.set(("competing", "online", text))
+            await self.setfunc("competing", "online", text)
+            await ctx.send(_("Status set to ``Online | Competing {text}``").format(text=text))
+
+    @competing.command(name="away")
+    async def c_away(self, ctx, *, text: str):
+        if len(text) > 128:
+            await ctx.send(_("The chracter limit for status messages is 128."))
+        else:
+            await self.config.status.set(("competing", "away", text))
+            await self.setfunc("competing", "away", text)
+            await ctx.send(_("Status set to ``Away | Competing {text}``").format(text=text))
+
+    @competing.command(name="dnd")
+    async def c_dnd(self, ctx, *, text: str):
+        if len(text) > 128:
+            await ctx.send(_("The chracter limit for status messages is 128."))
+        else:
+            await self.config.status.set(("competing", "dnd", text))
+            await self.setfunc("competing", "dnd", text)
+            await ctx.send(_("Status set to ``DND | Competing {text}``").format(text=text))
+
+    @competing.command(name="offline")
+    async def c_offline(self, ctx, *, text: str):
+        if len(text) > 128:
+            await ctx.send(_("The chracter limit for status messages is 128."))
+        else:
+            await self.config.status.set(("competing", "offline", text))
+            await self.setfunc("competing", "offline", text)
+            await ctx.send(_("Status set to ``Offline | Competing {text}``").format(text=text))
+
     @botstatus.command()
     async def clear(self, ctx):
         """Clear the saved botstatus and disable auto-setting on reboot."""
