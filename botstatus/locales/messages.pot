@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-10-12 12:09+0200\n"
+"POT-Creation-Date: 2020-11-24 01:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,6 +34,8 @@ msgstr ""
 #: botstatus\botstatus.py:132 botstatus\botstatus.py:141
 #: botstatus\botstatus.py:155 botstatus\botstatus.py:164
 #: botstatus\botstatus.py:173 botstatus\botstatus.py:182
+#: botstatus\botstatus.py:196 botstatus\botstatus.py:205
+#: botstatus\botstatus.py:214 botstatus\botstatus.py:223
 msgid "The chracter limit for status messages is 128."
 msgstr ""
 
@@ -97,9 +99,30 @@ msgstr ""
 
 #: botstatus\botstatus.py:190
 #, docstring
+msgid "Set a competing status"
+msgstr ""
+
+#: botstatus\botstatus.py:200
+msgid "Status set to ``Online | Competing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:209
+msgid "Status set to ``Away | Competing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:218
+msgid "Status set to ``DND | Competing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:227
+msgid "Status set to ``Offline | Competing {text}``"
+msgstr ""
+
+#: botstatus\botstatus.py:231
+#, docstring
 msgid "Clear the saved botstatus and disable auto-setting on reboot."
 msgstr ""
 
-#: botstatus\botstatus.py:192
+#: botstatus\botstatus.py:233
 msgid "Saved botstatus has been cleared."
 msgstr ""

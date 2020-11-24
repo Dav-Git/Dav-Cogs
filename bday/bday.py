@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+from typing import Optional
 import discord
 from discord.ext import tasks
 from redbot.core import Config, checks, commands
@@ -13,22 +13,14 @@ class Bday(commands.Cog):
     """Bday"""
 
     async def red_delete_data_for_user(self, *, requester, user_id):
-        async with self.config.bdays() as bdays:
-            for e in bdays:
-                if str(e[0]) == str(user_id):
-                    guild = self.bot.get_guild(int(e[1]))
-                    await guild.get_user([int(e[0])]).remove_roles(
-                        guild.get_role(await self.config.guild(guild).bdayRole()),
-                        reason=_("User data deleted."),
-                    )
-                    bdays.remove(e)
+        await self.config.user_from_id(user_id).clear()
 
     def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=1072001)
         default_guild = {"bdayRole": 0}
-        default_global = {"bdays": []}
+        default_user = {"bday": None}
         self.config.register_guild(**default_guild)
-        self.config.register_global(**default_global)
+        self.config.register_user(**default_user)
         self.bot = bot
 
     async def initialize(self):
@@ -38,56 +30,48 @@ class Bday(commands.Cog):
     def cog_unload(self):
         self.bdaytask.cancel()
 
+    @tasks.loop(hours=1)
+    async def bdaytask(self):
+        date = datetime.utcnow().strftime("%d%m")
+        for user_id in await self.config.all_users():
+            if date == await self.config.user_from_id(user_id).bday():
+                for guild_id in await self.config.all_guilds():
+                    member = self.bot.get_guild(guild_id).get_member(user_id)
+                    if member and not await self.bot.cog_disabled_in_guild_raw("bday", guild_id):
+                        await member.add_roles(
+                            member.guild.get_roles(
+                                await self.config.guild_from_id(guild_id).bdayRole()
+                            )
+                        )
+            else:
+                for guild_id in await self.config.all_guilds():
+                    member = self.bot.get_guild(guild_id).get_member(user_id)
+                    if (
+                        member
+                        and (not await self.bot.cog_disabled_in_guild_raw("bday", guild_id))
+                        and (
+                            (
+                                role := member.guild.get_roles(
+                                    await self.config.guild_from_id(guild_id).bdayRole()
+                                )
+                            )
+                            in member.roles
+                        )
+                    ):
+                        await member.remove_roles(role)
+
     @commands.command()
     @checks.mod()
-    async def birthday(self, ctx, user: discord.Member):
-
-        """Assigns the birthday role to a member and sends birthday wishes."""
-
-        if not await self.config.guild(ctx.guild).bdayRole() == 0:
-            await user.add_roles(
-                ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
-                reason=_("It's their birthday!"),
-            )
-            await ctx.send(_("Happy birthday {} !").format(user.mention))
-            async with self.config.bdays() as bdays:
-                bdays.append(
-                    (user.id, ctx.guild.id, (datetime.utcnow() + timedelta(days=1)).timestamp())
-                )
-        else:
-            await ctx.send(
-                _("You need to configure a birthday role first by using ``[p]setbirthday``.")
-            )
+    async def birthday(self, ctx, date: Optional[str] = None):
+        """Set your birthday.\nOmit a date to set your birthday as today.\nDate format: 'ddMM'"""
+        if date is None:
+            date = datetime.utcnow().strftime("%d%m")
+        await self.config.user_from_id(ctx.author.id).bday.set(date)
+        await ctx.tick()
 
     @commands.command()
     @checks.admin()
-    async def setbirthday(self, ctx, role: discord.Role):
+    async def setbirthdayrole(self, ctx, role: discord.Role):
         """Set the role that will be assigned on a birthday."""
         await self.config.guild(ctx.guild).bdayRole.set(role.id)
         await ctx.send(_("The birthday role has been set to {}").format(role.name))
-
-    @commands.command()
-    @checks.mod()
-    async def clearbirthdays(self, ctx):
-
-        """Clears the birthday role off of all members."""
-
-        for user in ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()).members:
-            await user.remove_roles(
-                ctx.guild.get_role(await self.config.guild(ctx.guild).bdayRole()),
-                reason=_("Birthdays cleared."),
-            )
-
-    @tasks.loop(hours=1)
-    async def bdaytask(self):
-        time = datetime.utcnow()
-        async with self.config.bdays() as bdays:
-            for bday in bdays:
-                expiry = datetime.utcfromtimestamp(bday[2])
-                if time > expiry:
-                    guild = self.bot.get_guild(bday[1])
-                    await guild.get_member(bday[0]).remove_roles(
-                        guild.get_role(await self.config.guild(guild).bdayRole()),
-                        reason=_("24h have passed. This birthday must be over."),
-                    )
-                    bdays.remove(bday)

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-10-12 12:17+0200\n"
+"POT-Creation-Date: 2020-11-24 01:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,31 +81,31 @@ msgid ""
 "{} overwrites {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:112
+#: exclusiveroles\exclusiveroles.py:111
 msgid "Exclusiveroles"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:113
+#: exclusiveroles\exclusiveroles.py:112
 msgid "All exclusive role pairs:"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:121
+#: exclusiveroles\exclusiveroles.py:120
 #, docstring
 msgid "Scans the entire user list for roles that have been set as exclusive."
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:124
+#: exclusiveroles\exclusiveroles.py:123
 msgid "``This may take a while...``"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:136
+#: exclusiveroles\exclusiveroles.py:135
 msgid "``Starting with {} and {}``"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:143
+#: exclusiveroles\exclusiveroles.py:142
 msgid "{} overwrites {}"
 msgstr ""
 
-#: exclusiveroles\exclusiveroles.py:145
+#: exclusiveroles\exclusiveroles.py:144
 msgid "``Retroscan completed.``"
 msgstr ""
