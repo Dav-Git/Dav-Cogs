@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-10-12 12:09+0200\n"
+"POT-Creation-Date: 2020-11-24 01:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,6 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
+
+#: ticketer\ticketer.py:8
+#, docstring
+msgid "Ticketer"
+msgstr ""
 
 #: ticketer\ticketer.py:45
 #, docstring
@@ -53,27 +58,37 @@ msgstr ""
 msgid "Decide if ticketer should log to modlog."
 msgstr ""
 
-#: ticketer\ticketer.py:173
+#: ticketer\ticketer.py:100
+#, docstring
+msgid "Sets configurations automatically."
+msgstr ""
+
+#: ticketer\ticketer.py:150
+#, docstring
+msgid "Deletes all closed ticket channels."
+msgstr ""
+
+#: ticketer\ticketer.py:175
 #, docstring
 msgid "Manage a ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:183
+#: ticketer\ticketer.py:185
 #, docstring
 msgid "Create a ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:246
+#: ticketer\ticketer.py:248
 #, docstring
 msgid "Close a ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:296
+#: ticketer\ticketer.py:298
 #, docstring
 msgid "Update a ticket. This is visible to all participants of the ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:315
+#: ticketer\ticketer.py:317
 #, docstring
 msgid "Add a staff-only note to a ticket."
 msgstr ""
