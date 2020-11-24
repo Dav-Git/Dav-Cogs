@@ -37,7 +37,7 @@ class Bday(commands.Cog):
             if date == await self.config.user_from_id(user_id).bday():
                 for guild_id in await self.config.all_guilds():
                     member = self.bot.get_guild(guild_id).get_member(user_id)
-                    if member and not await self.bot.cog_disabled_in_guild_raw("bday", guild_id):
+                    if member and not await self.bot.cog_disabled_in_guild_raw("Bday", guild_id):
                         await member.add_roles(
                             member.guild.get_roles(
                                 await self.config.guild_from_id(guild_id).bdayRole()
@@ -48,7 +48,7 @@ class Bday(commands.Cog):
                     member = self.bot.get_guild(guild_id).get_member(user_id)
                     if (
                         member
-                        and (not await self.bot.cog_disabled_in_guild_raw("bday", guild_id))
+                        and (not await self.bot.cog_disabled_in_guild_raw("Bday", guild_id))
                         and (
                             (
                                 role := member.guild.get_roles(
