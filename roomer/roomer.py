@@ -60,7 +60,7 @@ class Roomer(commands.Cog):
                     for category in [
                         member.guild.get_channel(c).category for c in settings["auto_channels"]
                     ]:
-                        for channel in category:
+                        for channel in category.voice_channels:
                             if len(channel.members) == 0:
                                 if not (channel.id in settings["auto_channels"]):
                                     await before.channel.delete(reason=_("Channel empty."))
