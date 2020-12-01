@@ -91,23 +91,8 @@ class Roomer(commands.Cog):
     @auto.command()
     async def enable(self, ctx):
         """Enable automatic voicechannel creation."""
-        settings = await self.config.guild(ctx.guild).all()
-        # Create a VC in case none exist.
-        try:
-            if not ctx.guild.get_channel(settings["category"]).voice_channels:
-                await ctx.guild.create_voice_channel(
-                    name=settings["name"],
-                    category=ctx.guild.get_channel(settings["category"]),
-                    reason=_("No channels exist. We need one for people to join though."),
-                )
-            await self.config.guild(ctx.guild).auto.set(True)
-            await ctx.send(_("Automatic voicechannel creation enabled."))
-        except:
-            await ctx.send(
-                _(
-                    "Make sure you set a category with {command} and have at least one voicechannel in it."
-                ).format(command=f"``{ctx.clean_prefix}roomer auto category [category-ID]``")
-            )
+        await self.config.guild(ctx.guild).auto.set(True)
+        await ctx.send(_("Automatic voicechannel creation enabled."))
 
     @auto.command()
     async def disable(self, ctx):
@@ -125,7 +110,7 @@ class Roomer(commands.Cog):
             )
         )
 
-    @auto.category()
+    @auto.group()
     async def channel(self, ctx):
         """Manage channels related to automated voicechannels."""
         pass
