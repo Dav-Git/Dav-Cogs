@@ -52,13 +52,14 @@ class Roomer(commands.Cog):
                     await member.move_to(
                         channel, reason=_("Moved to automatically created channel.")
                     )
-                elif not after.channel.id:
-                    for category_id in [
-                        member.guild.get_channel(c).category_id for c in settings["auto_channels"]
+                else:
+                    for category in [
+                        member.guild.get_channel(c).category for c in settings["auto_channels"]
                     ]:
-                        if before.channel.category_id == category_id:
-                            if not (before.channel.id in settings["auto_channels"]):
-                                await before.channel.delete(reason=_("Channel empty."))
+                        for channel in category:
+                            if len(channel.members) == 0:
+                                if not (channel.id in settings["auto_channels"]):
+                                    await before.channel.delete(reason=_("Channel empty."))
 
         if settings["private"]:
             if before.channel:
