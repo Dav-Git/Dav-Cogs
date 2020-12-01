@@ -15,7 +15,7 @@ class Roomer(commands.Cog):
     def __init__(self):
         self.config = Config.get_conf(self, identifier=300620201743, force_registration=True)
         default_guild = {
-            "category": None,
+            "auto_channels": None,
             "name": "general",
             "auto": False,
             "pstart": None,
@@ -24,29 +24,42 @@ class Roomer(commands.Cog):
             "private": False,
         }
         self.config.register_guild(**default_guild)
+        self.config.register_global(notification=0)
+
+    async def initialize(self, bot):
+        notification = await self.config.notification()
+        if notification == 0:
+            await bot.send_to_owners(
+                "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories."
+            )
+            await self.config.notification.set(1)
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         settings = await self.config.guild(member.guild).all()
+        # Some config cleanup here
+        if settings["category"]:
+            await self.config.guild(member.guild).category.clear()
+
         if settings["auto"]:  # Autoroom stuff
-            dellist = []
-            for vc in member.guild.get_channel(settings["category"]).voice_channels:
-                if not vc.members:
-                    dellist.append(vc)
-            if len(dellist) > 1:
-                dellist.remove(dellist[0])
-                for vc in dellist:
-                    await vc.delete(reason=_("Channel empty."))
-            channel_needed = True
-            for vc in member.guild.get_channel(settings["category"]).voice_channels:
-                if not vc.members:
-                    channel_needed = False
-            if channel_needed:
-                await member.guild.create_voice_channel(
-                    name=settings["name"],
-                    category=member.guild.get_channel(settings["category"]),
-                    reason=_("A channel is needed."),
-                )
+            if settings["auto_channels"]:
+                if after.channel.id in settings["auto_channels"]:
+                    channel = await after.channel.category.create_voice_channel(
+                        settings["name"],
+                        overwrites=after.channel.overwrites,
+                        reason=_("Automated voicechannel creation."),
+                    )
+                    await member.move_to(
+                        channel, reason=_("Moved to automatically created channel.")
+                    )
+                elif not after.channel.id:
+                    for category_id in [
+                        member.guild.get_channel(c).category_id for c in settings["auto_channels"]
+                    ]:
+                        if before.channel.category_id == category_id:
+                            if not (before.channel.id in settings["auto_channels"]):
+                                await before.channel.delete(reason=_("Channel empty."))
+
         if settings["private"]:
             if before.channel:
                 if before.channel.id in settings["pchannels"].values():
@@ -112,19 +125,38 @@ class Roomer(commands.Cog):
             )
         )
 
-    @auto.command()
-    async def category(self, ctx, *, category: discord.CategoryChannel):
-        """Set the category used for automatic voicechannels."""
-        await self.config.guild(ctx.guild).category.set(category.id)
+    @auto.category()
+    async def channel(self, ctx):
+        """Manage channels related to automated voicechannels."""
+        pass
+
+    @channel.command()
+    async def add(self, ctx, *, channel: discord.VoiceChannel):
+        """Add a start channel used for automatic voicechannels."""
+        auto_channels = await self.config.guild(ctx.guild).auto_channels()
+        auto_channels.append(channel.id)
+        await self.config.guild(ctx.guild).auto_channels.set(auto_channels)
         await ctx.send(
-            _("Category used for automatic voicechannels set to: {category}").format(
-                category=category.name
+            _("Startchannel used for automatic voicechannels added: {channel}").format(
+                channel=channel.name
+            )
+        )
+
+    @channel.command()
+    async def remove(self, ctx, *, channel: discord.VoiceChannel):
+        """Remove a start channel used for automatic voicechannels."""
+        auto_channels = await self.config.guild(ctx.guild).auto_channels()
+        auto_channels.remove(channel.id)
+        await self.config.guild(ctx.guild).auto_channels.set(auto_channels)
+        await ctx.send(
+            _("Startchannel used for automatic voicechannels removed: {channel}").format(
+                channel=channel.name
             )
         )
 
     # endregion auto
 
-    # region private
+    # region privatevc
     @roomer.group()
     async def private(self, ctx):
         """Change settings for private rooms"""
@@ -254,7 +286,7 @@ class Roomer(commands.Cog):
                     }
                     await ctx.author.voice.channel.edit(overwrites=ov)
 
-    # endregion private
+    # endregion privatevc
 
     # region helpers
     async def sendNotInStartChannelMessage(self, ctx, channel_id):
