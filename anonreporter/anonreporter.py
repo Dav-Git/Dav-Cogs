@@ -70,12 +70,12 @@ class AnonReporter(commands.Cog):
                 except asyncio.TimeoutError:
                     await ctx.author.send(_("Action timed out."))
             else:
-                await ctx.send(_("Anonreport is not configured correctly."), delete_after=15)
+                await self._send_not_configured_correctly_message(ctx.channel)
         else:
             if channel := await self.config.guild(ctx.guild).channel():
                 await ctx.message.delete(delay=15)
             else:
-                await ctx.send(_("Anonreport is not configured correctly."), delete_after=15)
+                await self._send_not_configured_correctly_message(ctx.channel)
 
         if 0 < len(text) < 1000:
             await ctx.guild.get_channel(channel).send(
@@ -83,9 +83,7 @@ class AnonReporter(commands.Cog):
             )
             await ctx.tick()
         else:
-            await ctx.send(
-                _("Reports must be between 0 and 1000 characters long."), delete_after=15
-            )
+            await self._send_not_configured_correctly_message(ctx.channel)
 
     @commands.command()
     async def botreport(self, ctx, text: str):
@@ -94,3 +92,6 @@ class AnonReporter(commands.Cog):
             await self.config.rep_channel()
         ).send(_("**New anonymous report:**\n{report}").format(report=text))
         await ctx.tick()
+
+    async def _send_not_configured_correctly_message(self, messageable):
+        await messageable.send(_("Anonreport is not configured correctly."), delete_after=15)
