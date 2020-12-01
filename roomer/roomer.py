@@ -46,15 +46,16 @@ class Roomer(commands.Cog):
 
         if settings["auto"]:  # Autoroom stuff
             if settings["auto_channels"]:
-                if after.channel.id in settings["auto_channels"]:
-                    channel = await after.channel.category.create_voice_channel(
-                        settings["name"],
-                        overwrites=after.channel.overwrites,
-                        reason=_("Automated voicechannel creation."),
-                    )
-                    await member.move_to(
-                        channel, reason=_("Moved to automatically created channel.")
-                    )
+                if after.channel:
+                    if after.channel.id in settings["auto_channels"]:
+                        channel = await after.channel.category.create_voice_channel(
+                            settings["name"],
+                            overwrites=after.channel.overwrites,
+                            reason=_("Automated voicechannel creation."),
+                        )
+                        await member.move_to(
+                            channel, reason=_("Moved to automatically created channel.")
+                        )
                 else:
                     for category in [
                         member.guild.get_channel(c).category for c in settings["auto_channels"]
