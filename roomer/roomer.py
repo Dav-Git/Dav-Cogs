@@ -63,7 +63,10 @@ class Roomer(commands.Cog):
                         for channel in category.voice_channels:
                             if len(channel.members) == 0:
                                 if not (channel.id in settings["auto_channels"]):
-                                    await before.channel.delete(reason=_("Channel empty."))
+                                    try:
+                                        await before.channel.delete(reason=_("Channel empty."))
+                                    except discord.NotFound:
+                                        pass
 
         if settings["private"]:
             if before.channel:
