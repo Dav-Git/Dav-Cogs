@@ -38,8 +38,11 @@ class Roomer(commands.Cog):
     async def on_voice_state_update(self, member, before, after):
         settings = await self.config.guild(member.guild).all()
         # Some config cleanup here
-        if settings["category"]:
-            await self.config.guild(member.guild).category.clear()
+        try:
+            if settings["category"]:
+                await self.config.guild(member.guild).category.clear()
+        except KeyError:
+            pass
 
         if settings["auto"]:  # Autoroom stuff
             if settings["auto_channels"]:
