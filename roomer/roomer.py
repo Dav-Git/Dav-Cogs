@@ -119,6 +119,8 @@ class Roomer(commands.Cog):
     async def add(self, ctx, *, channel: discord.VoiceChannel):
         """Add a start channel used for automatic voicechannels."""
         auto_channels = await self.config.guild(ctx.guild).auto_channels()
+        if auto_channels is None:
+            auto_channels = []
         auto_channels.append(channel.id)
         await self.config.guild(ctx.guild).auto_channels.set(auto_channels)
         await ctx.send(
