@@ -43,14 +43,17 @@ class Roomer(commands.Cog):
                 await self.config.guild(member.guild).category.clear()
         except KeyError:
             pass
+        await self._autoroom_listener(settings, member, before.channel, after.channel)
+        await self._privatevc_listener(settings, member, before.channel)
 
-        if settings["auto"]:  # Autoroom stuff
+    async def _autoroom_listener(self, settings, member, before_channel, after_channel):
+        if settings["auto"]:
             if settings["auto_channels"]:
-                if after.channel:
-                    if after.channel.id in settings["auto_channels"]:
-                        channel = await after.channel.category.create_voice_channel(
+                if after_channel:
+                    if after_channel.id in settings["auto_channels"]:
+                        channel = await after_channel.category.create_voice_channel(
                             settings["name"],
-                            overwrites=after.channel.overwrites,
+                            overwrites=after_channel.overwrites,
                             reason=_("Automated voicechannel creation."),
                         )
                         await member.move_to(
@@ -64,20 +67,21 @@ class Roomer(commands.Cog):
                             if len(channel.members) == 0:
                                 if not (channel.id in settings["auto_channels"]):
                                     try:
-                                        await before.channel.delete(reason=_("Channel empty."))
+                                        await before_channel.delete(reason=_("Channel empty."))
                                     except discord.NotFound:
                                         pass
 
+    async def _privatevc_listener(self, settings, member, before_channel):
         if settings["private"]:
-            if before.channel:
-                if before.channel.id in settings["pchannels"].values():
-                    if len(before.channel.members) == 0:
+            if before_channel:
+                if before_channel.id in settings["pchannels"].values():
+                    if len(before_channel.members) == 0:
                         for key in settings["pchannels"]:
-                            if settings["pchannels"][key] == before.channel.id:
+                            if settings["pchannels"][key] == before_channel.id:
                                 ckey = key
                         del settings["pchannels"][ckey]
                         await self.config.guild(member.guild).pchannels.set(settings["pchannels"])
-                        await before.channel.delete(reason=_("Private room empty."))
+                        await before_channel.delete(reason=_("Private room empty."))
 
     @checks.admin()
     @commands.group()
