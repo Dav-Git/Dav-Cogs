@@ -75,7 +75,7 @@ class Ticketer(commands.Cog):
 
     @ticketer.command()
     async def message(self, ctx, *, message: str):
-        """Set the message that is shown at the start of each ticket channel."""
+        """Set the message that is shown at the start of each ticket channel.\n\nUse ``{user.mention}`` to mention the person who created the ticket."""
         await self.config.guild(ctx.guild).message.set(message)
         await ctx.send(f"The message has been set to ``{message}``.")
 
@@ -229,7 +229,7 @@ class Ticketer(commands.Cog):
                     category=ctx.guild.get_channel(settings["open_category"]),
                     topic=reason,
                 )
-                await ticketchannel.send(settings["message"])
+                await ticketchannel.send(settings["message"].format(user=ctx.author))
                 embed = discord.Embed(
                     title=name,
                     description=reason,
