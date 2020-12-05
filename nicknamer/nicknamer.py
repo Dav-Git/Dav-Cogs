@@ -164,6 +164,8 @@ class NickNamer(commands.Cog):
     @checks.bot_has_permissions(manage_nicknames=True)
     async def cnick(self, ctx, user: discord.Member, nickname: str, *, reason: Optional[str]):
         """Forcibly change a user's nickname."""
+        if len(nickname) >= 32:
+            return await ctx.send("Name must be under 32 characters")
         if not reason:
             reason = _("Nickname force-changed")
         try:
