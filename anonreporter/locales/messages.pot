@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-11-24 01:51+0100\n"
+"POT-Creation-Date: 2020-12-06 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,17 +51,21 @@ msgstr ""
 msgid "Action timed out."
 msgstr ""
 
-#: anonreporter\anonreporter.py:82 anonreporter\anonreporter.py:93
+#: anonreporter\anonreporter.py:84 anonreporter\anonreporter.py:95
 msgid ""
 "**New anonymous report:**\n"
 "{report}"
 msgstr ""
 
-#: anonreporter\anonreporter.py:90
+#: anonreporter\anonreporter.py:88
+msgid "Text to short or to long."
+msgstr ""
+
+#: anonreporter\anonreporter.py:92
 #, docstring
 msgid "Report something to the bot owner anonymously."
 msgstr ""
 
-#: anonreporter\anonreporter.py:97
+#: anonreporter\anonreporter.py:99
 msgid "Anonreport is not configured correctly."
 msgstr ""
