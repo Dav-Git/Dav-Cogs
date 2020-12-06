@@ -71,11 +71,13 @@ class AnonReporter(commands.Cog):
                     await ctx.author.send(_("Action timed out."))
             else:
                 await self._send_not_configured_correctly_message(ctx.channel)
+                return
         else:
             if channel := await self.config.guild(ctx.guild).channel():
                 await ctx.message.delete(delay=15)
             else:
                 await self._send_not_configured_correctly_message(ctx.channel)
+                return
 
         if 0 < len(text) < 1000:
             await ctx.guild.get_channel(channel).send(
@@ -83,7 +85,7 @@ class AnonReporter(commands.Cog):
             )
             await ctx.tick()
         else:
-            await self._send_not_configured_correctly_message(ctx.channel)
+            await ctx.send(_("Text to short or to long."), delete_after=15)
 
     @commands.command()
     async def botreport(self, ctx, text: str):
