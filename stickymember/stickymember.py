@@ -27,7 +27,9 @@ class StickyMember(commands.Cog):
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
         if await self.config.member(after).active():
-            await self.config.member(after).roles.set([r.id for r in after.roles])
+            role_ids = [r.id for r in after.roles]
+            role_ids.remove(after.guild.id)
+            await self.config.member(after).roles.set(role_ids)
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
@@ -43,7 +45,9 @@ class StickyMember(commands.Cog):
     @commands.command()
     async def stickymem(self, ctx, member: Member) -> None:
         await self.config.member(member).active.set(True)
-        await self.config.member(member).roles.set([r.id for r in member.roles])
+        role_ids = [r.id for r in member.roles]
+        role_ids.remove(member.guild.id)
+        await self.config.member(member).roles.set(role_ids)
         await ctx.send(_("Stickied {member}.").format(member=member.display_name))
 
     @checks.admin()
