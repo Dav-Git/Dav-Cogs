@@ -33,7 +33,9 @@ class StickyMember(commands.Cog):
     async def on_member_join(self, member):
         if await self.config.member(member).active():
             try:
-                await member.add_roles(*(await self.config.member(member).roles()))
+                await member.add_roles(
+                    *[member.guild.get_role(r) for r in await self.config.member(member).roles()]
+                )
             except Forbidden:
                 self.logger.warn("Couldn't assign roles to {member.id} on rejoin. 403")
 
