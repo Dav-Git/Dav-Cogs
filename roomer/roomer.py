@@ -51,9 +51,10 @@ class Roomer(commands.Cog):
             if settings["auto_channels"]:
                 if after_channel:
                     await self._member_joined_auto_start_channel(settings, member, after_channel)
-                await self._maybe_delete_auto_channels(
-                    settings, member, before_channel, after_channel
-                )
+                if before_channel:
+                    await self._maybe_delete_auto_channels(
+                        settings, member, before_channel, after_channel
+                    )
 
     async def _member_joined_auto_start_channel(self, settings, member, after_channel):
         if after_channel.id in settings["auto_channels"]:
