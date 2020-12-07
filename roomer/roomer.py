@@ -263,10 +263,15 @@ class Roomer(commands.Cog):
         async with ctx.typing():
             data = await self.config.guild(ctx.guild).all()
             if data["private"]:
-                if ctx.author.voice.channel:
-                    if ctx.author.voice.channel.id == data["pstart"]:
-                        if key in data["pchannels"]:
-                            await ctx.author.move_to(ctx.guild.get_channel(data["pchannels"][key]))
+                if ctx.author.voice:
+                    if ctx.author.voice.channel:
+                        if ctx.author.voice.channel.id == data["pstart"]:
+                            if key in data["pchannels"]:
+                                await ctx.author.move_to(
+                                    ctx.guild.get_channel(data["pchannels"][key])
+                                )
+                        else:
+                            await self.sendNotInStartChannelMessage(ctx, data["pstart"])
                     else:
                         await self.sendNotInStartChannelMessage(ctx, data["pstart"])
                 else:
