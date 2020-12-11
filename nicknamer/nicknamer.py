@@ -4,6 +4,10 @@ from typing import Optional
 from datetime import datetime
 from discord.ext import tasks
 from redbot.core.i18n import Translator, cog_i18n
+import logging
+
+log = logging.getLogger("red.dav-cogs.nicknamer")
+
 
 _ = Translator("NickNamer", __file__)
 
