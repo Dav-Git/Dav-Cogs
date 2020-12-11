@@ -132,8 +132,8 @@ class NickNamer(commands.Cog):
                                 except:
                                     pass
 
-    @commands.command()
     @checks.mod()
+    @commands.command()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def nick(self, ctx, user: discord.Member, *, reason: Optional[str]):
         """Forcibly change a user's nickname to a predefined string."""
@@ -167,8 +167,8 @@ class NickNamer(commands.Cog):
                 _("Missing permissions.")
             )  # can remove this as the check is made on invoke with the decorator
 
-    @commands.command()
     @checks.mod()
+    @commands.command()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def cnick(self, ctx, user: discord.Member, nickname: str, *, reason: Optional[str]):
         """Forcibly change a user's nickname."""
@@ -205,8 +205,8 @@ class NickNamer(commands.Cog):
         except discord.errors.Forbidden:
             await ctx.send(_("Missing permissions."))
 
-    @commands.command()
     @checks.mod()
+    @commands.command()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def freezenick(
         self,
@@ -253,8 +253,8 @@ class NickNamer(commands.Cog):
         except discord.errors.Forbidden:
             await ctx.send(_("Missing permissions."))
 
-    @commands.command()
     @checks.mod()
+    @commands.command()
     async def unfreezenick(self, ctx, user: discord.Member):
         """Unfreeze a user's nickname."""
         async with self.config.guild(ctx.guild).frozen() as frozen:
@@ -272,8 +272,8 @@ class NickNamer(commands.Cog):
                         except:
                             pass
 
-    @commands.command()
     @checks.mod()
+    @commands.command()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def tempnick(
         self,
