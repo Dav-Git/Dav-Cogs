@@ -58,7 +58,7 @@ class NickNamer(commands.Cog):
         await self.register_casetypes()
 
     def valid_nickname(self, nickname: str):
-        if len(nickname) >= 32:
+        if len(nickname) <= 32:
             return True
         return False
 
