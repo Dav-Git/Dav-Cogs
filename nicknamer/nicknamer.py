@@ -92,7 +92,16 @@ class NickNamer(commands.Cog):
             for e in settings:
                 if after.id in e:
                     if after.nick != e[1]:
-                        await after.edit(nick=e[1], reason="Nickname frozen.")
+                        try:
+                            await after.edit(nick=e[1], reason="Nickname frozen.")
+                        except discord.errors.Forbidden:
+                            log.info(
+                                f"Missing permissions to change {before.nick} ({before.id}) in {before.guild.id}, removing freeze"
+                            )
+                            async with self.config.guild(after.guild).frozen() as frozen:
+                                for e in frozen:
+                                    if e[0] == before.id:
+                                        frozen.remove(e)
 
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
@@ -309,6 +318,7 @@ class NickNamer(commands.Cog):
 
     @checks.admin()
     @commands.group()
+    @checks.bot_has_permissions(manage_nicknames=True)
     async def nickset(self, ctx):
         """Nicknamer settings"""
         pass
