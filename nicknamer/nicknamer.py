@@ -150,7 +150,9 @@ class NickNamer(commands.Cog):
                 except:
                     pass
         except discord.errors.Forbidden:
-            await ctx.send(_("Missing permissions.")) # can remove this as the check is made on invoke with the decorator
+            await ctx.send(
+                _("Missing permissions.")
+            )  # can remove this as the check is made on invoke with the decorator
 
     @commands.command()
     @checks.mod()
@@ -159,7 +161,9 @@ class NickNamer(commands.Cog):
         """Forcibly change a user's nickname."""
         valid_nick_check = await self.valid_nickname(nickname=nickname)
         if not valid_nick_check:
-            return await ctx.send("That nickname is too long. Keep it under 32 characters, please.")
+            return await ctx.send(
+                "That nickname is too long. Keep it under 32 characters, please."
+            )
         if not reason:
             reason = _("Nickname force-changed")
         try:
@@ -270,7 +274,9 @@ class NickNamer(commands.Cog):
         """Temporarily rename a user.\n**IMPORTANT**: For better performance, temporary nicknames are checked in a 10 minute intervall."""
         valid_nick_check = await self.valid_nickname(nickname=nickname)
         if not valid_nick_check:
-            return await ctx.send("That nickname is too long. Keep it under 32 characters, please.")
+            return await ctx.send(
+                "That nickname is too long. Keep it under 32 characters, please."
+            )
         try:
             oldnick = user.nick
             await user.edit(nick=nickname)
