@@ -22,6 +22,7 @@ class Bday(commands.Cog):
         self.config.register_guild(**default_guild)
         self.config.register_user(**default_user)
         self.bot = bot
+        self.bot.loop.create_task(self.initialize())
 
     async def initialize(self):
         await self.bot.wait_until_red_ready()

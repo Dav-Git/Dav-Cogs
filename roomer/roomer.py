@@ -50,26 +50,33 @@ class Roomer(commands.Cog):
         if settings["auto"]:
             if settings["auto_channels"]:
                 if after_channel:
-                    if after_channel.id in settings["auto_channels"]:
-                        channel = await after_channel.category.create_voice_channel(
-                            settings["name"],
-                            overwrites=after_channel.overwrites,
-                            reason=_("Automated voicechannel creation."),
-                        )
-                        await member.move_to(
-                            channel, reason=_("Moved to automatically created channel.")
-                        )
-                else:
-                    for category in [
-                        member.guild.get_channel(c).category for c in settings["auto_channels"]
-                    ]:
-                        for channel in category.voice_channels:
-                            if len(channel.members) == 0:
-                                if not (channel.id in settings["auto_channels"]):
-                                    try:
-                                        await before_channel.delete(reason=_("Channel empty."))
-                                    except discord.NotFound:
-                                        pass
+                    await self._member_joined_auto_start_channel(settings, member, after_channel)
+                if before_channel:
+                    await self._maybe_delete_auto_channels(
+                        settings, member, before_channel, after_channel
+                    )
+
+    async def _member_joined_auto_start_channel(self, settings, member, after_channel):
+        if after_channel.id in settings["auto_channels"]:
+            channel = await after_channel.category.create_voice_channel(
+                settings["name"],
+                overwrites=after_channel.overwrites,
+                reason=_("Automated voicechannel creation."),
+            )
+            await member.move_to(channel, reason=_("Moved to automatically created channel."))
+
+    async def _maybe_delete_auto_channels(self, settings, member, before_channel, after_channel):
+        if len(before_channel.members) == 0:
+            auto_categories = [
+                member.guild.get_channel(c).category for c in settings["auto_channels"]
+            ]
+            if before_channel.id in settings["auto_channels"]:
+                return
+            elif before_channel.category in auto_categories:
+                try:
+                    await before_channel.delete(reason=_("Channel empty."))
+                except discord.NotFound:
+                    pass
 
     async def _privatevc_listener(self, settings, member, before_channel):
         if settings["private"]:
@@ -256,10 +263,15 @@ class Roomer(commands.Cog):
         async with ctx.typing():
             data = await self.config.guild(ctx.guild).all()
             if data["private"]:
-                if ctx.author.voice.channel:
-                    if ctx.author.voice.channel.id == data["pstart"]:
-                        if key in data["pchannels"]:
-                            await ctx.author.move_to(ctx.guild.get_channel(data["pchannels"][key]))
+                if ctx.author.voice:
+                    if ctx.author.voice.channel:
+                        if ctx.author.voice.channel.id == data["pstart"]:
+                            if key in data["pchannels"]:
+                                await ctx.author.move_to(
+                                    ctx.guild.get_channel(data["pchannels"][key])
+                                )
+                        else:
+                            await self.sendNotInStartChannelMessage(ctx, data["pstart"])
                     else:
                         await self.sendNotInStartChannelMessage(ctx, data["pstart"])
                 else:
