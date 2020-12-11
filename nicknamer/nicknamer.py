@@ -4,9 +4,6 @@ from typing import Optional
 from datetime import datetime
 from discord.ext import tasks
 from redbot.core.i18n import Translator, cog_i18n
-import logging
-
-log = logging.getLogger("red.dav-cogs.nicknamer")
 
 _ = Translator("NickNamer", __file__)
 
@@ -56,6 +53,11 @@ class NickNamer(commands.Cog):
     async def initialize(self):
         await self.register_casetypes()
 
+    def valid_nickname(self, nickname: str):
+        if len(nickname) >= 32:
+            return True
+        return False
+
     @staticmethod
     async def register_casetypes():
         forcechange_case = {
@@ -90,16 +92,7 @@ class NickNamer(commands.Cog):
             for e in settings:
                 if after.id in e:
                     if after.nick != e[1]:
-                        try:
-                            await after.edit(nick=e[1], reason="Nickname frozen.")
-                        except discord.errors.Forbidden:
-                            log.info(
-                                f"Missing permissions to change {before.nick} ({before.id}) in {before.guild.id}, removing freeze"
-                            )
-                            async with self.config.guild(after.guild).frozen() as frozen:
-                                for e in frozen:
-                                    if e[0] == before.id:
-                                        frozen.remove(e)
+                        await after.edit(nick=e[1], reason="Nickname frozen.")
 
     @tasks.loop(minutes=10)
     async def _rename_tempnicknames(self):
@@ -126,8 +119,8 @@ class NickNamer(commands.Cog):
                                 except:
                                     pass
 
-    @checks.mod()
     @commands.command()
+    @checks.mod()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def nick(self, ctx, user: discord.Member, *, reason: Optional[str]):
         """Forcibly change a user's nickname to a predefined string."""
@@ -157,15 +150,16 @@ class NickNamer(commands.Cog):
                 except:
                     pass
         except discord.errors.Forbidden:
-            await ctx.send(_("Missing permissions."))
+            await ctx.send(_("Missing permissions.")) # can remove this as the check is made on invoke with the decorator
 
-    @checks.mod()
     @commands.command()
+    @checks.mod()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def cnick(self, ctx, user: discord.Member, nickname: str, *, reason: Optional[str]):
         """Forcibly change a user's nickname."""
-        if len(nickname) >= 32:
-            return await ctx.send("Name must be under 32 characters")
+        valid_nick_check = await self.valid_nickname(nickname=nickname)
+        if not valid_nick_check:
+            return await ctx.send("That nickname is too long. Keep it under 32 characters, please.")
         if not reason:
             reason = _("Nickname force-changed")
         try:
@@ -194,8 +188,8 @@ class NickNamer(commands.Cog):
         except discord.errors.Forbidden:
             await ctx.send(_("Missing permissions."))
 
-    @checks.mod()
     @commands.command()
+    @checks.mod()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def freezenick(
         self,
@@ -210,6 +204,10 @@ class NickNamer(commands.Cog):
         for id in name_check:
             if user.id in id:
                 return await ctx.send("User is already frozen. Unfreeze them first.")
+        valid_nick_check = await self.valid_nickname(nickname=nickname)
+        if not valid_nick_check:
+            return await ctx.send("That nickname is too long. Keep it under 32 characters, please")
+
         try:
             await user.edit(nick=nickname)
             await ctx.tick()
@@ -238,8 +236,8 @@ class NickNamer(commands.Cog):
         except discord.errors.Forbidden:
             await ctx.send(_("Missing permissions."))
 
-    @checks.mod()
     @commands.command()
+    @checks.mod()
     async def unfreezenick(self, ctx, user: discord.Member):
         """Unfreeze a user's nickname."""
         async with self.config.guild(ctx.guild).frozen() as frozen:
@@ -257,8 +255,8 @@ class NickNamer(commands.Cog):
                         except:
                             pass
 
-    @checks.mod()
     @commands.command()
+    @checks.mod()
     @checks.bot_has_permissions(manage_nicknames=True)
     async def tempnick(
         self,
@@ -270,6 +268,9 @@ class NickNamer(commands.Cog):
         reason: Optional[str] = "User has been temporarily renamed.",
     ):
         """Temporarily rename a user.\n**IMPORTANT**: For better performance, temporary nicknames are checked in a 10 minute intervall."""
+        valid_nick_check = await self.valid_nickname(nickname=nickname)
+        if not valid_nick_check:
+            return await ctx.send("That nickname is too long. Keep it under 32 characters, please.")
         try:
             oldnick = user.nick
             await user.edit(nick=nickname)
@@ -302,7 +303,6 @@ class NickNamer(commands.Cog):
 
     @checks.admin()
     @commands.group()
-    @checks.bot_has_permissions(manage_nicknames=True)
     async def nickset(self, ctx):
         """Nicknamer settings"""
         pass
