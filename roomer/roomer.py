@@ -12,7 +12,7 @@ _ = Translator("Roomer", __file__)
 class Roomer(commands.Cog):
     """Multiple VC tools"""
 
-    def __init__(self):
+    def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=300620201743, force_registration=True)
         default_guild = {
             "auto_channels": None,
