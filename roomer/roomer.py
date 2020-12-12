@@ -311,6 +311,8 @@ class Roomer(commands.Cog):
                             view_channel=True, connect=True, speak=True
                         )
                     await ctx.author.voice.channel.edit(overwrites=ov)
+            await ctx.tick()
+            await ctx.send(_("VC has been hidden successfully."))
 
     # endregion privatevc
 
