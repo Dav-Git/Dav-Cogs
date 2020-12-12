@@ -26,8 +26,8 @@ class Roomer(commands.Cog):
         self.config.register_guild(**default_guild)
         self.config.register_global(notification=0)
         self.invoiceConfig = None
-        if self.bot.get_cog("InVoice"):
-            self.invoiceConfig = self.bot.get_cog("InVoice").config
+        if bot.get_cog("InVoice"):
+            self.invoiceConfig = bot.get_cog("InVoice").config
 
     async def initialize(self, bot):
         notification = await self.config.notification()
