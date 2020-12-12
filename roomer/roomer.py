@@ -25,6 +25,9 @@ class Roomer(commands.Cog):
         }
         self.config.register_guild(**default_guild)
         self.config.register_global(notification=0)
+        self.invoiceConfig = None
+        if self.bot.get_cog("InVoice"):
+            self.invoiceConfig = self.bot.get_cog("InVoice").config
 
     async def initialize(self, bot):
         notification = await self.config.notification()
@@ -33,6 +36,8 @@ class Roomer(commands.Cog):
                 "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories."
             )
             await self.config.notification.set(1)
+
+    # region listeners
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
@@ -100,6 +105,8 @@ class Roomer(commands.Cog):
     async def vc(self, ctx):
         """Voicechannel commands."""
         pass
+
+    # endregion listeners
 
     # region auto
     @roomer.group()
@@ -281,7 +288,7 @@ class Roomer(commands.Cog):
 
     @commands.guild_only()
     @vc.command()
-    async def hidden(self, ctx, true_or_false: Optional[bool] = True):
+    async def hidden(self, ctx: commands.Context, true_or_false: Optional[bool] = True):
         """Hide or unhide a voicechannel you own."""
         data = await self.config.guild(ctx.guild).pchannels()
         if ctx.author.voice.channel:
@@ -295,6 +302,14 @@ class Roomer(commands.Cog):
                             view_channel=True, connect=True, speak=True, manage_channels=True
                         ),
                     }
+                    if self.invoiceConfig:
+                        ov[
+                            ctx.guild.get_role(
+                                await self.invoiceConfig.channel(ctx.author.voice.channel).role()
+                            )
+                        ] = discord.PermissionOverwrite(
+                            view_channel=True, connect=True, speak=True
+                        )
                     await ctx.author.voice.channel.edit(overwrites=ov)
 
     # endregion privatevc
