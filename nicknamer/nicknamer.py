@@ -172,7 +172,7 @@ class NickNamer(commands.Cog):
     @checks.bot_has_permissions(manage_nicknames=True)
     async def cnick(self, ctx, user: discord.Member, nickname: str, *, reason: Optional[str]):
         """Forcibly change a user's nickname."""
-        valid_nick_check = await self.valid_nickname(nickname=nickname)
+        valid_nick_check = self.valid_nickname(nickname=nickname)
         if not valid_nick_check:
             return await ctx.send(
                 "That nickname is too long. Keep it under 32 characters, please."
@@ -221,7 +221,7 @@ class NickNamer(commands.Cog):
         for id in name_check:
             if user.id in id:
                 return await ctx.send("User is already frozen. Unfreeze them first.")
-        valid_nick_check = await self.valid_nickname(nickname=nickname)
+        valid_nick_check = self.valid_nickname(nickname=nickname)
         if not valid_nick_check:
             return await ctx.send("That nickname is too long. Keep it under 32 characters, please")
 
@@ -285,7 +285,7 @@ class NickNamer(commands.Cog):
         reason: Optional[str] = "User has been temporarily renamed.",
     ):
         """Temporarily rename a user.\n**IMPORTANT**: For better performance, temporary nicknames are checked in a 10 minute intervall."""
-        valid_nick_check = await self.valid_nickname(nickname=nickname)
+        valid_nick_check = self.valid_nickname(nickname=nickname)
         if not valid_nick_check:
             return await ctx.send(
                 "That nickname is too long. Keep it under 32 characters, please."
