@@ -2,17 +2,19 @@
   "author": [
     "Dav"
   ],
-  "description": "Tools for voicechannels. \n - Automated voicechannel creation \n - Private voicechannels BETA",
+  "description": "Tools for voicechannels. \n - Automated voicechannel creation \n - Private voicechannels \n - Private textchannels",
   "hidden": false,
-  "install_msg": "Parts of this cog are in BETA, report any bugs you find at <https://github.com/Dav-Git/Dav-Cogs/issues/new>",
+  "install_msg": "Thanks for using roomer. Check out all settings in `[p]roomer`.",
   "short": "Tools for voicechannels",
   "tags": [
     "members",
     "vc",
     "voicechannel",
+    "textchannel",
     "automation",
     "private",
+    "private channels",
     "tools"
   ],
-  "end_user_data_statement": "This cog does not store end user data yet, but it will in the future."
+  "end_user_data_statement": "This cog does not store end user data."
 }
