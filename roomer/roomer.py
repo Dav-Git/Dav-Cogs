@@ -3,7 +3,7 @@ from random import choice
 from typing import Optional
 
 import discord
-from redbot.core import Config, checks, commands
+from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 
 _ = Translator("Roomer", __file__)
@@ -12,6 +12,9 @@ _ = Translator("Roomer", __file__)
 @cog_i18n(_)
 class Roomer(commands.Cog):
     """Multiple VC tools"""
+
+    async def red_delete_data_for_user(self, **kwargs):
+        pass  # This cog stores no EUD
 
     def __init__(self, bot):
         self.config = Config.get_conf(self, identifier=300620201743, force_registration=True)
@@ -23,6 +26,8 @@ class Roomer(commands.Cog):
             "pcat": None,
             "pchannels": {},
             "private": False,
+            "private_textchannels_enabled": False,
+            "private_textchannels": {},
         }
         self.config.register_guild(**default_guild)
         self.config.register_global(notification=0)
@@ -102,15 +107,23 @@ class Roomer(commands.Cog):
 
     # endregion listeners
 
-    @checks.admin()
+    @commands.admin()
+    @commands.guild_only()
     @commands.group()
     async def roomer(self, ctx):
         """Roomer settings"""
         pass
 
+    @commands.guild_only()
     @commands.group()
     async def vc(self, ctx):
         """Voicechannel commands."""
+        pass
+
+    @commands.guild_only()
+    @commands.group()
+    async def tc(self, ctx):
+        """Textchannel commands."""
         pass
 
     # region auto
@@ -175,6 +188,7 @@ class Roomer(commands.Cog):
     # endregion auto
 
     # region privatevc
+
     @roomer.group()
     async def private(self, ctx):
         """Change settings for private rooms"""
@@ -210,6 +224,7 @@ class Roomer(commands.Cog):
             )
         )
 
+    @commands.max_concurrency(1, commands.BucketType.guild, wait=True)
     @vc.command()
     async def create(self, ctx, public: Optional[bool] = False, *, name: str):
         """Create a private voicechannel."""
@@ -217,14 +232,7 @@ class Roomer(commands.Cog):
         if data["private"]:
             if ctx.author.voice.channel:
                 if ctx.author.voice.channel.id == data["pstart"]:
-                    uniqueKeyFound = False
-                    while not uniqueKeyFound:
-                        # This probably won't turn into an endless loop bceause it has more possibilities than discord allows channels per guild
-                        key = "".join(
-                            choice(string.ascii_lowercase + "0123456789") for i in range(16)
-                        )
-                        if not (key in data["pchannels"]):
-                            uniqueKeyFound = True
+                    key = await self._generate_key(data["pchannels"].keys())
                     try:
                         await ctx.author.send(
                             _(
@@ -321,6 +329,105 @@ class Roomer(commands.Cog):
 
     # endregion privatevc
 
+    # region privatetc
+
+    @roomer.command()
+    async def text(self, ctx):
+        """Change settings for private text channels."""
+        pass
+
+    @text.command(name="enable")
+    async def tc_enable(self, ctx):
+        """Enable private text channels."""
+        await self.config.guild(ctx.guild).private_textchannels_enabled.set(True)
+        await ctx.send(_("Private text channels enabled."))
+
+    @text.command(name="disable")
+    async def tc_disable(self, ctx):
+        """Enable private text channels."""
+        await self.config.guild(ctx.guild).private_textchannels_enabled.set(False)
+        await ctx.send(_("Private text channels disabled."))
+
+    @commands.max_concurrency(1, commands.BucketType.guild, wait=True)
+    @tc.command(name="create")
+    async def tc_create(self, ctx, public: Optional[bool] = False, *, name: str):
+        """Create a private text channel."""
+        data = await self.config.guild(ctx.guild).all()
+        if data["private_textchannels_enabled"]:
+            key = await self._generate_key(data["private_textchannels"].keys())
+            ov = {
+                ctx.guild.default_role: discord.PermissionOverwrite(
+                    view_channel=False,
+                    read_message_history=False,
+                    read_messages=False,
+                    send_messages=False,
+                ),
+                ctx.author: discord.PermissionOverwrite(
+                    view_channel=True,
+                    manage_channels=True,
+                    manage_messages=True,
+                    read_message_history=True,
+                    read_messages=True,
+                    send_messages=True,
+                    send_tts_messages=True,
+                ),
+            }
+            c = await ctx.guild.create_text_channel(
+                name,
+                overwrites=ov,
+                category=ctx.guild.get_channel(data["pcat"]),
+                reason=_("Private text channel"),
+            )
+            data["private_textchannels"][key] = c.id
+            await self.config.guild(ctx.guild).pchannels.set(data["private_textchannels"])
+            await self._send_private_textchannel_key(c, key, ctx.clean_prefix)
+        else:
+            await ctx.send(_("Private text channels are not enabled on this server."))
+
+    @commands.max_concurrency(1, commands.BucketType.guild, wait=True)
+    @tc.command(name="close")
+    async def tc_close(self, ctx):
+        """Close the current private text cannel."""
+        async with self.config.guild(ctx.guild).private_textchannels() as textchannels:
+            if ctx.channel.id in textchannels:
+                await ctx.channel.delete(reason=_("Private text channel deleted."))
+                del textchannels[ctx.channel.id]
+            else:
+                await ctx.send(_("Use this command in a private text channel."))
+
+    @tc.command(name="join")
+    async def tc_join(self, ctx, key: str):
+        """Join a private text channel."""
+        await ctx.message.delete()
+        async with ctx.typing():
+            data = await self.config.guild(ctx.guild).all()
+            if data["private_textchannels_enabled"]:
+                if key in data["private_textchannels"]:
+                    await ctx.guild.get_channel(int(key)).set_permissions(
+                        ctx.author,
+                        read_message_history=True,
+                        read_messages=True,
+                        send_messages=True,
+                        view_channel=True,
+                    )
+            else:
+                await ctx.send(_("Private rooms are not enabled on this server."))
+
+    async def _send_private_textchannel_key(
+        self, channel: discord.TextChannel, key: str, clean_prefix
+    ):
+        m = await channel.send(
+            _(
+                "The key to this private text channel is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
+            ).format(key=key, command=f"{clean_prefix}tc join {key}")
+        )
+        try:
+            await m.pin()
+        except discord.Forbidden:
+            pass
+
+    # endregion privatetc
+
     # region helpers
     async def sendNotInStartChannelMessage(self, ctx, channel_id):
         await ctx.send(
@@ -339,5 +446,12 @@ class Roomer(commands.Cog):
                 "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories."
             )
             await self.config.notification.set(1)
+
+    async def _generate_key(self, key_list_for_channel_type):
+        while True:
+            # This probably won't turn into an endless loop bceause it has more possibilities than discord allows channels per guild
+            key = "".join(choice(string.ascii_lowercase + "0123456789") for i in range(16))
+            if not (key in key_list_for_channel_type):
+                return key
 
     # endregion helpers
