@@ -3,7 +3,7 @@
     "Dav"
   ],
   "description": "Tools for voicechannels. \n - Automated voicechannel creation \n - Private voicechannels \n - Private textchannels",
-  "hidden": true,
+  "hidden": false,
   "install_msg": "Thanks for using roomer. Check out all settings in `[p]roomer`.",
   "short": "Tools for voicechannels",
   "tags": [
