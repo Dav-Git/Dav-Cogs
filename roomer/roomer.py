@@ -1,9 +1,10 @@
-from redbot.core import commands, Config, checks
-import discord
-from redbot.core.i18n import Translator, cog_i18n
-from typing import Optional
-from random import choice
 import string
+from random import choice
+from typing import Optional
+
+import discord
+from redbot.core import Config, checks, commands
+from redbot.core.i18n import Translator, cog_i18n
 
 _ = Translator("Roomer", __file__)
 
@@ -26,23 +27,19 @@ class Roomer(commands.Cog):
         self.config.register_guild(**default_guild)
         self.config.register_global(notification=0)
         self.invoiceConfig = None
-        if bot.get_cog("InVoice"):
-            self.invoiceConfig = bot.get_cog("InVoice").config
+        bot.loop.create_task(self.initialize(bot))
 
     async def initialize(self, bot):
-        notification = await self.config.notification()
-        if notification == 0:
-            await bot.send_to_owners(
-                "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories."
-            )
-            await self.config.notification.set(1)
+        await bot.wait_until_red_ready()
+        self._maybe_get_invoice_config(bot)
+        await self._send_pending_owner_notifications(bot)
 
     # region listeners
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         settings = await self.config.guild(member.guild).all()
-        # Some config cleanup here
+        # Some config cleanup for older versions here
         try:
             if settings["category"]:
                 await self.config.guild(member.guild).category.clear()
@@ -50,6 +47,8 @@ class Roomer(commands.Cog):
             pass
         await self._autoroom_listener(settings, member, before.channel, after.channel)
         await self._privatevc_listener(settings, member, before.channel)
+
+    # region autoroom listener
 
     async def _autoroom_listener(self, settings, member, before_channel, after_channel):
         if settings["auto"]:
@@ -83,6 +82,10 @@ class Roomer(commands.Cog):
                 except discord.NotFound:
                     pass
 
+    # endregion autoroom listener
+
+    # region privatevc listener
+
     async def _privatevc_listener(self, settings, member, before_channel):
         if settings["private"]:
             if before_channel:
@@ -95,6 +98,10 @@ class Roomer(commands.Cog):
                         await self.config.guild(member.guild).pchannels.set(settings["pchannels"])
                         await before_channel.delete(reason=_("Private room empty."))
 
+    # endregion privatevc listener
+
+    # endregion listeners
+
     @checks.admin()
     @commands.group()
     async def roomer(self, ctx):
@@ -105,8 +112,6 @@ class Roomer(commands.Cog):
     async def vc(self, ctx):
         """Voicechannel commands."""
         pass
-
-    # endregion listeners
 
     # region auto
     @roomer.group()
@@ -323,5 +328,16 @@ class Roomer(commands.Cog):
                 vc=ctx.guild.get_channel(channel_id).mention
             )
         )
+
+    def _maybe_get_invoice_config(self, bot):
+        if bot.get_cog("InVoice"):
+            self.invoiceConfig = bot.get_cog("InVoice").config
+
+    async def _send_pending_owner_notifications(self, bot):
+        if await self.config.notification() == 0:
+            await bot.send_to_owners(
+                "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories."
+            )
+            await self.config.notification.set(1)
 
     # endregion helpers
