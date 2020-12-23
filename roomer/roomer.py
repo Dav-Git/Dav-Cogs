@@ -336,13 +336,13 @@ class Roomer(commands.Cog):
         """Change settings for private text channels."""
         pass
 
-    @text.command(name="enable")
+    @tc.command(name="enable")
     async def tc_enable(self, ctx):
         """Enable private text channels."""
         await self.config.guild(ctx.guild).private_textchannels_enabled.set(True)
         await ctx.send(_("Private text channels enabled."))
 
-    @text.command(name="disable")
+    @tc.command(name="disable")
     async def tc_disable(self, ctx):
         """Enable private text channels."""
         await self.config.guild(ctx.guild).private_textchannels_enabled.set(False)
