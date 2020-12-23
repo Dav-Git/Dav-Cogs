@@ -331,7 +331,7 @@ class Roomer(commands.Cog):
 
     # region privatetc
 
-    @roomer.command()
+    @roomer.group()
     async def text(self, ctx):
         """Change settings for private text channels."""
         pass
