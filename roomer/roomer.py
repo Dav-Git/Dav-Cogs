@@ -230,7 +230,7 @@ class Roomer(commands.Cog):
         """Create a private voicechannel."""
         data = await self.config.guild(ctx.guild).all()
         if data["private"]:
-            if ctx.author.voice.channel:
+            try:
                 if ctx.author.voice.channel.id == data["pstart"]:
                     key = await self._generate_key(data["pchannels"].keys())
                     try:
@@ -270,7 +270,7 @@ class Roomer(commands.Cog):
                     await self.config.guild(ctx.guild).pchannels.set(data["pchannels"])
                 else:
                     await self.sendNotInStartChannelMessage(ctx, data["pstart"])
-            else:
+            except AttributeError:
                 await self.sendNotInStartChannelMessage(ctx, data["pstart"])
         else:
             await ctx.send(_("Private rooms are not enabled on this server."))
@@ -283,18 +283,13 @@ class Roomer(commands.Cog):
         async with ctx.typing():
             data = await self.config.guild(ctx.guild).all()
             if data["private"]:
-                if ctx.author.voice:
-                    if ctx.author.voice.channel:
-                        if ctx.author.voice.channel.id == data["pstart"]:
-                            if key in data["pchannels"]:
-                                await ctx.author.move_to(
-                                    ctx.guild.get_channel(data["pchannels"][key])
-                                )
-                        else:
-                            await self.sendNotInStartChannelMessage(ctx, data["pstart"])
+                try:
+                    if ctx.author.voice.channel.id == data["pstart"]:
+                        if key in data["pchannels"]:
+                            await ctx.author.move_to(ctx.guild.get_channel(data["pchannels"][key]))
                     else:
                         await self.sendNotInStartChannelMessage(ctx, data["pstart"])
-                else:
+                except AttributeError:
                     await self.sendNotInStartChannelMessage(ctx, data["pstart"])
             else:
                 await ctx.send(_("Private rooms are not enabled on this server."))
@@ -304,7 +299,7 @@ class Roomer(commands.Cog):
     async def hidden(self, ctx: commands.Context, true_or_false: Optional[bool] = True):
         """Hide or unhide a voicechannel you own."""
         data = await self.config.guild(ctx.guild).pchannels()
-        if ctx.author.voice.channel:
+        try:
             for key in data:
                 if data[key] == ctx.author.voice.channel.id:
                     ov = {
@@ -326,6 +321,8 @@ class Roomer(commands.Cog):
                     await ctx.author.voice.channel.edit(overwrites=ov)
             await ctx.tick()
             await ctx.send(_("VC has been hidden successfully."))
+        except AttributeError:
+            return await ctx.send(_("You need to be in a VC to do this."))
 
     # endregion privatevc
 
