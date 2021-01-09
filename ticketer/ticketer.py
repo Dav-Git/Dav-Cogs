@@ -76,8 +76,14 @@ class Ticketer(commands.Cog):
     @ticketer.command()
     async def message(self, ctx, *, message: str):
         """Set the message that is shown at the start of each ticket channel.\n\nUse ``{user.mention}`` to mention the person who created the ticket."""
-        await self.config.guild(ctx.guild).message.set(message)
-        await ctx.send(f"The message has been set to ``{message}``.")
+        try:
+            message.format(user=ctx.author)
+            await self.config.guild(ctx.guild).message.set(message)
+            await ctx.send(f"The message has been set to `{message}`.")
+        except KeyError:
+            await ctx.send(
+                "Setting the message failed. Please make sure to only use supported variables in  `\{\}`"
+            )
 
     @ticketer.command()
     async def counter(self, ctx, true_or_false: bool):
@@ -177,10 +183,7 @@ class Ticketer(commands.Cog):
 
     @ticket.command(aliases=["open"])
     async def create(
-        self,
-        ctx,
-        *,
-        reason: Optional[str] = "No reason provided.",
+        self, ctx, *, reason: Optional[str] = "No reason provided.",
     ):
         """Create a ticket."""
         if await self._check_settings(ctx):
@@ -231,9 +234,7 @@ class Ticketer(commands.Cog):
                 )
                 await ticketchannel.send(settings["message"].format(user=ctx.author))
                 embed = discord.Embed(
-                    title=name,
-                    description=reason,
-                    timestamp=datetime.utcnow(),
+                    title=name, description=reason, timestamp=datetime.utcnow(),
                 ).set_footer(text="Last updated at:")
                 message = await ctx.guild.get_channel(settings["channel"]).send(embed=embed)
                 async with self.config.guild(ctx.guild).active() as active:
@@ -262,8 +263,7 @@ class Ticketer(commands.Cog):
                 await (
                     await ctx.guild.get_channel(settings["channel"]).fetch_message(ticket[1])
                 ).edit(
-                    embed=new_embed,
-                    delete_after=10,
+                    embed=new_embed, delete_after=10,
                 )
                 await ctx.send(embed=new_embed)
                 await ctx.send(
