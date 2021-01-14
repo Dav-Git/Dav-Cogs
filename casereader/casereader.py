@@ -19,8 +19,24 @@ class CaseReader(commands.Cog):
 
     @checks.mod()
     @commands.command()
-    async def read(self, ctx, user: discord.User):
-        membercases = await modlog.get_cases_for_member(ctx.guild, self.bot, member=user)
+    async def read(self, ctx, user: Union[discord.User,int]):
+        try:
+            if isinstance(member, int):
+                membercases = await modlog.get_cases_for_member(
+                    bot=ctx.bot, guild=ctx.guild, member_id=member
+                )
+            else:
+                membercases = await modlog.get_cases_for_member(
+                    bot=ctx.bot, guild=ctx.guild, member=member
+                )
+        except discord.NotFound:
+            return await ctx.send(_("This user does not exist."))
+        except discord.HTTPException:
+            return await ctx.send(
+                _("Something unexpected went wrong while fetching that user by ID.")
+            )
+        if not membercases:
+            return await ctx.send(_("This user has no cases."))
         rendered_cases = []
         for case in membercases:
             message = _("{case}\n**Timestamp**: {timestamp}").format(
