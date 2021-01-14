@@ -20,7 +20,7 @@ class CaseReader(commands.Cog):
 
     @checks.mod()
     @commands.command()
-    async def read(self, ctx, user: Union[discord.User,int]):
+    async def read(self, ctx, member: Union[discord.User,int]):
         try:
             if isinstance(member, int):
                 membercases = await modlog.get_cases_for_member(
