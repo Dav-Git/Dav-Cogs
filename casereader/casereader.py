@@ -2,6 +2,7 @@ from redbot.core import modlog, commands, checks
 from redbot.core.i18n import cog_i18n, Translator
 import discord
 from datetime import datetime
+from typing import Union
 
 _ = Translator("CaseReader", __file__)
 
