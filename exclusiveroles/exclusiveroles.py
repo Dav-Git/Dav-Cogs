@@ -54,7 +54,7 @@ class ExclusiveRoles(commands.Cog):
             for user in ctx.guild.members:
                 if role1 in user.roles:
                     if role2 in user.roles:
-                        await user.remove_roles(role2)
+                        await user.remove_roles(role2,reason=_("Exclusivenow: {role1} overwrites {role2}").format(role1=role1.name,role2=role2.name))
             await ctx.send(_("\n`Completed.`\n"))
 
     @commands.command()
