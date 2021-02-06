@@ -336,9 +336,7 @@ class Ticketer(commands.Cog):
         active = settings["active"]
         for ticket in active:
             if channel.id in ticket:
-                await channel.edit(
-                    topic=f'{channel.topic}\n\n{ctx.author}:"{update}"'
-                )
+                await channel.edit(topic=f'{channel.topic}\n\n{ctx.author}:"{update}"')
                 await ctx.send("Ticket updated.", delete_after=10)
             else:
                 ctx.send(f"{channel.mention} is not a ticket channel.")
@@ -354,9 +352,7 @@ class Ticketer(commands.Cog):
                     await self.config.guild(ctx.guild).channel()
                 ).fetch_message(ticket[1])
                 new_embed = message.embeds[0]
-                new_embed.add_field(
-                    name=f"{ctx.author}", value=note
-                )
+                new_embed.add_field(name=f"{ctx.author}", value=note)
                 new_embed.timestamp = datetime.utcnow()
                 await message.edit(embed=new_embed)
                 await ctx.send("Note added.", delete_after=10)
