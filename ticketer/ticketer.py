@@ -71,7 +71,9 @@ class Ticketer(commands.Cog):
     async def closed(self, ctx, *, category: discord.CategoryChannel):
         """Set the category for open tickets."""
         await self.config.guild(ctx.guild).closed_category.set(category.id)
-        await ctx.send(f"Category for closed tickets has been set to {category.mention}")
+        await ctx.send(
+            f"Category for closed tickets has been set to {category.mention}"
+        )
 
     @ticketer.command()
     async def message(self, ctx, *, message: str):
@@ -90,7 +92,9 @@ class Ticketer(commands.Cog):
         """Toggle if the ticket channels should be named using a user's name and ID or counting upwards starting at 0."""
         await self.config.guild(ctx.guild).use_counter.set(true_or_false)
         await ctx.send(
-            "The counter has been {}.".format("enabled" if true_or_false else "disabled")
+            "The counter has been {}.".format(
+                "enabled" if true_or_false else "disabled"
+            )
         )
 
     @ticketer.command()
@@ -98,7 +102,9 @@ class Ticketer(commands.Cog):
         """Decide if ticketer should log to modlog."""
         await self.config.guild(ctx.guild).modlog.set(true_or_false)
         await ctx.send(
-            "Logging to modlog has been {}.".format("enabled" if true_or_false else "disabled")
+            "Logging to modlog has been {}.".format(
+                "enabled" if true_or_false else "disabled"
+            )
         )
 
     @ticketer.command()
@@ -107,7 +113,10 @@ class Ticketer(commands.Cog):
         settings = await self.config.guild(ctx.guild).all()
         if not settings["role"]:
             role = await ctx.guild.create_role(
-                name="Ticketmanagers", hoist=True, mentionable=False, reason="Ticketer quicksetup"
+                name="Ticketmanagers",
+                hoist=True,
+                mentionable=False,
+                reason="Ticketer quicksetup",
             )
             await self.config.guild(ctx.guild).role.set(role.id)
             await ctx.send("Ticket-manager role created.")
@@ -127,7 +136,9 @@ class Ticketer(commands.Cog):
         if not settings["channel"]:
             await ctx.send("Config queried for channel setup.")
             overwrite = {
-                ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
+                ctx.guild.default_role: discord.PermissionOverwrite(
+                    read_messages=False
+                ),
                 ctx.guild.get_role(settings["role"]): discord.PermissionOverwrite(
                     read_messages=True,
                     send_messages=True,
@@ -183,7 +194,10 @@ class Ticketer(commands.Cog):
 
     @ticket.command(aliases=["open"])
     async def create(
-        self, ctx, *, reason: Optional[str] = "No reason provided.",
+        self,
+        ctx,
+        *,
+        reason: Optional[str] = "No reason provided.",
     ):
         """Create a ticket."""
         if await self._check_settings(ctx):
@@ -211,7 +225,9 @@ class Ticketer(commands.Cog):
                         reason=reason,
                     )
                 overwrite = {
-                    ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
+                    ctx.guild.default_role: discord.PermissionOverwrite(
+                        read_messages=False
+                    ),
                     ctx.author: discord.PermissionOverwrite(
                         read_messages=True,
                         send_messages=True,
@@ -234,9 +250,13 @@ class Ticketer(commands.Cog):
                 )
                 await ticketchannel.send(settings["message"].format(user=ctx.author))
                 embed = discord.Embed(
-                    title=name, description=reason, timestamp=datetime.utcnow(),
+                    title=name,
+                    description=reason,
+                    timestamp=datetime.utcnow(),
                 ).set_footer(text="Last updated at:")
-                message = await ctx.guild.get_channel(settings["channel"]).send(embed=embed)
+                message = await ctx.guild.get_channel(settings["channel"]).send(
+                    embed=embed
+                )
                 async with self.config.guild(ctx.guild).active() as active:
                     active.append((ticketchannel.id, message.id))
             else:
@@ -253,7 +273,9 @@ class Ticketer(commands.Cog):
         for ticket in active:
             if ctx.channel.id in ticket:
                 new_embed = (
-                    await ctx.guild.get_channel(settings["channel"]).fetch_message(ticket[1])
+                    await ctx.guild.get_channel(settings["channel"]).fetch_message(
+                        ticket[1]
+                    )
                 ).embeds[0]
                 new_embed.add_field(
                     name=datetime.utcnow().strftime("%H:%m UTC"),
@@ -261,20 +283,28 @@ class Ticketer(commands.Cog):
                 )
                 new_embed.timestamp = datetime.utcnow()
                 await (
-                    await ctx.guild.get_channel(settings["channel"]).fetch_message(ticket[1])
+                    await ctx.guild.get_channel(settings["channel"]).fetch_message(
+                        ticket[1]
+                    )
                 ).edit(
-                    embed=new_embed, delete_after=10,
+                    embed=new_embed,
+                    delete_after=10,
                 )
                 await ctx.send(embed=new_embed)
                 await ctx.send(
-                    "This ticket can no longer be edited using ticketer.", delete_after=30
+                    "This ticket can no longer be edited using ticketer.",
+                    delete_after=30,
                 )
                 await ctx.channel.edit(
                     category=ctx.guild.get_channel(settings["closed_category"]),
                     name=f"{ctx.channel.name}-c-{datetime.utcnow().strftime('%B-%d-%Y-%H-%m')}",
                     overwrites={
-                        ctx.guild.default_role: discord.PermissionOverwrite(read_messages=False),
-                        ctx.guild.get_role(settings["role"]): discord.PermissionOverwrite(
+                        ctx.guild.default_role: discord.PermissionOverwrite(
+                            read_messages=False
+                        ),
+                        ctx.guild.get_role(
+                            settings["role"]
+                        ): discord.PermissionOverwrite(
                             read_messages=True,
                             send_messages=True,
                             embed_links=True,
@@ -294,7 +324,9 @@ class Ticketer(commands.Cog):
 
     @ticket.command()
     @checks.mod()
-    async def update(self, ctx, ticket: Optional[discord.TextChannel] = None, *, update: str):
+    async def update(
+        self, ctx, ticket: Optional[discord.TextChannel] = None, *, update: str
+    ):
         """Update a ticket. This is visible to all participants of the ticket."""
         if ticket is None:
             channel = ctx.channel
