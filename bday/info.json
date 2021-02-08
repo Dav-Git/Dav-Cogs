@@ -3,8 +3,8 @@
     "Dav"
   ],
   "description": "Grants a specified birthday role for 24h",
-  "hidden": false,
-  "install_msg": "Thank you for installing bday.",
+  "hidden": true,
+  "install_msg": "Thank you for installing bday. I am bugged. Don't trust me.",
   "short": "Special B-Day role",
   "tags": [
     "roles",
