@@ -333,6 +333,7 @@ class Roomer(commands.Cog):
                     await ctx.guild.get_channel(
                         await self.invoiceConfig.channel(ctx.author.voice.channel).channel()
                     ).send(text)
+                    break
                 except:
                     await asyncio.sleep(2)
                 if i == 9:
