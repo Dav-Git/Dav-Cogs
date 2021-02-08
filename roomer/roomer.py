@@ -1,3 +1,4 @@
+import asyncio
 import string
 from random import choice
 from typing import Optional
@@ -258,7 +259,7 @@ class Roomer(commands.Cog):
                     data["pchannels"][key] = c.id
                     await self.config.guild(ctx.guild).pchannels.set(data["pchannels"])
                     try:
-                        await self._send_key(ctx.author)
+                        await self._send_key(ctx, key)
                     except KeyError:
                         await ctx.send(
                             _("Couldn't send the key to your private channel. Aborting...")
@@ -322,16 +323,28 @@ class Roomer(commands.Cog):
         except AttributeError:
             return await ctx.send(_("You need to be in a VC to do this."))
 
-    async def _send_key(self, author):
+    async def _send_key(self, ctx, key):
         text = _(
             "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
         ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
         if self.invoiceConfig:
-            await author.guild.get_channel(
-                await self.invoiceConfig.channel(ctx.author.voice.channel).channel()
-            ).send(text)
+            for i in range(10):
+                try:
+                    await ctx.guild.get_channel(
+                        await self.invoiceConfig.channel(ctx.author.voice.channel).channel()
+                    ).send(text)
+                except:
+                    asyncio.sleep(2)
+                if i == 9:
+                    await self._send_key_dm(ctx.author, text)
         else:
+            await self._send_key_dm(ctx.author, text)
+
+    async def _send_key_dm(self, author, text):
+        try:
             await author.send(text)
+        except discord.Forbidden:
+            raise KeyError
 
     # endregion privatevc
 
