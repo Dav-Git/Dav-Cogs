@@ -233,17 +233,6 @@ class Roomer(commands.Cog):
             try:
                 if ctx.author.voice.channel.id == data["pstart"]:
                     key = await self._generate_key(data["pchannels"].keys())
-                    try:
-                        await ctx.author.send(
-                            _(
-                                "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
-                            ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
-                        )
-                    except discord.Forbidden:
-                        await ctx.send(
-                            _("Couldn't send the key to your private channel via DM. Aborting...")
-                        )
-                        return
                     if public:
                         ov = {
                             ctx.author: discord.PermissionOverwrite(
@@ -268,6 +257,15 @@ class Roomer(commands.Cog):
                     await ctx.author.move_to(c, reason=_("Private channel."))
                     data["pchannels"][key] = c.id
                     await self.config.guild(ctx.guild).pchannels.set(data["pchannels"])
+                    try:
+                        await self._send_key(ctx.author)
+                    except KeyError:
+                        await ctx.send(
+                            _("Couldn't send the key to your private channel. Aborting...")
+                        )
+                        await ctx.autho.move_to(ctx.author.voice.channel)
+                        await c.delete()
+                        return
                 else:
                     await self.sendNotInStartChannelMessage(ctx, data["pstart"])
             except AttributeError:
@@ -323,6 +321,15 @@ class Roomer(commands.Cog):
             await ctx.send(_("VC has been hidden successfully."))
         except AttributeError:
             return await ctx.send(_("You need to be in a VC to do this."))
+
+    async def _send_key(self,author):
+        text=_(
+                "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
+            ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
+        if self.invoiceConfig:
+            await author.guild.get_channel(await self.invoiceConfig.channel(ctx.author.voice.channel).channel()).send(text)
+        else:
+            await author.send(text)
 
     # endregion privatevc
 
