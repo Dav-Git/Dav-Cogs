@@ -107,7 +107,10 @@ class Ticketer(commands.Cog):
         settings = await self.config.guild(ctx.guild).all()
         if not settings["role"]:
             role = await ctx.guild.create_role(
-                name="Ticketmanagers", hoist=True, mentionable=False, reason="Ticketer quicksetup"
+                name="Ticketmanagers",
+                hoist=True,
+                mentionable=False,
+                reason="Ticketer quicksetup",
             )
             await self.config.guild(ctx.guild).role.set(role.id)
             await ctx.send("Ticket-manager role created.")
@@ -183,7 +186,10 @@ class Ticketer(commands.Cog):
 
     @ticket.command(aliases=["open"])
     async def create(
-        self, ctx, *, reason: Optional[str] = "No reason provided.",
+        self,
+        ctx,
+        *,
+        reason: Optional[str] = "No reason provided.",
     ):
         """Create a ticket."""
         if await self._check_settings(ctx):
@@ -234,7 +240,9 @@ class Ticketer(commands.Cog):
                 )
                 await ticketchannel.send(settings["message"].format(user=ctx.author))
                 embed = discord.Embed(
-                    title=name, description=reason, timestamp=datetime.utcnow(),
+                    title=name,
+                    description=reason,
+                    timestamp=datetime.utcnow(),
                 ).set_footer(text="Last updated at:")
                 message = await ctx.guild.get_channel(settings["channel"]).send(embed=embed)
                 async with self.config.guild(ctx.guild).active() as active:
@@ -257,17 +265,19 @@ class Ticketer(commands.Cog):
                 ).embeds[0]
                 new_embed.add_field(
                     name=datetime.utcnow().strftime("%H:%m UTC"),
-                    value=f"Ticket closed by {ctx.author.name}#{ctx.author.discriminator}",
+                    value=f"Ticket closed by {ctx.author}",
                 )
                 new_embed.timestamp = datetime.utcnow()
                 await (
                     await ctx.guild.get_channel(settings["channel"]).fetch_message(ticket[1])
                 ).edit(
-                    embed=new_embed, delete_after=10,
+                    embed=new_embed,
+                    delete_after=10,
                 )
                 await ctx.send(embed=new_embed)
                 await ctx.send(
-                    "This ticket can no longer be edited using ticketer.", delete_after=30
+                    "This ticket can no longer be edited using ticketer.",
+                    delete_after=30,
                 )
                 await ctx.channel.edit(
                     category=ctx.guild.get_channel(settings["closed_category"]),
@@ -304,9 +314,7 @@ class Ticketer(commands.Cog):
         active = settings["active"]
         for ticket in active:
             if channel.id in ticket:
-                await channel.edit(
-                    topic=f'{channel.topic}\n\n{ctx.author.name}#{ctx.author.discriminator}:"{update}"'
-                )
+                await channel.edit(topic=f'{channel.topic}\n\n{ctx.author}:"{update}"')
                 await ctx.send("Ticket updated.", delete_after=10)
             else:
                 ctx.send(f"{channel.mention} is not a ticket channel.")
@@ -322,9 +330,7 @@ class Ticketer(commands.Cog):
                     await self.config.guild(ctx.guild).channel()
                 ).fetch_message(ticket[1])
                 new_embed = message.embeds[0]
-                new_embed.add_field(
-                    name=f"{ctx.author.name}#{ctx.author.discriminator}", value=note
-                )
+                new_embed.add_field(name=f"{ctx.author}", value=note)
                 new_embed.timestamp = datetime.utcnow()
                 await message.edit(embed=new_embed)
                 await ctx.send("Note added.", delete_after=10)
