@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-11-24 01:51+0100\n"
+"POT-Creation-Date: 2021-02-08 23:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,11 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
-
-#: ticketer\ticketer.py:8
-#, docstring
-msgid "Ticketer"
-msgstr ""
 
 #: ticketer\ticketer.py:45
 #, docstring
@@ -43,42 +38,45 @@ msgstr ""
 
 #: ticketer\ticketer.py:78
 #, docstring
-msgid "Set the message that is shown at the start of each ticket channel."
+msgid ""
+"Set the message that is shown at the start of each ticket channel.\n"
+"\n"
+"Use ``{user.mention}`` to mention the person who created the ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:84
+#: ticketer\ticketer.py:90
 #, docstring
 msgid ""
 "Toggle if the ticket channels should be named using a user's name and ID or "
 "counting upwards starting at 0."
 msgstr ""
 
-#: ticketer\ticketer.py:92
+#: ticketer\ticketer.py:98
 #, docstring
 msgid "Decide if ticketer should log to modlog."
 msgstr ""
 
-#: ticketer\ticketer.py:100
+#: ticketer\ticketer.py:106
 #, docstring
 msgid "Sets configurations automatically."
 msgstr ""
 
-#: ticketer\ticketer.py:150
+#: ticketer\ticketer.py:156
 #, docstring
 msgid "Deletes all closed ticket channels."
 msgstr ""
 
-#: ticketer\ticketer.py:175
+#: ticketer\ticketer.py:181
 #, docstring
 msgid "Manage a ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:185
+#: ticketer\ticketer.py:188
 #, docstring
 msgid "Create a ticket."
 msgstr ""
 
-#: ticketer\ticketer.py:248
+#: ticketer\ticketer.py:249
 #, docstring
 msgid "Close a ticket."
 msgstr ""

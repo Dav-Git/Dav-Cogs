@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-11-24 01:51+0100\n"
+"POT-Creation-Date: 2021-02-08 23:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
-#: stickymember\stickymember.py:44
+#: stickymember\stickymember.py:51
 msgid "Stickied {member}."
 msgstr ""
 
-#: stickymember\stickymember.py:52
+#: stickymember\stickymember.py:59
 msgid "{member_id} unstickied."
 msgstr ""

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-11-24 01:51+0100\n"
+"POT-Creation-Date: 2021-02-08 23:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 msgid "Bday"
 msgstr ""
 
-#: bday\bday.py:66
+#: bday\bday.py:67
 #, docstring
 msgid ""
 "Set your birthday.\n"
@@ -24,11 +24,11 @@ msgid ""
 "Date format: 'ddMM'"
 msgstr ""
 
-#: bday\bday.py:75
+#: bday\bday.py:76
 #, docstring
 msgid "Set the role that will be assigned on a birthday."
 msgstr ""
 
-#: bday\bday.py:77
+#: bday\bday.py:78
 msgid "The birthday role has been set to {}"
 msgstr ""

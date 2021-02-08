@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-11-24 01:51+0100\n"
+"POT-Creation-Date: 2021-02-08 23:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,16 +16,10 @@ msgstr ""
 msgid "Check"
 msgstr ""
 
-#: check\check.py:28
+#: check\check.py:25
 msgid ":mag_right: Starting lookup for: {usermention}({userid})"
 msgstr ""
 
-#: check\check.py:34
-msgid ""
-":mag: This user is not in your guild anymore. Fetching reduced information "
-"for UID: {userid}."
-msgstr ""
-
-#: check\check.py:60
+#: check\check.py:33
 msgid "Lookup completed."
 msgstr ""

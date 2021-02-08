@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-12-26 00:20+0100\n"
+"POT-Creation-Date: 2021-02-08 23:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -147,101 +147,101 @@ msgstr ""
 msgid "Create a private voicechannel."
 msgstr ""
 
-#: roomer\roomer.py:238
+#: roomer\roomer.py:255
+msgid "Private room"
+msgstr ""
+
+#: roomer\roomer.py:257
+msgid "Private channel."
+msgstr ""
+
+#: roomer\roomer.py:264
+msgid "Couldn't send the key to your private channel. Aborting..."
+msgstr ""
+
+#: roomer\roomer.py:274 roomer\roomer.py:293 roomer\roomer.py:420
+msgid "Private rooms are not enabled on this server."
+msgstr ""
+
+#: roomer\roomer.py:279
+#, docstring
+msgid "Join a private room."
+msgstr ""
+
+#: roomer\roomer.py:298
+#, docstring
+msgid "Hide or unhide a voicechannel you own."
+msgstr ""
+
+#: roomer\roomer.py:321
+msgid "VC has been hidden successfully."
+msgstr ""
+
+#: roomer\roomer.py:323
+msgid "You need to be in a VC to do this."
+msgstr ""
+
+#: roomer\roomer.py:326
 msgid ""
 "The key to your private room is: ``{key}``\n"
 "Give this key to a friend and ask them to use ``{command}`` to join your private room."
 msgstr ""
 
-#: roomer\roomer.py:244
-msgid "Couldn't send the key to your private channel via DM. Aborting..."
-msgstr ""
-
-#: roomer\roomer.py:266
-msgid "Private room"
-msgstr ""
-
-#: roomer\roomer.py:268
-msgid "Private channel."
-msgstr ""
-
-#: roomer\roomer.py:276 roomer\roomer.py:295 roomer\roomer.py:411
-msgid "Private rooms are not enabled on this server."
-msgstr ""
-
-#: roomer\roomer.py:281
-#, docstring
-msgid "Join a private room."
-msgstr ""
-
-#: roomer\roomer.py:300
-#, docstring
-msgid "Hide or unhide a voicechannel you own."
-msgstr ""
-
-#: roomer\roomer.py:323
-msgid "VC has been hidden successfully."
-msgstr ""
-
-#: roomer\roomer.py:325
-msgid "You need to be in a VC to do this."
-msgstr ""
-
-#: roomer\roomer.py:333
+#: roomer\roomer.py:342
 #, docstring
 msgid "Change settings for private text channels."
 msgstr ""
 
-#: roomer\roomer.py:338 roomer\roomer.py:344
+#: roomer\roomer.py:347 roomer\roomer.py:353
 #, docstring
 msgid "Enable private text channels."
 msgstr ""
 
-#: roomer\roomer.py:340
+#: roomer\roomer.py:349
 msgid "Private text channels enabled."
 msgstr ""
 
-#: roomer\roomer.py:346
+#: roomer\roomer.py:355
 msgid "Private text channels disabled."
 msgstr ""
 
-#: roomer\roomer.py:351
+#: roomer\roomer.py:360
 #, docstring
 msgid "Create a private text channel."
 msgstr ""
 
-#: roomer\roomer.py:376
+#: roomer\roomer.py:385
 msgid "Private text channel"
 msgstr ""
 
-#: roomer\roomer.py:382
+#: roomer\roomer.py:391
 msgid "Private text channels are not enabled on this server."
 msgstr ""
 
-#: roomer\roomer.py:387
+#: roomer\roomer.py:396
 #, docstring
 msgid "Close the current private text cannel."
 msgstr ""
 
-#: roomer\roomer.py:390
+#: roomer\roomer.py:399
 msgid "Private text channel deleted."
 msgstr ""
 
-#: roomer\roomer.py:393
+#: roomer\roomer.py:402
 msgid "Use this command in a private text channel."
 msgstr ""
 
-#: roomer\roomer.py:397
+#: roomer\roomer.py:406
 #, docstring
 msgid "Join a private text channel."
 msgstr ""
 
-#: roomer\roomer.py:417
+#: roomer\roomer.py:426
 msgid ""
 "The key to this private text channel is: ``{key}``\n"
 "Give this key to a friend and ask them to use ``{command}`` to join your private room."
 msgstr ""
 
-#: roomer\roomer.py:431
+#: roomer\roomer.py:440
 msgid "You must be in the voicechannel {vc} first."
 msgstr ""
