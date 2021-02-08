@@ -322,12 +322,14 @@ class Roomer(commands.Cog):
         except AttributeError:
             return await ctx.send(_("You need to be in a VC to do this."))
 
-    async def _send_key(self,author):
-        text=_(
-                "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
-            ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
+    async def _send_key(self, author):
+        text = _(
+            "The key to your private room is: ``{key}``\nGive this key to a friend and ask them to use ``{command}`` to join your private room."
+        ).format(key=key, command=f"{ctx.clean_prefix}vc join {key}")
         if self.invoiceConfig:
-            await author.guild.get_channel(await self.invoiceConfig.channel(ctx.author.voice.channel).channel()).send(text)
+            await author.guild.get_channel(
+                await self.invoiceConfig.channel(ctx.author.voice.channel).channel()
+            ).send(text)
         else:
             await author.send(text)
 
