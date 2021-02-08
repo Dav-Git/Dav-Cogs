@@ -39,9 +39,8 @@ class Check(commands.Cog):
             pass
 
     async def _warnings_or_read(self, ctx, member):
-        user = ctx.bot.get_user(member.id)
         try:
-            await ctx.invoke(ctx.bot.get_command("read"), user=user)
+            await ctx.invoke(ctx.bot.get_command("read"), member=member.id)
         except:
             try:
                 await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
