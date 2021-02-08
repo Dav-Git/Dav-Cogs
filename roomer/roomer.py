@@ -334,7 +334,7 @@ class Roomer(commands.Cog):
                         await self.invoiceConfig.channel(ctx.author.voice.channel).channel()
                     ).send(text)
                 except:
-                    asyncio.sleep(2)
+                    await asyncio.sleep(2)
                 if i == 9:
                     await self._send_key_dm(ctx.author, text)
         else:
