@@ -33,6 +33,7 @@ class Bday(commands.Cog):
 
     @tasks.loop(hours=1)
     async def bdaytask(self):
+        await self.bot.wait_until_red_ready()
         date = datetime.utcnow().strftime("%d%m")
         for user_id in await self.config.all_users():
             if date == await self.config.user_from_id(user_id).bday():
