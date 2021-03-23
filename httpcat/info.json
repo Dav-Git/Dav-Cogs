@@ -1,0 +1,9 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Get info on HTTP status codes from https://http.cat",
+    "install_msg": "Thanks for installing HTTPCat. Check out the https://http.cat website if you want to learn more about HTTP status codes.",
+    "short": "HTTP but with kittens! Yeeehaw",
+    "end_user_data_statement": "This cog stores no EUD."
+}
