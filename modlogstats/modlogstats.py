@@ -20,6 +20,13 @@ send_ready = defaultdict(lambda: False)
 
 @cog_i18n(_)
 class ModLogStats(commands.Cog):
+    __version__ = "1.0.0"
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        #Thanks Sinbad! And Trusty in whose cogs I found this.
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nVersion: {self.__version__}"
+
     def __init__(self):
         self.webhooks = defaultdict(lambda: None)
 

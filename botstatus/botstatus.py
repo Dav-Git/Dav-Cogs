@@ -11,6 +11,12 @@ _ = Translator("Botstatus", __file__)
 @cog_i18n(_)
 class Botstatus(commands.Cog):
     """Botstatus"""
+    __version__ = "1.0.0"
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        #Thanks Sinbad! And Trusty in whose cogs I found this.
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nVersion: {self.__version__}"
 
     async def red_delete_data_for_user(self, *, requester, user_id):
         # This cog stores no EUD

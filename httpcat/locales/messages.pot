@@ -11,15 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
-#: check\check.py:10
+#: httpcat\httpcat.py:17
 #, docstring
-msgid "Check"
-msgstr ""
-
-#: check\check.py:31
-msgid ":mag_right: Starting lookup for: {usermention}({userid})"
-msgstr ""
-
-#: check\check.py:39
-msgid "Lookup completed."
+msgid "Get info on HTTP status codes."
 msgstr ""

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-02-08 23:06+0100\n"
+"POT-Creation-Date: 2021-04-07 23:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,14 @@ msgstr ""
 msgid "CaseRelayer"
 msgstr ""
 
-#: caserelayer\caserelayer.py:25
+#: caserelayer\caserelayer.py:31
 msgid "That case does not exist for that server."
 msgstr ""
 
-#: caserelayer\caserelayer.py:32
+#: caserelayer\caserelayer.py:38
 msgid "Case has been relayed to {username}#{userdiscriminator}."
 msgstr ""
 
-#: caserelayer\caserelayer.py:37
+#: caserelayer\caserelayer.py:43
 msgid "Something went wrong."
 msgstr ""

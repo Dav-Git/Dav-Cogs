@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-04-07 22:29+0200\n"
+"POT-Creation-Date: 2021-04-07 23:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,243 +11,238 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
-#: roomer\roomer.py:15
-#, docstring
-msgid "Multiple VC tools"
-msgstr ""
-
-#: roomer\roomer.py:74
+#: roomer\roomer.py:79
 msgid "Automated voicechannel creation."
 msgstr ""
 
-#: roomer\roomer.py:76
+#: roomer\roomer.py:81
 msgid "Moved to automatically created channel."
 msgstr ""
 
-#: roomer\roomer.py:87
+#: roomer\roomer.py:92
 msgid "Channel empty."
 msgstr ""
 
-#: roomer\roomer.py:105
+#: roomer\roomer.py:110
 msgid "Private room empty."
 msgstr ""
 
-#: roomer\roomer.py:115
+#: roomer\roomer.py:120
 #, docstring
 msgid "Roomer settings"
 msgstr ""
 
-#: roomer\roomer.py:121
+#: roomer\roomer.py:126
 #, docstring
 msgid "Voicechannel commands."
 msgstr ""
 
-#: roomer\roomer.py:127
+#: roomer\roomer.py:132
 #, docstring
 msgid "Textchannel commands."
 msgstr ""
 
-#: roomer\roomer.py:133
+#: roomer\roomer.py:138
 #, docstring
 msgid "Automation settings."
 msgstr ""
 
-#: roomer\roomer.py:138
+#: roomer\roomer.py:143
 #, docstring
 msgid "Enable automatic voicechannel creation."
 msgstr ""
 
-#: roomer\roomer.py:140
+#: roomer\roomer.py:145
 msgid "Automatic voicechannel creation enabled."
 msgstr ""
 
-#: roomer\roomer.py:144
+#: roomer\roomer.py:149
 #, docstring
 msgid "Disable automatic voicechannel creation."
 msgstr ""
 
-#: roomer\roomer.py:146
+#: roomer\roomer.py:151
 msgid "Automatic voicechannel creation disabled."
 msgstr ""
 
-#: roomer\roomer.py:150
+#: roomer\roomer.py:155
 #, docstring
 msgid "Set the name that is used for automatically created voicechannels."
 msgstr ""
 
-#: roomer\roomer.py:153
+#: roomer\roomer.py:158
 msgid "Automatically created voicechannels will now be named ``{name}``."
-msgstr ""
-
-#: roomer\roomer.py:160
-#, docstring
-msgid "Manage channels related to automated voicechannels."
 msgstr ""
 
 #: roomer\roomer.py:165
 #, docstring
+msgid "Manage channels related to automated voicechannels."
+msgstr ""
+
+#: roomer\roomer.py:170
+#, docstring
 msgid "Add a start channel used for automatic voicechannels."
 msgstr ""
 
-#: roomer\roomer.py:168
+#: roomer\roomer.py:173
 msgid ""
 "{channel} is not in a discord category. Auto-channels need to be part of a "
 "category for this feature to work properly."
 msgstr ""
 
-#: roomer\roomer.py:178
+#: roomer\roomer.py:183
 msgid "Startchannel used for automatic voicechannels added: {channel}"
 msgstr ""
 
-#: roomer\roomer.py:185
+#: roomer\roomer.py:190
 #, docstring
 msgid "Remove a start channel used for automatic voicechannels."
 msgstr ""
 
-#: roomer\roomer.py:190
+#: roomer\roomer.py:195
 msgid "Startchannel used for automatic voicechannels removed: {channel}"
-msgstr ""
-
-#: roomer\roomer.py:201
-#, docstring
-msgid "Change settings for private rooms"
 msgstr ""
 
 #: roomer\roomer.py:206
 #, docstring
+msgid "Change settings for private rooms"
+msgstr ""
+
+#: roomer\roomer.py:211
+#, docstring
 msgid "Enable private rooms"
 msgstr ""
 
-#: roomer\roomer.py:209
+#: roomer\roomer.py:214
 msgid "Private channels enabled."
 msgstr ""
 
-#: roomer\roomer.py:212
+#: roomer\roomer.py:217
 msgid "Set up a starting channel using {command} first."
 msgstr ""
 
-#: roomer\roomer.py:219
+#: roomer\roomer.py:224
 #, docstring
 msgid "Disable private rooms"
 msgstr ""
 
-#: roomer\roomer.py:221
+#: roomer\roomer.py:226
 msgid "Private channels disabled."
 msgstr ""
 
-#: roomer\roomer.py:225
+#: roomer\roomer.py:230
 #, docstring
 msgid ""
 "Set a channel that users will join to start using private rooms.\n"
 "I recommend not allowing talking permissions here."
 msgstr ""
 
-#: roomer\roomer.py:229
+#: roomer\roomer.py:234
 msgid ""
 "Private starting channel set. Users can join this channel to use all features of private rooms.\n"
 "I recommend not allowing members to speak in this channel."
 msgstr ""
 
-#: roomer\roomer.py:237
+#: roomer\roomer.py:242
 #, docstring
 msgid "Create a private voicechannel."
 msgstr ""
 
-#: roomer\roomer.py:262
+#: roomer\roomer.py:267
 msgid "Private room"
 msgstr ""
 
-#: roomer\roomer.py:264
+#: roomer\roomer.py:269
 msgid "Private channel."
 msgstr ""
 
-#: roomer\roomer.py:271
+#: roomer\roomer.py:276
 msgid "Couldn't send the key to your private channel. Aborting..."
 msgstr ""
 
-#: roomer\roomer.py:281 roomer\roomer.py:300 roomer\roomer.py:440
+#: roomer\roomer.py:286 roomer\roomer.py:305 roomer\roomer.py:445
 msgid "Private rooms are not enabled on this server."
 msgstr ""
 
-#: roomer\roomer.py:286
+#: roomer\roomer.py:291
 #, docstring
 msgid "Join a private room."
 msgstr ""
 
-#: roomer\roomer.py:305
+#: roomer\roomer.py:310
 #, docstring
 msgid "Hide or unhide a voicechannel you own."
 msgstr ""
 
-#: roomer\roomer.py:328
+#: roomer\roomer.py:333
 msgid "VC has been hidden successfully."
 msgstr ""
 
-#: roomer\roomer.py:330
+#: roomer\roomer.py:335
 msgid "You need to be in a VC to do this."
 msgstr ""
 
-#: roomer\roomer.py:333
+#: roomer\roomer.py:338
 msgid ""
 "The key to your private room is: ``{key}``\n"
 "Give this key to a friend and ask them to use ``{command}`` to join your private room."
 msgstr ""
 
-#: roomer\roomer.py:362
+#: roomer\roomer.py:367
 #, docstring
 msgid "Change settings for private text channels."
 msgstr ""
 
-#: roomer\roomer.py:367 roomer\roomer.py:373
+#: roomer\roomer.py:372 roomer\roomer.py:378
 #, docstring
 msgid "Enable private text channels."
 msgstr ""
 
-#: roomer\roomer.py:369
+#: roomer\roomer.py:374
 msgid "Private text channels enabled."
 msgstr ""
 
-#: roomer\roomer.py:375
+#: roomer\roomer.py:380
 msgid "Private text channels disabled."
 msgstr ""
 
-#: roomer\roomer.py:380
+#: roomer\roomer.py:385
 #, docstring
 msgid "Create a private text channel."
 msgstr ""
 
-#: roomer\roomer.py:405
+#: roomer\roomer.py:410
 msgid "Private text channel"
 msgstr ""
 
-#: roomer\roomer.py:411
+#: roomer\roomer.py:416
 msgid "Private text channels are not enabled on this server."
 msgstr ""
 
-#: roomer\roomer.py:416
+#: roomer\roomer.py:421
 #, docstring
 msgid "Close the current private text cannel."
 msgstr ""
 
-#: roomer\roomer.py:419
+#: roomer\roomer.py:424
 msgid "Private text channel deleted."
 msgstr ""
 
-#: roomer\roomer.py:422
+#: roomer\roomer.py:427
 msgid "Use this command in a private text channel."
 msgstr ""
 
-#: roomer\roomer.py:426
+#: roomer\roomer.py:431
 #, docstring
 msgid "Join a private text channel."
 msgstr ""
 
-#: roomer\roomer.py:446
+#: roomer\roomer.py:451
 msgid ""
 "The key to this private text channel is: ``{key}``\n"
 "Give this key to a friend and ask them to use ``{command}`` to join your private room."
 msgstr ""
 
-#: roomer\roomer.py:460
+#: roomer\roomer.py:465
 msgid "You must be in the voicechannel {vc} first."
 msgstr ""

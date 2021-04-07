@@ -6,10 +6,16 @@ from redbot.core import commands, checks, Config, modlog
 
 class Ticketer(commands.Cog):
     """Ticketer"""
+    __version__="1.0.0"
 
     async def red_delete_data_for_user(self, *, requester, user_id):
         # This cog stores no EUD
         return
+
+    def format_help_for_context(self, ctx: commands.Context) -> str:
+        #Thanks Sinbad! And Trusty in whose cogs I found this.
+        pre_processed = super().format_help_for_context(ctx)
+        return f"{pre_processed}\n\nVersion: {self.__version__}"
 
     def __init__(self):
         self.config = Config.get_conf(self, 200730042020, force_registration=True)

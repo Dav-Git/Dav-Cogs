@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-02-08 23:06+0100\n"
+"POT-Creation-Date: 2021-04-07 23:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 msgid "Prunecmd"
 msgstr ""
 
-#: prunecmd\prunecmd.py:25
+#: prunecmd\prunecmd.py:32
 msgid "The member list has been pruned successfully"
 msgstr ""
 
-#: prunecmd\prunecmd.py:28
+#: prunecmd\prunecmd.py:35
 msgid ""
 "This will kick members from your guild. If you are sure you want to proceed "
 "run {command}"

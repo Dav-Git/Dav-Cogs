@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-02-08 23:06+0100\n"
+"POT-Creation-Date: 2021-04-07 23:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,23 +11,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
-#: mcwhitelister\mcwhitelister.py:66
+#: mcwhitelister\mcwhitelister.py:73
 msgid "{} is already on the whitelist."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:81
+#: mcwhitelister\mcwhitelister.py:88
 msgid "{} is not a valid username."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:84
+#: mcwhitelister\mcwhitelister.py:91
 msgid "{} successfully whitelisted {}."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:92
+#: mcwhitelister\mcwhitelister.py:99
 msgid "You need to set a path with ``[p]whitelister setup`` first."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:97
+#: mcwhitelister\mcwhitelister.py:104
 #, docstring
 msgid ""
 "Set up the path to your minecraft server jar.\n"
@@ -37,22 +37,22 @@ msgid ""
 "        ``[p]whitelister setup /home/user/mcserver/whitelist.json``"
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:105
+#: mcwhitelister\mcwhitelister.py:112
 msgid "Path set to {}"
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:107
+#: mcwhitelister\mcwhitelister.py:114
 msgid "The whitelist.json could not be found at this path."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:115
+#: mcwhitelister\mcwhitelister.py:122
 msgid "Nobody was whitelisted using whitelister yet."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:124
+#: mcwhitelister\mcwhitelister.py:131
 msgid "Whielisted with whitelister:"
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:125
+#: mcwhitelister\mcwhitelister.py:132
 msgid "Whitelisted"
 msgstr ""

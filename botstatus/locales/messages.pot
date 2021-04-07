@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-02-08 23:06+0100\n"
+"POT-Creation-Date: 2021-04-07 23:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,113 +16,113 @@ msgstr ""
 msgid "Botstatus"
 msgstr ""
 
-#: botstatus\botstatus.py:61
+#: botstatus\botstatus.py:67
 #, docstring
 msgid ""
 "Set a status that doesn't dissappear on reboot.\n"
 "        Usage: [p]botstatus <type> <status> <text>"
 msgstr ""
 
-#: botstatus\botstatus.py:67
+#: botstatus\botstatus.py:73
 #, docstring
 msgid "Usage: [p]botstatus playing <status> <text>"
 msgstr ""
 
-#: botstatus\botstatus.py:73 botstatus\botstatus.py:82
-#: botstatus\botstatus.py:91 botstatus\botstatus.py:100
-#: botstatus\botstatus.py:114 botstatus\botstatus.py:123
-#: botstatus\botstatus.py:132 botstatus\botstatus.py:141
-#: botstatus\botstatus.py:155 botstatus\botstatus.py:164
-#: botstatus\botstatus.py:173 botstatus\botstatus.py:182
-#: botstatus\botstatus.py:196 botstatus\botstatus.py:205
-#: botstatus\botstatus.py:214 botstatus\botstatus.py:223
+#: botstatus\botstatus.py:79 botstatus\botstatus.py:88
+#: botstatus\botstatus.py:97 botstatus\botstatus.py:106
+#: botstatus\botstatus.py:120 botstatus\botstatus.py:129
+#: botstatus\botstatus.py:138 botstatus\botstatus.py:147
+#: botstatus\botstatus.py:161 botstatus\botstatus.py:170
+#: botstatus\botstatus.py:179 botstatus\botstatus.py:188
+#: botstatus\botstatus.py:202 botstatus\botstatus.py:211
+#: botstatus\botstatus.py:220 botstatus\botstatus.py:229
 msgid "The chracter limit for status messages is 128."
 msgstr ""
 
-#: botstatus\botstatus.py:77
+#: botstatus\botstatus.py:83
 msgid "Status set to ``Online | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:86
+#: botstatus\botstatus.py:92
 msgid "Status set to ``Idle | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:95
+#: botstatus\botstatus.py:101
 msgid "Status set to ``DND | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:104
+#: botstatus\botstatus.py:110
 msgid "Status set to ``Offline | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:108
+#: botstatus\botstatus.py:114
 #, docstring
 msgid "Usage: [p]botstatus listening <status> <text>"
 msgstr ""
 
-#: botstatus\botstatus.py:118
+#: botstatus\botstatus.py:124
 msgid "Status set to ``Online | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:127
+#: botstatus\botstatus.py:133
 msgid "Status set to ``Idle | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:136
+#: botstatus\botstatus.py:142
 msgid "Status set to ``DND | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:145
+#: botstatus\botstatus.py:151
 msgid "Status set to ``Offline | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:149
+#: botstatus\botstatus.py:155
 #, docstring
 msgid "Usage: [p]botstatus watching <status> <text>"
 msgstr ""
 
-#: botstatus\botstatus.py:159
+#: botstatus\botstatus.py:165
 msgid "Status set to ``Online | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:168
+#: botstatus\botstatus.py:174
 msgid "Status set to ``Idle | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:177
+#: botstatus\botstatus.py:183
 msgid "Status set to ``DND | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:186
+#: botstatus\botstatus.py:192
 msgid "Status set to ``Offline | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:190
+#: botstatus\botstatus.py:196
 #, docstring
 msgid "Set a competing status"
 msgstr ""
 
-#: botstatus\botstatus.py:200
+#: botstatus\botstatus.py:206
 msgid "Status set to ``Online | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:209
+#: botstatus\botstatus.py:215
 msgid "Status set to ``Away | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:218
+#: botstatus\botstatus.py:224
 msgid "Status set to ``DND | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:227
+#: botstatus\botstatus.py:233
 msgid "Status set to ``Offline | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:231
+#: botstatus\botstatus.py:237
 #, docstring
 msgid "Clear the saved botstatus and disable auto-setting on reboot."
 msgstr ""
 
-#: botstatus\botstatus.py:233
+#: botstatus\botstatus.py:239
 msgid "Saved botstatus has been cleared."
 msgstr ""
