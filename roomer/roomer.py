@@ -15,7 +15,7 @@ class Roomer(commands.Cog):
     __version__ = "1.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
-        #Thanks Sinbad! And Trusty in whose cogs I found this.
+        # Thanks Sinbad! And Trusty in whose cogs I found this.
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nVersion: {self.__version__}"
 
@@ -254,7 +254,9 @@ class Roomer(commands.Cog):
                     else:
                         ov = {
                             ctx.guild.default_role: discord.PermissionOverwrite(
-                                view_channel=True, connect=False
+                                view_channel=True,
+                                connect=False,
+                                use_voice_activation=True,
                             ),
                             ctx.author: discord.PermissionOverwrite(
                                 view_channel=True, connect=True, speak=True, manage_channels=True
