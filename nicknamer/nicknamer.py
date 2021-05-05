@@ -148,7 +148,10 @@ class NickNamer(commands.Cog):
             reason = _("Nickname force-changed")
         try:
             await user.edit(nick=await self.config.guild(ctx.guild).nick())
-            await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
+            try:
+                await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
+            except discord.errors.NotFound:
+                pass
             if await self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
@@ -188,7 +191,10 @@ class NickNamer(commands.Cog):
             reason = _("Nickname force-changed")
         try:
             await user.edit(nick=nickname)
-            await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
+            try:
+                await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
+            except discord.errors.NotFound:
+                pass
             if await self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
@@ -234,7 +240,10 @@ class NickNamer(commands.Cog):
 
         try:
             await user.edit(nick=nickname)
-            await ctx.tick()
+            try:
+                await ctx.tick()
+            except discord.errors.NotFound:
+                pass
             async with self.config.guild(ctx.guild).frozen() as frozen:
                 frozen.append((user.id, nickname))
             if await self.config.guild(ctx.guild).modlog():
@@ -268,7 +277,10 @@ class NickNamer(commands.Cog):
             for e in frozen:
                 if user.id in e:
                     frozen.remove(e)
-                    await ctx.tick()
+                    try:
+                        await ctx.tick()
+                    except discord.errors.NotFound:
+                        pass
                     if await self.config.guild(ctx.guild).dm():
                         try:
                             await user.send(
@@ -300,7 +312,10 @@ class NickNamer(commands.Cog):
         try:
             oldnick = user.nick
             await user.edit(nick=nickname)
-            await ctx.tick()
+            try:
+                await ctx.tick()
+            except discord.errors.NotFound:
+                pass
             change_end = datetime.utcnow() + duration
             async with self.config.guild(ctx.guild).active() as active:
                 active.append((user.id, oldnick, change_end.timestamp()))
