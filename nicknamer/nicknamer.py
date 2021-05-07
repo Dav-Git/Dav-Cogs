@@ -148,7 +148,7 @@ class NickNamer(commands.Cog):
             reason = _("Nickname force-changed")
         try:
             await user.edit(nick=await self.config.guild(ctx.guild).nick())
-            await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
+            await ctx.tick()
             if await self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
@@ -188,7 +188,7 @@ class NickNamer(commands.Cog):
             reason = _("Nickname force-changed")
         try:
             await user.edit(nick=nickname)
-            await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
+            await ctx.tick()
             if await self.config.guild(ctx.guild).modlog():
                 await modlog.create_case(
                     self.bot,
