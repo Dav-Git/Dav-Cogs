@@ -268,10 +268,7 @@ class NickNamer(commands.Cog):
             for e in frozen:
                 if user.id in e:
                     frozen.remove(e)
-                    try:
-                        await ctx.tick()
-                    except discord.errors.NotFound:
-                        pass
+                    await ctx.tick()
                     if await self.config.guild(ctx.guild).dm():
                         try:
                             await user.send(
