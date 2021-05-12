@@ -372,7 +372,7 @@ class Ticketer(commands.Cog):
 
 
 class SafeMember:
-    """Thank you kenny https://github.com/kennnyshiwa/kennnyshiwa-cogs"""
+    """Thank you flame & kenny. I first found this here: https://github.com/kennnyshiwa/kennnyshiwa-cogs"""
 
     def __init__(self, member: discord.Member):
         self.name = member.name
