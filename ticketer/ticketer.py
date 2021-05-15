@@ -76,7 +76,7 @@ class Ticketer(commands.Cog):
 
     @category.group()
     async def closed(self, ctx, *, category: discord.CategoryChannel):
-        """Set the category for open tickets."""
+        """Set the category for closed tickets."""
         await self.config.guild(ctx.guild).closed_category.set(category.id)
         await ctx.send(f"Category for closed tickets has been set to {category.mention}")
 
