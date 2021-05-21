@@ -11,20 +11,20 @@ _ = Translator("StickyMember", __file__)
 
 @cog_i18n(_)
 class StickyMember(commands.Cog):
-    __version__="1.0.0"
+    __version__ = "1.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
-        #Thanks Sinbad! And Trusty in whose cogs I found this.
+        # Thanks Sinbad! And Trusty in whose cogs I found this.
         pre_processed = super().format_help_for_context(ctx)
         return f"{pre_processed}\n\nVersion: {self.__version__}"
-    
+
     async def red_delete_data_for_user(self, *, requester, user_id):
         data = self.config.all_members()
         for g in data:
             for m in g:
                 if m == user_id:
                     await self.config.member_from_ids(g, m).clear()
-    
+
     def __init__(self):
         self.config = Config.get_conf(self, 231215102020, force_registration=True)
         default = {"roles": [], "active": False}
