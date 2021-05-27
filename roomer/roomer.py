@@ -12,7 +12,7 @@ _ = Translator("Roomer", __file__)
 
 @cog_i18n(_)
 class Roomer(commands.Cog):
-    __version__ = "1.0.0"
+    __version__ = "1.0.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -314,14 +314,10 @@ class Roomer(commands.Cog):
         try:
             for key in data:
                 if data[key] == ctx.author.voice.channel.id:
-                    ov = {
-                        ctx.guild.default_role: discord.PermissionOverwrite(
-                            view_channel=False, connect=False
-                        ),
-                        ctx.author: discord.PermissionOverwrite(
-                            view_channel=True, connect=True, speak=True, manage_channels=True
-                        ),
-                    }
+                    ov = ctx.author.voice.channel.overwrites
+                    ov[ctx.guild.default_role] = discord.PermissionOverwrite(
+                        view_channel=False, connect=False
+                    )
                     if self.invoiceConfig:
                         ov[
                             ctx.guild.get_role(
