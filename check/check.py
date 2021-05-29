@@ -41,7 +41,7 @@ class Check(commands.Cog):
 
     async def _userinfo(self, ctx, member):
         try:
-            await ctx.invoke(ctx.bot.get_command("userinfo"), user=member)
+            await ctx.invoke(ctx.bot.get_command("userinfo"), member=member)
         except:
             pass
 
