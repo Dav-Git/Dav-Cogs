@@ -44,6 +44,8 @@ class Check(commands.Cog):
     async def _userinfo(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("userinfo"), member=member)
+        except TypeError:
+            await ctx.invoke(ctx.bot.get_command("userinfo"), user=member)
         except Exception as e:
             self.log.exception(f"Error in userinfo {e}", exc_info=True)
 
@@ -54,10 +56,10 @@ class Check(commands.Cog):
             try:
                 await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
             except:
-                pass
+                self.log.warn("Command warn not found.")
 
     async def _maybe_listflag(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
         except:
-            pass
+            self.log.warn("Command listflag not found.")
