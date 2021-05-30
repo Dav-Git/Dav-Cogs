@@ -1,6 +1,7 @@
 from redbot.core import commands, checks
 import discord
 from redbot.core.i18n import Translator, cog_i18n
+import logging
 
 _ = Translator("Check", __file__)
 
@@ -22,6 +23,7 @@ class Check(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+        self.log = logging.getLogger("red.cog.dav-cogs.check")
 
     @commands.command()
     @checks.mod()
@@ -42,8 +44,8 @@ class Check(commands.Cog):
     async def _userinfo(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("userinfo"), member=member)
-        except:
-            pass
+        except Exception as e:
+            self.log.exception(f"Error in userinfo {e}", exc_info=True)
 
     async def _warnings_or_read(self, ctx, member):
         try:
