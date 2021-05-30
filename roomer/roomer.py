@@ -418,7 +418,7 @@ class Roomer(commands.Cog):
     async def tc_close(self, ctx):
         """Close the current private text cannel."""
         async with self.config.guild(ctx.guild).private_textchannels() as textchannels:
-            if ctx.channel.id in textchannels:
+            if ctx.channel.id in textchannels.values():
                 await ctx.channel.delete(reason=_("Private text channel deleted."))
                 del textchannels[ctx.channel.id]
             else:
