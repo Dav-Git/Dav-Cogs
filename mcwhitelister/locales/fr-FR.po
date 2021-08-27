@@ -1,0 +1,74 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-07 23:21+0200\n"
+"PO-Revision-Date: 2021-08-27 20:48+0000\n"
+"Last-Translator: Rysanlos\n"
+"Language-Team: Unknown\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Loco-Source-Locale: fr_FR\n"
+"Generated-By: redgettext 3.3\n"
+"\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: mcwhitelister\mcwhitelister.py:73
+msgid "{} is already on the whitelist."
+msgstr "{} est déjà dans la liste blanche."
+
+#: mcwhitelister\mcwhitelister.py:88
+msgid "{} is not a valid username."
+msgstr "{} n'est pas un un pseudo valide."
+
+#: mcwhitelister\mcwhitelister.py:91
+msgid "{} successfully whitelisted {}."
+msgstr "{} a ajouté avec succès {} dans la liste blanche."
+
+#: mcwhitelister\mcwhitelister.py:99
+msgid "You need to set a path with ``[p]whitelister setup`` first."
+msgstr ""
+"Vous avez besoin de configurer un chemin d'accès avec ``[p]whitelister "
+"setup`` avant de commencer."
+
+#: mcwhitelister\mcwhitelister.py:104
+msgid ""
+"Set up the path to your minecraft server jar.\n"
+"        It needs to lead to the folder that contains both the server jar and "
+"whitelist.json .\n"
+"\n"
+"        Example on a linux system:\n"
+"        ``[p]whitelister setup /home/user/mcserver/whitelist.json``"
+msgstr ""
+"Configurez le chemin d'accès au jar du serveur minecraft.\n"
+"        Le chemin doit être défini sur le dossier qui contient le jar du "
+"serveur et le fichier whitelist.json .\n"
+"\n"
+"        Exemple sur un système Linux:\n"
+"        ``[p]whitelister setup /home/user/mcserver/whitelist.json``"
+
+#: mcwhitelister\mcwhitelister.py:112
+msgid "Path set to {}"
+msgstr "Chemin défini sur {}"
+
+#: mcwhitelister\mcwhitelister.py:114
+msgid "The whitelist.json could not be found at this path."
+msgstr "Le fichier whitelist.json n'a pas pu être trouvé dans ce chemin."
+
+#: mcwhitelister\mcwhitelister.py:122
+msgid "Nobody was whitelisted using whitelister yet."
+msgstr ""
+"Personne n'a été ajouté dans la liste blanche avec whitelister pour "
+"l'instant."
+
+#: mcwhitelister\mcwhitelister.py:131
+msgid "Whitelisted with whitelister:"
+msgstr "Whitelisté avec whitelister:"
+
+#: mcwhitelister\mcwhitelister.py:132
+msgid "Whitelisted"
+msgstr "Whitelisté"
