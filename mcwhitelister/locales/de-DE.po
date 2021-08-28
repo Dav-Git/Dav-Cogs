@@ -51,7 +51,7 @@ msgid "The whitelist.json could not be found at this path."
 msgstr "Die ``whitelist.json`` Datei konnte nicht gefunden werden."
 
 #: mcwhitelister\mcwhitelister.py:100
-msgid "Whielisted with whitelister:"
+msgid "Whitelisted with whitelister:"
 msgstr "Mit whitelister gewhitelistete Personen:"
 
 #: mcwhitelister\mcwhitelister.py:103 mcwhitelister\mcwhitelister.py:106
