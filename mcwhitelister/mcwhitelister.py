@@ -128,7 +128,7 @@ class McWhitelister(commands.Cog):
         pages = list(pagify("\n".join(outstr), page_length=1024))
         rendered = []
         for page in pages:
-            emb = Embed(title=_("Whielisted with whitelister:"))
+            emb = Embed(title=_("Whitelisted with whitelister:"))
             emb.add_field(name=_("Whitelisted"), value=page)
             rendered.append(emb)
         await menu(ctx, rendered, controls=DEFAULT_CONTROLS, timeout=60.0)
