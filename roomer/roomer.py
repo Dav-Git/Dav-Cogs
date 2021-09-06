@@ -82,9 +82,12 @@ class Roomer(commands.Cog):
 
     async def _maybe_delete_auto_channels(self, settings, member, before_channel, after_channel):
         if len(before_channel.members) == 0:
-            auto_categories = [
-                member.guild.get_channel(c).category for c in settings["auto_channels"]
-            ]
+            try:
+                auto_categories = [
+                    member.guild.get_channel(c).category for c in settings["auto_channels"]
+                ]
+            except AttributeError:
+                await self._remove_deleted_auto_channels_from_config(settings, member)
             if before_channel.id in settings["auto_channels"]:
                 return
             elif before_channel.category in auto_categories:
@@ -92,6 +95,12 @@ class Roomer(commands.Cog):
                     await before_channel.delete(reason=_("Channel empty."))
                 except discord.NotFound:
                     pass
+
+    async def _remove_deleted_auto_channels_from_config(self, settings, member):
+        for c in settings["auto_channels"]:
+            if not member.guild.get_channel(c):
+                del settings["auto_channels"][c]
+                await self.config.guild(member.guild).auto_channels.set(settings["auto_channels"])
 
     # endregion autoroom listener
 
