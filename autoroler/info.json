@@ -1,0 +1,16 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Assign roles to members when they join your server.",
+    "hidden": false,
+    "install_msg": "Thank you for installing AutoRoler. The commands can be found in `[p]autorole`.",
+    "short": "Autoroles on join",
+    "tags": [
+        "Autoroles",
+        "roles",
+        "Automation",
+        "joinroles"
+    ],
+    "end_user_data_statement": "This cog does not store end user data."
+}

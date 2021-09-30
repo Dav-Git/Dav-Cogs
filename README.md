@@ -15,6 +15,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | Cog | Description |
 | --- | ----------- |
 | anonreporter | Anonymous version of the core reports cog. |
+| autoroler | Assign roles to users when they join. |
 | botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> |
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> |
 | caserelayer | Send modlog cases to a user. |
@@ -42,7 +43,7 @@ And load them with `[p]load <name_of_cog>`
 
 # Support
 
-Ping me (@Dav) in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673) channel on the official [Cog support server](https://discord.gg/GET4DVk)\
+You can get support in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673) channel on the official [Cog support server](https://discord.gg/GET4DVk)\
 Visit my own server for quicker responses: [Dav-Server](https://discord.gg/z6Nhqc5)\
 E-Mail me dav@mail.stopdavabuse.de\
 Cogs not listed above will **NOT** work on your bot.\
