@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-04-07 23:21+0200\n"
+"POT-Creation-Date: 2021-09-30 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,39 +19,12 @@ msgstr ""
 msgid "Member verified themselves."
 msgstr ""
 
-#: verifyer\verifyer.py:82
-#, docstring
-msgid "Settings for verifyer"
-msgstr ""
-
-#: verifyer\verifyer.py:88
-#, docstring
-msgid ""
-"Enable verifyer.\n"
-"This is per guild."
-msgstr ""
-
 #: verifyer\verifyer.py:90
 msgid "Verifyer enabled."
 msgstr ""
 
-#: verifyer\verifyer.py:95
-#, docstring
-msgid ""
-"Disable verifyer.\n"
-"This is per guild."
-msgstr ""
-
 #: verifyer\verifyer.py:97
 msgid "Verifyer disabled."
-msgstr ""
-
-#: verifyer\verifyer.py:102
-#, docstring
-msgid ""
-"Set the role to assign to a user on guild join.\n"
-"\n"
-"Leave empty to disable this feature."
 msgstr ""
 
 #: verifyer\verifyer.py:106
@@ -62,14 +35,6 @@ msgstr ""
 msgid "Verification role set to {rolemention}."
 msgstr ""
 
-#: verifyer\verifyer.py:116
-#, docstring
-msgid ""
-"Specify what message should be DMed to a user when they join the guild.\n"
-"\n"
-"Leave empty to disable this feature."
-msgstr ""
-
 #: verifyer\verifyer.py:119 verifyer\verifyer.py:129
 msgid "Message set to: ```{text}```"
 msgstr ""
@@ -78,24 +43,8 @@ msgstr ""
 msgid "DM on join disabled."
 msgstr ""
 
-#: verifyer\verifyer.py:126
-#, docstring
-msgid ""
-"Specify what message should be DMed to a user when they verify themselves.\n"
-"\n"
-"Leave empty to disable this feature."
-msgstr ""
-
 #: verifyer\verifyer.py:131
 msgid "Message on verification disabled."
-msgstr ""
-
-#: verifyer\verifyer.py:136
-#, docstring
-msgid ""
-"Set the role to assign to a user when they verify themselves.\n"
-"\n"
-"Leave empty to disable this feature."
 msgstr ""
 
 #: verifyer\verifyer.py:140

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-04-07 23:21+0200\n"
+"POT-Creation-Date: 2021-09-30 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,11 +10,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
-
-#: rolesyncer\rolesyncer.py:11
-#, docstring
-msgid "Sync Roles"
-msgstr ""
 
 #: rolesyncer\rolesyncer.py:43
 msgid "One-way rolesync / {r1name} added."
@@ -36,41 +31,12 @@ msgstr ""
 msgid "Two-way rolesync"
 msgstr ""
 
-#: rolesyncer\rolesyncer.py:97
-#, docstring
-msgid "Sync roles"
-msgstr ""
-
-#: rolesyncer\rolesyncer.py:103
-#, docstring
-msgid ""
-"Takes 2 Roles. If the first role is assigned to a user, the second one will "
-"be assigned as well."
-msgstr ""
-
 #: rolesyncer\rolesyncer.py:108
 msgid "{role2name} will now be synced to {role1name}"
 msgstr ""
 
-#: rolesyncer\rolesyncer.py:116
-#, docstring
-msgid ""
-"Takes 2 Roles. If either role is assigned to a user, the other one will be "
-"assigned as well."
-msgstr ""
-
 #: rolesyncer\rolesyncer.py:121
 msgid "{role1name} and {role2name} will now be synced."
-msgstr ""
-
-#: rolesyncer\rolesyncer.py:129
-#, docstring
-msgid "Unsync roles"
-msgstr ""
-
-#: rolesyncer\rolesyncer.py:135 rolesyncer\rolesyncer.py:151
-#, docstring
-msgid "Takes 2 roles and removes their sync"
 msgstr ""
 
 #: rolesyncer\rolesyncer.py:141 rolesyncer\rolesyncer.py:157
@@ -79,11 +45,6 @@ msgstr ""
 
 #: rolesyncer\rolesyncer.py:146 rolesyncer\rolesyncer.py:162
 msgid "Couldn't find these roles in the sync database."
-msgstr ""
-
-#: rolesyncer\rolesyncer.py:167
-#, docstring
-msgid "List all exclusive roles"
 msgstr ""
 
 #: rolesyncer\rolesyncer.py:170

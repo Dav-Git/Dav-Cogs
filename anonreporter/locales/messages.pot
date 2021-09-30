@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-04-07 23:21+0200\n"
+"POT-Creation-Date: 2021-09-30 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,32 +11,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
-#: anonreporter\anonreporter.py:34
-#, docstring
-msgid "Anonreporter settings"
-msgstr ""
-
-#: anonreporter\anonreporter.py:40
-#, docstring
-msgid "Set the channel used for guild reports."
-msgstr ""
-
 #: anonreporter\anonreporter.py:42
 msgid "Report channel set to {channel}"
 msgstr ""
 
-#: anonreporter\anonreporter.py:48
-#, docstring
-msgid "Set the channel for global reports."
-msgstr ""
-
 #: anonreporter\anonreporter.py:52
 msgid "Global reports channel set to {channel} in {guild}"
-msgstr ""
-
-#: anonreporter\anonreporter.py:60
-#, docstring
-msgid "Report something anonymously (don't include text to report via DM)"
 msgstr ""
 
 #: anonreporter\anonreporter.py:68
@@ -59,11 +39,6 @@ msgstr ""
 
 #: anonreporter\anonreporter.py:95
 msgid "Text to short or to long."
-msgstr ""
-
-#: anonreporter\anonreporter.py:99
-#, docstring
-msgid "Report something to the bot owner anonymously."
 msgstr ""
 
 #: anonreporter\anonreporter.py:106

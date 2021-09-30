@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-04-07 23:21+0200\n"
+"POT-Creation-Date: 2021-09-30 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -11,24 +11,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: redgettext 3.3\n"
 
-#: casereader\casereader.py:12
-#, docstring
-msgid "CaseReader"
-msgstr ""
-
-#: casereader\casereader.py:40
+#: casereader\casereader.py:41
 msgid "This user does not exist."
 msgstr ""
 
-#: casereader\casereader.py:43
+#: casereader\casereader.py:44
 msgid "Something unexpected went wrong while fetching that user by ID."
 msgstr ""
 
-#: casereader\casereader.py:46
+#: casereader\casereader.py:47
 msgid "This user has no cases."
 msgstr ""
 
-#: casereader\casereader.py:49
+#: casereader\casereader.py:50
 msgid ""
 "{case}\n"
 "**Timestamp**: {timestamp}"

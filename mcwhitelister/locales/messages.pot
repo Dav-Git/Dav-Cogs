@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-04-07 23:21+0200\n"
+"POT-Creation-Date: 2021-09-30 12:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,16 +27,6 @@ msgstr ""
 msgid "You need to set a path with ``[p]whitelister setup`` first."
 msgstr ""
 
-#: mcwhitelister\mcwhitelister.py:104
-#, docstring
-msgid ""
-"Set up the path to your minecraft server jar.\n"
-"        It needs to lead to the folder that contains both the server jar and whitelist.json .\n"
-"\n"
-"        Example on a linux system:\n"
-"        ``[p]whitelister setup /home/user/mcserver/whitelist.json``"
-msgstr ""
-
 #: mcwhitelister\mcwhitelister.py:112
 msgid "Path set to {}"
 msgstr ""
@@ -50,7 +40,7 @@ msgid "Nobody was whitelisted using whitelister yet."
 msgstr ""
 
 #: mcwhitelister\mcwhitelister.py:131
-msgid "Whielisted with whitelister:"
+msgid "Whitelisted with whitelister:"
 msgstr ""
 
 #: mcwhitelister\mcwhitelister.py:132
