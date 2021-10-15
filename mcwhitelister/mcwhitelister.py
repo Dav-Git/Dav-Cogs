@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-import aiohttp
 from aiomcrcon import Client
 from aiomcrcon.errors import IncorrectPasswordError, RCONConnectionError
 from discord import Embed
