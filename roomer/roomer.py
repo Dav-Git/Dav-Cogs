@@ -441,7 +441,9 @@ class Roomer(commands.Cog):
             data = await self.config.guild(ctx.guild).all()
             if data["private_textchannels_enabled"]:
                 if key in data["private_textchannels"]:
-                    await ctx.guild.get_channel(int(key)).set_permissions(
+                    await ctx.guild.get_channel(
+                        int(data["private_textchannels"][key])
+                    ).set_permissions(
                         ctx.author,
                         read_message_history=True,
                         read_messages=True,
