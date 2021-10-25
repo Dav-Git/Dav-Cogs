@@ -418,7 +418,7 @@ class Roomer(commands.Cog):
             )
             data["private_textchannels"][key] = c.id
             await self.config.guild(ctx.guild).private_textchannels.set(
-            data["private_textchannels"]
+                data["private_textchannels"]
             )
             await self._send_private_textchannel_key(c, key, ctx.clean_prefix)
         else:
