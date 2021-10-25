@@ -51,7 +51,7 @@ class ExclusiveRoles(commands.Cog):
     @commands.command()
     @checks.admin()
     async def exclusivenow(self, ctx, role1: discord.Role, role2: discord.Role):
-        """Takes 2 Roles. Removes the second role if both roles are present on a user. """
+        """Takes 2 Roles. Removes the second role if both roles are present on a user."""
 
         if not isinstance(role1, discord.Role) or not isinstance(role2, discord.Role):
             return await ctx.send(_("You need to provide at least 2 roles"))
@@ -72,7 +72,8 @@ class ExclusiveRoles(commands.Cog):
     @commands.command()
     @checks.admin()
     async def setexclusive(self, ctx, role1: discord.Role, role2: discord.Role):
-        """Takes 2 Roles. Removes the second role if the first role is assigned to a user in the future. """
+        """Takes 2 Roles. 
+        Removes the second role if the first role is assigned to a user in the future."""
 
         async with self.config.guild(ctx.guild).exclusives() as conf:
             conf.append((role1.id, role2.id))
@@ -142,7 +143,8 @@ class ExclusiveRoles(commands.Cog):
                 r_new = (ctx.guild.get_role(r[0]), ctx.guild.get_role(r[1]))
                 if None in r_new:
                     self.log.warning(
-                        f"One of the roles({r[0]},{r[1]}) was deleted from the guild. Removing config entry."
+                        f"One of the roles({r[0]},{r[1]}) was deleted"
+                        "from the guild. Removing config entry."
                     )
                     roles.remove(r)
                     await self.config.guild(ctx.guild).exclusives.set(roles)
