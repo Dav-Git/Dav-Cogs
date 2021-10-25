@@ -417,7 +417,9 @@ class Roomer(commands.Cog):
                 reason=_("Private text channel"),
             )
             data["private_textchannels"][key] = c.id
-            await self.config.guild(ctx.guild).pchannels.set(data["private_textchannels"])
+            await self.config.guild(ctx.guild).private_textchannels.set(
+                data["private_textchannels"]
+            )
             await self._send_private_textchannel_key(c, key, ctx.clean_prefix)
         else:
             await ctx.send(_("Private text channels are not enabled on this server."))

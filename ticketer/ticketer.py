@@ -253,7 +253,7 @@ class Ticketer(commands.Cog):
                 ).set_footer(text="Last updated at:")
                 message = await ctx.guild.get_channel(settings["channel"]).send(embed=embed)
                 async with self.config.guild(ctx.guild).active() as active:
-                    active.append((ticketchannel.id, message.id))                
+                    active.append((ticketchannel.id, message.id))
         else:
             await ctx.send("Please finish the setup process before creating a ticket.")
 
