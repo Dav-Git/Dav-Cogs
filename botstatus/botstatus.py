@@ -51,7 +51,6 @@ class Botstatus(commands.Cog):
             sType = "playing"
         t = getattr(discord.ActivityType, sType, False)
         if sType == "streaming":
-            
             await self.bot.change_presence(activity=discord.Streaming(name=text, url=status))
         else:
             s = getattr(discord.Status, status, False)
@@ -250,7 +249,6 @@ class Botstatus(commands.Cog):
             await ctx.send(_("The chracter limit for status messages is 128."))
         else:
             await self.config.status.set(("streaming", url, text))
-
             # Credits to original code 
             # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
             twitchUrl = "https://www.twitch.tv/" + url if "twitch.tv/" not in url else url
