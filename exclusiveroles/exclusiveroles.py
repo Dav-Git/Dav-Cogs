@@ -76,7 +76,9 @@ class ExclusiveRoles(commands.Cog):
 
         async with self.config.guild(ctx.guild).exclusives() as conf:
             conf.append((role1.id, role2.id))
-        await ctx.send(_("{} will now be overwritten by {}").format(role2.name, role1.name))
+        await ctx.send(
+            _("{} will now be overwritten by {}").format(role2.name, role1.name)
+        )
 
     @commands.command()
     @checks.admin()
@@ -88,7 +90,9 @@ class ExclusiveRoles(commands.Cog):
                 try:
                     conf.remove([role1.id, role2.id])
                     await ctx.send(
-                        _("{} will no longer be overwritten by {}").format(role2.name, role1.name)
+                        _("{} will no longer be overwritten by {}").format(
+                            role2.name, role1.name
+                        )
                     )
                 except:
                     await ctx.send(_("```An Error occured```"))
@@ -144,13 +148,17 @@ class ExclusiveRoles(commands.Cog):
                     await self.config.guild(ctx.guild).exclusives.set(roles)
                     continue
                 await ctx.send(
-                    _("``Starting with {} and {}``").format(r_new[0].name, r_new[1].name)
+                    _("``Starting with {} and {}``").format(
+                        r_new[0].name, r_new[1].name
+                    )
                 )
                 for u in ctx.guild.members:
                     if r_new[0] in u.roles:
                         if r_new[1] in u.roles:
                             await u.remove_roles(
                                 r_new[1],
-                                reason=_("{} overwrites {}").format(r_new[0].name, r_new[1].name),
+                                reason=_("{} overwrites {}").format(
+                                    r_new[0].name, r_new[1].name
+                                ),
                             )
         await ctx.send(_("``Retroscan completed.``"))
