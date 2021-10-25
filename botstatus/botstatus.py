@@ -50,11 +50,15 @@ class Botstatus(commands.Cog):
         if sType == "game":
             sType = "playing"
         t = getattr(discord.ActivityType, sType, False)
-        s = getattr(discord.Status, status, False)
-        if not (t and s):
-            return
-        activity = discord.Activity(name=text, type=t)
-        await self.bot.change_presence(status=s, activity=activity)
+        if sType == "streaming":
+            
+            await self.bot.change_presence(activity=discord.Streaming(name=text, url=status))
+        else:
+            s = getattr(discord.Status, status, False)
+            if not (t and s):
+                return
+            activity = discord.Activity(name=text, type=t)
+            await self.bot.change_presence(status=s, activity=activity)
 
     async def fromconf(self):
         await self.bot.wait_until_ready()
@@ -232,6 +236,33 @@ class Botstatus(commands.Cog):
             await self.config.status.set(("competing", "offline", text))
             await self.setfunc("competing", "offline", text)
             await ctx.send(_("Status set to ``Offline | Competing {text}``").format(text=text))
+
+    @botstatus.group()
+    async def streaming(self, ctx):
+        """Set a streaming statu  
+        Usage: [p]botstatus watching <status> <twitch url / username> <text>
+        """
+        pass
+
+    @streaming.command(name="online")
+    async def s_online(self, ctx, url: str, *, text: str):
+        if len(text) > 128:
+            await ctx.send(_("The chracter limit for status messages is 128."))
+        else:
+            await self.config.status.set(("streaming", url, text))
+
+            # Credits to original code 
+            # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
+            twitchUrl = "https://www.twitch.tv/" + url if "twitch.tv/" not in url else url
+            if len(twitchUrl) > 511:
+                await ctx.send(_("The maximum length of the streamer url is 511 characters."))
+                return
+            if len(text) > 128:
+                await ctx.send(_("The maximum length of the stream title is 128 characters."))
+                return
+
+            await self.setfunc("streaming", twitchUrl, text)
+            await ctx.send(_("Status set to ``streaming {text} with url {url}``").format(text=text, url=url))
 
     @botstatus.command()
     async def clear(self, ctx):
