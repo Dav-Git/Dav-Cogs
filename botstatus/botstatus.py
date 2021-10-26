@@ -254,7 +254,9 @@ class Botstatus(commands.Cog):
             await self.config.status.set(("streaming", streamer, text))
             await self.setfunc("streaming", streamer, text)
             await ctx.send(
-                _("Status set to ``streaming {text} with url {url}``").format(text=text, url=streamer)
+                _("Status set to ``streaming {text} with url {url}``").format(
+                    text=text, url=streamer
+                )
             )
 
     @botstatus.command()
