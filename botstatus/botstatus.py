@@ -236,11 +236,11 @@ class Botstatus(commands.Cog):
             await self.setfunc("competing", "offline", text)
             await ctx.send(_("Status set to ``Offline | Competing {text}``").format(text=text))
 
-    @commands.command()
+    @botstatus.command()
     async def streaming(self, ctx, streamer: str, text: str):
         """
         Set a streaming status
-        Usage: [p]botstatus watching <status> <twitch url / username> <text>
+        Usage: [p]botstatus streaming <twitch url / username> <text>
         """
         if len(text) > 128:
             await ctx.send(_("The chracter limit for status messages is 128."))
@@ -253,7 +253,7 @@ class Botstatus(commands.Cog):
             if len(twitchUrl) > 511:
                 await ctx.send(_("The maximum length of the streamer url is 511 characters."))
                 return
-            await self.config.status.set(("streaming", url, text))
+            await self.config.status.set(("streaming", streamer, text))
             await self.setfunc("streaming", twitchUrl, text)
             await ctx.send(
                 _("Status set to ``streaming {text} with url {url}``").format(
