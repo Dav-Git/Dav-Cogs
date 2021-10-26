@@ -243,7 +243,8 @@ class Botstatus(commands.Cog):
         Usage: [p]botstatus streaming <twitch url / username> <text>
         """
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
+            return
         else:
             # Credits to original code
             # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
