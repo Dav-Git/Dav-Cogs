@@ -237,27 +237,28 @@ class Botstatus(commands.Cog):
             await ctx.send(_("Status set to ``Offline | Competing {text}``").format(text=text))
 
     @commands.command()
-    async def streaming(self, ctx):
-        """Set a streaming statu
+    async def streaming(self, ctx, streamer: str, text: str):
+        """
+        Set a streaming status
         Usage: [p]botstatus watching <status> <twitch url / username> <text>
         """
         if len(text) > 128:
             await ctx.send(_("The chracter limit for status messages is 128."))
         else:
-            await self.config.status.set(("streaming", url, text))
             # Credits to original code
             # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
-            twitchUrl = "https://www.twitch.tv/" + url if "twitch.tv/" not in url else url
+            twitchUrl = (
+                "https://www.twitch.tv/" + streamer if "twitch.tv/" not in streamer else streamer
+            )
             if len(twitchUrl) > 511:
                 await ctx.send(_("The maximum length of the streamer url is 511 characters."))
                 return
-            if len(text) > 128:
-                await ctx.send(_("The maximum length of the stream title is 128 characters."))
-                return
-
+            await self.config.status.set(("streaming", url, text))
             await self.setfunc("streaming", twitchUrl, text)
             await ctx.send(
-                _("Status set to ``streaming {text} with url {url}``").format(text=text, url=url)
+                _("Status set to ``streaming {text} with url {url}``").format(
+                    text=text, url=streamer
+                )
             )
 
     @botstatus.command()
