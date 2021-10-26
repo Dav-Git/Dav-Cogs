@@ -254,11 +254,11 @@ class Botstatus(commands.Cog):
             if len(twitchUrl) > 511:
                 await ctx.send(_("The maximum length of the streamer url is 511 characters."))
                 return
-            await self.config.status.set(("streaming", streamer, text))
+            await self.config.status.set(("streaming", twitchUrl, text))
             await self.setfunc("streaming", twitchUrl, text)
             await ctx.send(
                 _("Status set to ``streaming {text} with url {url}``").format(
-                    text=text, url=streamer
+                    text=text, url=twitchUrl
                 )
             )
 
