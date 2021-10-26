@@ -248,18 +248,14 @@ class Botstatus(commands.Cog):
         else:
             # Credits to original code
             # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
-            twitchUrl = (
-                "https://www.twitch.tv/" + streamer if "twitch.tv/" not in streamer else streamer
-            )
-            if len(twitchUrl) > 511:
+            url = "https://www.twitch.tv/" + streamer if "twitch.tv/" not in streamer else streamer
+            if len(url) > 511:
                 await ctx.send(_("The maximum length of the streamer url is 511 characters."))
                 return
-            await self.config.status.set(("streaming", twitchUrl, text))
-            await self.setfunc("streaming", twitchUrl, text)
+            await self.config.status.set(("streaming", url, text))
+            await self.setfunc("streaming", url, text)
             await ctx.send(
-                _("Status set to ``streaming {text} with url {url}``").format(
-                    text=text, url=twitchUrl
-                )
+                _("Status set to ``streaming {text} with url {url}``").format(text=text, url=url)
             )
 
     @botstatus.command()
