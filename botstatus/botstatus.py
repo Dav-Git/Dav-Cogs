@@ -49,10 +49,10 @@ class Botstatus(commands.Cog):
         # This will get removed in future versions and is to ensure config backwards-compatibility
         if sType == "game":
             sType = "playing"
-        t = getattr(discord.ActivityType, sType, False)
         if sType == "streaming":
             await self.bot.change_presence(activity=discord.Streaming(name=text, url=status))
         else:
+            t = getattr(discord.ActivityType, sType, False)
             s = getattr(discord.Status, status, False)
             if not (t and s):
                 return
