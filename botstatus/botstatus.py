@@ -236,20 +236,16 @@ class Botstatus(commands.Cog):
             await self.setfunc("competing", "offline", text)
             await ctx.send(_("Status set to ``Offline | Competing {text}``").format(text=text))
 
-    @botstatus.group()
+    @commands.command()
     async def streaming(self, ctx):
-        """Set a streaming statu  
+        """Set a streaming statu
         Usage: [p]botstatus watching <status> <twitch url / username> <text>
         """
-        pass
-
-    @streaming.command(name="online")
-    async def s_online(self, ctx, url: str, *, text: str):
         if len(text) > 128:
             await ctx.send(_("The chracter limit for status messages is 128."))
         else:
             await self.config.status.set(("streaming", url, text))
-            # Credits to original code 
+            # Credits to original code
             # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
             twitchUrl = "https://www.twitch.tv/" + url if "twitch.tv/" not in url else url
             if len(twitchUrl) > 511:
@@ -260,7 +256,9 @@ class Botstatus(commands.Cog):
                 return
 
             await self.setfunc("streaming", twitchUrl, text)
-            await ctx.send(_("Status set to ``streaming {text} with url {url}``").format(text=text, url=url))
+            await ctx.send(
+                _("Status set to ``streaming {text} with url {url}``").format(text=text, url=url)
+            )
 
     @botstatus.command()
     async def clear(self, ctx):
