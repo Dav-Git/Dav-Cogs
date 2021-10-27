@@ -240,7 +240,7 @@ class Botstatus(commands.Cog):
     async def streaming(self, ctx, streamer: str, text: str):
         """
         Set a streaming status
-        Usage: [p]botstatus streaming <twitch url / username> <text>
+        Usage: [p]botstatus streaming <stream url> <text>
         """
         if len(text) > 128:
             await ctx.send(_("The character limit for status messages is 128."))
