@@ -49,12 +49,15 @@ class Botstatus(commands.Cog):
         # This will get removed in future versions and is to ensure config backwards-compatibility
         if sType == "game":
             sType = "playing"
-        t = getattr(discord.ActivityType, sType, False)
-        s = getattr(discord.Status, status, False)
-        if not (t and s):
-            return
-        activity = discord.Activity(name=text, type=t)
-        await self.bot.change_presence(status=s, activity=activity)
+        if sType == "streaming":
+            await self.bot.change_presence(activity=discord.Streaming(name=text, url=status))
+        else:
+            t = getattr(discord.ActivityType, sType, False)
+            s = getattr(discord.Status, status, False)
+            if not (t and s):
+                return
+            activity = discord.Activity(name=text, type=t)
+            await self.bot.change_presence(status=s, activity=activity)
 
     async def fromconf(self):
         await self.bot.wait_until_ready()
@@ -232,6 +235,29 @@ class Botstatus(commands.Cog):
             await self.config.status.set(("competing", "offline", text))
             await self.setfunc("competing", "offline", text)
             await ctx.send(_("Status set to ``Offline | Competing {text}``").format(text=text))
+
+    @botstatus.command()
+    async def streaming(self, ctx, streamer: str, text: str):
+        """
+        Set a streaming status
+        Usage: [p]botstatus streaming <stream url> <text>
+        """
+        if len(text) > 128:
+            await ctx.send(_("The character limit for status messages is 128."))
+            return
+        else:
+            # Credits to original code
+            # https://github.com/Cog-Creators/Red-DiscordBot/blob/42293afd43b162869b666bb02ca738639c2a391f/redbot/core/core_commands.py#L2572
+            if len(streamer) > 511:
+                await ctx.send(_("The maximum length of the streamer url is 511 characters."))
+                return
+            await self.config.status.set(("streaming", streamer, text))
+            await self.setfunc("streaming", streamer, text)
+            await ctx.send(
+                _("Status set to ``streaming {text} with url {url}``").format(
+                    text=text, url=streamer
+                )
+            )
 
     @botstatus.command()
     async def clear(self, ctx):
