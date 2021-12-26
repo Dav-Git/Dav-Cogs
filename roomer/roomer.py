@@ -492,7 +492,7 @@ class Roomer(commands.Cog):
     async def _generate_key(self, key_list_for_channel_type):
         while True:
             # This probably won't turn into an endless loop bceause it has more possibilities than discord allows channels per guild
-            key = "".join(choice(string.ascii_lowercase + "0123456789") for i in range(16))
+            key = "".join(choice(string.ascii_lowercase + "0123456789") for i in range(5))
             if not (key in key_list_for_channel_type):
                 return key
 
