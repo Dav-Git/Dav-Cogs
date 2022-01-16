@@ -24,7 +24,7 @@ class Verifyer(commands.Cog):
     def __init__(self):
         self.config = Config.get_conf(self, identifier=250620201622, force_registration=True)
         default_guild = {
-            "text": "Welcome to [guild] please verify yourself to get access to the rest of the server by using ``[p]verify``.",
+            "text": "Welcome to Stuff, please verify yourself to get access to the rest of the server by using ``,verify``.",
             "verifiedtext": "",
             "role": None,
             "memrole": None,
@@ -70,8 +70,7 @@ class Verifyer(commands.Cog):
             )
         try:
             await ctx.tick()
-            await asleep(5)
-            await ctx.message.remove()
+            await ctx.message.delete()
         except:
             pass
 
