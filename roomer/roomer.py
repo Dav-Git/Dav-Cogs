@@ -99,7 +99,7 @@ class Roomer(commands.Cog):
     async def _remove_deleted_auto_channels_from_config(self, settings, member):
         for c in settings["auto_channels"]:
             if not member.guild.get_channel(c):
-                del settings["auto_channels"][c]
+                settings["auto_channels"].remove(c)
                 await self.config.guild(member.guild).auto_channels.set(settings["auto_channels"])
 
     # endregion autoroom listener
