@@ -16,7 +16,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | --- | ----------- | ------------- |
 | anonreporter | Anonymous version of the core reports cog. | ✅ |
 | autoroler | Assign roles to users when they join. | ✅ |
-| botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> | ❌ |
+| botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> | ✅ |
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> | ❌ |
 | caserelayer | Send modlog cases to a user. | ❌ |
 | check | <details><summary>Mod-check a user.</summary>The ``[p]check`` command calls the commands ``[p]userinfo``, ``[p]read`` (if [casereader](https://github.com/Dav-Git/Dav-Cogs) is installed), ``[p]warnings`` (if casereader is not installed) and ``[p]listflag`` (if [flag](https://github.com/bobloy/Fox-V3/) is installed).</details> | ❌ |
