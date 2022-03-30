@@ -12,7 +12,7 @@ _ = Translator("ExclusiveRoles", __file__)
 class ExclusiveRoles(commands.Cog):
     """Exclusive Roles"""
 
-    __version__ = "1.0.0"
+    __version__ = "1.0.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -43,10 +43,16 @@ class ExclusiveRoles(commands.Cog):
                             await after.remove_roles(
                                 r2, reason="{} overwrites {}".format(r1.name, r2.name)
                             )
-                        except discord.HTTPException as e:
-                            self.log.exception(e, exc_info=True)
-            except Exception as e:
-                self.log.exception(e, exc_info=True)
+                        except discord.Forbidden:
+                            self.log.warning(
+                                "Failed to remove role {} from {} on guild {}.\nMissing permissions.".format(
+                                    r2.name, after.name, after.guild.id
+                                )
+                            )
+                        except discord.HTTPException as exception:
+                            self.log.exception(exception, exc_info=True)
+            except Exception as exception:
+                self.log.exception(exception, exc_info=True)
 
     @commands.command()
     @checks.admin()
@@ -86,13 +92,11 @@ class ExclusiveRoles(commands.Cog):
 
         async with self.config.guild(ctx.guild).exclusives() as conf:
             if [role1.id, role2.id] in conf:
-                try:
-                    conf.remove([role1.id, role2.id])
-                    await ctx.send(
-                        _("{} will no longer be overwritten by {}").format(role2.name, role1.name)
-                    )
-                except:
-                    await ctx.send(_("```An Error occured```"))
+                conf.remove([role1.id, role2.id])
+                await ctx.send(
+                    _("{} will no longer be overwritten by {}").format(role2.name, role1.name)
+                )
+
             else:
                 await ctx.send(
                     _("{} and {} are not registered as exclusive roles").format(
