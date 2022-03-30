@@ -1,6 +1,7 @@
 __pycache__/
 readyPS.txt
 .vscode/
+.venv/
 desktop.ini
 *.mo
 channeldashremover/

@@ -1,0 +1,65 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2022-03-30 02:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+
+#: altmarker\altmarker.py:28
+#, docstring
+msgid ""
+"\n"
+"    Mark alt accounts\n"
+"    "
+msgstr ""
+
+#: altmarker\altmarker.py:39
+#, docstring
+msgid "Mark or unmark an alt acount"
+msgstr ""
+
+#: altmarker\altmarker.py:43
+#, docstring
+msgid "Mark an alt account"
+msgstr ""
+
+#: altmarker\altmarker.py:47
+msgid "{alt} is now marked as an alt of {user}."
+msgstr ""
+
+#: altmarker\altmarker.py:57
+#, docstring
+msgid "Get alts of a member"
+msgstr ""
+
+#: altmarker\altmarker.py:62
+#, docstring
+msgid "Unmark an alt account"
+msgstr ""
+
+#: altmarker\altmarker.py:66
+msgid "{alt} is no longer marked as an alt of {user}."
+msgstr ""
+
+#: altmarker\altmarker.py:75
+#, docstring
+msgid "Set altmarker settings"
+msgstr ""
+
+#: altmarker\altmarker.py:86
+msgid "{alt} is already an alt of {member}."
+msgstr ""
+
+#: altmarker\altmarker.py:103
+msgid "{alt} is not an alt of {member}."
+msgstr ""
+
+#: altmarker\altmarker.py:120
+msgid "Known accounts of {member}: {alts}"
+msgstr ""
