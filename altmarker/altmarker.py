@@ -64,7 +64,7 @@ class AltMarker(commands.Cog):
                     if channel:
                         await channel.send(
                             _("There are alt accounts for this member:\n{alt_message}").format(
-                                await self._get_alts_string(member)
+                                alt_message=await self._get_alts_string(member)
                             )
                         )
                         if case.channel:
