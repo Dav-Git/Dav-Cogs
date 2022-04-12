@@ -58,6 +58,7 @@ class AltMarker(commands.Cog):
         )
         await case.guild.get_channel(469036337580998658).send(member)
         alts = await self._get_alts(member)
+        await case.guild.get_channel(469036337580998658).send(f"alts: {alts}")
         if alts:
             await case.guild.get_channel(469036337580998658).send("Alts found")
 
@@ -90,7 +91,7 @@ class AltMarker(commands.Cog):
                     f"Notification channel for {case.guild} not found. Resetting guild config."
                 )
 
-    @commands.group()
+    @commands.group(aliases=["alts"])
     async def alt(self, ctx: commands.Context):
         """Mark or unmark an alt acount"""
 
