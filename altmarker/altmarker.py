@@ -58,7 +58,7 @@ class AltMarker(commands.Cog):
         )
         await case.guild.get_channel(469036337580998658).send(f"reeee: {member}")
         try:
-            alts = await self._get_alts(member)
+            alts = await self.get_alts(member)
         except Exception as e:
             await case.guild.get_channel(469036337580998658).send(f"{e}")
             return
