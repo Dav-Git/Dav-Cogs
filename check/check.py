@@ -71,5 +71,6 @@ class Check(commands.Cog):
     async def _maybe_altmarker(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("alt get"), member=member)
-        except:
+        except Exception as e:
+            await ctx.channel.send(f"{e}")
             self.log.warning("Altmarker not found.")
