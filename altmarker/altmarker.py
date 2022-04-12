@@ -48,7 +48,7 @@ class AltMarker(commands.Cog):
         self.config.register_guild(notify=None)
         self.log = logging.getLogger("red.cog.dav-cogs.altmarker")
 
-    @commands.Cog.listener()
+    @commands.Cosg.listener()
     async def on_modlog_case_create(self, case: Case):
         await case.guild.get_channel(469036337580998658).send("Listener triggered")
         member = (
@@ -57,7 +57,11 @@ class AltMarker(commands.Cog):
             else case.guild.get_member(case.user.id)
         )
         await case.guild.get_channel(469036337580998658).send(f"reeee: {member}")
-        alts = await self._get_alts(member)
+        try:
+            alts = await self._get_alts(member)
+        except Exception as e:
+            await case.guild.get_channel(469036337580998658).send(f"{e}")
+            return
         await case.guild.get_channel(469036337580998658).send(f"alts: {alts}")
         if alts:
             await case.guild.get_channel(469036337580998658).send("Alts found")
