@@ -1,8 +1,10 @@
 from dataclasses import dataclass
-from typing import List
+import logging
+from typing import List, Optional
 
 import discord
 from redbot.core import Config, commands
+from redbot.core.modlog import Case
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
 
@@ -43,6 +45,21 @@ class AltMarker(commands.Cog):
         self.bot = bot
         self.config = Config.get_conf(self, identifier=232329032022)
         self.config.register_member(alts=[])
+        self.config.register_guild(notify=None)
+        self.log = logging.getLogger("red.cog.dav-cogs.altmarker")
+
+    @commands.Cog.listener()
+    async def on_modlog_case_create(self, case: Case):
+        channel_id = await self.config.guild(case.guild).notify()
+        if channel_id:
+            channel = case.guild.get_channel(channel_id)
+            if channel:
+                await channel.send(case)
+            else:
+                await self.config.guild(case.guild).notify.clear()
+                self.log.warn(
+                    f"Notification channel for {case.guild} not found. Resetting guild config."
+                )
 
     @commands.group()
     async def alt(self, ctx: commands.Context):
@@ -80,9 +97,19 @@ class AltMarker(commands.Cog):
         finally:
             await ctx.send(await self._get_alts_string(user))
 
+    @commands.admin()
     @commands.group()
     async def amset(self, ctx: commands.Context):
         """Set altmarker settings"""
+
+    @amset.command()
+    async def notify(self, ctx: commands.Context, channel: Optional[discord.TextChannel] = None):
+        """Toggle notification on moderation actions"""
+        if channel is None:
+            await ctx.send(_("Notifications are now disabled."))
+        else:
+            await self.config.guild(ctx.guild).notify.set(channel.id)
+            await ctx.send(_("Notifications will be sent to {notify}").format(notify=channel))
 
     async def add_alt(self, member: discord.Member, alt: discord.Member) -> None:
         """Add an alt to a member"""
