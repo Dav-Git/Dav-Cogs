@@ -31,7 +31,7 @@ class AltMarker(commands.Cog):
     Mark alt accounts
     """
 
-    __version__ = "0.2.6"
+    __version__ = "0.2.7"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -102,23 +102,23 @@ class AltMarker(commands.Cog):
 
     @commands.mod()
     @alt.command()
-    async def get(self, ctx: commands.Context, user: discord.Member):
+    async def get(self, ctx: commands.Context, member: discord.Member):
         """Get alts of a member"""
-        await ctx.send(await self._get_alts_string(user))
+        await ctx.send(await self._get_alts_string(member))
 
     @commands.mod()
     @alt.command(aliases=["remove", "delete"])
-    async def unmark(self, ctx: commands.Context, user: discord.Member, alt: discord.Member):
+    async def unmark(self, ctx: commands.Context, member: discord.Member, alt: discord.Member):
         """Unmark an alt account"""
         try:
-            await self.remove_alt(user, alt)
+            await self.remove_alt(member, alt)
             await ctx.send(
-                _("{alt} is no longer marked as an alt of {user}.").format(alt=alt, user=user)
+                _("{alt} is no longer marked as an alt of {user}.").format(alt=alt, user=member)
             )
         except AltNotRegistered as error:
             await ctx.send(error.message)
         finally:
-            await ctx.send(await self._get_alts_string(user))
+            await ctx.send(await self._get_alts_string(member))
 
     @commands.admin()
     @commands.group()
