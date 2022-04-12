@@ -56,7 +56,7 @@ class AltMarker(commands.Cog):
             if type(case.user) is int
             else case.guild.get_member(case.user.id)
         )
-        await case.guild.get_channel(469036337580998658).send(member)
+        await case.guild.get_channel(469036337580998658).send(f"reeee: {member}")
         alts = await self._get_alts(member)
         await case.guild.get_channel(469036337580998658).send(f"alts: {alts}")
         if alts:
