@@ -10,7 +10,7 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    __version__ = "1.0.0"
+    __version__ = "1.1.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -38,6 +38,7 @@ class Check(commands.Cog):
             await self._userinfo(ctx, member)
             await self._warnings_or_read(ctx, member)
             await self._maybe_listflag(ctx, member)
+            await self._maybe_altmarker(ctx, member)
 
         await ctx.send(_("Lookup completed."))
 
@@ -66,3 +67,9 @@ class Check(commands.Cog):
             await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
         except:
             self.log.warning("Command listflag not found.")
+
+    async def _maybe_altmarker(self, ctx, member):
+        try:
+            await ctx.invoke(ctx.bot.get_command("alt get"), member=member)
+        except:
+            self.log.warning("Altmarker not found.")

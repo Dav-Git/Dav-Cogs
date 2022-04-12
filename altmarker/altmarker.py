@@ -88,17 +88,17 @@ class AltMarker(commands.Cog):
         """Mark or unmark an alt acount"""
 
     @alt.command(aliases=["add"])
-    async def mark(self, ctx: commands.Context, user: discord.Member, alt: discord.Member):
+    async def mark(self, ctx: commands.Context, member: discord.Member, alt: discord.Member):
         """Mark an alt account"""
         try:
-            await self.add_alt(user, alt)
+            await self.add_alt(member, alt)
             await ctx.send(
-                _("{alt} is now marked as an alt of {user}.").format(alt=alt, user=user)
+                _("{alt} is now marked as an alt of {user}.").format(alt=alt, user=member)
             )
         except AltAlreadyRegistered as error:
             await ctx.send(error.message)
         finally:
-            await ctx.send(await self._get_alts_string(user))
+            await ctx.send(await self._get_alts_string(member))
 
     @commands.mod()
     @alt.command()
