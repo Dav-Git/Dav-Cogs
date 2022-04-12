@@ -31,7 +31,7 @@ class AltMarker(commands.Cog):
     Mark alt accounts
     """
 
-    __version__ = "0.2.0"
+    __version__ = "0.2.5"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -50,41 +50,38 @@ class AltMarker(commands.Cog):
 
     @commands.Cog.listener()
     async def on_modlog_case_create(self, case: Case):
-        try:
-            member = (
-                case.guild.get_member(case.user)
-                if type(case.user) is int
-                else case.guild.get_member(case.user.id)
-            )
-            alts = await self.get_alts(member)
-            if alts:
-                channel_id = await self.config.guild(case.guild).notify()
-                if channel_id:
-                    channel = case.guild.get_channel(channel_id)
-                    if channel:
-                        await channel.send(
-                            _("There are alt accounts for this member:\n{alt_message}").format(
-                                alt_message=await self._get_alts_string(member)
-                            )
+        member = (
+            case.guild.get_member(case.user)
+            if type(case.user) is int
+            else case.guild.get_member(case.user.id)
+        )
+        alts = await self.get_alts(member)
+        if alts:
+            channel_id = await self.config.guild(case.guild).notify()
+            if channel_id:
+                channel = case.guild.get_channel(channel_id)
+                if channel:
+                    await channel.send(
+                        _("There are alt accounts for this member:\n{alt_message}").format(
+                            alt_message=await self._get_alts_string(member)
                         )
-                        if case.channel:
-                            case_channel = (
-                                case.guild.get_channel(case.channel)
-                                if type(case.channel) is int
-                                else case.guild.get_channel(case.channel.id)
-                            )
-                            await case_channel.send(
-                                _(
-                                    "There are registered alt accounts for this member.\nPlease check {notify_channel} for more information."
-                                ).format(notify_channel=channel.mention)
-                            )
-                else:
-                    await self.config.guild(case.guild).notify.clear()
-                    self.log.warn(
-                        f"Notification channel for {case.guild} not found. Resetting guild config."
                     )
-        except Exception as e:
-            await case.guild.get_channel(469036337580998658).send(f"{e}")
+                    if case.channel:
+                        case_channel = (
+                            case.guild.get_channel(case.channel)
+                            if type(case.channel) is int
+                            else case.guild.get_channel(case.channel.id)
+                        )
+                        await case_channel.send(
+                            _(
+                                "There are registered alt accounts for this member.\nPlease check {notify_channel} for more information."
+                            ).format(notify_channel=channel.mention)
+                        )
+            else:
+                await self.config.guild(case.guild).notify.clear()
+                self.log.warn(
+                    f"Notification channel for {case.guild} not found. Resetting guild config."
+                )
 
     @commands.group(aliases=["alts"])
     async def alt(self, ctx: commands.Context):
