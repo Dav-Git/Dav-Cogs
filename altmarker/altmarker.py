@@ -48,7 +48,7 @@ class AltMarker(commands.Cog):
         self.config.register_guild(notify=None)
         self.log = logging.getLogger("red.cog.dav-cogs.altmarker")
 
-    @commands.Cosg.listener()
+    @commands.Cog.listener()
     async def on_modlog_case_create(self, case: Case):
         await case.guild.get_channel(469036337580998658).send("Listener triggered")
         member = (
