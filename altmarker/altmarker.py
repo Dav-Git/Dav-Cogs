@@ -31,7 +31,7 @@ class AltMarker(commands.Cog):
     Mark alt accounts
     """
 
-    __version__ = "0.2.5"
+    __version__ = "0.2.6"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -39,7 +39,7 @@ class AltMarker(commands.Cog):
         return f"{pre_processed}\n\nVersion: {self.__version__}"
 
     async def red_delete_data_for_user(self, *, user_id, requester):
-        pass  # TODO
+        pass  # TODO data deletion, guild join, guild leave
 
     def __init__(self, bot):
         self.bot = bot
@@ -106,6 +106,7 @@ class AltMarker(commands.Cog):
         """Get alts of a member"""
         await ctx.send(await self._get_alts_string(user))
 
+    @commands.mod()
     @alt.command(aliases=["remove", "delete"])
     async def unmark(self, ctx: commands.Context, user: discord.Member, alt: discord.Member):
         """Unmark an alt account"""
