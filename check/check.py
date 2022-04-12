@@ -36,9 +36,9 @@ class Check(commands.Cog):
                 )
             )
             await self._userinfo(ctx, member)
+            await self._maybe_altmarker(ctx, member)
             await self._warnings_or_read(ctx, member)
             await self._maybe_listflag(ctx, member)
-            await self._maybe_altmarker(ctx, member)
 
         await ctx.send(_("Lookup completed."))
 
@@ -71,6 +71,5 @@ class Check(commands.Cog):
     async def _maybe_altmarker(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("alt get"), member=member)
-        except Exception as e:
-            await ctx.channel.send(f"{e}")
+        except:
             self.log.warning("Altmarker not found.")
