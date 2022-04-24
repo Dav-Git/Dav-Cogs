@@ -7,5 +7,5 @@
   "install_msg": "Thank you for installing ticketer. Take a look at ``[p]help Ticketer``.",
   "short": "A ticket system.",
   "end_user_data_statement": "This cog does not store end user data.",
-  "max_bot_version": "3.5.0dev0"
+  "max_bot_version": "3.5.0.dev0"
 }
