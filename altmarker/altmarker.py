@@ -92,7 +92,7 @@ class AltMarker(commands.Cog):
                 await member.guild.get_channel(469036337580998658).send("Alts found")
                 channel = member.guild.get_channel(channel_id)
                 if channel:
-                    await member.guild.get_channel(469036337580998658).send("Channel available")
+                    await member.guild.get_channel(469036337580998658).send(f"{channel} available")
                     await channel.send(
                         _("A member with known alts joined the guild:\n{alt_message}").format(
                             await self._get_alts_string(member, alts)
