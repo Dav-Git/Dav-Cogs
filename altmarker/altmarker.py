@@ -31,7 +31,7 @@ class AltMarker(commands.Cog):
     Mark alt accounts
     """
 
-    __version__ = "0.3.1"
+    __version__ = "0.3.2"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -86,17 +86,13 @@ class AltMarker(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
         if channel_id := await self.config.guild(member.guild).notify():
-            await member.guild.get_channel(469036337580998658).send("Joined")
             alts = await self.get_alts(member)
             if alts:
-                await member.guild.get_channel(469036337580998658).send("Alts found")
                 channel = member.guild.get_channel(channel_id)
                 if channel:
-                    await channel.send("This makes no sense...")
-                    await channel.send(await self._get_alts_string(member, alts))
                     await channel.send(
                         _("A member with known alts joined the guild:\n{alt_message}").format(
-                            await self._get_alts_string(member, alts)
+                            alt_message=await self._get_alts_string(member, alts)
                         )
                     )
                 else:
@@ -111,7 +107,7 @@ class AltMarker(commands.Cog):
                 if channel:
                     await channel.send(
                         _("A member with known alts left the guild:\n{alt_message}").format(
-                            await self._get_alts_string(member, alts)
+                            alt_message=await self._get_alts_string(member, alts)
                         )
                     )
                 else:
