@@ -15,5 +15,6 @@
         "tools",
         "alt-accounts"
     ],
-    "end_user_data_statement": "This cog stores data about you and associated accounts for moderation purposes. This includes your User ID, Username and Discriminator. By default this data is accessible to server moderators and administrators."
+    "end_user_data_statement": "This cog stores data about you and associated accounts for moderation purposes. This includes your User ID, Username and Discriminator. By default this data is accessible to server moderators and administrators.",
+    "max_bot_version": "3.5.0dev0"
 }
