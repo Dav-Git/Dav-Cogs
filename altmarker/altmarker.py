@@ -31,7 +31,7 @@ class AltMarker(commands.Cog):
     Mark alt accounts
     """
 
-    __version__ = "0.2.7"
+    __version__ = "0.3.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -39,7 +39,7 @@ class AltMarker(commands.Cog):
         return f"{pre_processed}\n\nVersion: {self.__version__}"
 
     async def red_delete_data_for_user(self, *, user_id, requester):
-        pass  # TODO data deletion, guild join, guild leave
+        pass  # TODO data deletion
 
     def __init__(self, bot):
         self.bot = bot
@@ -62,9 +62,9 @@ class AltMarker(commands.Cog):
                 channel = case.guild.get_channel(channel_id)
                 if channel:
                     await channel.send(
-                        _("There are alt accounts for this member:\n{alt_message}").format(
-                            alt_message=await self._get_alts_string(member)
-                        )
+                        _(
+                            "There are registered alt accounts for this member:\n{alt_message}"
+                        ).format(alt_message=await self._get_alts_string(member, alts))
                     )
                     if case.channel:
                         case_channel = (
@@ -77,11 +77,41 @@ class AltMarker(commands.Cog):
                                 "There are registered alt accounts for this member.\nPlease check {notify_channel} for more information."
                             ).format(notify_channel=channel.mention)
                         )
-            else:
-                await self.config.guild(case.guild).notify.clear()
-                self.log.warn(
-                    f"Notification channel for {case.guild} not found. Resetting guild config."
-                )
+                else:
+                    await self.config.guild(case.guild).notify.clear()
+                    self.log.warning(
+                        f"Notification channel for {case.guild} not found. Resetting guild config."
+                    )
+
+    @commands.Cog.listener()
+    async def on_member_join(self, member: discord.Member):
+        if channel_id := await self.config.guild(member.guild).notify():
+            alts = await self.get_alts(member)
+            if alts:
+                channel = member.guild.get_channel(channel_id)
+                if channel:
+                    await channel.send(
+                        _("A member with known alts joined the guild:\n{alt_message}").format(
+                            self._get_alts_string(member, alts)
+                        )
+                    )
+                else:
+                    self.log.warning(f"Notification channel for {member.guild} not found.")
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member: discord.Member):
+        if channel_id := await self.config.guild(member.guild).notify():
+            alts = await self.get_alts(member)
+            if alts:
+                channel = member.guild.get_channel(channel_id)
+                if channel:
+                    await channel.send(
+                        _("A member with known alts left the guild:\n{alt_message}").format(
+                            self._get_alts_string(member, alts)
+                        )
+                    )
+                else:
+                    self.log.warning(f"Notification channel for {member.guild} not found.")
 
     @commands.group(aliases=["alts"])
     async def alt(self, ctx: commands.Context):
@@ -135,7 +165,21 @@ class AltMarker(commands.Cog):
             await ctx.send(_("Notifications will be sent to {notify}").format(notify=channel))
 
     async def add_alt(self, member: discord.Member, alt: discord.Member) -> None:
-        """Add an alt to a member"""
+        """
+        Add an alt to a member
+
+        Parameters
+        ----------
+        member: discord.Member
+            The member to add an alt to
+        alt: discord.Member
+            The alt to add
+
+        Raises
+        ------
+        AltAlreadyRegistered
+            If the alt is already registered to the specified member
+        """
         if not await self.is_alt(member, alt):
             alts = await self.get_alts(member) + await self.get_alts(alt)
             alts.append(Alt(alt.id, str(alt)))
@@ -149,7 +193,21 @@ class AltMarker(commands.Cog):
             )
 
     async def remove_alt(self, member: discord.Member, alt: discord.Member) -> None:
-        """Remove an alt from a member"""
+        """
+        Remove an alt from a member
+
+        Parameters
+        ----------
+        member : discord.Member
+            The member to remove the alt from
+        alt : discord.Member
+            The alt to remove
+
+        Raises
+        ------
+        AltNotRegistered
+            If the member provided in alt is not registered as an alt of the member
+        """
         if await self.is_alt(member, alt):
             alts = await self.get_alts(member)
             await self.config.member(alt).clear()
@@ -166,21 +224,52 @@ class AltMarker(commands.Cog):
             )
 
     async def get_alts(self, member: discord.Member) -> List[Alt]:
-        """Get alts of a member"""
+        """
+        Get alts of a member
+
+        Parameters
+        ----------
+        member: discord.Member
+            The member to get alts for
+
+        Returns
+        -------
+        List[Alt]
+            List of alts. This list may be empty.
+        """
         return [Alt.from_dict(a) for a in await self.config.member(member).alts()]
 
     async def is_alt(self, member: discord.Member, alt: discord.Member) -> bool:
+        """
+        Determine if a member is a known alt of another member
+
+        Parameters
+        ----------
+        member: discord.Member
+            The member to check
+        alt: discord.Member
+            The alt to check
+
+        Returns
+        -------
+        bool
+            True if the alt is registered as an alt of the member, False otherwise
+        """
         alts = await self.get_alts(member)
         for a in alts:
             if a.id == alt.id:
                 return True
         return False
 
-    async def _get_alts_string(self, member: discord.Member) -> str:
+    async def _get_alts_string(
+        self, member: discord.Member, alts: Optional[List[Alt]] = None
+    ) -> str:
+        if not alts:
+            alts = await self.get_alts(member)
         return _("Known accounts of {member}: {alts}").format(
             member=member,
             alts=box(
-                "\n - " + "\n - ".join([f"{a.name}({a.id})" for a in await self.get_alts(member)]),
+                "\n - " + "\n - ".join([f"{a.name}({a.id})" for a in alts]),
                 lang="md",
             ),
         )
