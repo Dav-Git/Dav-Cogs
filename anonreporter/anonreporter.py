@@ -92,7 +92,7 @@ class AnonReporter(commands.Cog):
             )
             await ctx.tick()
         else:
-            await ctx.send(_("Text to short or to long."), delete_after=15)
+            await ctx.send(_("Text too short or too long."), delete_after=15)
 
     @commands.command()
     async def botreport(self, ctx, text: str):
