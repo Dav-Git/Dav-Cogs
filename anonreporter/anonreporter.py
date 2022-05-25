@@ -10,7 +10,7 @@ _ = Translator("AnonReporter", __file__)
 
 @cog_i18n(_)
 class AnonReporter(commands.Cog):
-    __version__ = "1.0.0"
+    __version__ = "1.0.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -92,7 +92,7 @@ class AnonReporter(commands.Cog):
             )
             await ctx.tick()
         else:
-            await ctx.send(_("Text to short or to long."), delete_after=15)
+            await ctx.send(_("Text too short or too long."), delete_after=15)
 
     @commands.command()
     async def botreport(self, ctx, text: str):
