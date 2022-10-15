@@ -80,7 +80,7 @@ class Botstatus(commands.Cog):
     @game.command(name="online")
     async def g_online(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("playing", "online", text))
             await self.setfunc("playing", "online", text)
@@ -89,7 +89,7 @@ class Botstatus(commands.Cog):
     @game.command(name="idle")
     async def g_idle(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("playing", "idle", text))
             await self.setfunc("playing", "idle", text)
@@ -98,7 +98,7 @@ class Botstatus(commands.Cog):
     @game.command(name="dnd")
     async def g_dnd(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("playing", "dnd", text))
             await self.setfunc("playing", "dnd", text)
@@ -107,7 +107,7 @@ class Botstatus(commands.Cog):
     @game.command(name="offline")
     async def g_offline(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("playing", "offline", text))
             await self.setfunc("playing", "offline", text)
@@ -121,7 +121,7 @@ class Botstatus(commands.Cog):
     @listening.command(name="online")
     async def l_online(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("listening", "online", text))
             await self.setfunc("listening", "online", text)
@@ -130,7 +130,7 @@ class Botstatus(commands.Cog):
     @listening.command(name="idle")
     async def l_idle(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("listening", "idle", text))
             await self.setfunc("listening", "idle", text)
@@ -139,7 +139,7 @@ class Botstatus(commands.Cog):
     @listening.command(name="dnd")
     async def l_dnd(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("listening", "dnd", text))
             await self.setfunc("listening", "dnd", text)
@@ -148,7 +148,7 @@ class Botstatus(commands.Cog):
     @listening.command(name="offline")
     async def l_offline(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("listening", "offline", text))
             await self.setfunc("listening", "offline", text)
@@ -162,7 +162,7 @@ class Botstatus(commands.Cog):
     @watching.command(name="online")
     async def w_online(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("watching", "online", text))
             await self.setfunc("watching", "online", text)
@@ -171,7 +171,7 @@ class Botstatus(commands.Cog):
     @watching.command(name="idle")
     async def w_idle(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("watching", "idle", text))
             await self.setfunc("watching", "idle", text)
@@ -180,7 +180,7 @@ class Botstatus(commands.Cog):
     @watching.command(name="dnd")
     async def w_dnd(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("watching", "dnd", text))
             await self.setfunc("watching", "dnd", text)
@@ -189,7 +189,7 @@ class Botstatus(commands.Cog):
     @watching.command(name="offline")
     async def w_offline(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("watching", "offline", text))
             await self.setfunc("watching", "offline", text)
@@ -203,7 +203,7 @@ class Botstatus(commands.Cog):
     @competing.command(name="online")
     async def c_online(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("competing", "online", text))
             await self.setfunc("competing", "online", text)
@@ -212,7 +212,7 @@ class Botstatus(commands.Cog):
     @competing.command(name="away")
     async def c_away(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("competing", "away", text))
             await self.setfunc("competing", "away", text)
@@ -221,7 +221,7 @@ class Botstatus(commands.Cog):
     @competing.command(name="dnd")
     async def c_dnd(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("competing", "dnd", text))
             await self.setfunc("competing", "dnd", text)
@@ -230,7 +230,7 @@ class Botstatus(commands.Cog):
     @competing.command(name="offline")
     async def c_offline(self, ctx, *, text: str):
         if len(text) > 128:
-            await ctx.send(_("The chracter limit for status messages is 128."))
+            await ctx.send(_("The character limit for status messages is 128."))
         else:
             await self.config.status.set(("competing", "offline", text))
             await self.setfunc("competing", "offline", text)
