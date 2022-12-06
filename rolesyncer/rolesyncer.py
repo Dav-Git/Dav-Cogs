@@ -133,33 +133,27 @@ class RoleSyncer(commands.Cog):
     @checks.admin()
     async def unsync_oneway(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 roles and removes their sync"""
-        async with self.config.guild(ctx.guild).onesync() as conf:
-            for e in conf:
-                if role1.id in e and role2.id in e:
-                    conf.remove(e)
-                    await ctx.send(
-                        _("Sync removed from {role1name} and {role2name}.").format(
-                            role1name=role1.name, role2name=role2.name
-                        )
-                    )
-                    return
-        await ctx.send(_("Couldn't find these roles in the sync database."))
+        if await self.remove_owsync(ctx.guild, role1, role2):
+            await ctx.send(
+                _("Sync removed from {role1name} and {role2name}.").format(
+                    role1name=role1.name, role2name=role2.name
+                )
+            )
+        else:
+            await ctx.send(_("Couldn't find these roles in the sync database."))
 
     @unsync.command(name="twoway")
     @checks.admin()
     async def unsync_twoway(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 roles and removes their sync"""
-        async with self.config.guild(ctx.guild).twosync() as conf:
-            for e in conf:
-                if role1.id in e and role2.id in e:
-                    conf.remove(e)
-                    await ctx.send(
-                        _("Sync removed from {role1name} and {role2name}.").format(
-                            role1name=role1.name, role2name=role2.name
-                        )
-                    )
-                    return
-        await ctx.send(_("Couldn't find these roles in the sync database."))
+        if await self.remove_twsync(ctx.guild, role1, role2):
+            await ctx.send(
+                _("Sync removed from {role1name} and {role2name}.").format(
+                    role1name=role1.name, role2name=role2.name
+                )
+            )
+        else:
+            await ctx.send(_("Couldn't find these roles in the sync database."))
 
     @commands.command()
     @checks.admin()
@@ -170,20 +164,46 @@ class RoleSyncer(commands.Cog):
         embed = discord.Embed(title=_("Rolesync"))
         mentions = []
         for roles in settings["onesync"]:
-            mentions.append(
-                f"{ctx.guild.get_role(roles[0]).mention} --> {ctx.guild.get_role(roles[1]).mention}"
-            )
+            role1 = ctx.guild.get_role(roles[0])
+            if role2 := ctx.guild.get_role(roles[1]) and role1:
+                mentions.append(f"{role1.mention} --> {role2.mention}")
+            else:
+                await self.remove_owsync(ctx.guild, role1, role2)
         text = "\n".join(mentions)
         if not text:
             text = _("No roles in one-way sync.")
         embed.add_field(name=_("One-way sync:"), value=text)
         mentions = []
         for roles in settings["twosync"]:
-            mentions.append(
-                f"{ctx.guild.get_role(roles[0]).mention} <-> {ctx.guild.get_role(roles[1]).mention}"
-            )
+            role1 = ctx.guild.get_role(roles[0])
+            if role2 := ctx.guild.get_role(roles[1]) and role1:
+                mentions.append(f"{role1.mention} <-> {role2.mention}")
+            else:
+                await self.remove_twsync(ctx.guild, role1, role2)
         text2 = "\n".join(mentions)
         if not text2:
             text2 = _("No roles in two-way sync.")
         embed.add_field(name=_("Two-way sync:"), value=text2)
         await ctx.send(embed=embed)
+
+    async def remove_owsync(
+        self, guild: discord.Guild, role1: discord.Role, role2: discord.Role
+    ) -> bool:
+        """Remove one way sync from config"""
+        async with self.config.guild(guild).onesync() as conf:
+            for e in conf:
+                if role1.id in e and role2.id in e:
+                    conf.remove(e)
+                    return True
+        return False
+
+    async def remove_twsync(
+        self, guild: discord.Guild, role1: discord.Role, role2: discord.Role
+    ) -> bool:
+        """Remove two way sync from config"""
+        async with self.config.guild(guild).twosync() as conf:
+            for e in conf:
+                if role1.id in e and role2.id in e:
+                    conf.remove(e)
+                    return True
+        return False
