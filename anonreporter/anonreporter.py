@@ -95,11 +95,11 @@ class AnonReporter(commands.Cog):
             await ctx.send(_("Text too short or too long."), delete_after=15)
 
     @commands.command()
-    async def botreport(self, ctx, text: str):
+    async def botreport(self, ctx, *, text: str):
         """Report something to the bot owner anonymously."""
         await self.bot.get_guild(await self.config.rep_guild()).get_channel(
             await self.config.rep_channel()
-        ).send(_("**New anonymous report:**\n{report}").format(report=text))
+        ).send(_("**New anonymous botreport:**\n{report}").format(report=text))
         await ctx.tick()
 
     async def _send_not_configured_correctly_message(self, messageable):
