@@ -73,7 +73,8 @@ class McWhitelister(commands.Cog):
         `port`: Your server's RCON port. (The default is 25575)
         `password`: The RCON password.
         RCON needs to be enabled and set up in your `server.properties` file.
-        More information is available [here](https://minecraft.fandom.com/wiki/Server.properties)"""
+        More information is available [here](https://minecraft.fandom.com/wiki/Server.properties)
+        """
         await ctx.message.delete()
         await self.config.guild(ctx.guild).rcon.set((host, port, password))
         try:

@@ -25,7 +25,6 @@ class Prunecmd(commands.Cog):
     @commands.command()
     @checks.admin()
     async def prunecmd(self, ctx, confirm: bool):
-
         """Prunes the discord member list of your guild. This will kick all users without a role and 24h inactivity."""
         if ctx.assume_yes or confirm:
             await ctx.guild.prune_members(days=1, compute_prune_count=False, reason="Member prune")
