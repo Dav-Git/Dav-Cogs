@@ -58,7 +58,7 @@ class NickNamer(commands.Cog):
         self.config.register_guild(**standard)
         self._rename_tempnicknames.start()
 
-    async def cog_unload(self):
+    def cog_unload(self):
         self._rename_tempnicknames.cancel()
 
     async def initialize(self):

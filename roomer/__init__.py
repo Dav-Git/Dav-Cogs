@@ -8,4 +8,4 @@ with open(Path(__file__).parent / "info.json") as fp:
 
 async def setup(bot):
     cog = Roomer(bot)
-    await bot.add_cog(cog)
+    bot.add_cog(cog)

@@ -4,7 +4,7 @@
   ],
   "description": "Advanced ticket system with improved management functionality.",
   "hidden": true,
-  "install_msg": "Thank you for installing ticketer. Take a look at ``[p]help Ticketer``.\n\n**Ticketer has been deprecated and will not receive extensive support in the future!**",
+  "install_msg": "Thank you for installing ticketer. Take a look at ``[p]help Ticketer``.",
   "short": "A ticket system.",
   "end_user_data_statement": "This cog does not store end user data.",
   "max_bot_version": "3.5.0.dev0"

@@ -12,7 +12,7 @@
 
 Dav's cogs for Red. If you find a bug or want to request a feature, please [open an issue](https://github.com/Dav-Git/Dav-Cogs/issues/new) on github.
 
-| Cog | Description | Red 3.5 ready (March 22) |
+| Cog | Description | Red 3.5 compatibility |
 | --- | ----------- | ------------- |
 | anonreporter | Anonymous version of the core reports cog. | ✅ |
 | autoroler | Assign roles to users when they join. | ✅ |

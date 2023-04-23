@@ -1,4 +1,3 @@
-import logging
 from redbot.core import commands, Config
 from redbot.core.i18n import Translator, cog_i18n
 import discord
@@ -27,19 +26,13 @@ class AutoRoler(commands.Cog):
             "roles": [],
         }
         self.config.register_guild(**default_guild)
-        self.log = logging.getLogger("red.cog.dav-cogs.AutoRoler")
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
         data = await self.config.guild(member.guild).all()
         if not data["enabled"]:
             return
-        try:
-            await member.add_roles(*[member.guild.get_role(role_id) for role_id in data["roles"]])
-        except discord.Forbidden:
-            self.log.warning(
-                f"I do not have permissions to add roles to members in {member.guild}({member.guild.id})."
-            )
+        await member.add_roles(*[member.guild.get_role(role_id) for role_id in data["roles"]])
 
     @commands.group()
     async def autorole(self, ctx):
