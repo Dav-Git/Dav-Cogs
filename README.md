@@ -13,13 +13,13 @@
 
 Dav's cogs for Red. If you find a bug or want to request a feature, please [open an issue](https://github.com/Dav-Git/Dav-Cogs/issues/new) on github.
 
-| Cog | Description | Red 3.5 compatibility |
-| --- | ----------- | ------------- |
-| altmarker | Mark a user's alt accounts as belonging together and get alerted when they join or leave. | ✅ |
-| anonreporter | Anonymous version of the core reports cog. | ✅ |
-| autoroler | Assign roles to users when they join. | ✅ |
-| botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> | ✅ |
-| casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> | ✅ |
+| Cog | Description | 
+| --- | ----------- | 
+| altmarker | Mark a user's alt accounts as belonging together and get alerted when they join or leave. |
+| anonreporter | Anonymous version of the core reports cog. |
+| autoroler | Assign roles to users when they join. |
+| botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> |
+| casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> |
 | caserelayer | Send modlog cases to a user. | ❔ |
 | check | <details><summary>Mod-check a user.</summary>The ``[p]check`` command calls the commands ``[p]userinfo``, ``[p]read`` (if [casereader](https://github.com/Dav-Git/Dav-Cogs) is installed), ``[p]warnings`` (if casereader is not installed) and ``[p]listflag`` (if [flag](https://github.com/bobloy/Fox-V3/) is installed).</details> | ✅ |
 | exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> | ✅ |
@@ -47,7 +47,6 @@ And load them with `[p]load <name_of_cog>`
 
 You can get support in the [#support_othercogs](https://discordapp.com/channels/240154543684321280/240212783503900673) channel on the official [Cog support server](https://discord.gg/GET4DVk)\
 Visit my own server for quicker responses: [Dav-Server](https://discord.gg/z6Nhqc5)\
-E-Mail me dav@mail.stopdavabuse.de\
 Cogs not listed above will **NOT** work on your bot.\
 You can find other approved repos on the [Red Index](https://index.discord.red).
 
@@ -59,7 +58,7 @@ Please check [here](https://github.com/Dav-Git/Dav-Cogs/blob/master/TRANSLATING.
 
 Thanks to [Draper](https://github.com/Drapersniper) for helping with exclusiveroles. \
 Thanks to [Jack](https://github.com/jack1142) for supplying the code used to pull the ``end_user_data_statement`` into the ``__init__.py``s. \
-Also a big thank you to everyone in the coding channel on the support discord for your help along the way. \
+Also a big thank you to everyone in the coding channel on the support discord for your help along the way. 
 
 # Privacy
 
