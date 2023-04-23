@@ -17,5 +17,5 @@
         "cases"
     ],
     "end_user_data_statement": "This cog does not store end user data.",
-    "max_bot_version": "3.5.0.dev0"
+    "min_bot_version": "3.5.0"
 }
