@@ -1,6 +1,7 @@
 import logging
 
 import discord
+from redbot.core import checks, commands
 from redbot.core.i18n import Translator, cog_i18n
 
 _ = Translator("Check", __file__)
@@ -10,7 +11,7 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    __version__ = "1.1.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -60,16 +61,16 @@ class Check(commands.Cog):
             try:
                 await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
             except:
-                self.log.warning("Command warn not found.")
+                self.log.debug("Command warn not found.")
 
     async def _maybe_listflag(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("listflag"), member=member)
         except:
-            self.log.warning("Command listflag not found.")
+            self.log.debug("Command listflag not found.")
 
     async def _maybe_altmarker(self, ctx, member):
         try:
             await ctx.invoke(ctx.bot.get_command("alt get"), member=member)
         except:
-            self.log.warning("Altmarker not found.")
+            self.log.debug("Altmarker not found.")
