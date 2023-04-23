@@ -1,5 +1,7 @@
-from redbot.core.i18n import Translator, cog_i18n
 import logging
+
+import discord
+from redbot.core.i18n import Translator, cog_i18n
 
 _ = Translator("Check", __file__)
 
