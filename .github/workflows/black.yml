@@ -10,8 +10,10 @@ jobs:
     name: Style
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - name: Black
-        uses: lgeiger/black-action@v1.0.1
+        uses: psf/black@stable
         with:
-          args: "-l 99 --check ."
+          options: "-l 99 --check"
+          src: "."
+          
