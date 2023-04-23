@@ -1,19 +1,21 @@
 <p align="center">
 <a href="https://discord.gg/z6Nhqc5"><img src="https://discordapp.com/api/guilds/552178115175252005/embed.png"></a>
 <a href="https://github.com/Rapptz/discord.py"><img src="https://img.shields.io/static/v1?label=Discord&message=py&color=blue&style=flat&logo=discord"></a>
-<a href="https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop"><img src="https://img.shields.io/static/v1?label=Red-DiscordBot&message=Cogs&color=red&style=for-the-badge"></a>
-<a href="https://www.python.org/"><img src="https://img.shields.io/static/v1?label=Python&message=3.8.1&color=blue&style=flat&logo=python"></a>
+<a href="https://github.com/Cog-Creators/Red-DiscordBot/tree/V3/develop"><img src="https://img.shields.io/static/v1?label=Red-DiscordBot&message=3.5&color=red&style=for-the-badge"></a>
+<a href="https://www.python.org/"><img src="https://img.shields.io/static/v1?label=Python&message=3.10&color=blue&style=flat&logo=python"></a>
 <img src="https://img.shields.io/badge/code%20style-black-000000.svg"></p>
 <p align="center"><img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Lint%20Python/badge.svg">
 <img src="https://img.shields.io/static/v1?label=PRs&message=Welcome&color=green&style=flat&logo=GitHub">
 <img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Black/badge.svg"></p>
 
+⚠️ These cogs are compatible with Red 3.5+ only. If you need Red 3.4.x compatibility use the 3.4 branch.⚠️
 # Dav-Cogs
 
 Dav's cogs for Red. If you find a bug or want to request a feature, please [open an issue](https://github.com/Dav-Git/Dav-Cogs/issues/new) on github.
 
 | Cog | Description | Red 3.5 compatibility |
 | --- | ----------- | ------------- |
+| altmarker | Mark a user's alt accounts as belonging together and get alerted when they join or leave. | ✅ |
 | anonreporter | Anonymous version of the core reports cog. | ✅ |
 | autoroler | Assign roles to users when they join. | ✅ |
 | botstatus | <details><summary>Set a bot status that stays on reboot.</summary>This cog will save your bot status settings (if you use the dedicated command) and apply them on bot startup or reboot.</details> | ✅ |
