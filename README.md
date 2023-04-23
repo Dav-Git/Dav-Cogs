@@ -12,6 +12,16 @@
 
 Dav's cogs for Red. If you find a bug or want to request a feature, please [open an issue](https://github.com/Dav-Git/Dav-Cogs/issues/new) on github.
 
+Red 3.5 Compatibility:
+✅ Compatible, will be merged on Red 3.5 release.
+❔ Not tested, but should be compatible. Patch not ready yet.
+❌ Not compatible. Will not be updated.
+
+If your server depends on a cog that is not marked as 3.5 ready you may want to hold off on updating Red until the cog is updated. \
+If you intend to stay on Red 3.4 you should not run cog updates after the 3.5 release. \
+3.4 Compatible cogs will remain available in the 3.4 branch.
+
+
 | Cog | Description | Red 3.5 compatibility |
 | --- | ----------- | ------------- |
 | anonreporter | Anonymous version of the core reports cog. | ✅ |
@@ -20,11 +30,11 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> | ✅ |
 | caserelayer | Send modlog cases to a user. | ❔ |
 | check | <details><summary>Mod-check a user.</summary>The ``[p]check`` command calls the commands ``[p]userinfo``, ``[p]read`` (if [casereader](https://github.com/Dav-Git/Dav-Cogs) is installed), ``[p]warnings`` (if casereader is not installed) and ``[p]listflag`` (if [flag](https://github.com/bobloy/Fox-V3/) is installed).</details> | ✅ |
-| exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> | ✅ |
-| mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. This cog uses Minecraft RCON to communicate with your server.</details> | ✅ |
+| exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> | ❔ |
+| mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. This cog uses Minecraft RCON to communicate with your server.</details> | ❔ |
 | modlogstats | Find out how often each modlog casetype has been used in your modlog. This cog uses multithreading. Use at your own risk. | ❔ |
 | mover | Massmove members from one voicechannel to another. | ❔ |
-| nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> | ❔ |
+| nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> | ✅ |
 | prunecmd | Introduces a command to prune the member list. | ❔ |
 | rolesyncer | Sync roles within a guild | ❔ |
 | roomer | <details><summary>Automatic voicechannel generation and private voice and text channels.</summary><br>- Automated voicechannel creation<br>- Private voicechannels<br><br>- Private textchannels </details> | ❔ |
