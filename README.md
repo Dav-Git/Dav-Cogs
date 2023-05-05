@@ -24,6 +24,7 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | check | <details><summary>Mod-check a user.</summary>The ``[p]check`` command calls the commands ``[p]userinfo``, ``[p]read`` (if [casereader](https://github.com/Dav-Git/Dav-Cogs) is installed), ``[p]warnings`` (if casereader is not installed) and ``[p]listflag`` (if [flag](https://github.com/bobloy/Fox-V3/) is installed).</details> | 
 | exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> |
 | httpcat | Get cute http kitties courtesy of [http.cat](https://http.cat) | 
+| joinflag | Put a note on a user which will be displayed when they join your guild. |
 | mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. This cog uses Minecraft RCON to communicate with your server.</details> |
 | modlogstats | Find out how often each modlog casetype has been used in your modlog. This cog uses multithreading. Use at your own risk. |
 | mover | Massmove members from one voicechannel to another. |
