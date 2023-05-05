@@ -22,17 +22,17 @@ Dav's cogs for Red. If you find a bug or want to request a feature, please [open
 | casereader | <details><summary>A different approach to ``[p]casesfor``</summary>For some users it might be inconvenient to have to click through a menu of cases when using the ``[p]casesfor`` command. Casereader sends a list of all cases linked to a user when the ``[p]read`` command is used.</details> |
 | caserelayer | Send modlog cases to a user. |
 | check | <details><summary>Mod-check a user.</summary>The ``[p]check`` command calls the commands ``[p]userinfo``, ``[p]read`` (if [casereader](https://github.com/Dav-Git/Dav-Cogs) is installed), ``[p]warnings`` (if casereader is not installed) and ``[p]listflag`` (if [flag](https://github.com/bobloy/Fox-V3/) is installed).</details> | 
-| exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> | ✅ |
-| mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. This cog uses Minecraft RCON to communicate with your server.</details> | ✅ |
-| modlogstats | Find out how often each modlog casetype has been used in your modlog. This cog uses multithreading. Use at your own risk. | ❔ |
-| mover | Massmove members from one voicechannel to another. | ❔ |
+| exclusiveroles | <details><summary>Make roles "truly" exclusive.</summary>Allows you to set 2 roles exclusive to each other. That way, when a user is being assigned a new role, the old role which is exclusive with the new role will be removed.</details> |
+| httpcat | Get cute http kitties courtesy of [http.cat](https://http.cat) | 
+| mcwhitelister | <details><summary>Sync a minecraft server whitelist with discord.</summary>Members of your discord can add themselves to the whitelist by running ``[p]whitelister add <minecraft_name>``. When they leave the discord their whitelist is automatically removed. This cog uses Minecraft RCON to communicate with your server.</details> |
+| modlogstats | Find out how often each modlog casetype has been used in your modlog. This cog uses multithreading. Use at your own risk. |
+| mover | Massmove members from one voicechannel to another. |
 | nicknamer | <details><summary>Nicknaming tools.</summary>Allow your moderators to set a predefined nickname quickly, change a user's nickname using a command, freeze a user's nickname or temporarily change it for a predefined amount of time. Every action can also generate a modlog entry.</details> |
-| prunecmd | Introduces a command to prune the member list. | ❔ |
-| rolesyncer | Sync roles within a guild | ❔ |
-| roomer | <details><summary>Automatic voicechannel generation and private voice and text channels.</summary><br>- Automated voicechannel creation<br>- Private voicechannels<br><br>- Private textchannels </details> | ❔ |
-| stickymember | <details><summary>Make a member sticky and keep all their roles.</summary>Ever had a member leave and rejoin frequently so you had to give them back all their roles? Me neither, but someone did. So I made this. Any member saved to the cog will retain all their roles when they rejoin the server.</details> | ❔ |
-| ticketer | Advanced command based ticket system for your guild. | ❌ |
-| verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> | ❔ |
+| prunecmd | Introduces a command to prune the member list. |
+| rolesyncer | Sync roles within a guild |
+| roomer | <details><summary>Automatic voicechannel generation and private voice and text channels.</summary><br>- Automated voicechannel creation<br>- Private voicechannels<br><br>- Private textchannels </details> |
+| stickymember | <details><summary>Make a member sticky and have them keep all their roles, even when leaving your guild.</summary>Ever had a member leave and rejoin frequently so you had to give them back all their roles? Me neither, but someone else did. So I made this. Any member saved to the cog will retain all their roles when they rejoin the server.</details> |
+| verifyer | <details><summary>Add a safety barrier to your discord server and require users to run a command before accessing the server.</summary>Before being able to access your server, users need to run the command ``[p]verify``. You can either achieve this by having a member role and revoking read/write access to all channels for @ everyone or by choosing to deny all permissions to a "Verification role". Members need to be able to type in a channel of your guild to be able to verify themselves. This could be a hidden channel. This cog requires setup with ``[p]verifyerset`` and relies on users having their DMs open for the bot.</details> |
 
 # Installation
 
