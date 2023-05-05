@@ -1,4 +1,4 @@
-from redbot.core import commands, checks
+from redbot.core import commands
 from redbot.core.i18n import Translator, cog_i18n
 
 _ = Translator("Prunecmd", __file__)
@@ -8,7 +8,7 @@ _ = Translator("Prunecmd", __file__)
 class Prunecmd(commands.Cog):
     """Prunecmd"""
 
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -23,7 +23,9 @@ class Prunecmd(commands.Cog):
         pass
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
+    @commands.guild_only()
+    @commands.bot_has_permissions(manage_members=True)
     async def prunecmd(self, ctx, confirm: bool):
         """Prunes the discord member list of your guild. This will kick all users without a role and 24h inactivity."""
         if ctx.assume_yes or confirm:
