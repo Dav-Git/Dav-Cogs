@@ -2,14 +2,14 @@ from redbot.core import commands, Config
 from redbot.core.i18n import Translator, cog_i18n
 import discord
 
-_ = Translator("AutoRole", __file__)
+_ = Translator("AutoRoler", __file__)
 
 
 @cog_i18n(_)
 class AutoRoler(commands.Cog):
     """AutoRoler"""
 
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.

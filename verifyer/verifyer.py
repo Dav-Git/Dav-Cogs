@@ -1,4 +1,4 @@
-from redbot.core import commands, Config, checks
+from redbot.core import commands, Config
 import discord
 from typing import Optional
 from redbot.core.i18n import Translator, cog_i18n
@@ -10,7 +10,7 @@ _ = Translator("Verifyer", __file__)
 
 @cog_i18n(_)
 class Verifyer(commands.Cog):
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -77,7 +77,7 @@ class Verifyer(commands.Cog):
 
     @commands.guild_only()
     @commands.group()
-    @checks.admin()
+    @commands.admin()
     async def verifyerset(self, ctx):
         """Settings for verifyer"""
         pass

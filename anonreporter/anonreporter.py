@@ -10,7 +10,7 @@ _ = Translator("AnonReporter", __file__)
 
 @cog_i18n(_)
 class AnonReporter(commands.Cog):
-    __version__ = "1.0.1"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.

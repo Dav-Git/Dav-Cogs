@@ -3,7 +3,7 @@
         "Dav"
     ],
     "description": "Mark a user's alt accounts and get notified about them when you take a moderation action.\n Integrate this cog with alt-account identification services by hooking into the altmarker API.",
-    "hidden": true,
+    "hidden": false,
     "install_msg": "Thank you for installing `altmarker`.\nTo see all available commands, use `[p]help AltMarker`.\n\nFor support with this cog, visit https://discord.gg/GET4DVk",
     "short": "Mark alt accounts",
     "tags": [
@@ -16,5 +16,5 @@
         "alt-accounts"
     ],
     "end_user_data_statement": "This cog stores data about you and associated accounts for moderation purposes. This includes your User ID, Username and Discriminator as well as Information about other acconuts believed to be connected to you. By default this data is accessible to server moderators and administrators.",
-    "max_bot_version": "3.5.0.dev0"
+    "min_bot_version": "3.5.0"
 }

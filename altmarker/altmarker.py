@@ -31,7 +31,7 @@ class AltMarker(commands.Cog):
     Mark alt accounts
     """
 
-    __version__ = "0.3.2"
+    __version__ = "1.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -162,7 +162,9 @@ class AltMarker(commands.Cog):
             await ctx.send(_("Notifications are now disabled."))
         else:
             await self.config.guild(ctx.guild).notify.set(channel.id)
-            await ctx.send(_("Notifications will be sent to {notify}").format(notify=channel))
+            await ctx.send(
+                _("Notifications will be sent to {notify}").format(notify=channel.mention)
+            )
 
     async def add_alt(self, member: discord.Member, alt: discord.Member) -> None:
         """

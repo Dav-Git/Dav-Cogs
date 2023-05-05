@@ -2,67 +2,72 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-09-30 12:29+0200\n"
+"POT-Creation-Date: 2023-05-05 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 
-#: modlogstats\modlogstats.py:65 modlogstats\modlogstats.py:77
+#: modlogstats/modlogstats.py:47
+#, docstring
+msgid "Get modlog stats for the timeframe specified."
+msgstr ""
+
+#: modlogstats/modlogstats.py:65 modlogstats/modlogstats.py:77
 msgid "Results"
 msgstr ""
 
-#: modlogstats\modlogstats.py:68
+#: modlogstats/modlogstats.py:68
 msgid "Total cases: {amount}"
 msgstr ""
 
-#: modlogstats\modlogstats.py:94
+#: modlogstats/modlogstats.py:94
 msgid "Modlogstats"
 msgstr ""
 
-#: modlogstats\modlogstats.py:94
+#: modlogstats/modlogstats.py:94
 msgid "Modlogstats status message."
 msgstr ""
 
-#: modlogstats\modlogstats.py:126
+#: modlogstats/modlogstats.py:126
 msgid "This WILL take a while."
 msgstr ""
 
-#: modlogstats\modlogstats.py:129
+#: modlogstats/modlogstats.py:129
 msgid "Getting cases."
 msgstr ""
 
-#: modlogstats\modlogstats.py:133
+#: modlogstats/modlogstats.py:133
 msgid "Getting cases.."
 msgstr ""
 
-#: modlogstats\modlogstats.py:137
+#: modlogstats/modlogstats.py:137
 msgid "Getting cases..."
 msgstr ""
 
-#: modlogstats\modlogstats.py:141
+#: modlogstats/modlogstats.py:141
 msgid "Getting cases"
 msgstr ""
 
-#: modlogstats\modlogstats.py:144
+#: modlogstats/modlogstats.py:144
 msgid "This might take a while."
 msgstr ""
 
-#: modlogstats\modlogstats.py:147
+#: modlogstats/modlogstats.py:147
 msgid "Processing {cases} cases"
 msgstr ""
 
-#: modlogstats\modlogstats.py:151
+#: modlogstats/modlogstats.py:151
 msgid "Processing {cases} cases."
 msgstr ""
 
-#: modlogstats\modlogstats.py:155
+#: modlogstats/modlogstats.py:155
 msgid "Processing {cases} cases.."
 msgstr ""
 
-#: modlogstats\modlogstats.py:159
+#: modlogstats/modlogstats.py:159
 msgid "Processing {cases} cases..."
 msgstr ""

@@ -2,7 +2,7 @@ from redbot.core import commands
 
 
 class HttpCat(commands.Cog):
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
