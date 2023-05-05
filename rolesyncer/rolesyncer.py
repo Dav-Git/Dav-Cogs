@@ -1,6 +1,6 @@
 import logging
 import discord
-from redbot.core import commands, checks, Config
+from redbot.core import commands, Config
 from redbot.core.i18n import Translator, cog_i18n
 
 _ = Translator("RoleSyncer", __file__)
@@ -10,7 +10,7 @@ _ = Translator("RoleSyncer", __file__)
 class RoleSyncer(commands.Cog):
     """Sync Roles"""
 
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -98,7 +98,7 @@ class RoleSyncer(commands.Cog):
         pass
 
     @rolesyncer.command()
-    @checks.admin()
+    @commands.admin()
     async def oneway(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 Roles. If the first role is assigned to a user, the second one will be assigned as well."""
 
@@ -111,7 +111,7 @@ class RoleSyncer(commands.Cog):
         )
 
     @rolesyncer.command()
-    @checks.admin()
+    @commands.admin()
     async def twoway(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 Roles. If either role is assigned to a user, the other one will be assigned as well."""
 
@@ -124,13 +124,13 @@ class RoleSyncer(commands.Cog):
         )
 
     @commands.group()
-    @checks.admin()
+    @commands.admin()
     async def unsync(self, ctx):
         """Unsync roles"""
         pass
 
     @unsync.command(name="oneway")
-    @checks.admin()
+    @commands.admin()
     async def unsync_oneway(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 roles and removes their sync"""
         if await self.remove_owsync(ctx.guild, role1, role2):
@@ -143,7 +143,7 @@ class RoleSyncer(commands.Cog):
             await ctx.send(_("Couldn't find these roles in the sync database."))
 
     @unsync.command(name="twoway")
-    @checks.admin()
+    @commands.admin()
     async def unsync_twoway(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 roles and removes their sync"""
         if await self.remove_twsync(ctx.guild, role1, role2):
@@ -156,7 +156,7 @@ class RoleSyncer(commands.Cog):
             await ctx.send(_("Couldn't find these roles in the sync database."))
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
     async def listsync(self, ctx):
         """List all exclusive roles"""
 
