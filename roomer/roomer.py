@@ -12,7 +12,7 @@ _ = Translator("Roomer", __file__)
 
 @cog_i18n(_)
 class Roomer(commands.Cog):
-    __version__ = "1.0.1"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -485,7 +485,7 @@ class Roomer(commands.Cog):
     async def _send_pending_owner_notifications(self, bot):
         if await self.config.notification() == 0:
             await bot.send_to_owners(
-                "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories."
+                "Roomer: If you are updating roomer you will need to redo your autoroom setup.\n\nThis is due to some backend storage changes to allow for multiple automated categories.\nIf you are installing roomer for the first time, you can ignore this message."
             )
             await self.config.notification.set(1)
 
