@@ -1,4 +1,4 @@
-from redbot.core import commands, Config, checks
+from redbot.core import commands, Config
 from discord import Member, Forbidden
 
 from redbot.core.i18n import cog_i18n, Translator
@@ -11,7 +11,7 @@ _ = Translator("StickyMember", __file__)
 
 @cog_i18n(_)
 class StickyMember(commands.Cog):
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -48,7 +48,7 @@ class StickyMember(commands.Cog):
             except Forbidden:
                 self.logger.warn("Couldn't assign roles to {member.id} on rejoin. 403")
 
-    @checks.admin()
+    @commands.admin()
     @commands.command()
     async def stickymem(self, ctx, member: Member) -> None:
         await self.config.member(member).active.set(True)
@@ -57,7 +57,7 @@ class StickyMember(commands.Cog):
         await self.config.member(member).roles.set(role_ids)
         await ctx.send(_("Stickied {member}.").format(member=member.display_name))
 
-    @checks.admin()
+    @commands.admin()
     @commands.command()
     async def unstickymem(self, ctx, member: Union[Member, int]):
         if isinstance(member, Member):
