@@ -1,0 +1,18 @@
+{
+    "author": [
+        "Dav"
+    ],
+    "description": "Put a one time note on a user which will get triggered when they re-join the server.",
+    "hidden": false,
+    "install_msg": "Thank you for installing joinflag.",
+    "short": "Flag a user on join",
+    "tags": [
+        "Moderation",
+        "Flag",
+        "Mod",
+        "Note",
+        "Modnote"
+    ],
+    "end_user_data_statement": "This cog does stores moderation notes attached to a user ID. The notes will be displayed when a user joins the server.",
+    "min_bot_version": "3.5.0"
+}
