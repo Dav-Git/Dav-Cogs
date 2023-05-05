@@ -3,7 +3,7 @@ import json
 from aiomcrcon import Client
 from aiomcrcon.errors import IncorrectPasswordError, RCONConnectionError
 from discord import Embed
-from redbot.core import Config, checks, commands
+from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import pagify
 from redbot.core.utils.menus import DEFAULT_CONTROLS, menu
@@ -13,7 +13,7 @@ _ = Translator("McWhitelister", __file__)
 
 @cog_i18n(_)
 class McWhitelister(commands.Cog):
-    __version__ = "2.0.0"
+    __version__ = "3.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
