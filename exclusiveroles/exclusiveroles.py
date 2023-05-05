@@ -1,6 +1,6 @@
 import logging
 import discord
-from redbot.core import commands, checks, Config
+from redbot.core import commands, Config
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import pagify
 from redbot.core.utils.menus import menu, DEFAULT_CONTROLS
@@ -12,7 +12,7 @@ _ = Translator("ExclusiveRoles", __file__)
 class ExclusiveRoles(commands.Cog):
     """Exclusive Roles"""
 
-    __version__ = "1.0.0"
+    __version__ = "2.0.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -49,7 +49,7 @@ class ExclusiveRoles(commands.Cog):
                 self.log.exception(e, exc_info=True)
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
     async def exclusivenow(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 Roles. Removes the second role if both roles are present on a user."""
 
@@ -70,7 +70,7 @@ class ExclusiveRoles(commands.Cog):
             await ctx.send(_("\n`Completed.`\n"))
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
     async def setexclusive(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 Roles.
         Removes the second role if the first role is assigned to a user in the future."""
@@ -80,7 +80,7 @@ class ExclusiveRoles(commands.Cog):
         await ctx.send(_("{} will now be overwritten by {}").format(role2.name, role1.name))
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
     async def unexclusive(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 roles and removes their exclusivity"""
 
@@ -101,7 +101,7 @@ class ExclusiveRoles(commands.Cog):
                 )
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
     async def listexclusives(self, ctx):
         """List all exclusive roles"""
 
@@ -128,7 +128,7 @@ class ExclusiveRoles(commands.Cog):
         await menu(ctx, pages, DEFAULT_CONTROLS)
 
     @commands.command()
-    @checks.admin()
+    @commands.admin()
     async def retroscan(self, ctx):
         """Scans the entire user list for roles that have been set as exclusive."""
 
