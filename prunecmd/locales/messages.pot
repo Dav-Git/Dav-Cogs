@@ -2,21 +2,37 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-09-30 12:29+0200\n"
+"POT-Creation-Date: 2023-05-05 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 
-#: prunecmd\prunecmd.py:32
-msgid "The member list has been pruned successfully"
+#: prunecmd/prunecmd.py:11
+#, docstring
+msgid "Prunecmd"
 msgstr ""
 
-#: prunecmd\prunecmd.py:35
+#: prunecmd/prunecmd.py:32
+#, docstring
 msgid ""
-"This will kick members from your guild. If you are sure you want to proceed "
-"run {command}"
+"Prunes the discord member list of your guild. This will kick all users "
+"without a role and x days inactivity."
+msgstr ""
+
+#: prunecmd/prunecmd.py:34
+msgid "The days parameter must be between 1 and 30."
+msgstr ""
+
+#: prunecmd/prunecmd.py:41
+msgid "The member list has been pruned successfully. {x} members were kicked."
+msgstr ""
+
+#: prunecmd/prunecmd.py:48
+msgid ""
+"This will kick {x} members from your guild. If you are sure you want to "
+"proceed run {command}"
 msgstr ""

@@ -2,43 +2,78 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-09-30 12:29+0200\n"
+"POT-Creation-Date: 2023-05-05 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 
-#: autorole\autoroler.py:47
+#: autoroler/autoroler.py:10
+#, docstring
+msgid "AutoRoler"
+msgstr ""
+
+#: autoroler/autoroler.py:39
+#, docstring
+msgid "Autorole commands"
+msgstr ""
+
+#: autoroler/autoroler.py:44
+#, docstring
+msgid "Add a role to be assigned to all new joins"
+msgstr ""
+
+#: autoroler/autoroler.py:47
 msgid "Role already in autorole list"
 msgstr ""
 
-#: autorole\autoroler.py:50
+#: autoroler/autoroler.py:50
 msgid "{} added to autorole list"
 msgstr ""
 
-#: autorole\autoroler.py:57
+#: autoroler/autoroler.py:54
+#, docstring
+msgid "Remove a role from the autorole list"
+msgstr ""
+
+#: autoroler/autoroler.py:57
 msgid "Role not in autorole list"
 msgstr ""
 
-#: autorole\autoroler.py:60
+#: autoroler/autoroler.py:60
 msgid "{} removed from autorole list"
 msgstr ""
 
-#: autorole\autoroler.py:67
+#: autoroler/autoroler.py:64
+#, docstring
+msgid "List all roles in the autorole list"
+msgstr ""
+
+#: autoroler/autoroler.py:67
 msgid "No roles in autorole list"
 msgstr ""
 
-#: autorole\autoroler.py:70
+#: autoroler/autoroler.py:70
 msgid "Autorole list: {}"
 msgstr ""
 
-#: autorole\autoroler.py:76
+#: autoroler/autoroler.py:74
+#, docstring
+msgid "Enable autorole"
+msgstr ""
+
+#: autoroler/autoroler.py:76
 msgid "AutoRoler enabled"
 msgstr ""
 
-#: autorole\autoroler.py:82
+#: autoroler/autoroler.py:80
+#, docstring
+msgid "Disable autorole"
+msgstr ""
+
+#: autoroler/autoroler.py:82
 msgid "AutoRoler disabled"
 msgstr ""

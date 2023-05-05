@@ -2,90 +2,145 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-09-30 12:29+0200\n"
+"POT-Creation-Date: 2023-05-05 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 
-#: botstatus\botstatus.py:80 botstatus\botstatus.py:89
-#: botstatus\botstatus.py:98 botstatus\botstatus.py:107
-#: botstatus\botstatus.py:121 botstatus\botstatus.py:130
-#: botstatus\botstatus.py:139 botstatus\botstatus.py:148
-#: botstatus\botstatus.py:162 botstatus\botstatus.py:171
-#: botstatus\botstatus.py:180 botstatus\botstatus.py:189
-#: botstatus\botstatus.py:203 botstatus\botstatus.py:212
-#: botstatus\botstatus.py:221 botstatus\botstatus.py:230
-msgid "The chracter limit for status messages is 128."
+#: botstatus/botstatus.py:13
+#, docstring
+msgid "Botstatus"
 msgstr ""
 
-#: botstatus\botstatus.py:84
+#: botstatus/botstatus.py:71
+#, docstring
+msgid ""
+"Set a status that doesn't dissappear on reboot.\n"
+"        Usage: [p]botstatus <type> <status> <text>"
+msgstr ""
+
+#: botstatus/botstatus.py:77
+#, docstring
+msgid "Usage: [p]botstatus playing <status> <text>"
+msgstr ""
+
+#: botstatus/botstatus.py:83 botstatus/botstatus.py:92
+#: botstatus/botstatus.py:101 botstatus/botstatus.py:110
+#: botstatus/botstatus.py:124 botstatus/botstatus.py:133
+#: botstatus/botstatus.py:142 botstatus/botstatus.py:151
+#: botstatus/botstatus.py:165 botstatus/botstatus.py:174
+#: botstatus/botstatus.py:183 botstatus/botstatus.py:192
+#: botstatus/botstatus.py:206 botstatus/botstatus.py:215
+#: botstatus/botstatus.py:224 botstatus/botstatus.py:233
+#: botstatus/botstatus.py:246
+msgid "The character limit for status messages is 128."
+msgstr ""
+
+#: botstatus/botstatus.py:87
 msgid "Status set to ``Online | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:93
+#: botstatus/botstatus.py:96
 msgid "Status set to ``Idle | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:102
+#: botstatus/botstatus.py:105
 msgid "Status set to ``DND | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:111
+#: botstatus/botstatus.py:114
 msgid "Status set to ``Offline | Playing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:125
+#: botstatus/botstatus.py:118
+#, docstring
+msgid "Usage: [p]botstatus listening <status> <text>"
+msgstr ""
+
+#: botstatus/botstatus.py:128
 msgid "Status set to ``Online | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:134
+#: botstatus/botstatus.py:137
 msgid "Status set to ``Idle | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:143
+#: botstatus/botstatus.py:146
 msgid "Status set to ``DND | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:152
+#: botstatus/botstatus.py:155
 msgid "Status set to ``Offline | Listening to {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:166
+#: botstatus/botstatus.py:159
+#, docstring
+msgid "Usage: [p]botstatus watching <status> <text>"
+msgstr ""
+
+#: botstatus/botstatus.py:169
 msgid "Status set to ``Online | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:175
+#: botstatus/botstatus.py:178
 msgid "Status set to ``Idle | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:184
+#: botstatus/botstatus.py:187
 msgid "Status set to ``DND | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:193
+#: botstatus/botstatus.py:196
 msgid "Status set to ``Offline | Watching {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:207
+#: botstatus/botstatus.py:200
+#, docstring
+msgid "Set a competing status"
+msgstr ""
+
+#: botstatus/botstatus.py:210
 msgid "Status set to ``Online | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:216
+#: botstatus/botstatus.py:219
 msgid "Status set to ``Away | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:225
+#: botstatus/botstatus.py:228
 msgid "Status set to ``DND | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:234
+#: botstatus/botstatus.py:237
 msgid "Status set to ``Offline | Competing {text}``"
 msgstr ""
 
-#: botstatus\botstatus.py:240
+#: botstatus/botstatus.py:241
+#, docstring
+msgid ""
+"\n"
+"        Set a streaming status\n"
+"        Usage: [p]botstatus streaming <stream url> <text>\n"
+"        "
+msgstr ""
+
+#: botstatus/botstatus.py:252
+msgid "The maximum length of the streamer url is 511 characters."
+msgstr ""
+
+#: botstatus/botstatus.py:257
+msgid "Status set to ``streaming {text} with url {url}``"
+msgstr ""
+
+#: botstatus/botstatus.py:264
+#, docstring
+msgid "Clear the saved botstatus and disable auto-setting on reboot."
+msgstr ""
+
+#: botstatus/botstatus.py:266
 msgid "Saved botstatus has been cleared."
 msgstr ""

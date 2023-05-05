@@ -2,16 +2,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2022-04-25 00:23+0200\n"
+"POT-Creation-Date: 2023-05-05 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 
-#: altmarker\altmarker.py:30
+#: altmarker/altmarker.py:30
 #, docstring
 msgid ""
 "\n"
@@ -19,84 +19,177 @@ msgid ""
 "    "
 msgstr ""
 
-#: altmarker\altmarker.py:65
+#: altmarker/altmarker.py:65
 msgid ""
 "There are registered alt accounts for this member:\n"
 "{alt_message}"
 msgstr ""
 
-#: altmarker\altmarker.py:76
+#: altmarker/altmarker.py:76
 msgid ""
 "There are registered alt accounts for this member.\n"
 "Please check {notify_channel} for more information."
 msgstr ""
 
-#: altmarker\altmarker.py:98
+#: altmarker/altmarker.py:94
 msgid ""
 "A member with known alts joined the guild:\n"
 "{alt_message}"
 msgstr ""
 
-#: altmarker\altmarker.py:113
+#: altmarker/altmarker.py:109
 msgid ""
 "A member with known alts left the guild:\n"
 "{alt_message}"
 msgstr ""
 
-#: altmarker\altmarker.py:122
+#: altmarker/altmarker.py:118
 #, docstring
 msgid "Mark or unmark an alt acount"
 msgstr ""
 
-#: altmarker\altmarker.py:126
+#: altmarker/altmarker.py:122
 #, docstring
 msgid "Mark an alt account"
 msgstr ""
 
-#: altmarker\altmarker.py:130
+#: altmarker/altmarker.py:126
 msgid "{alt} is now marked as an alt of {user}."
 msgstr ""
 
-#: altmarker\altmarker.py:140
+#: altmarker/altmarker.py:136
 #, docstring
 msgid "Get alts of a member"
 msgstr ""
 
-#: altmarker\altmarker.py:146
+#: altmarker/altmarker.py:142
 #, docstring
 msgid "Unmark an alt account"
 msgstr ""
 
-#: altmarker\altmarker.py:150
+#: altmarker/altmarker.py:146
 msgid "{alt} is no longer marked as an alt of {user}."
 msgstr ""
 
-#: altmarker\altmarker.py:160
+#: altmarker/altmarker.py:156
 #, docstring
 msgid "Set altmarker settings"
 msgstr ""
 
-#: altmarker\altmarker.py:164
+#: altmarker/altmarker.py:160
 #, docstring
 msgid "Toggle notification on moderation actions"
 msgstr ""
 
-#: altmarker\altmarker.py:166
+#: altmarker/altmarker.py:162
 msgid "Notifications are now disabled."
 msgstr ""
 
-#: altmarker\altmarker.py:169
+#: altmarker/altmarker.py:166
 msgid "Notifications will be sent to {notify}"
 msgstr ""
 
-#: altmarker\altmarker.py:194
+#: altmarker/altmarker.py:170
+#, docstring
+msgid ""
+"\n"
+"        Add an alt to a member\n"
+"\n"
+"        Parameters\n"
+"        ----------\n"
+"        member: discord.Member\n"
+"            The member to add an alt to\n"
+"        alt: discord.Member\n"
+"            The alt to add\n"
+"\n"
+"        Raises\n"
+"        ------\n"
+"        AltAlreadyRegistered\n"
+"            If the alt is already registered to the specified member\n"
+"        "
+msgstr ""
+
+#: altmarker/altmarker.py:192
 msgid "{alt} is already an alt of {member}."
 msgstr ""
 
-#: altmarker\altmarker.py:225
+#: altmarker/altmarker.py:198
+#, docstring
+msgid ""
+"\n"
+"        Remove an alt from a member\n"
+"\n"
+"        Parameters\n"
+"        ----------\n"
+"        member : discord.Member\n"
+"            The member to remove the alt from\n"
+"        alt : discord.Member\n"
+"            The alt to remove\n"
+"\n"
+"        Raises\n"
+"        ------\n"
+"        AltNotRegistered\n"
+"            If the member provided in alt is not registered as an alt of the member\n"
+"        "
+msgstr ""
+
+#: altmarker/altmarker.py:223
 msgid "{alt} is not an alt of {member}."
 msgstr ""
 
-#: altmarker\altmarker.py:273
+#: altmarker/altmarker.py:229
+#, docstring
+msgid ""
+"\n"
+"        Get alts of a member\n"
+"\n"
+"        Parameters\n"
+"        ----------\n"
+"        member: discord.Member\n"
+"            The member to get alts for\n"
+"\n"
+"        Returns\n"
+"        -------\n"
+"        List[Alt]\n"
+"            List of alts. This list may be empty.\n"
+"        "
+msgstr ""
+
+#: altmarker/altmarker.py:245
+#, docstring
+msgid ""
+"\n"
+"        Determine if a member is a known alt of another member\n"
+"\n"
+"        Parameters\n"
+"        ----------\n"
+"        member: discord.Member\n"
+"            The member to check\n"
+"        alt: discord.Member\n"
+"            The alt to check\n"
+"\n"
+"        Returns\n"
+"        -------\n"
+"        bool\n"
+"            True if the alt is registered as an alt of the member, False otherwise\n"
+"        "
+msgstr ""
+
+#: altmarker/altmarker.py:271
 msgid "Known accounts of {member}: {alts}"
+msgstr ""
+
+#: altmarker/exceptions.py:7
+#, docstring
+msgid "Base exception for AltMarker"
+msgstr ""
+
+#: altmarker/exceptions.py:23
+#, docstring
+msgid "Raised when a given alt has already been registered for a member"
+msgstr ""
+
+#: altmarker/exceptions.py:27
+#, docstring
+msgid "Raised when a given alt is not registered for a member"
 msgstr ""

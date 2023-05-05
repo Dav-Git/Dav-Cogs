@@ -2,45 +2,70 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2021-09-30 12:29+0200\n"
+"POT-Creation-Date: 2023-05-05 15:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 
-#: anonreporter\anonreporter.py:42
+#: anonreporter/anonreporter.py:34
+#, docstring
+msgid "Anonreporter settings"
+msgstr ""
+
+#: anonreporter/anonreporter.py:40
+#, docstring
+msgid "Set the channel used for guild reports."
+msgstr ""
+
+#: anonreporter/anonreporter.py:42
 msgid "Report channel set to {channel}"
 msgstr ""
 
-#: anonreporter\anonreporter.py:52
+#: anonreporter/anonreporter.py:48
+#, docstring
+msgid "Set the channel for global reports."
+msgstr ""
+
+#: anonreporter/anonreporter.py:52
 msgid "Global reports channel set to {channel} in {guild}"
 msgstr ""
 
-#: anonreporter\anonreporter.py:68
+#: anonreporter/anonreporter.py:60
+#, docstring
+msgid "Report something anonymously (don't include text to report via DM)"
+msgstr ""
+
+#: anonreporter/anonreporter.py:68
 msgid "Send your report here. You have 120s."
 msgstr ""
 
-#: anonreporter\anonreporter.py:74
+#: anonreporter/anonreporter.py:74
 msgid "Sending a DM failed. Make sure you allow DMs from the bot."
 msgstr ""
 
-#: anonreporter\anonreporter.py:78
+#: anonreporter/anonreporter.py:78
 msgid "Action timed out."
 msgstr ""
 
-#: anonreporter\anonreporter.py:91 anonreporter\anonreporter.py:102
+#: anonreporter/anonreporter.py:91 anonreporter/anonreporter.py:102
 msgid ""
 "**New anonymous report:**\n"
 "{report}"
 msgstr ""
 
-#: anonreporter\anonreporter.py:95
-msgid "Text to short or to long."
+#: anonreporter/anonreporter.py:95
+msgid "Text too short or too long."
 msgstr ""
 
-#: anonreporter\anonreporter.py:106
+#: anonreporter/anonreporter.py:99
+#, docstring
+msgid "Report something to the bot owner anonymously."
+msgstr ""
+
+#: anonreporter/anonreporter.py:106
 msgid "Anonreport is not configured correctly."
 msgstr ""
