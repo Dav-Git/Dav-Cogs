@@ -10,7 +10,7 @@ _ = Translator("Verifyer", __file__)
 
 @cog_i18n(_)
 class Verifyer(commands.Cog):
-    __version__ = "2.0.0"
+    __version__ = "2.1.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -65,9 +65,16 @@ class Verifyer(commands.Cog):
                 pass
         memrole = await self.config.guild(ctx.guild).memrole()
         if memrole:
-            await member.add_roles(
-                ctx.guild.get_role(memrole), reason=_("Member verified themselves.")
-            )
+            try:
+                await member.add_roles(
+                    ctx.guild.get_role(memrole), reason=_("Member verified themselves.")
+                )
+            except discord.Forbidden:
+                await ctx.send(
+                    _(
+                        "Oh oh. Something went wrong.\nPlease contact a server administrator and ask them to make sure I have the correct permissions."
+                    )
+                )
         try:
             await ctx.tick()
             await asleep(5)
@@ -84,6 +91,7 @@ class Verifyer(commands.Cog):
 
     @commands.guild_only()
     @verifyerset.command()
+    @commands.bot_has_permissions(manage_members=True)
     async def enable(self, ctx):
         """Enable verifyer.\nThis is per guild."""
         await self.config.guild(ctx.guild).enabled.set(True)
@@ -107,7 +115,9 @@ class Verifyer(commands.Cog):
         else:
             await self.config.guild(ctx.guild).role.set(role.id)
             await ctx.send(
-                _("Verification role set to {rolemention}.").format(rolemention=role.mention)
+                _(
+                    "Verification role set to {rolemention}.\nPlease make sure my role is higher than {rolemention} in the discord role hierarchy."
+                ).format(rolemention=role.mention)
             )
 
     @commands.guild_only()
