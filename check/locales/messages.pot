@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-05 15:52+0200\n"
+"POT-Creation-Date: 2023-06-07 23:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,10 @@ msgstr ""
 msgid "Check"
 msgstr ""
 
-#: check/check.py:35
+#: check/check.py:36
 msgid ":mag_right: Starting lookup for: {usermention}({userid})"
 msgstr ""
 
-#: check/check.py:44
+#: check/check.py:45
 msgid "Lookup completed."
 msgstr ""

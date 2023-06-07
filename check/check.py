@@ -11,7 +11,7 @@ _ = Translator("Check", __file__)
 class Check(commands.Cog):
     """Check"""
 
-    __version__ = "2.0.0"
+    __version__ = "2.1.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -28,6 +28,7 @@ class Check(commands.Cog):
 
     @commands.command()
     @checks.mod()
+    @commands.max_concurrency(1, commands.BucketType.guild)
     async def check(self, ctx, member: discord.Member):
         ctx.assume_yes = True
         async with ctx.typing():
