@@ -10,7 +10,7 @@ _ = Translator("Verifyer", __file__)
 
 @cog_i18n(_)
 class Verifyer(commands.Cog):
-    __version__ = "2.1.0"
+    __version__ = "2.1.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -91,7 +91,7 @@ class Verifyer(commands.Cog):
 
     @commands.guild_only()
     @verifyerset.command()
-    @commands.bot_has_permissions(manage_members=True)
+    @commands.bot_has_permissions(manage_roles=True)
     async def enable(self, ctx):
         """Enable verifyer.\nThis is per guild."""
         await self.config.guild(ctx.guild).enabled.set(True)
