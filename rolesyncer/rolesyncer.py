@@ -10,7 +10,7 @@ _ = Translator("RoleSyncer", __file__)
 class RoleSyncer(commands.Cog):
     """Sync Roles"""
 
-    __version__ = "2.0.0"
+    __version__ = "2.0.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -31,67 +31,70 @@ class RoleSyncer(commands.Cog):
     @commands.Cog.listener()
     async def on_member_update(self, before, after):
         if before.roles != after.roles:
-            try:
-                guild = before.guild
-                roles = await self.config.guild(after.guild).all()
-                for r in roles["onesync"]:
-                    r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
-                    if r1 in after.roles:
-                        try:
-                            await after.add_roles(
-                                r2,
-                                reason=_("One-way rolesync / {r1name} added.").format(
-                                    r1name=r1.name
-                                ),
-                            )
-                        except discord.HTTPException as e:
-                            self.log.exception(e, exc_info=True)
-                    elif r1 in before.roles:
+            guild = before.guild
+            roles = await self.config.guild(after.guild).all()
+            for r in roles["onesync"]:
+                r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
+                if r1 in after.roles:
+                    try:
+                        await after.add_roles(
+                            r2,
+                            reason=_("One-way rolesync / {r1name} added.").format(r1name=r1.name),
+                        )
+                    except discord.Forbidden as f_to_pay_respect:
+                        self.log.warning(
+                            "Couldn't assign %s to %s. Missing permissions.\n%s",
+                            r2.name,
+                            after.name,
+                            f_to_pay_respect,
+                        )
+                    except discord.HTTPException as exception:
+                        self.log.exception(exception, exc_info=True)
+                elif r1 in before.roles:
+                    try:
+                        await after.remove_roles(
+                            r2,
+                            reason=_("One-way rolesync / {r1name} removed.").format(
+                                r1name=r1.name
+                            ),
+                        )
+                    except discord.HTTPException as exception:
+                        self.log.exception(exception, exc_info=True)
+            for r in roles["twosync"]:
+                r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
+                if r1 in before.roles and r2 in before.roles:
+                    if not r1 in after.roles:
                         try:
                             await after.remove_roles(
                                 r2,
-                                reason=_("One-way rolesync / {r1name} removed.").format(
+                                reason=_("Two-way rolesync / {r1name} removed.").format(
                                     r1name=r1.name
                                 ),
                             )
-                        except discord.HTTPException as e:
-                            self.log.exception(e, exc_info=True)
-                for r in roles["twosync"]:
-                    r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
-                    if r1 in before.roles and r2 in before.roles:
-                        if not r1 in after.roles:
-                            try:
-                                await after.remove_roles(
-                                    r2,
-                                    reason=_("Two-way rolesync / {r1name} removed.").format(
-                                        r1name=r1.name
-                                    ),
-                                )
-                            except discord.HTTPException as e:
-                                self.log.exception(e, exc_info=True)
-                        elif not r2 in after.roles:
-                            try:
-                                await after.remove_roles(
-                                    r1,
-                                    reason=_("Two-way rolesync / {r2name} removed.").format(
-                                        r2name=r2.name
-                                    ),
-                                )
-                            except discord.HTTPException as e:
-                                self.log.exception(e, exc_info=True)
-                    elif r1 in after.roles:
+                        except discord.HTTPException as exception:
+                            self.log.exception(exception, exc_info=True)
+                    elif not r2 in after.roles:
                         try:
-                            await after.add_roles(r2, reason=_("Two-way rolesync"))
-                        except discord.HTTPException as e:
-                            self.log.exception(e, exc_info=True)
-                    elif r2 in after.roles:
-                        try:
-                            await after.add_roles(r1, reason=_("Two-way rolesync"))
-                        except discord.HTTPException as e:
-                            self.log.exception(e, exc_info=True)
-            except Exception as e:
-                self.log.exception(e, exc_info=True)
+                            await after.remove_roles(
+                                r1,
+                                reason=_("Two-way rolesync / {r2name} removed.").format(
+                                    r2name=r2.name
+                                ),
+                            )
+                        except discord.HTTPException as exception:
+                            self.log.exception(exception, exc_info=True)
+                elif r1 in after.roles:
+                    try:
+                        await after.add_roles(r2, reason=_("Two-way rolesync"))
+                    except discord.HTTPException as exception:
+                        self.log.exception(exception, exc_info=True)
+                elif r2 in after.roles:
+                    try:
+                        await after.add_roles(r1, reason=_("Two-way rolesync"))
+                    except discord.HTTPException as exception:
+                        self.log.exception(exception, exc_info=True)
 
+    @commands.bot_has_permissions(manage_roles=True)
     @commands.group(name="sync")
     async def rolesyncer(self, ctx):
         """Sync roles"""
@@ -165,7 +168,7 @@ class RoleSyncer(commands.Cog):
         mentions = []
         for roles in settings["onesync"]:
             role1 = ctx.guild.get_role(roles[0])
-            if role2 := ctx.guild.get_role(roles[1]) and role1:
+            if (role2 := ctx.guild.get_role(roles[1])) and role1:
                 mentions.append(f"{role1.mention} --> {role2.mention}")
             else:
                 await self.remove_owsync(ctx.guild, role1, role2)
@@ -176,7 +179,7 @@ class RoleSyncer(commands.Cog):
         mentions = []
         for roles in settings["twosync"]:
             role1 = ctx.guild.get_role(roles[0])
-            if role2 := ctx.guild.get_role(roles[1]) and role1:
+            if (role2 := ctx.guild.get_role(roles[1])) and role1:
                 mentions.append(f"{role1.mention} <-> {role2.mention}")
             else:
                 await self.remove_twsync(ctx.guild, role1, role2)
