@@ -13,7 +13,7 @@ _ = Translator("McWhitelister", __file__)
 
 @cog_i18n(_)
 class McWhitelister(commands.Cog):
-    __version__ = "3.0.0"
+    __version__ = "3.1.0"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -91,6 +91,9 @@ class McWhitelister(commands.Cog):
     async def hinzufuegen(self, ctx, name: str):
         """Add yourself to the whitelist."""
         p_in_conf = await self.config.guild(ctx.guild).players()
+        if str(ctx.author.id) in p_in_conf:
+            await ctx.send(_("You are already whitelisted.\n Remove yourself first with {command}.").format(command=f"{ctx.clean_prefix}whitelister remove"))
+            return
         host, port, passw = await self.config.guild(ctx.guild).rcon()
         p_in_conf[ctx.author.id] = {
             "name": name,
