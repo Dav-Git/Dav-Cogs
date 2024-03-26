@@ -60,7 +60,7 @@ class Check(commands.Cog):
             await ctx.invoke(ctx.bot.get_command("read"), member=member.id)
         except:
             try:
-                await ctx.invoke(ctx.bot.get_command("warnings"), user=member)
+                await ctx.invoke(ctx.bot.get_command("warnings"), member=member.id)
             except:
                 self.log.debug("Command warn not found.")
 
