@@ -30,7 +30,7 @@ msgid ""
 "        `port`: Your server's RCON port. (The default is 25575)\n"
 "        `password`: The RCON password.\n"
 "        RCON needs to be enabled and set up in your `server.properties` file.\n"
-"        More information is available [here](https://minecraft.fandom.com/wiki/Server.properties)\n"
+"        More information is available [here](https://minecraft.wiki/w/Server.properties)\n"
 "        "
 msgstr ""
 
