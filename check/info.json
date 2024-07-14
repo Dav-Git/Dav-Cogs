@@ -3,7 +3,7 @@
     "Dav"
   ],
   "description": "Fuses ``[p]warnings``,``[p]listflags``,``[p]read``,``[p]userinfo`` and [p]names``",
-  "hidden": false,
+  "hidden": true,
   "install_msg": "Thank you for installing check. Make sure the `Warnings` and `Mod` cogs are loaded.",
   "short": "Mod-Check a user",
   "tags": [
