@@ -8,7 +8,7 @@
 <img src="https://img.shields.io/static/v1?label=PRs&message=Welcome&color=green&style=flat&logo=GitHub">
 <img src="https://github.com/Dav-Git/Dav-Cogs/workflows/Black/badge.svg"></p>
 
-⚠️ These cogs are compatible with Red 3.5+ only. If you need Red 3.4.x compatibility use the 3.4 branch.⚠️
+
 # Dav-Cogs
 
 Dav's cogs for Red. If you find a bug or want to request a feature, please [open an issue](https://github.com/Dav-Git/Dav-Cogs/issues/new) on github.
