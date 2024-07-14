@@ -92,7 +92,11 @@ class McWhitelister(commands.Cog):
         """Add yourself to the whitelist."""
         p_in_conf = await self.config.guild(ctx.guild).players()
         if str(ctx.author.id) in p_in_conf:
-            await ctx.send(_("You are already whitelisted.\n Remove yourself first with {command}.").format(command=f"{ctx.clean_prefix}whitelister remove"))
+            await ctx.send(
+                _("You are already whitelisted.\n Remove yourself first with {command}.").format(
+                    command=f"{ctx.clean_prefix}whitelister remove"
+                )
+            )
             return
         host, port, passw = await self.config.guild(ctx.guild).rcon()
         p_in_conf[ctx.author.id] = {
