@@ -28,6 +28,7 @@ class Roomer(commands.Cog):
             "auto_channels": None,
             "name": "general",
             "auto": False,
+            "a_user_limit": None,
             "pstart": None,
             "pcat": None,
             "pchannels": {},
@@ -76,6 +77,7 @@ class Roomer(commands.Cog):
             channel = await after_channel.category.create_voice_channel(
                 settings["name"],
                 overwrites=after_channel.overwrites,
+                user_limit=int(settings["a_user_limit"]),
                 reason=_("Automated voicechannel creation."),
             )
             await member.move_to(channel, reason=_("Moved to automatically created channel."))
@@ -166,6 +168,16 @@ class Roomer(commands.Cog):
         await ctx.send(
             _("Automatically created voicechannels will now be named ``{name}``.").format(
                 name=name
+            )
+        )
+
+    @auto.command()
+    async def userlimit(self, ctx, limit: Optional[int]):
+        """Set the user limit for automatically created voicechannels."""
+        await self.config.guild(ctx.guild).a_user_limit.set(limit)
+        await ctx.send(
+            _("Automatically created voicechannels will now have a user limit of {limit}.").format(
+                limit=limit
             )
         )
 
