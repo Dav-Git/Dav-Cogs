@@ -36,8 +36,15 @@ class ExclusiveRoles(commands.Cog):
             try:
                 guild = before.guild
                 roles = await self.config.guild(after.guild).exclusives()
+                to_remove = []
                 for r in roles:
                     r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
+                    if None in [r1, r2]:
+                        self.log.warning(
+                            f"Role with ID {r[1]} or {r[2]} was deleted from the guild. Removing config entry."
+                        )
+                        to_remove.append(r)
+                        continue
                     if all(role in after.roles for role in [r1, r2]):
                         try:
                             await after.remove_roles(
@@ -45,6 +52,10 @@ class ExclusiveRoles(commands.Cog):
                             )
                         except discord.HTTPException as e:
                             self.log.exception(e, exc_info=True)
+                if to_remove:
+                    async with self.config.guild(after.guild).exclusives() as conf:
+                        for r in to_remove:
+                            conf.remove(r)
             except Exception as e:
                 self.log.exception(e, exc_info=True)
 
@@ -91,7 +102,8 @@ class ExclusiveRoles(commands.Cog):
                     await ctx.send(
                         _("{} will no longer be overwritten by {}").format(role2.name, role1.name)
                     )
-                except:
+                except Exception as e:
+                    self.log.exception(e, exc_info=True)
                     await ctx.send(_("```An Error occured```"))
             else:
                 await ctx.send(
@@ -112,10 +124,11 @@ class ExclusiveRoles(commands.Cog):
         else:
             mentions = []
             for r in roles:
+                r0, r1 = ctx.guild.get_role(r[0]), ctx.guild.get_role(r[1])
                 mentions.append(
                     _("\n{} overwrites {}").format(
-                        ctx.guild.get_role(r[0]).mention,
-                        ctx.guild.get_role(r[1]).mention,
+                        r0.mention,
+                        r1.mention,
                     )
                 )
             text = "\n".join(mentions)
