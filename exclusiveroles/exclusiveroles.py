@@ -41,8 +41,8 @@ class ExclusiveRoles(commands.Cog):
                     r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
                     if None in [r1, r2]:
                         self.log.warning(
-                            "Role with ID %s or %s was deleted from the guild. Removing config entry.",
-                            r[0], r[1]
+                            "Role with ID %s or %s was deleted from the guild %s (%s). Removing config entry.",
+                            r[0], r[1], guild.name, guild.id,
                         )
                         to_remove.append(r)
                         continue
@@ -67,10 +67,9 @@ class ExclusiveRoles(commands.Cog):
             for exclusive_pair in conf:
                 if role.id in exclusive_pair:
                     to_remove.append(exclusive_pair)
-                    self.log.warning("Role %s with ID %s was deleted from the guild.",role.name,role.id)
             for exclusive_pair in to_remove:
                 conf.remove(exclusive_pair)
-                self.log.info("Removed exclusive pair with role IDs %s",exclusive_pair)
+                self.log.warning("Removed exclusive pair with role IDs %s from guild %s (%s)",exclusive_pair, role.guild.name, role.guild.id)
 
 
     @commands.command()
@@ -162,8 +161,9 @@ class ExclusiveRoles(commands.Cog):
                 r_new = (ctx.guild.get_role(r[0]), ctx.guild.get_role(r[1]))
                 if None in r_new:
                     self.log.warning(
-                        f"One of the roles({r[0]},{r[1]}) was deleted "
-                        "from the guild. Removing config entry."
+                        "One of the roles(%s,%s) was deleted "
+                        "from the guild %s (%s). Removing config entry.",
+                        r[0], r[1], ctx.guild.name, ctx.guild.id,
                     )
                     roles.remove(r)
                     await self.config.guild(ctx.guild).exclusives.set(roles)
