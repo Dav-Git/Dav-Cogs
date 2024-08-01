@@ -41,7 +41,8 @@ class ExclusiveRoles(commands.Cog):
                     r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
                     if None in [r1, r2]:
                         self.log.warning(
-                            f"Role with ID {r[1]} or {r[2]} was deleted from the guild. Removing config entry."
+                            "Role with ID %s or %s was deleted from the guild. Removing config entry.",
+                            r[0], r[1]
                         )
                         to_remove.append(r)
                         continue
@@ -59,26 +60,35 @@ class ExclusiveRoles(commands.Cog):
             except Exception as e:
                 self.log.exception(e, exc_info=True)
 
+    @commands.Cog.listener()
+    async def on_guild_role_delete(self,role:discord.Role):
+        async with self.config.guild(role.guild).exclusives() as conf:
+            to_remove = []
+            for exclusive_pair in conf:
+                if role.id in exclusive_pair:
+                    to_remove.append(exclusive_pair)
+                    self.log.warning("Role %s with ID %s was deleted from the guild.",role.name,role.id)
+            for exclusive_pair in to_remove:
+                conf.remove(exclusive_pair)
+                self.log.info("Removed exclusive pair with role IDs %s",exclusive_pair)
+
+
     @commands.command()
     @commands.admin()
     async def exclusivenow(self, ctx, role1: discord.Role, role2: discord.Role):
         """Takes 2 Roles. Removes the second role if both roles are present on a user."""
 
-        if not isinstance(role1, discord.Role) or not isinstance(role2, discord.Role):
-            return await ctx.send(_("You need to provide at least 2 roles"))
-
-        else:
-            await ctx.send(_("\n`Started...`\n"))
-            for user in ctx.guild.members:
-                if role1 in user.roles:
-                    if role2 in user.roles:
-                        await user.remove_roles(
-                            role2,
-                            reason=_("Exclusivenow: {role1} overwrites {role2}").format(
-                                role1=role1.name, role2=role2.name
-                            ),
-                        )
-            await ctx.send(_("\n`Completed.`\n"))
+        await ctx.send(_("\n`Started...`\n"))
+        for user in ctx.guild.members:
+            if role1 in user.roles:
+                if role2 in user.roles:
+                    await user.remove_roles(
+                        role2,
+                        reason=_("Exclusivenow: {role1} overwrites {role2}").format(
+                            role1=role1.name, role2=role2.name
+                        ),
+                    )
+        await ctx.send(_("\n`Completed.`\n"))
 
     @commands.command()
     @commands.admin()
@@ -152,7 +162,7 @@ class ExclusiveRoles(commands.Cog):
                 r_new = (ctx.guild.get_role(r[0]), ctx.guild.get_role(r[1]))
                 if None in r_new:
                     self.log.warning(
-                        f"One of the roles({r[0]},{r[1]}) was deleted"
+                        f"One of the roles({r[0]},{r[1]}) was deleted "
                         "from the guild. Removing config entry."
                     )
                     roles.remove(r)
