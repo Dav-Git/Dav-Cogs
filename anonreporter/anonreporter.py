@@ -54,16 +54,21 @@ class AnonReporter(commands.Cog):
             )
         )
 
-    @commands.guild_only()
     @commands.command()
-    async def anonreport(self, ctx, *, text: Optional[str]):
+    async def anonreport(self, ctx, guild: Optional[discord.Guild], *, text: Optional[str]):
         """Report something anonymously (don't include text to report via DM)"""
 
         def msgcheck(m):
             return m.guild is None and m.author.id == ctx.author.id
 
+        if not guild:
+            if ctx.guild:
+                guild = ctx.guild
+            else:
+                await ctx.send(_("You need to specify a guild."))
+                return
         if not text:
-            if channel := await self.config.guild(ctx.guild).channel():
+            if channel := await self.config.guild(guild).channel():
                 try:
                     await ctx.author.send(_("Send your report here. You have 120s."))
                     text = (
@@ -80,14 +85,14 @@ class AnonReporter(commands.Cog):
                 await self._send_not_configured_correctly_message(ctx.channel)
                 return
         else:
-            if channel := await self.config.guild(ctx.guild).channel():
-                await ctx.message.delete(delay=15)
+            if channel := await self.config.guild(guild).channel():
+                await ctx.message.delete(delay=5)
             else:
                 await self._send_not_configured_correctly_message(ctx.channel)
                 return
 
         if 0 < len(text) < 1000:
-            await ctx.guild.get_channel(channel).send(
+            await guild.get_channel(channel).send(
                 _("**New anonymous report:**\n{report}").format(report=text)
             )
             await ctx.tick()
