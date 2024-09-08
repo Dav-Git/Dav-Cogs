@@ -364,7 +364,10 @@ class NickNamer(commands.Cog):
         if are_you_sure:
             for member in ctx.guild.members:
                 if member.nick:
-                    await member.edit(nick=None, reason="Nickname purge")
+                    try:
+                        await member.edit(nick=None, reason="Nickname purge")
+                    except discord.Forbidden:
+                        pass
             await ctx.send(_("Nicknames purged"))
         else:
             await ctx.send(
