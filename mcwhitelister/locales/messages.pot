@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-05 15:52+0200\n"
+"POT-Creation-Date: 2025-01-06 23:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,13 @@ msgstr ""
 msgid "Add yourself to the whitelist."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:106
+#: mcwhitelister/mcwhitelister.py:96
+msgid ""
+"You are already whitelisted.\n"
+" Remove yourself first with {command}."
+msgstr ""
+
+#: mcwhitelister/mcwhitelister.py:113
 #, docstring
 msgid ""
 "Add someone else to the whitelist manually.\n"
@@ -59,7 +65,7 @@ msgid ""
 "They will not be removed automatically when leaving the guild."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:115
+#: mcwhitelister/mcwhitelister.py:122
 #, docstring
 msgid ""
 "Remove someone else from the whitelist manually.\n"
@@ -67,33 +73,33 @@ msgid ""
 "This might not be reflected correctly in `[p]whitelister list`."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:123
+#: mcwhitelister/mcwhitelister.py:130
 #, docstring
 msgid "Remove yourself from the whitelist."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:135
+#: mcwhitelister/mcwhitelister.py:142
 msgid "You are not whitelisted using MCWhitelister."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:140
+#: mcwhitelister/mcwhitelister.py:147
 #, docstring
 msgid "See who is whitelisted on your server."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:148
+#: mcwhitelister/mcwhitelister.py:155
 msgid "Nobody was whitelisted using whitelister yet."
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:157
+#: mcwhitelister/mcwhitelister.py:164
 msgid "Whitelisted with whitelister:"
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:158
+#: mcwhitelister/mcwhitelister.py:165
 msgid "Whitelisted"
 msgstr ""
 
-#: mcwhitelister/mcwhitelister.py:165
+#: mcwhitelister/mcwhitelister.py:172
 #, docstring
 msgid ""
 "Run a command on the Minecraft server.\n"

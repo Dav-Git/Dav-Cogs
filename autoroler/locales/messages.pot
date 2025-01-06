@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-05 15:52+0200\n"
+"POT-Creation-Date: 2025-01-06 23:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,28 +52,34 @@ msgstr ""
 msgid "List all roles in the autorole list"
 msgstr ""
 
-#: autoroler/autoroler.py:67
+#: autoroler/autoroler.py:66
+msgid ""
+"AutoRoler is currently: {}\n"
+"\n"
+msgstr ""
+
+#: autoroler/autoroler.py:69
 msgid "No roles in autorole list"
 msgstr ""
 
-#: autoroler/autoroler.py:70
+#: autoroler/autoroler.py:72
 msgid "Autorole list: {}"
 msgstr ""
 
-#: autoroler/autoroler.py:74
+#: autoroler/autoroler.py:77
 #, docstring
 msgid "Enable autorole"
 msgstr ""
 
-#: autoroler/autoroler.py:76
+#: autoroler/autoroler.py:79
 msgid "AutoRoler enabled"
 msgstr ""
 
-#: autoroler/autoroler.py:80
+#: autoroler/autoroler.py:83
 #, docstring
 msgid "Disable autorole"
 msgstr ""
 
-#: autoroler/autoroler.py:82
+#: autoroler/autoroler.py:85
 msgid "AutoRoler disabled"
 msgstr ""

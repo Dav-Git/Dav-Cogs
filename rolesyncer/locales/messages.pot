@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-05 15:52+0200\n"
+"POT-Creation-Date: 2025-01-06 23:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,102 +16,102 @@ msgstr ""
 msgid "Sync Roles"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:43
+#: rolesyncer/rolesyncer.py:42
 msgid "One-way rolesync / {r1name} added."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:53
+#: rolesyncer/rolesyncer.py:57
 msgid "One-way rolesync / {r1name} removed."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:66
+#: rolesyncer/rolesyncer.py:70
 msgid "Two-way rolesync / {r1name} removed."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:76
+#: rolesyncer/rolesyncer.py:80
 msgid "Two-way rolesync / {r2name} removed."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:84 rolesyncer/rolesyncer.py:89
+#: rolesyncer/rolesyncer.py:88 rolesyncer/rolesyncer.py:93
 msgid "Two-way rolesync"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:97
+#: rolesyncer/rolesyncer.py:100
 #, docstring
 msgid "Sync roles"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:103
+#: rolesyncer/rolesyncer.py:106
 #, docstring
 msgid ""
 "Takes 2 Roles. If the first role is assigned to a user, the second one will "
 "be assigned as well."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:108
+#: rolesyncer/rolesyncer.py:111
 msgid "{role2name} will now be synced to {role1name}"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:116
+#: rolesyncer/rolesyncer.py:119
 #, docstring
 msgid ""
 "Takes 2 Roles. If either role is assigned to a user, the other one will be "
 "assigned as well."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:121
+#: rolesyncer/rolesyncer.py:124
 msgid "{role1name} and {role2name} will now be synced."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:129
+#: rolesyncer/rolesyncer.py:132
 #, docstring
 msgid "Unsync roles"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:135 rolesyncer/rolesyncer.py:148
+#: rolesyncer/rolesyncer.py:138 rolesyncer/rolesyncer.py:151
 #, docstring
 msgid "Takes 2 roles and removes their sync"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:138 rolesyncer/rolesyncer.py:151
+#: rolesyncer/rolesyncer.py:141 rolesyncer/rolesyncer.py:154
 msgid "Sync removed from {role1name} and {role2name}."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:143 rolesyncer/rolesyncer.py:156
+#: rolesyncer/rolesyncer.py:146 rolesyncer/rolesyncer.py:159
 msgid "Couldn't find these roles in the sync database."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:161
+#: rolesyncer/rolesyncer.py:164
 #, docstring
 msgid "List all exclusive roles"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:164
+#: rolesyncer/rolesyncer.py:167
 msgid "Rolesync"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:174
+#: rolesyncer/rolesyncer.py:177
 msgid "No roles in one-way sync."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:175
+#: rolesyncer/rolesyncer.py:178
 msgid "One-way sync:"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:185
+#: rolesyncer/rolesyncer.py:188
 msgid "No roles in two-way sync."
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:186
+#: rolesyncer/rolesyncer.py:189
 msgid "Two-way sync:"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:192
+#: rolesyncer/rolesyncer.py:195
 #, docstring
 msgid "Remove one way sync from config"
 msgstr ""
 
-#: rolesyncer/rolesyncer.py:203
+#: rolesyncer/rolesyncer.py:206
 #, docstring
 msgid "Remove two way sync from config"
 msgstr ""

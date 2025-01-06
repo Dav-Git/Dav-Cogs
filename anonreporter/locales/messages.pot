@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-05-05 15:52+0200\n"
+"POT-Creation-Date: 2025-01-06 23:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,38 +34,42 @@ msgstr ""
 msgid "Global reports channel set to {channel} in {guild}"
 msgstr ""
 
-#: anonreporter/anonreporter.py:60
+#: anonreporter/anonreporter.py:59
 #, docstring
 msgid "Report something anonymously (don't include text to report via DM)"
 msgstr ""
 
 #: anonreporter/anonreporter.py:68
+msgid "You need to specify a guild."
+msgstr ""
+
+#: anonreporter/anonreporter.py:73
 msgid "Send your report here. You have 120s."
 msgstr ""
 
-#: anonreporter/anonreporter.py:74
+#: anonreporter/anonreporter.py:79
 msgid "Sending a DM failed. Make sure you allow DMs from the bot."
 msgstr ""
 
-#: anonreporter/anonreporter.py:78
+#: anonreporter/anonreporter.py:83
 msgid "Action timed out."
 msgstr ""
 
-#: anonreporter/anonreporter.py:91 anonreporter/anonreporter.py:102
+#: anonreporter/anonreporter.py:96 anonreporter/anonreporter.py:107
 msgid ""
 "**New anonymous report:**\n"
 "{report}"
 msgstr ""
 
-#: anonreporter/anonreporter.py:95
+#: anonreporter/anonreporter.py:100
 msgid "Text too short or too long."
 msgstr ""
 
-#: anonreporter/anonreporter.py:99
+#: anonreporter/anonreporter.py:104
 #, docstring
 msgid "Report something to the bot owner anonymously."
 msgstr ""
 
-#: anonreporter/anonreporter.py:106
+#: anonreporter/anonreporter.py:111
 msgid "Anonreport is not configured correctly."
 msgstr ""
