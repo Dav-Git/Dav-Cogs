@@ -9,7 +9,7 @@ _ = Translator("AutoRoler", __file__)
 class AutoRoler(commands.Cog):
     """AutoRoler"""
 
-    __version__ = "2.0.0"
+    __version__ = "2.0.1"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -62,12 +62,15 @@ class AutoRoler(commands.Cog):
     @autorole.command()
     async def list(self, ctx):
         """List all roles in the autorole list"""
+        isEnabled = await self.config.guild(ctx.guild).enabled()
+        msg = _("AutoRoler is currently: {}\n\n").format("Enabled" if isEnabled else "Disabled")
         async with self.config.guild(ctx.guild).roles() as roles:
             if not roles:
-                await ctx.send(_("No roles in autorole list"))
+                msg += _("No roles in autorole list")
                 return
             role_mentions = [ctx.guild.get_role(role_id).mention for role_id in roles]
-            await ctx.send(_("Autorole list: {}").format(", ".join(role_mentions)))
+            msg += _("Autorole list: {}").format(", ".join(role_mentions))
+        await ctx.send(msg)
 
     @autorole.command()
     async def enable(self, ctx):
