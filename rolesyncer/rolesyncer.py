@@ -10,7 +10,7 @@ _ = Translator("RoleSyncer", __file__)
 class RoleSyncer(commands.Cog):
     """Sync Roles"""
 
-    __version__ = "2.0.1"
+    __version__ = "2.0.2"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -175,7 +175,10 @@ class RoleSyncer(commands.Cog):
         text = "\n".join(mentions)
         if not text:
             text = _("No roles in one-way sync.")
-        embed.add_field(name=_("One-way sync:"), value=text)
+        if len(text) > 1024:
+            await ctx.send(_("One-way sync:\n{text}").format(text=text))
+        else:
+            embed.add_field(name=_("One-way sync:"), value=text)
         mentions = []
         for roles in settings["twosync"]:
             role1 = ctx.guild.get_role(roles[0])
@@ -186,8 +189,12 @@ class RoleSyncer(commands.Cog):
         text2 = "\n".join(mentions)
         if not text2:
             text2 = _("No roles in two-way sync.")
-        embed.add_field(name=_("Two-way sync:"), value=text2)
-        await ctx.send(embed=embed)
+        if len(text2) > 1024:
+            await ctx.send(_("Two-way sync:\n{text}").format(text=text2))
+        else:
+            embed.add_field(name=_("Two-way sync:"), value=text2)
+        if embed.fields:
+            await ctx.send(embed=embed)
 
     async def remove_owsync(
         self, guild: discord.Guild, role1: discord.Role, role2: discord.Role
