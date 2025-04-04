@@ -177,7 +177,7 @@ class RoleSyncer(commands.Cog):
         if not text:
             text = _("No roles in one-way sync.")
         if len(text) > 1024:
-            for page in pagify(_("One-way sync:\n{text}").format(text=text)):
+            for page in pagify(_("One-way sync:\n{text}").format(text=text), shorten_by=15):
                 await ctx.send(page)
         else:
             embed.add_field(name=_("One-way sync:"), value=text)
@@ -192,7 +192,7 @@ class RoleSyncer(commands.Cog):
         if not text2:
             text2 = _("No roles in two-way sync.")
         if len(text2) > 1024:
-            for page in pagify(_("Two-way sync:\n{text}").format(text=text2)):
+            for page in pagify(_("Two-way sync:\n{text}").format(text=text2), shorten_by=15):
                 await ctx.send(page)
         else:
             embed.add_field(name=_("Two-way sync:"), value=text2)
