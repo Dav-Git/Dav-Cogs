@@ -2,6 +2,7 @@ import logging
 import discord
 from redbot.core import commands, Config
 from redbot.core.i18n import Translator, cog_i18n
+from redbot.core.utils.chat_formatting import pagify
 
 _ = Translator("RoleSyncer", __file__)
 
@@ -10,7 +11,7 @@ _ = Translator("RoleSyncer", __file__)
 class RoleSyncer(commands.Cog):
     """Sync Roles"""
 
-    __version__ = "2.0.2"
+    __version__ = "2.0.3"
 
     def format_help_for_context(self, ctx: commands.Context) -> str:
         # Thanks Sinbad! And Trusty in whose cogs I found this.
@@ -176,7 +177,8 @@ class RoleSyncer(commands.Cog):
         if not text:
             text = _("No roles in one-way sync.")
         if len(text) > 1024:
-            await ctx.send(_("One-way sync:\n{text}").format(text=text))
+            for page in pagify(_("One-way sync:\n{text}").format(text=text)):
+                await ctx.send(page)
         else:
             embed.add_field(name=_("One-way sync:"), value=text)
         mentions = []
@@ -190,7 +192,8 @@ class RoleSyncer(commands.Cog):
         if not text2:
             text2 = _("No roles in two-way sync.")
         if len(text2) > 1024:
-            await ctx.send(_("Two-way sync:\n{text}").format(text=text2))
+            for page in pagify(_("Two-way sync:\n{text}").format(text=text2)):
+                await ctx.send(page)
         else:
             embed.add_field(name=_("Two-way sync:"), value=text2)
         if embed.fields:
